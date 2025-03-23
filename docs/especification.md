@@ -107,44 +107,43 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| **ID**  | **Descrição do Requisito**                                                                 | **Prioridade** |
-|---------|-----------------------------------------------------------------------------------------|------------|
-| **RF-001** | A aplicação deve permitir que os usuários realizem login para acessar o sistema.      | ALTA       |
-| **RF-002** | A aplicação deve controlar o acesso baseado em perfis de usuários.                     | ALTA       |
-| **RF-003** | A aplicação deve permitir a criação de perfis de usuários com permissões específicas para cada funcionalidade. | ALTA       |
-| **RF-004** | A aplicação deve garantir que cada perfil de usuário tenha acesso apenas às funcionalidades para as quais possui permissão. | ALTA       |
-| **RF-005** | A aplicação deve permitir a criação de fluxos de perguntas e respostas.                | ALTA       |
-| **RF-006** | A aplicação deve permitir a edição de fluxos de perguntas e respostas.                 | ALTA       |
-| **RF-007** | A aplicação deve disponibilizar a visualização dos fluxos em lista ou diagrama.        | MÉDIA      |
-| **RF-008** | A aplicação deve permitir o arquivamento de procedimentos de trabalho sem excluí-los.  | MÉDIA      |
-| **RF-009** | A aplicação deve restringir o acesso a procedimentos de trabalho arquivados a usuários com permissão específica. | MÉDIA      |
-| **RF-010** | A aplicação deve tornar os procedimentos de trabalho arquivados inacessíveis para edição. | MÉDIA      |
-| **RF-011** | A aplicação deve permitir o desarquivamento de procedimentos de trabalho.             | MÉDIA      |
-| **RF-012** | A aplicação deve permitir o armazenamento de procedimentos de trabalho.                | MÉDIA      |
-| **RF-013** | A aplicação deve permitir a organização de procedimentos de trabalho.                  | MÉDIA      |
-| **RF-014** | A aplicação deve permitir pesquisa e filtragem de procedimentos de trabalho por tags/categorias. | MÉDIA      |
-| **RF-015** | A aplicação deve manter um histórico de alterações de procedimentos de trabalho.       | MÉDIA      |
-| **RF-016** | A aplicação deve enviar notificações por e-mail quando um procedimento de trabalho for atualizado. | BAIXA      |
-| **RF-017** | A aplicação deve enviar notificações por e-mail quando um novo procedimento de trabalho for criado. | BAIXA      |
-| **RF-018** | A aplicação deve disponibilizar um painel de alterações recentes.                      | MÉDIA      |
-| **RF-019** | A aplicação deve permitir a exportação dos fluxos e documentos em formatos padronizados, como PDF e CSV. | BAIXA      |
-| **RF-020** | A aplicação deve permitir que o usuário favorite procedimentos de trabalho.            | BAIXA      |
-| **RF-021** | A aplicação deve permitir o destacamento de procedimentos de trabalho.                 | BAIXA      |
-| **RF-022** | A aplicação deve disponibilizar configurações avançadas para administradores e equipe de TI. | ALTA       |
-
+| **ID**  | **Descrição do Requisito**                                                                | **Prioridade** |
+|---------|-------------------------------------------------------------------------------------------|----------------|
+| **RF-001** | A aplicação deve permitir que os usuários realizem login para acessar o sistema.      | ALTA           |
+| **RF-002** | A aplicação deve controlar o acesso baseado em perfis de usuários.                     | ALTA           |
+| **RF-003** | A aplicação deve permitir a criação de perfis de usuários com permissões específicas para cada funcionalidade. | ALTA           |
+| **RF-004** | A aplicação deve garantir que cada perfil de usuário tenha acesso apenas às funcionalidades para as quais possui permissão. | ALTA           |
+| **RF-005** | A aplicação deve permitir a criação de fluxos de perguntas e respostas.               | ALTA           |
+| **RF-006** | A aplicação deve permitir a edição de fluxos de perguntas e respostas.                | ALTA           |
+| **RF-007** | A aplicação deve disponibilizar configurações avançadas para administradores e equipe de TI. | ALTA           |
+| **RF-008** | A aplicação deve disponibilizar a visualização dos fluxos em lista ou diagrama.        | MÉDIA          |
+| **RF-009** | A aplicação deve permitir o arquivamento de procedimentos de trabalho sem excluí-los. | MÉDIA          |
+| **RF-010** | A aplicação deve restringir o acesso a procedimentos de trabalho arquivados a usuários com permissão específica. | MÉDIA          |
+| **RF-011** | A aplicação deve tornar os procedimentos de trabalho arquivados inacessíveis para edição. | MÉDIA          |
+| **RF-012** | A aplicação deve permitir o desarquivamento de procedimentos de trabalho.            | MÉDIA          |
+| **RF-013** | A aplicação deve permitir o armazenamento de procedimentos de trabalho.               | MÉDIA          |
+| **RF-014** | A aplicação deve permitir a organização de procedimentos de trabalho.                 | MÉDIA          |
+| **RF-015** | A aplicação deve permitir pesquisa e filtragem de procedimentos de trabalho por tags/categorias. | MÉDIA          |
+| **RF-016** | A aplicação deve manter um histórico de alterações de procedimentos de trabalho.      | MÉDIA          |
+| **RF-017** | A aplicação deve disponibilizar um painel de alterações recentes.                     | MÉDIA          |
+| **RF-018** | A aplicação deve enviar notificações por e-mail quando um procedimento de trabalho for atualizado. | BAIXA          |
+| **RF-019** | A aplicação deve enviar notificações por e-mail quando um novo procedimento de trabalho for criado. | BAIXA          |
+| **RF-020** | A aplicação deve permitir a exportação dos fluxos e documentos em formatos padronizados, como PDF e CSV. | BAIXA          |
+| **RF-021** | A aplicação deve permitir que o usuário favorite procedimentos de trabalho.          | BAIXA          |
+| **RF-022** | A aplicação deve permitir o destacamento de procedimentos de trabalho.               | BAIXA          |
 
 ### Requisitos não Funcionais
 
-| **ID**    | **Descrição do Requisito**                                                                                       | **Prioridade** |
-|-----------|------------------------------------------------------------------------------------------------------------------|----------------|
-| **RNF-001** | A aplicação deve ser responsiva, garantindo usabilidade em diferentes dispositivos (desktop, tablet e mobile).  | MÉDIA          |
-| **RNF-002** | A aplicação deve processar requisições do usuário em no máximo 3 segundos.                                        | BAIXA          |
-| **RNF-003** | A aplicação deve garantir a segurança dos dados, implementando controle de acessos.                               | ALTA           |
-| **RNF-004** | A aplicação deve armazenar logs detalhados de alterações e acessos para auditoria e rastreabilidade.              | MÉDIA          |
-| **RNF-005** | A aplicação deve permitir escalabilidade para suportar múltiplos usuários simultaneamente sem perda de desempenho. | MÉDIA          |
-| **RNF-006** | A aplicação deve ter alta disponibilidade, garantindo tempo de inatividade mínimo.                               | ALTA           |
-| **RNF-007** | A interface da aplicação deve seguir princípios de usabilidade e acessibilidade, conforme as Diretrizes de Acessibilidade para Conteúdo Web (WCAG). | MÉDIA |
-| **RNF-008** | A aplicação deve ser compatível com os principais navegadores.                                                   | MÉDIA          |
+| **ID**    | **Descrição do Requisito**                                                                 | **Prioridade** |
+|-----------|--------------------------------------------------------------------------------------------|----------------|
+| **RNF-001** | A aplicação deve ser responsiva, garantindo usabilidade em diferentes dispositivos (desktop, tablet e mobile). |   ALTA         |
+| **RNF-002** | A aplicação deve processar requisições do usuário em no máximo 3 segundos.                |   ALTA         |
+| **RNF-003** | A aplicação deve assegurar a proteção dos dados, implementando mecanismos de controle de acessos. |   ALTA         |
+| **RNF-004** | A aplicação deve ser compatível com os principais navegadores.                            |   ALTA         |
+| **RNF-005** | A aplicação deve armazenar logs detalhados de alterações para auditoria e rastreabilidade. |   MÉDIA        |
+| **RNF-006** | A interface da aplicação deve seguir princípios de usabilidade e acessibilidade, conforme as Diretrizes de Acessibilidade para Conteúdo Web (WCAG). |   MÉDIA        |
+| **RNF-007** | A aplicação deve permitir escalabilidade para suportar múltiplos usuários simultaneamente sem perda de desempenho. |  BAIXA        |
+| **RNF-008** | A aplicação deve ter alta disponibilidade, garantindo tempo de inatividade mínimo.        |   BAIXA        |
 
 ## Restrições
 
@@ -154,5 +153,4 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |--------|----------------------------------------------------------------------------------------------------|
 | **01** | O projeto deverá ser entregue até o final do semestre.                                              |
 | **02** | Não poderá ser desenvolvido um módulo de backend.                                                  |
-| **03** | O projeto deve seguir as diretrizes de acessibilidade e responsividade, garantindo compatibilidade com dispositivos móveis. |
-| **04** | Não é permitido o uso de frameworks.                                                               |
+| **03** | Não é permitido o uso de frameworks.                                                               |
