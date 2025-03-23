@@ -107,18 +107,32 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| **ID**    | **Descrição do Requisito**                                                                                      | **Prioridade** |
-|-----------|------------------------------------------------------------------------------------------------------------------|----------------|
-| **RF-001** | A aplicação deve permitir o login e controle de acesso para diferentes perfis de usuários.                      | ALTA           |
-| **RF-002** | A aplicação deve permitir a criação e edição de fluxos de perguntas e respostas.                                 | ALTA           |
-| **RF-003** | A aplicação deve disponibilizar a visualização dos fluxos em lista ou diagrama.                                  | MÉDIA          |
-| **RF-004** | A aplicação deve permitir o armazenamento e organização de procedimentos de trabalho.                           | ALTA           |
-| **RF-005** | A aplicação deve permitir pesquisa e filtragem de informações por tags/categorias.                              | ALTA           |
-| **RF-006** | A aplicação deve manter um histórico de alterações de procedimentos de trabalho.                               | MÉDIA          |
-| **RF-007** | A aplicação deve enviar notificações por e-mail.                                                                | MÉDIA          |
-| **RF-008** | A aplicação deve disponibilizar um painel de alterações recentes.                                               | MÉDIA          |
-| **RF-009** | A aplicação deve permitir a exportação dos fluxos e documentos em formatos padronizados, como PDF e CSV.         | BAIXA          |
-| **RF-010** | A aplicação deve possibilitar a definição de permissões específicas para criação, edição e exclusão de fluxos.    | ALTA           |
+| **ID**  | **Descrição do Requisito**                                                                 | **Prioridade** |
+|---------|-----------------------------------------------------------------------------------------|------------|
+| **RF-001** | A aplicação deve permitir que os usuários realizem login para acessar o sistema.      | ALTA       |
+| **RF-002** | A aplicação deve controlar o acesso baseado em perfis de usuários.                     | ALTA       |
+| **RF-003** | A aplicação deve permitir a criação de perfis de usuários com permissões específicas para cada funcionalidade. | ALTA       |
+| **RF-004** | A aplicação deve garantir que cada perfil de usuário tenha acesso apenas às funcionalidades para as quais possui permissão. | ALTA       |
+| **RF-005** | A aplicação deve permitir a criação de fluxos de perguntas e respostas.                | ALTA       |
+| **RF-006** | A aplicação deve permitir a edição de fluxos de perguntas e respostas.                 | ALTA       |
+| **RF-007** | A aplicação deve disponibilizar a visualização dos fluxos em lista ou diagrama.        | MÉDIA      |
+| **RF-008** | A aplicação deve permitir o arquivamento de procedimentos de trabalho sem excluí-los.  | MÉDIA      |
+| **RF-009** | A aplicação deve restringir o acesso a procedimentos de trabalho arquivados a usuários com permissão específica. | MÉDIA      |
+| **RF-010** | A aplicação deve tornar os procedimentos de trabalho arquivados inacessíveis para edição. | MÉDIA      |
+| **RF-011** | A aplicação deve permitir o desarquivamento de procedimentos de trabalho.             | MÉDIA      |
+| **RF-012** | A aplicação deve permitir o armazenamento de procedimentos de trabalho.                | MÉDIA      |
+| **RF-013** | A aplicação deve permitir a organização de procedimentos de trabalho.                  | MÉDIA      |
+| **RF-014** | A aplicação deve permitir pesquisa e filtragem de procedimentos de trabalho por tags/categorias. | MÉDIA      |
+| **RF-015** | A aplicação deve manter um histórico de alterações de procedimentos de trabalho.       | MÉDIA      |
+| **RF-016** | A aplicação deve enviar notificações por e-mail quando um procedimento de trabalho for atualizado. | BAIXA      |
+| **RF-017** | A aplicação deve enviar notificações por e-mail quando um novo procedimento de trabalho for criado. | BAIXA      |
+| **RF-018** | A aplicação deve disponibilizar um painel de alterações recentes.                      | MÉDIA      |
+| **RF-019** | A aplicação deve permitir a exportação dos fluxos e documentos em formatos padronizados, como PDF e CSV. | BAIXA      |
+| **RF-020** | A aplicação deve permitir que o usuário favorite procedimentos de trabalho.            | BAIXA      |
+| **RF-021** | A aplicação deve permitir o destacamento de procedimentos de trabalho.                 | BAIXA      |
+| **RF-022** | A aplicação deve disponibilizar configurações avançadas para administradores e equipe de TI. | ALTA       |
+
+
 ### Requisitos não Funcionais
 
 | **ID**    | **Descrição do Requisito**                                                                                       | **Prioridade** |
