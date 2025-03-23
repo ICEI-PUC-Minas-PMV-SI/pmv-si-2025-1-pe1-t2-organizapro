@@ -8,9 +8,9 @@
 
 `SEMESTRE: 1º`
 
-O **OrganizaPro** será desenvolvido como uma aplicação web destinada a otimizar a gestão de procedimentos de trabalho em **instituições públicas e privadas**. A plataforma centralizará informações e documentos dispersos, aprimorando a rastreabilidade e a acessibilidade, o que contribuirá para a redução de erros, retrabalhos e perdas de dados essenciais. O objetivo é aumentar a produtividade e a eficiência, sendo especialmente útil em setores que demandam precisão e transparência.
+O **OrganizaPRO** será desenvolvido como uma aplicação web destinada a otimizar a gestão de procedimentos de trabalho em **instituições públicas e privadas**. A plataforma centralizará informações e documentos, aprimorando a rastreabilidade e a acessibilidade, o que contribuirá para a redução de erros, retrabalhos e perdas de dados essenciais. O objetivo é aumentar a produtividade e a eficiência, sendo especialmente útil em setores que demandam precisão e transparência.
 
-Com uma interface intuitiva, o **OrganizaPro** permitirá que gestores, analistas de processos, profissionais de TI e demais usuários gerenciem os procedimentos de trabalho, acompanhem atualizações e melhorem a comunicação entre as equipes. O desenvolvimento da aplicação será orientado por metodologias ágeis, com foco na transparência e acessibilidade, visando proporcionar uma gestão mais eficiente e simplificada.
+Com uma interface intuitiva, o **OrganizaPRO** permitirá que gestores, analistas de processos, profissionais de TI e demais usuários gerenciem os procedimentos de trabalho, acompanhem atualizações e melhorem a comunicação entre as equipes. O desenvolvimento da aplicação será orientado por metodologias ágeis, com foco na transparência e acessibilidade, visando proporcionar uma gestão mais eficiente e simplificada.
 
 ## Integrantes
 
