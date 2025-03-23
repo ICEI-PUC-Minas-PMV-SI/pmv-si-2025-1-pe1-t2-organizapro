@@ -1,54 +1,60 @@
 # Introdução
 
-Imagine que você deseja apresentar este projeto para investidores que deverão decidir se investem ou não no desenvolvimento da sua ferramenta.
+A transformação digital no Brasil tem avançado significativamente nos últimos anos, impulsionada por políticas que incentivam a adoção de tecnologias nos setores público e privado. No âmbito desse movimento, destaca-se a necessidade de aprimorar a gestão interna das instituições, o que tem fomentado uma crescente demanda por soluções que otimizem o gerenciamento dos procedimentos de trabalho.
 
-A **Introdução** consiste das etapas: *Contextualização -- Definição do problema -- Definição dos Objetivos -- Justificativa*, e tem como função situar o seu trabalho dentro de um contexto de mercado e mostrar a importância da sua proposta para resolver a dor de um usuário.
+Em setores sensíveis como saúde, justiça e educação, a gestão eficaz dos processos operacionais é fundamental para garantir a qualidade dos serviços prestados. A falta de um gerenciamento adequado pode comprometer a transparência e a tomada de decisões, resultando em erros, retrabalhos, aumento de custos e perda de dados.
 
-A Contextualização deve situar sem projeto em um determinado contexto de mercado, a fim de fornecer informações adicionais que possam ajudar a entender melhor o assunto que você irá abordar. Serve também para definir a relevância do seu assunto, uma vez que mostra o tamanho do mercado em que se está inserido. Ela pode envolver a análise de vários aspectos, como o ambiente histórico, cultural, político e social em que o problema a ser atacado surgiu.
+Nesse contexto, a adoção de ferramentas que centralizem e organizem os procedimentos de trabalho de forma eficiente torna-se essencial para alcançar a excelência na gestão interna das instituições, otimizar o acesso às informações e assegurar maior eficácia nos serviços prestados.
 
-Escreva de 2 a 3 parágrafos para contetualizar o seu projeto.
 
 ## Problema
 
-Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, **não** é a hora de comentar sobre a solução/aplicação.
+Instituições públicas e privadas enfrentam desafios significativos devido à dispersão das informações e à falta de ferramentas integradas para gerenciar seus procedimentos de trabalho. Documentos e instruções estão distribuídos em diversos sistemas e formatos (como e-mails, mensagens instantâneas, planilhas e arquivos digitais), o que dificulta a rastreabilidade, a recuperação eficiente de dados e o controle das alterações realizadas.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+Esse cenário afeta diretamente a gestão interna, aumentando o risco de erros, retrabalhos e perdas de informações cruciais. A ausência de uma ferramenta centralizada para organizar e controlar os fluxos de trabalho é especialmente prejudicial em setores onde precisão e transparência são essenciais. Além disso, o tempo gasto para acessar as informações impacta negativamente a produtividade, a celeridade dos processos e resulta em uma gestão ineficiente das tarefas, comprometendo a qualidade e a eficiência operacional das instituições.
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+### Objetivo Geral
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+O objetivo geral do projeto é desenvolver um software para gerenciamento de procedimentos de trabalho em instituições públicas e privadas, tornando a gestão mais eficiente, acessível e organizada.
+
+### Objetivos Específicos
+
+Os objetivos específicos do projeto são: 
+* Centralizar os procedimentos de trabalho em uma plataforma única, acessível e intuitiva para todos os usuários.
+* Comunicar as atualizações nos procedimentos de trabalho aos usuários.
+* Reduzir em 50% o tempo necessário para localizar documentos e informações.
+* Simplificar a criação, atualização e controle dos procedimentos de trabalho.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+A escolha do tema do projeto se deu pela crescente necessidade de soluções para aprimorar a gestão de procedimentos de trabalho em instituições públicas e privadas. Muitas organizações enfrentam dificuldades devido à dispersão de informações, o que resulta em erros, retrabalho e baixa produtividade. A falta de ferramentas adequadas para otimizar esses processos é um desafio contínuo, o que motiva o desenvolvimento de um software para gerenciamento de forma intuitiva e acessível.
 
-Lembre-se de pesquisar e utilizar números que justifiquem por que é importante que tal problema seja resolvido ou que mostrem o impacto do problema na vida das pessoas.
+A aplicação será projetada para garantir uma navegação fluida, oferecendo recursos que otimizem as operações internas e melhorem a produtividade. Além disso, a ferramenta buscará minimizar os erros operacionais, contribuindo diretamente para a melhoria dos resultados em diversas organizações. Com foco em acessibilidade, a solução será desenvolvida de maneira a atender tanto os usuários iniciantes quanto os mais experientes, garantindo sua utilização por uma ampla gama de pessoas e instituições.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+O projeto é fundamentado em pesquisas sobre as melhores práticas de gestão de processos e tecnologias de desenvolvimento de software, além de estudos sobre design inclusivo e acessibilidade, garantindo que o sistema seja útil e de fácil acesso para todos os usuários.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
+O público-alvo da aplicação web inclui gestores, administradores, diretores, analistas de processos, funcionários operacionais e profissionais de TI, que necessitam de informações organizadas para otimizar o trabalho nas instituições. 
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
+Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes níveis hierárquicos e formação acadêmica variada, abrangendo desde cursos técnicos até o ensino superior. A maioria tem experiência básica ou intermediária com ferramentas digitais, e busca uma solução intuitiva e eficiente para gerenciar procedimentos de trabalho e documentos de forma organizada.
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+### Mapa de Stakeholders
+
+| Stakeholder            | Interesse                                                                 | Influência                                                                 |
+|------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| **Gestores/Administradores** | Controle total sobre a aplicação e permissões de acesso.               | Alta - Pode influenciar diretamente as decisões sobre como a aplicação será configurada e operada. |
+| **Analistas de processos** | Criação e manutenção de fluxos, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
+| **Funcionários operacionais** | Acesso às informações e fluxos criados pelos analistas.                | Média - Seu feedback é valioso para garantir a usabilidade da aplicação. |
+| **Gestores de TI**      | Implementação e manutenção técnica da aplicação.                          | Alta - São responsáveis pela infraestrutura da aplicação.                |
+| **Equipe de Suporte**   | Auxílio na solução de problemas operacionais dos usuários.                | Média - Suporte contínuo é necessário para a operação eficiente da aplicação. |
+| **Clientes Externos**   | Usabilidade da aplicação para acessar fluxos e relatórios.                | Baixa - Os usuários finais e analistas influenciam mais diretamente a experiência. |
+
+## Metodologia
+
+A aplicação web será desenvolvida adotando abordagens ágeis, com o framework Scrum para planejamento e execução em ciclos curtos e o método Kanban para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
+
+Reuniões serão realizadas para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso de ferramentas ágeis garantirá organização e transparência ao longo do desenvolvimento. 
