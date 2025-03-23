@@ -6,13 +6,11 @@ Em setores sensíveis como saúde, justiça e educação, a gestão eficaz dos p
 
 Nesse contexto, a adoção de ferramentas que centralizem e organizem os procedimentos de trabalho de forma eficiente torna-se essencial para alcançar a excelência na gestão interna das instituições, otimizar o acesso às informações e assegurar maior eficácia nos serviços prestados.
 
-
 ## Problema
 
 Instituições públicas e privadas enfrentam desafios significativos devido à dispersão das informações e à falta de ferramentas integradas para gerenciar seus procedimentos de trabalho. Documentos e instruções estão distribuídos em diversos sistemas e formatos (como e-mails, mensagens instantâneas, planilhas e arquivos digitais), o que dificulta a rastreabilidade, a recuperação eficiente de dados e o controle das alterações realizadas.
 
 Esse cenário afeta diretamente a gestão interna, aumentando o risco de erros, retrabalhos e perdas de informações cruciais. A ausência de uma ferramenta centralizada para organizar e controlar os fluxos de trabalho é especialmente prejudicial em setores onde precisão e transparência são essenciais. Além disso, o tempo gasto para acessar as informações impacta negativamente a produtividade, a celeridade dos processos e resulta em uma gestão ineficiente das tarefas, comprometendo a qualidade e a eficiência operacional das instituições.
-
 
 ## Objetivos
 
@@ -23,8 +21,8 @@ O objetivo geral do projeto é desenvolver um software para gerenciamento de pro
 ### Objetivos Específicos
 
 Os objetivos específicos do projeto são: 
-* Centralizar os procedimentos de trabalho em uma plataforma única, acessível e intuitiva para todos os usuários.
-* Comunicar as atualizações nos procedimentos de trabalho aos usuários.
+* Centralizar os procedimentos de trabalho em uma plataforma acessível e intuitiva para os diferentes perfis de usuários.
+* Comunicar as criações e atualizações de procedimentos de trabalho aos usuários.
 * Reduzir em 50% o tempo necessário para localizar documentos e informações.
 * Simplificar a criação, atualização e controle dos procedimentos de trabalho.
 
@@ -57,4 +55,4 @@ Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes nív
 
 A aplicação web será desenvolvida adotando abordagens ágeis, com o framework Scrum para planejamento e execução em ciclos curtos e o método Kanban para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
 
-Reuniões serão realizadas para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso de ferramentas ágeis garantirá organização e transparência ao longo do desenvolvimento. 
+Reuniões serão realizadas via Microsoft Teams para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso de ferramentas como Trello garantirá organização e transparência ao longo do desenvolvimento. 
