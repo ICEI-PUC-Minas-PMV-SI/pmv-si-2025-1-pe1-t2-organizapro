@@ -1,6 +1,6 @@
 # Especificações do Projeto
 
-A Especificação do Projeto trata da definição do problema e da solução a partir da perspectiva do usuário. Serão apresentados o perfil de usuários, o diagrama de personas, as histórias de usuários, os requisitos funcionais e não funcionais, e as restrições do projeto. Essas abordagens visam alinhar as necessidades dos usuários às funcionalidades do sistema, além de estabelecer as limitações técnicas e operacionais.
+A Especificação do Projeto trata da definição do problema e da solução a partir da perspectiva do usuário. Serão apresentados o perfil de usuários, o diagrama de personas, as histórias de usuários, os requisitos funcionais e não funcionais, além das restrições do projeto. Essas abordagens visam alinhar as necessidades dos usuários às funcionalidades do sistema, além de estabelecer as limitações técnicas e operacionais.
 
 Para a elaboração dessas especificações, foram aplicadas técnicas como Design Thinking para identificar e priorizar as necessidades dos usuários, brainstorming para geração de ideias, e a criação de personas e histórias de usuários para representar suas características e expectativas.
 
@@ -70,7 +70,7 @@ Os perfis de usuários da aplicação web englobam uma diversidade de funções 
 
 ## Personas
 
-As personas podem ser definidas como representações semificcionais dos usuários ideais, refletindo as características e necessidades do público-alvo ao qual a aplicação se destina. A seguir, são apresentadas as principais personas que utilizarão a aplicação, cada uma com suas particularidades:
+As personas podem ser definidas como representações semificcionais dos usuários ideais, refletindo as características e necessidades do público-alvo ao qual a aplicação se destina. A seguir, são apresentadas as principais personas que utilizarão a aplicação, com a descrição das suas particularidades:
 
 ### Persona 1
 
