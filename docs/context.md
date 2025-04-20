@@ -40,9 +40,9 @@ O público-alvo da aplicação web inclui gestores, administradores, diretores, 
 
 Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes níveis hierárquicos e formação acadêmica variada, abrangendo desde cursos técnicos até o ensino superior. A maioria tem experiência básica ou intermediária com ferramentas digitais, e busca uma solução intuitiva e eficiente para gerenciar procedimentos de trabalho e documentos de forma organizada.
 
-### Mapa de Stakeholders
+### Mapa de Usuários
 
-| Stakeholder            | Interesse                                                                 | Influência                                                                 |
+| Usuários            | Interesse                                                                 | Influência                                                                 |
 |------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | **Gestores/Administradores** | Controle total sobre a aplicação e permissões de acesso.               | Alta - Pode influenciar diretamente as decisões sobre como a aplicação será configurada e operada. |
 | **Analistas de processos** | Criação e manutenção de fluxos, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
@@ -53,6 +53,6 @@ Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes nív
 
 ## Metodologia
 
-A aplicação web será desenvolvida adotando abordagens ágeis, com o framework Scrum para planejamento e execução em ciclos curtos e o método Kanban para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
+A aplicação web será desenvolvida adotando abordagens ágeis, utilizando o Scrum para o planejamento e execução em ciclos curtos e o método Kanban para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
 
-Reuniões serão realizadas via Microsoft Teams para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso de ferramentas como Trello garantirá organização e transparência ao longo do desenvolvimento. 
+Reuniões serão realizadas via Microsoft Teams para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso da ferramenta Projects no GitHub com o quadro Kanban garantirá organização e transparência ao longo do desenvolvimento.
