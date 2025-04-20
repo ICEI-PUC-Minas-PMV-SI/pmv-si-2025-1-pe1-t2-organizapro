@@ -1,14 +1,26 @@
 # Template padrão do site
 
-Layout padrão do site (HTML e CSS) que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
+O projeto utiliza um layout base em HTML e CSS padronizado para todas as páginas da aplicação. Esse template define a **identidade visual**, contempla princípios de **responsividade** para diferentes dispositivos e incorpora **iconografia funcional** com base em bibliotecas modernas.
 
-Explique as guias de estilo utilizadas no seu projeto.
+## Guias de Estilo
+Foram adotadas diretrizes de design centradas na simplicidade, acessibilidade e coerência visual. As principais definições incluem:
+
+- **Estrutura visual consistente:** uso de espaçamentos, alinhamentos e tipografia uniformes.
+- **Paleta de cores acessível:** cores com alto contraste, testadas para múltiplas formas de daltonismo.
+- **Tipografia padrão:** Arial aplicada de forma hierárquica (títulos, rótulos e corpo de texto).
+- **Componentização visual:** uso de cards, seções, ícones e feedback visual padronizado.
 
 ## Design
+|![Página Inicial](https://github.com/user-attachments/assets/1c95460d-b8fc-4d4a-bf3f-a1149e257f09)|
+|:---------------------------------------------------------------------------------------------------:|
+| **Figura 1:** Página inicial do OrganizaPro |
 
 Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central organizado em **cards e seções**.
 
 ## Logo da Aplicação
+| ![Logo](https://github.com/user-attachments/assets/6e1c2e1e-8712-4185-a114-ccaf5173bf88)|
+|:------------------------------------------------------------------------------------------------:|
+| **Figura 1:** Logo do OrganizaPro |
 
 - **Localização**: Canto superior esquerdo, dentro do Menu Superior
 - **Nome exibido**: `OrganizaPRO`
@@ -18,9 +30,10 @@ Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central org
 ## Menus Padrões
 
 ### Menu Superior
+
 | ![Menu Superior](https://github.com/user-attachments/assets/ec1a3ae4-2b0d-4e57-b660-1a6d373f326a) |
 |:------------------------------------------------------------------------------------------------:|
-| **Figura 1:** Menu superior do sistema OrganizaPro |
+| **Figura 2:** Menu superior do OrganizaPro |
 
 | Elemento         | Função                                                                 |
 |------------------|------------------------------------------------------------------------|
@@ -35,7 +48,7 @@ Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central org
 ### Menu Lateral
 | ![Menu Lateral](https://github.com/user-attachments/assets/135e84d2-d144-495e-a809-112c682ad2d2) |
 |:------------------------------------------------------------------------------------------------:|
-| **Figura 2:** Menu lateral do OrganizaPro |
+| **Figura 3:** Menu lateral do OrganizaPro |
 
 | Elemento                  | Função                            |
 |---------------------------|-----------------------------------|
@@ -54,29 +67,32 @@ Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central org
 ### Atualizações Recentes
 | ![Atualizações Recentes](https://github.com/user-attachments/assets/c10d0057-f03f-4cc0-90c7-c1d81a415145) |
 |:----------------------------------------------------------------------------------------------------------:|
-| **Figura 3:** Seção de atualizações recentes |
+| **Figura 4:** Seção de atualizações recentes |
 - Cards com imagem, título e data
 - Layout: horizontal com rolagem
 
 ### Meus Favoritos
 | ![Meus Favoritos](https://github.com/user-attachments/assets/9147fad3-061e-4d38-971d-3f293816fc2f) |
 |:--------------------------------------------------------------------------------------------------:|
-| **Figura 4:** Seção de atalhos para processos favoritos no OrganizaPro |
+| **Figura 5:** Seção de atalhos para processos favoritos no OrganizaPro |
 - Botões retangulares com nomes dos processos favoritados pelo usuário
 
 ### Minhas Tarefas
+|![Minhas Tarefas](https://github.com/user-attachments/assets/3986556c-d888-4c47-a0c7-16b93977d3a9)|
+|:---------------------------------------------------------------------------------------------------:|
+| **Figura 6:** Seção de tarefas do Usuário |
 - Botões: `Filtros` e `+ Criar nova tarefa`
 - Estrutura tipo Kanban:
   - Colunas: `A fazer`, `Fazendo`, `Concluído`
-  - Cada card:
-    - Tags
-    - Data
+  - Conteúdo card:
+    - Etiquetas (Tags)
+    - Data pra conclusão da tarefa
     - Checkbox de status
 
 ## Cores
 | ![Paleta de Cores](https://github.com/user-attachments/assets/84bbf2fc-2050-4802-b560-9651513b8403) |
 |:---------------------------------------------------------------------------------------------------:|
-| **Figura 6:** Paleta de cores acessível |
+| **Figura 7:** Paleta de cores acessível |
 
 A paleta do OrganizaPro foi definida com base em critérios de **acessibilidade visual**, garantindo contraste adequado e legibilidade para usuários com ou sem deficiências visuais, incluindo os diferentes **tipos de daltonismo**.
 
