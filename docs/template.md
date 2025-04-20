@@ -110,16 +110,16 @@ A paleta do OrganizaPro foi definida com base em critérios de **acessibilidade 
 
 ## Tipografia
 
-A tipografia adotada para toda a aplicação será a **fonte Arial**, uma fonte sem serifa amplamente utilizada por sua **alta legibilidade**, **neutralidade visual** e **compatibilidade entre plataformas**.
+A tipografia adotada para toda a aplicação será a **fonte Inter**, uma fonte sem serifa amplamente utilizada por sua **alta legibilidade**, **neutralidade visual** e **compatibilidade entre plataformas**.
 
 ### Hierarquia e Função
 
 | Elemento                  | Estilo Tipográfico                   | Função principal                                               |
 |---------------------------|--------------------------------------|----------------------------------------------------------------|
-| **Título de Página**      | Arial, 32px, Bold | Indicar o nome ou tema principal da página                     |
-| **Título de Seção**       | Arial, 24px, Semi Bold             | Destacar subdivisões do conteúdo dentro de uma mesma página   |
-| **Rótulos de Componentes**| Arial, 16px, Regular                 | Identificar campos, botões e outros elementos da interface     |
-| **Corpo de Texto**        | Arial, 14px, Regular                 | Apresentar informações descritivas, instruções e conteúdos     |
+| **Título de Página**      | Inter, 32px, Bold | Indicar o nome ou tema principal da página                     |
+| **Título de Seção**       | Inter, 24px, Semi Bold             | Destacar subdivisões do conteúdo dentro de uma mesma página   |
+| **Rótulos de Componentes**| Inter, 16px, Regular                 | Identificar campos, botões e outros elementos da interface     |
+| **Corpo de Texto**        | Inter, 14px, Regular                 | Apresentar informações descritivas, instruções e conteúdos     |
 
 ## Iconografia
 
