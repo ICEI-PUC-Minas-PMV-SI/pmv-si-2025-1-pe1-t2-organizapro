@@ -42,7 +42,7 @@ Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central org
 | Ícone Casa       | Retorna à Página Inicial                                                |
 | Ícone Sino       | Alterna a visibilidade das notificações                                 |
 | Ícone Lua        | Ativa o modo noturno ou alto contraste                                  |
-| Ícone Circular   | Exibe informações sobre o usuário logado                                |
+| Ícone Círculo   | Exibe informações sobre o usuário logado                                |
 | Ícone Sair       | Realiza o logout da aplicação                                           |
 
 ### Menu Lateral
@@ -84,7 +84,7 @@ Interface baseada em **Menu Superior + Menu Lateral**, com conteúdo central org
 - Botões: `Filtros` e `+ Criar nova tarefa`
 - Estrutura tipo Kanban:
   - Colunas: `A fazer`, `Fazendo`, `Concluído`
-  - Conteúdo card:
+  - Conteúdo dos cards:
     - Etiquetas (Tags)
     - Data pra conclusão da tarefa
     - Checkbox de status
@@ -123,7 +123,19 @@ A tipografia adotada para toda a aplicação será a **fonte Arial**, uma fonte 
 
 ## Iconografia
 
-Defina os ícones que serão utilizados e suas respectivas funções.
-
-Apresente os estilos CSS criados para cada um dos elementos apresentados.
-Outras seções podem ser adicionadas neste documento para apresentar padrões de componentes, de menus, etc.
+| Ícone            | Descrição                | Função na Aplicação                           |
+|------------------|--------------------------|----------------------------------------------|
+| ![pesquisar](https://github.com/user-attachments/assets/d51e1cf3-94b7-4a3e-b47a-d763382dd7ea) | Pesquisa        | Permite realizar buscas dentro da aplicação. |
+| ![home](https://github.com/user-attachments/assets/8c210848-3850-4e52-9adf-d0642fd654fa)  | Casa           | Retorna à Página Inicial.                    |
+| ![notifications](https://github.com/user-attachments/assets/6e5978bb-241e-4e66-a694-2a226b2afd16) | Sino           | Alterna a visibilidade das notificações.     |
+| ![moon](https://github.com/user-attachments/assets/f8c4ad84-5a8f-4c13-b266-e29fb6102cbc) | Lua            | Ativa o modo noturno ou alto contraste.      |
+| ![perfil](https://github.com/user-attachments/assets/c4d5bc0e-5ded-4ef5-a6f5-964cfd17bc9b) | Círculo        | Exibe informações sobre o usuário logado.    |
+| ![logout](https://github.com/user-attachments/assets/c7793153-6054-4407-8e53-a68ab8b6d60d) | Sair           | Realiza o logout da aplicação.              |
+| ![filter](https://github.com/user-attachments/assets/5739c9f4-acd8-41a4-b2b3-279754e3cff7) | Filtro         | Permite realizar filtros nas buscas.        |
+| ![add](https://github.com/user-attachments/assets/726f1ab1-e352-49df-92c6-d26c73210804) | Adicionar      | Permite inserir novas tarefas no quadro Kanban. |
+| ![visibility](https://github.com/user-attachments/assets/d1c2ff7a-0d1f-4808-b038-4895253a05a4) | Olho           | Permite visualizar o item selecionado.       |
+| ![edit](https://github.com/user-attachments/assets/f3cc9582-50ca-474d-a893-02223d97cd2f) | Lápis          | Permite editar o item selecionado.           |
+| ![favorite](https://github.com/user-attachments/assets/6defb9fc-4e99-48e5-a1c2-ba790b5b0ea5) | Coração        | Permite favoritar o item e filtrar os favoritos. |
+| ![duplicar](https://github.com/user-attachments/assets/bd7d1672-3dd4-4469-8144-4462362f3b05) | Duplicar       | Permite duplicar o item selecionado.         |
+| ![pdf](https://github.com/user-attachments/assets/5ad43cf4-5f0e-49a0-9f58-ed10248b1878) | PDF            | Gera um arquivo PDF do item.                 |
+| ![archive](https://github.com/user-attachments/assets/50169f02-017b-4fe9-befe-95cc6eb571e1) | Arquivar       | Arquiva o item selecionado.                  |
