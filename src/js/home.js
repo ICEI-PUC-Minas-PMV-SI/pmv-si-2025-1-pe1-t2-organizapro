@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     initBuscaMenu();
     initCriarTarefa();
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initToggleQuadros();
 });
 function initBuscaMenu() {
-    const inputBusca = document.querySelector('.search-bar input');
+    const inputBusca = document.querySelector('.search-wrapper input');
     inputBusca.addEventListener('input', function (e) {
         const termo = e.target.value.toLowerCase();
         document.querySelectorAll('.menu-button').forEach(btn => {
@@ -33,7 +34,7 @@ function criarTarefaCard(titulo) {
     card.innerHTML = `
         <div>${titulo}</div>
         <div><span class="tag">nova</span></div>
-        <div><span class="material-symbols-outlined">event_available</span> ${formatarData(new Date())}</div>
+        <div><i class="fas fa-calendar-alt"></i> ${formatarData(new Date())}</div>
     `;
     return card;
 }
