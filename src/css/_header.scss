@@ -1,0 +1,34 @@
+/* Estilos para a barra superior */
+.header {
+    position: fixed;
+    width: 100%;
+    height: var(--altura-header); /* Altura da barra superior */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--color-primary);
+    z-index: 1000;
+}
+
+/* Estilo para o logo */
+.logo,
+.logo:visited,
+.logo:hover,
+.logo:active {
+    text-decoration: none;
+    color: var(--color-text-alt);
+    font-family: var(--font-family);
+    font-size: var(--font-size-logo);
+    font-weight: 700;
+}
+
+/* Contêiner para a parte direita da barra superior */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-alt)    ;
+}
+

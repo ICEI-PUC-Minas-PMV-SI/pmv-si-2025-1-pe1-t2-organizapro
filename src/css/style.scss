@@ -1,0 +1,87 @@
+@use 'components';
+@use 'favorites';
+@use 'flows';
+@use 'header';
+@use 'recent-upd';
+@use 'responsive';
+@use 'sidebar';
+@use 'tasks';
+@use 'work-guides';
+@use 'login';
+
+/* Reset base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove estilos padrão de elementos comuns */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+/* Remove decoração de links e bordas */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+    --font-family: 'Inter', sans-serif;
+    --font-size-logo: 24px;
+    --font-size-title: 20px;
+    --font-size-subtitle: 18px;
+    --font-size-text: 14px;
+    --color-primary: #1b304b;
+    --color-secondary: #25446a;
+    --color-tertiary: #a4d3e6;
+    --color-text: #121212;  
+    --color-text-alt: #ffffff;
+    --color-background: #d5e5ed;
+    --altura-header: 60px; 
+    --largura-sidebar: 250px;
+  }
+  
+  html, body {
+    display: flex;
+    background-color: var(--color-background);
+    font-family: var(--font-family);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: calc(100% - var(--largura-sidebar));
+    height: 100%;
+
+  } 
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;  
+    box-sizing: border-box;  
+    margin-left: var(--largura-sidebar);
+    margin-top: var(--altura-header);
+    gap: 20px;
+    padding: 20px;
+    
+  }
+

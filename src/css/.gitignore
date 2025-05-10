@@ -1,0 +1,23 @@
+# Ignorar dependências
+node_modules/
+
+# Ignorar arquivos gerados (CSS, mapas, etc.)
+src/css/style.css.map
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pastas do IDE/Editor
+.vscode/
+.idea/
+
+# Cache do Sass (caso tenha)
+.sass-cache/
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# Arquivos de configuração sensíveis
+.env
