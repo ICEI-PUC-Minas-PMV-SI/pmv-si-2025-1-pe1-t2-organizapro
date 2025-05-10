@@ -32,8 +32,8 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de Atualizações**    | RF-017: Exibição das últimas alterações nos fluxos e documentos<br>RF-016: Histórico de alterações |
-| **Botão de Filtro de Alterações** | RF-015: Pesquisa e filtragem de fluxos e procedimentos de trabalho por tags/categorias |
+| **Lista de Atualizações**    | RF-017: Exibição das últimas alterações nos flows e documentos<br>RF-016: Histórico de alterações |
+| **Botão de Filtro de Alterações** | RF-015: Pesquisa e filtragem de flows e procedimentos de trabalho por tags/categorias |
 | **Notificações de Atualizações** | RF-018: Envio de notificações por e-mail quando houver atualizações |
 
 ### Página de Processos de Trabalho
@@ -43,19 +43,19 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de Processos**        | RF-005: Criação de fluxos de perguntas e respostas<br>RF-014: Organização de procedimentos de trabalho<br>RF-015: Pesquisa e filtragem de procedimentos por tags/categorias |
-| **Botões de Ação**            | RF-006: Edição de fluxos de perguntas e respostas<br>RF-009: Arquivamento de procedimentos sem exclusão<br>RF-013: Armazenamento de procedimentos de trabalho<br>RF-014: Organização de procedimentos de trabalho |
+| **Lista de Processos**        | RF-005: Criação de flows de perguntas e respostas<br>RF-014: Organização de procedimentos de trabalho<br>RF-015: Pesquisa e filtragem de procedimentos por tags/categorias |
+| **Botões de Ação**            | RF-006: Edição de flows de perguntas e respostas<br>RF-009: Arquivamento de procedimentos sem exclusão<br>RF-013: Armazenamento de procedimentos de trabalho<br>RF-014: Organização de procedimentos de trabalho |
 | **Área de Detalhamento**     | RF-011: Impossibilidade de edição de procedimentos arquivados<br>RF-012: Desarquivamento de procedimentos de trabalho |
 
-### Página de Fluxos
-| ![Fluxos de Trabalho](https://github.com/user-attachments/assets/e76b4cc5-e20d-4a78-b860-61a742907a2d)|
+### Página de flows
+| ![flows de Trabalho](https://github.com/user-attachments/assets/e76b4cc5-e20d-4a78-b860-61a742907a2d)|
 |:--------------------------------------------------------------------------------------------:|
-| **Figura 5: Página de Fluxos**                                                                |
+| **Figura 5: Página de flows**                                                                |
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de Fluxos**           | RF-005: Criação de fluxos de perguntas e respostas<br>RF-008: Visualização de fluxos em lista ou diagrama |
-| **Editor de Fluxos**         | RF-006: Edição de fluxos de perguntas e respostas<br>RF-014: Organização de fluxos |
+| **Lista de flows**           | RF-005: Criação de flows de perguntas e respostas<br>RF-008: Visualização de flows em lista ou diagrama |
+| **Editor de flows**         | RF-006: Edição de flows de perguntas e respostas<br>RF-014: Organização de flows |
 | **Configurações Avançadas**  | RF-007: Configurações avançadas para administradores e equipe de TI |
 
 ### Página de IPTs e Orientações

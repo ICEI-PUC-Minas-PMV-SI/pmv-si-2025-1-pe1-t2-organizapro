@@ -13,7 +13,7 @@ Os perfis de usuários da aplicação web englobam uma diversidade de funções 
 | **Dados**                    | **Descrição**                                                                                                          |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | **Demográficos**              | Profissionais entre 25 e 45 anos, com ensino superior, podendo ou não ter especialização em modelagem de processos.     |
-| **Uso do Produto**           | Criam, ajustam e monitoram fluxos de trabalho para garantir eficiência e otimização.                                    |
+| **Uso do Produto**           | Criam, ajustam e monitoram flows de trabalho para garantir eficiência e otimização.                                    |
 | **Psicográficos**            | Buscam padronização, automação e soluções para reduzir falhas e aumentar a produtividade.                              |
 | **Sentimento do Cliente**    | Precisam de ferramentas flexíveis para ajustes rápidos e acompanhamento em tempo real.                                |
 | **Tecnográficos**            | Usam desktops e notebooks com Windows, podendo ter restrições ao uso de extensões ou softwares externos.               |
@@ -30,19 +30,19 @@ Os perfis de usuários da aplicação web englobam uma diversidade de funções 
 | **Sentimento do Cliente**    | Exigem informações claras e objetivas.                                                                                  |
 | **Tecnográficos**            | Usam tablets e notebooks, preferindo interfaces simples e dashboards visuais.                                           |
 | **Nível de conhecimento tecnológico** | Básico a intermediário, com foco em dados para decisões.                                                              |
-| **Necessidades**             | Visão clara das mudanças nos fluxos de trabalho para facilitar a gestão estratégica.                                   |
+| **Necessidades**             | Visão clara das mudanças nos flows de trabalho para facilitar a gestão estratégica.                                   |
 
 ### Perfil 3: Funcionários Operacionais
 
 | **Dados**                    | **Descrição**                                                                                                          |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | **Demográficos**              | Profissionais entre 18 e 60 anos, com formação técnica ou ensino médio.                                                |
-| **Uso do Produto**           | Acessam para executar tarefas diárias e seguir fluxos definidos.                                                      |
+| **Uso do Produto**           | Acessam para executar tarefas diárias e seguir flows definidos.                                                      |
 | **Psicográficos**            | Buscam praticidade e eficiência nas tarefas, preferindo interfaces simples e diretas.                                  |
 | **Sentimento do Cliente**    | Precisam de suporte acessível e treinamento básico.                                                                    |
 | **Tecnográficos**            | Usam dispositivos móveis ou computadores básicos com limitações no uso de certos navegadores.                          |
 | **Nível de conhecimento tecnológico** | Básico, familiarizados com ferramentas simples, mas com dificuldades em funcionalidades avançadas.                   |
-| **Necessidades**             | Acesso simples aos fluxos de trabalho, com interface funcional e notificações sobre alterações importantes.            |
+| **Necessidades**             | Acesso simples aos flows de trabalho, com interface funcional e notificações sobre alterações importantes.            |
 
 ### Perfil 4: Gestores e Administradores
 
@@ -54,7 +54,7 @@ Os perfis de usuários da aplicação web englobam uma diversidade de funções 
 | **Sentimento do Cliente**    | Buscam clareza nos dados e funcionalidades intuitivas para o acompanhamento dos processos.                             |
 | **Tecnográficos**            | Acessam via computadores corporativos, usando navegadores como Chrome e Edge.                                          |
 | **Nível de conhecimento tecnológico** | Intermediário, com experiência em sistemas de gestão, mas podem ter dificuldades com ferramentas digitais avançadas.|
-| **Necessidades**             | Controle de acesso eficiente, visão clara e atualizada dos fluxos de trabalho para otimizar processos.                 |
+| **Necessidades**             | Controle de acesso eficiente, visão clara e atualizada dos flows de trabalho para otimizar processos.                 |
 
 ### Perfil 5: TI e Suporte Técnico
 
@@ -90,14 +90,14 @@ Histórias de usuários são descrições curtas das necessidades e objetivos de
 
 | **EU COMO... `PERSONA`**            | **QUERO/PRECISO... `FUNCIONALIDADE`**                                       | **PARA... `MOTIVO/VALOR`**                                           |
 |-----------------------------------|---------------------------------------------------------------------------|------------------------------------------------------------------|
-| **Analista de Processos**         | Atualizar procedimentos de trabalho.                                       | Adaptar fluxos conforme as novas demandas sem perder a eficiência. |
-| **Analista de Processos**         | Criar e ajustar fluxos de trabalho de forma rápida e eficiente.            | Otimizar os processos internos e responder às necessidades organizacionais. |
+| **Analista de Processos**         | Atualizar procedimentos de trabalho.                                       | Adaptar flows conforme as novas demandas sem perder a eficiência. |
+| **Analista de Processos**         | Criar e ajustar flows de trabalho de forma rápida e eficiente.            | Otimizar os processos internos e responder às necessidades organizacionais. |
 | **Diretor Executivo**             | Destacar procedimentos de trabalho mais relevantes.                        | Assegurar que os recursos da equipe sejam focados nas áreas de maior impacto estratégico. |
-| **Diretor Executivo**             | Visualizar as alterações recentes nos fluxos de trabalho.                 | Tomar decisões estratégicas com base nas mudanças mais significativas. |
-| **Funcionário Operacional**      | Acessar fluxos de trabalho em uma interface simples e intuitiva.          | Realizar tarefas de maneira rápida e sem gerar retrabalhos.        |
+| **Diretor Executivo**             | Visualizar as alterações recentes nos flows de trabalho.                 | Tomar decisões estratégicas com base nas mudanças mais significativas. |
+| **Funcionário Operacional**      | Acessar flows de trabalho em uma interface simples e intuitiva.          | Realizar tarefas de maneira rápida e sem gerar retrabalhos.        |
 | **Funcionário Operacional**      | Receber notificações sobre alterações nos procedimentos de trabalho.     | Ficar atualizado sobre mudanças importantes para seguir corretamente os processos. |
 | **Gestor/Administrador**         | Centralizar o acesso a todos os procedimentos de trabalho em um repositório unificado. | Facilitar a consulta, padronizar a execução dos processos e identificar rapidamente pontos de melhoria. |
-| **Gestor/Administrador**         | Notificar usuários sobre alterações nos fluxos de trabalho.               | Garantir que todos os usuários estejam atualizados e alinhados com as mudanças importantes. |
+| **Gestor/Administrador**         | Notificar usuários sobre alterações nos flows de trabalho.               | Garantir que todos os usuários estejam atualizados e alinhados com as mudanças importantes. |
 | **TI e Suporte Técnico**         | Acessar configurações avançadas da aplicação.                             | Realizar ajustes internos e garantir que a aplicação esteja otimizada conforme as necessidades da instituição. |
 | **TI e Suporte Técnico**         | Controlar o acesso de usuários à aplicação.                               | Garantir que cada colaborador tenha as permissões adequadas.       |
 
@@ -113,10 +113,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | **RF-002** | A aplicação deve controlar o acesso baseado em perfis de usuários.                     | ALTA           |
 | **RF-003** | A aplicação deve permitir a criação de perfis de usuários com permissões específicas para cada funcionalidade. | ALTA           |
 | **RF-004** | A aplicação deve garantir que cada perfil de usuário tenha acesso apenas às funcionalidades para as quais possui permissão. | ALTA           |
-| **RF-005** | A aplicação deve permitir a criação de fluxos de perguntas e respostas.               | ALTA           |
-| **RF-006** | A aplicação deve permitir a edição de fluxos de perguntas e respostas.                | ALTA           |
+| **RF-005** | A aplicação deve permitir a criação de flows de perguntas e respostas.               | ALTA           |
+| **RF-006** | A aplicação deve permitir a edição de flows de perguntas e respostas.                | ALTA           |
 | **RF-007** | A aplicação deve disponibilizar configurações avançadas para administradores e equipe de TI. | ALTA           |
-| **RF-008** | A aplicação deve disponibilizar a visualização dos fluxos em lista ou diagrama.        | MÉDIA          |
+| **RF-008** | A aplicação deve disponibilizar a visualização dos flows em lista ou diagrama.        | MÉDIA          |
 | **RF-009** | A aplicação deve permitir o arquivamento de procedimentos de trabalho sem excluí-los. | MÉDIA          |
 | **RF-010** | A aplicação deve restringir o acesso a procedimentos de trabalho arquivados a usuários com permissão específica. | MÉDIA          |
 | **RF-011** | A aplicação deve tornar os procedimentos de trabalho arquivados inacessíveis para edição. | MÉDIA          |
@@ -128,7 +128,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | **RF-017** | A aplicação deve disponibilizar um painel de alterações recentes.                     | MÉDIA          |
 | **RF-018** | A aplicação deve enviar notificações por e-mail quando um procedimento de trabalho for atualizado. | BAIXA          |
 | **RF-019** | A aplicação deve enviar notificações por e-mail quando um novo procedimento de trabalho for criado. | BAIXA          |
-| **RF-020** | A aplicação deve permitir a exportação dos fluxos e documentos em formatos padronizados, como PDF e CSV. | BAIXA          |
+| **RF-020** | A aplicação deve permitir a exportação dos flows e documentos em formatos padronizados, como PDF e CSV. | BAIXA          |
 | **RF-021** | A aplicação deve permitir que o usuário favorite procedimentos de trabalho.          | BAIXA          |
 | **RF-022** | A aplicação deve permitir o destacamento de procedimentos de trabalho.               | BAIXA          |
 

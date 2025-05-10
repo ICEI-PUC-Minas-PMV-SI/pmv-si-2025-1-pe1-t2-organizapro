@@ -3,6 +3,8 @@ node_modules/
 
 # Ignorar arquivos gerados (CSS, mapas, etc.)
 src/css/style.css.map
+style.css.map
+style.css
 
 # Arquivos do sistema operacional
 .DS_Store

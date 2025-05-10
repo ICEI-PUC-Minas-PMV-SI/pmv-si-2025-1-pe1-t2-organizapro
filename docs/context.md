@@ -10,7 +10,7 @@ Nesse contexto, a adoção de ferramentas que centralizem e organizem os procedi
 
 Instituições públicas e privadas enfrentam desafios significativos devido à dispersão das informações e à falta de ferramentas integradas para gerenciar seus procedimentos de trabalho. Documentos e instruções estão distribuídos em diversos sistemas e formatos (como e-mails, mensagens instantâneas, planilhas e arquivos digitais), o que dificulta a rastreabilidade, a recuperação eficiente de dados e o controle das alterações realizadas.
 
-Esse cenário afeta diretamente a gestão interna, aumentando o risco de erros, retrabalhos e perdas de informações cruciais. A ausência de uma ferramenta centralizada para organizar e controlar os fluxos de trabalho é especialmente prejudicial em setores onde precisão e transparência são essenciais. Além disso, o tempo gasto para acessar as informações impacta negativamente a produtividade, a celeridade dos processos e resulta em uma gestão ineficiente das tarefas, comprometendo a qualidade e a eficiência operacional das instituições.
+Esse cenário afeta diretamente a gestão interna, aumentando o risco de erros, retrabalhos e perdas de informações cruciais. A ausência de uma ferramenta centralizada para organizar e controlar os flows de trabalho é especialmente prejudicial em setores onde precisão e transparência são essenciais. Além disso, o tempo gasto para acessar as informações impacta negativamente a produtividade, a celeridade dos processos e resulta em uma gestão ineficiente das tarefas, comprometendo a qualidade e a eficiência operacional das instituições.
 
 ## Objetivos
 
@@ -45,14 +45,14 @@ Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes nív
 | Usuários            | Interesse                                                                 | Influência                                                                 |
 |------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | **Gestores/Administradores** | Controle total sobre a aplicação e permissões de acesso.               | Alta - Pode influenciar diretamente as decisões sobre como a aplicação será configurada e operada. |
-| **Analistas de processos** | Criação e manutenção de fluxos, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
-| **Funcionários operacionais** | Acesso às informações e fluxos criados pelos analistas.                | Média - Seu feedback é valioso para garantir a usabilidade da aplicação. |
+| **Analistas de processos** | Criação e manutenção de flows, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
+| **Funcionários operacionais** | Acesso às informações e flows criados pelos analistas.                | Média - Seu feedback é valioso para garantir a usabilidade da aplicação. |
 | **Gestores de TI**      | Implementação e manutenção técnica da aplicação.                          | Alta - São responsáveis pela infraestrutura da aplicação.                |
 | **Equipe de Suporte**   | Auxílio na solução de problemas operacionais dos usuários.                | Média - Suporte contínuo é necessário para a operação eficiente da aplicação. |
-| **Clientes Externos**   | Usabilidade da aplicação para acessar fluxos e relatórios.                | Baixa - Os usuários finais e analistas influenciam mais diretamente a experiência. |
+| **Clientes Externos**   | Usabilidade da aplicação para acessar flows e relatórios.                | Baixa - Os usuários finais e analistas influenciam mais diretamente a experiência. |
 
 ## Metodologia
 
-A aplicação web será desenvolvida adotando abordagens ágeis, utilizando o Scrum para o planejamento e execução em ciclos curtos e o método Kanban para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
+A aplicação web será desenvolvida adotando abordagens ágeis, adotando o **Scrum** para o planejamento e execução em ciclos curtos e o método **Kanban** para a organização contínua das tarefas e monitoramento do fluxo de trabalho. A equipe trabalhará colaborativamente, com ciclos de planejamento, execução e revisão contínuos das entregas.
 
-Reuniões serão realizadas via Microsoft Teams para acompanhar o progresso, ajustar rapidamente as prioridades e definir as tarefas mais importantes. O uso da ferramenta Projects no GitHub com o quadro Kanban garantirá organização e transparência ao longo do desenvolvimento.
+As tarefas serão organizadas e monitoradas utilizando o **GitHub Projects** com **quadro Kanban**, onde serão registradas as atividades, prazos e responsáveis. A comunicação e o acompanhamento do progresso serão feitos via **Microsoft Teams**, com reuniões periódicas e resumos compartilhados após cada encontro. O **WhatsApp** será utilizado para comunicação rápida e resoluções pontuais.
