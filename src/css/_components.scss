@@ -137,7 +137,9 @@
 .flows-actions .search-bar {
   border: 1px solid var(--color-background);}
 
-.flows-actions .search-bar .material-symbols-outlined {
+.flows-actions .search-bar .material-symbols-outlined,
+.upd-actions .search-bar .material-symbols-outlined,
+.work-guides-actions .search-bar .material-symbols-outlined {
   color: var(--color-text);
 }
 

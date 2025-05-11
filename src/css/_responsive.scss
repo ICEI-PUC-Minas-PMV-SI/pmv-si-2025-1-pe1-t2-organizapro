@@ -155,3 +155,29 @@
         padding: 2px 4px;
     }
 }
+
+@media (max-width: 768px) {
+  .news-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .news-img-right {
+    width: 100%;
+    height: 100%;
+  }
+
+  .news-content-left {
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .news-title {
+    font-size: 1.25rem;
+  }
+
+  .news-description {
+    font-size: 0.9rem;
+  }
+}
