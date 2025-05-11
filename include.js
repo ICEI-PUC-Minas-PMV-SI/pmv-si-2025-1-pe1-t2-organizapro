@@ -1,16 +1,13 @@
 // js/include.js
 
 /**
- * Carrega conteúdo HTML externo em um elemento específico da página.
- * Ignora se o elemento não estiver presente no DOM.
- * 
  * @param {string} id - ID do elemento onde o HTML será inserido.
  * @param {string} file - Caminho para o arquivo HTML a ser carregado.
  * @returns {Promise<void>}
  */
 function loadHTML(id, file) {
   const targetElement = document.getElementById(id);
-  if (!targetElement) return Promise.resolve(); // Ignora se o ID não estiver na página
+  if (!targetElement) return Promise.resolve(); 
 
   return fetch(file)
     .then(response => {
@@ -23,9 +20,7 @@ function loadHTML(id, file) {
     .catch(error => console.error(`Erro ao carregar "${file}":`, error));
 }
 
-/**
- * Corrige o link do logotipo para apontar corretamente para /src/
- */
+
 function fixLogoLink() {
   const links = document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a.logo');
   links.forEach(link => {
