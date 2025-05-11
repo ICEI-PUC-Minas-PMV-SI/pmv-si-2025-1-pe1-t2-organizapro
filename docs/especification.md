@@ -107,30 +107,71 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| **ID**  | **Descrição do Requisito**                                                                | **Prioridade** |
-|---------|-------------------------------------------------------------------------------------------|----------------|
-| **RF-001** | A aplicação deve permitir que os usuários realizem login para acessar o sistema.      | ALTA           |
-| **RF-002** | A aplicação deve controlar o acesso baseado em perfis de usuários.                     | ALTA           |
-| **RF-003** | A aplicação deve permitir a criação de perfis de usuários com permissões específicas para cada funcionalidade. | ALTA           |
-| **RF-004** | A aplicação deve garantir que cada perfil de usuário tenha acesso apenas às funcionalidades para as quais possui permissão. | ALTA           |
-| **RF-005** | A aplicação deve permitir a criação de flows de perguntas e respostas.               | ALTA           |
-| **RF-006** | A aplicação deve permitir a edição de flows de perguntas e respostas.                | ALTA           |
-| **RF-007** | A aplicação deve disponibilizar configurações avançadas para administradores e equipe de TI. | ALTA           |
-| **RF-008** | A aplicação deve disponibilizar a visualização dos flows em lista ou diagrama.        | MÉDIA          |
-| **RF-009** | A aplicação deve permitir o arquivamento de procedimentos de trabalho sem excluí-los. | MÉDIA          |
-| **RF-010** | A aplicação deve restringir o acesso a procedimentos de trabalho arquivados a usuários com permissão específica. | MÉDIA          |
-| **RF-011** | A aplicação deve tornar os procedimentos de trabalho arquivados inacessíveis para edição. | MÉDIA          |
-| **RF-012** | A aplicação deve permitir o desarquivamento de procedimentos de trabalho.            | MÉDIA          |
-| **RF-013** | A aplicação deve permitir o armazenamento de procedimentos de trabalho.               | MÉDIA          |
-| **RF-014** | A aplicação deve permitir a organização de procedimentos de trabalho.                 | MÉDIA          |
-| **RF-015** | A aplicação deve permitir pesquisa e filtragem de procedimentos de trabalho por tags/categorias. | MÉDIA          |
-| **RF-016** | A aplicação deve manter um histórico de alterações de procedimentos de trabalho.      | MÉDIA          |
-| **RF-017** | A aplicação deve disponibilizar um painel de alterações recentes.                     | MÉDIA          |
-| **RF-018** | A aplicação deve enviar notificações por e-mail quando um procedimento de trabalho for atualizado. | BAIXA          |
-| **RF-019** | A aplicação deve enviar notificações por e-mail quando um novo procedimento de trabalho for criado. | BAIXA          |
-| **RF-020** | A aplicação deve permitir a exportação dos flows e documentos em formatos padronizados, como PDF e CSV. | BAIXA          |
-| **RF-021** | A aplicação deve permitir que o usuário favorite procedimentos de trabalho.          | BAIXA          |
-| **RF-022** | A aplicação deve permitir o destacamento de procedimentos de trabalho.               | BAIXA          |
+#### Módulo: Gerenciamento de Usuários
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF01 | Permitir o login de usuários com nome de usuário e senha.            | Alta           |
+| RF02 | Permitir a recuperação de senha via e-mail.                          | Alta           |
+| RF03 | Permitir o cadastro de novos usuários.                               | Alta           |
+| RF04 | Permitir a edição dos dados cadastrais dos usuários.                 | Alta           |
+| RF05 | Permitir a exclusão de usuários.                                     | Alta           |
+
+#### Módulo: Interface e Navegação
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF06 | Exibir menu superior com acesso às principais funcionalidades.        | Alta           |
+| RF07 | Exibir menu lateral com links para todas as seções disponíveis.      | Alta           |
+| RF08 | Exibir as últimas atualizações de arquivos na tela inicial.          | Média          |
+| RF09 | Permitir acesso aos arquivos favoritos do usuário na tela inicial.  | Média          |
+| RF10 | Exibir painel de acesso a arquivos agrupados por categorias.         | Alta           |
+
+#### Módulo: Tarefas
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF11 | Exibir quadro Kanban com tarefas atribuídas ao usuário.              | Alta           |
+| RF12 | Permitir que o gestor atribua tarefas a usuários.                     | Alta           |
+| RF13 | Permitir definir descrição, prazo e status das tarefas.              | Alta           |
+| RF14 | Permitir atualizar o status da tarefa (pendente, em andamento, concluída). | Alta           |
+| RF15 | Permitir que o usuário crie tarefas pessoais.                        | Média          |
+| RF16 | Permitir que o usuário edite suas tarefas pessoais.                  | Média          |
+| RF17 | Permitir que o usuário exclua suas tarefas pessoais.                 | Baixa          |
+
+#### Módulo: Atualizações e Notificações
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF18 | Exibir painel com detalhes das atualizações de arquivos.             | Alta           |
+| RF19 | Enviar notificações por e-mail sobre novas tarefas atribuídas.       | Alta           |
+| RF20 | Enviar notificações por e-mail sobre atualizações nos arquivos.      | Média          |
+| RF21 | Exibir notificações na tela inicial sobre tarefas e atualizações nos arquivos. | Alta           |
+
+#### Módulo: Pesquisa e Versionamento
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF22 | Permitir pesquisa de arquivos por palavras-chave, etiquetas, data, tipo de arquivo e categoria. | Alta           |
+| RF23 | Manter histórico de alterações nos arquivos com controle de versão.  | Alta           |
+| RF24 | Exibir o histórico de versões em painel cronológico.                 | Média          |
+| RF25 | Permitir restaurar versões anteriores de arquivos.                   | Média          |
+
+#### Módulo: Controle de Arquivos
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF26 | Permitir o armazenamento de arquivos.                                | Alta           |
+| RF27 | Permitir a organização de arquivos por etiquetas e categorias.       | Média          |
+| RF28 | Permitir que o usuário visualize arquivos.                           | Alta           |
+| RF29 | Permitir que o usuário edite arquivos.                               | Alta           |
+| RF30 | Permitir que o usuário marque arquivos como favoritos.               | Média          |
+| RF31 | Permitir que o usuário duplique arquivos.                            | Baixa          |
+| RF32 | Permitir que o usuário gere arquivos em formato PDF.                 | Baixa          |
+| RF33 | Permitir que o usuário arquive documentos.                           | Baixa          |
+
+#### Módulo: Gerenciamento de Usuários
+| ID   | Descrição do Requisito                                                | Prioridade     |
+|------|----------------------------------------------------------------------|----------------|
+| RF01 | Permitir o login de usuários com nome de usuário e senha.            | Alta           |
+| RF02 | Permitir a recuperação de senha via e-mail.                          | Alta           |
+| RF03 | Permitir o cadastro de novos usuários.                               | Alta           |
+| RF04 | Permitir a edição dos dados cadastrais dos usuários.                 | Alta           |
+| RF05 | Permitir a exclusão de usuários.                                     | Alta           |
 
 ### Requisitos não Funcionais
 
