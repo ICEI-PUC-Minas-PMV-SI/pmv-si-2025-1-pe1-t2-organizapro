@@ -20,3 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHTML('recent-upd', '/src/includes/inc-recent-upd.html');  // Carrega as atualizações recentes
     loadHTML('tasks', '/src/includes/inc-tasks.html');            // Carrega as tarefas
 });
+
+

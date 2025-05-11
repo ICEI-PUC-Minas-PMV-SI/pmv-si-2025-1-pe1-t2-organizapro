@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* Estilos para o container de ações */
 .actions {
   background-color: transparent;
@@ -59,7 +60,8 @@
   font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px; /* Preferred icon size */
+  font-size: 24px;
+  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -104,7 +106,8 @@
 
 /* Campo de entrada de texto */
 .search-bar input {
-  padding: 6px 12px 6px 40px; /* espaço à esquerda para o ícone */
+  padding: 6px 12px 6px 40px;
+  /* espaço à esquerda para o ícone */
   border: 1px solid var(--color-background);
   border-radius: 8px;
   background-color: transparent;
@@ -113,7 +116,8 @@
   width: 150px;
   min-width: 100px;
   outline: none;
-  padding: 9px 20px 9px 40px; /* espaço à esquerda para o ícone */
+  padding: 9px 20px 9px 40px;
+  /* espaço à esquerda para o ícone */
 }
 
 /* Ícone de busca usando Material Symbols */
@@ -181,6 +185,7 @@
   min-width: 23%;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
 .favorite-card:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -209,6 +214,7 @@
   white-space: nowrap;
   margin-left: auto;
 }
+
 .favorite-actions button {
   background: none;
   border: none;
@@ -218,13 +224,16 @@
   color: #777;
   transition: color 0.2s ease-in-out;
 }
+
 .favorite-actions button:hover {
   color: #333;
 }
+
 .favorite-actions button.remove-button .fa-heart {
   color: #e44d26;
   opacity: 1;
 }
+
 .favorite-actions button.view-button {
   display: none;
 }
@@ -270,6 +279,7 @@
 .flows-table {
   display: table;
 }
+
 .flows-table table {
   display: table;
   width: 100%;
@@ -278,19 +288,23 @@
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .flows-table table th,
 .flows-table table td {
   padding: 12px 16px;
   text-align: left;
   font-size: 0.95rem;
 }
+
 .flows-table table th {
   background-color: white;
   border-bottom: 1px solid var(--color-background);
 }
+
 .flows-table table tr:hover {
   background-color: white;
 }
+
 .flows-table table .tag {
   background-color: var(--color-tertiary);
   color: var(--color-text);
@@ -299,6 +313,7 @@
   font-size: 0.75rem;
   margin-right: 5px;
 }
+
 .flows-table table .acoes {
   display: flex;
   gap: 10px;
@@ -308,7 +323,8 @@
 .header {
   position: fixed;
   width: 100%;
-  height: var(--altura-header); /* Altura da barra superior */
+  height: var(--altura-header);
+  /* Altura da barra superior */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -413,148 +429,182 @@
     position: static;
     padding-top: 20px;
   }
+
   .menu {
     flex-direction: column;
     gap: 10px;
   }
+
   .menu-button {
     font-size: 0.9rem;
     padding: 8px 15px;
   }
+
   .search-bar {
     font-size: 0.9rem;
     padding: 8px 15px;
   }
+
   .search-bar input {
     font-size: 0.9rem;
   }
+
   .tag {
     font-size: 11px;
   }
 }
+
 /* Responsividade para a Seção de Atualizações */
 @media (max-width: 768px) {
   .section-atualizacoes {
     padding: 15px;
     gap: 15px;
   }
+
   .cards {
     flex-direction: column;
     gap: 10px;
   }
+
   .card {
     width: 100%;
     padding: 15px;
     border-radius: 8px;
   }
+
   .image-container {
     position: relative;
     height: 120px;
   }
+
   .card img {
     object-fit: cover;
     height: 100%;
   }
+
   .texto-atualizacao-overlay h3 {
     font-size: 1rem;
   }
+
   .texto-atualizacao-overlay small {
     font-size: 0.75rem;
   }
 }
+
 /* Responsividade para a Seção de Tarefas */
 @media (max-width: 768px) {
   .section-tasks {
     gap: 15px;
   }
+
   .header-tasks {
     gap: 15px;
     padding: 15px;
   }
+
   .quadros {
     flex-direction: column;
   }
+
   .quadro {
     width: 100%;
     padding: 15px;
   }
+
   .tarefa-card {
     width: 100%;
     padding: 15px;
     font-size: 0.9rem;
     border-radius: 8px;
   }
+
   .tarefa-check {
     top: 8px;
     right: 8px;
   }
+
   .tag {
     font-size: 11px;
     padding: 3px 6px;
   }
+
   .tarefa-dados {
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
 /* Telas pequenas (baixo de 500px) */
 @media (max-width: 500px) {
   .menu-button {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
+
   .search-bar {
     padding: 6px 12px;
   }
+
   .tarefa-card {
     padding: 12px;
     font-size: 0.85rem;
   }
+
   .tarefa-check {
     transform: scale(1.1);
   }
+
   .quadros {
     flex-direction: column;
     gap: 10px;
   }
 }
+
 /* Telas menores que 400px */
 @media (max-width: 400px) {
   .tarefa-card {
     font-size: 0.8rem;
     padding: 10px;
   }
+
   .tarefa-check {
     transform: scale(1);
     top: 6px;
     right: 6px;
   }
+
   .tag {
     font-size: 10px;
     padding: 2px 4px;
   }
 }
+
 @media (max-width: 768px) {
   .news-card {
     flex-direction: column;
     align-items: center;
   }
+
   .news-img-right {
     width: 100%;
     height: 100%;
   }
+
   .news-content-left {
     width: 100%;
     padding: 16px;
     text-align: center;
   }
+
   .news-title {
     font-size: 1.25rem;
   }
+
   .news-description {
     font-size: 0.9rem;
   }
 }
+
 /* Estilos gerais da sidebar */
 .sidebar {
   text-decoration: none;
@@ -573,8 +623,10 @@
   gap: 20px;
   overflow-y: auto;
   z-index: 999;
-  transition: transform 0.3s ease; /* Transição suave */
-  transform: translateX(-100%); /* Inicialmente, a sidebar está fora da tela */
+  transition: transform 0.3s ease;
+  /* Transição suave */
+  transform: translateX(-100%);
+  /* Inicialmente, a sidebar está fora da tela */
 }
 
 /* Contêiner para os itens do menu */
@@ -624,12 +676,14 @@
 
 /* Quando a sidebar não tem a classe "hidden", ela se move para dentro da tela */
 .sidebar:not(.hidden) {
-  transform: translateX(0); /* Menu visível */
+  transform: translateX(0);
+  /* Menu visível */
 }
 
 /* Esconde a sidebar quando a classe hidden for aplicada */
 .hidden {
-  transform: translateX(-100%); /* Menu fora da tela */
+  transform: translateX(-100%);
+  /* Menu fora da tela */
 }
 
 .section-tasks {
@@ -730,7 +784,7 @@
   align-items: center;
 }
 
-.tarefa-dados > div:last-child {
+.tarefa-dados>div:last-child {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -782,7 +836,8 @@
 
 .news-card {
   display: flex;
-  flex-direction: row; /* Imagem à direita e conteúdo à esquerda */
+  flex-direction: row;
+  /* Imagem à direita e conteúdo à esquerda */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -913,6 +968,7 @@
 .work-guides-table {
   display: table;
 }
+
 .work-guides-table table {
   display: table;
   width: 100%;
@@ -921,19 +977,23 @@
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .work-guides-table table th,
 .work-guides-table table td {
   padding: 12px 16px;
   text-align: left;
   font-size: 0.95rem;
 }
+
 .work-guides-table table th {
   background-color: white;
   border-bottom: 1px solid var(--color-background);
 }
+
 .work-guides-table table tr:hover {
   background-color: white;
 }
+
 .work-guides-table table .tag {
   background-color: var(--color-tertiary);
   color: var(--color-text);
@@ -942,6 +1002,7 @@
   font-size: 0.75rem;
   margin-right: 5px;
 }
+
 .work-guides-table table .acoes {
   display: flex;
   gap: 10px;
@@ -992,7 +1053,8 @@ a {
   --largura-sidebar: 250px;
 }
 
-html, body {
+html,
+body {
   display: flex;
   background-color: var(--color-background);
   font-family: var(--font-family);

@@ -12,10 +12,10 @@
 /* Cabeçalho */
 .upd-header {
   display: flex;
-    flex-direction: column;
-    box-sizing: border-box; 
-    justify-content: space-between;
-    width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  width: 100%;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -27,13 +27,14 @@
 .upd-actions {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   width: 100%;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 
 }
+
 .cards-panel {
   display: flex;
   flex-direction: column;
@@ -44,7 +45,8 @@
 
 .news-card {
   display: flex;
-  flex-direction: row; /* Imagem à direita e conteúdo à esquerda */
+  flex-direction: row;
+  /* Imagem à direita e conteúdo à esquerda */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -133,5 +135,3 @@
   align-items: center;
   margin-top: 0px;
 }
-
-

@@ -2,7 +2,8 @@
 .header {
     position: fixed;
     width: 100%;
-    height: var(--altura-header); /* Altura da barra superior */
+    height: var(--altura-header);
+    /* Altura da barra superior */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,6 +30,5 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--color-text-alt)    ;
+    color: var(--color-text-alt);
 }
-

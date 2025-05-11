@@ -1,78 +1,81 @@
 /* Estilos gerais da sidebar */
 .sidebar {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    position: fixed;
-    width: var(--largura-sidebar);
-    margin-top: var(--altura-header);
-    background-color: var(--color-primary);
-    font-family: var(--font-family);
-    font-size: var(--font-size-text);
-    color: var(--color-text-alt);
-    padding: 20px;
-    gap: 20px;
-    overflow-y: auto;
-    z-index: 999;
-    transition: transform 0.3s ease; /* Transição suave */
-    transform: translateX(-100%); /* Inicialmente, a sidebar está fora da tela */
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  width: var(--largura-sidebar);
+  margin-top: var(--altura-header);
+  background-color: var(--color-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-text);
+  color: var(--color-text-alt);
+  padding: 20px;
+  gap: 20px;
+  overflow-y: auto;
+  z-index: 999;
+  transition: transform 0.3s ease;
+  /* Transição suave */
+  transform: translateX(-100%);
+  /* Inicialmente, a sidebar está fora da tela */
 
-  }
-  
-  /* Contêiner para os itens do menu */
-  .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px
-  }
-  
-  /* Títulos das seções do menu */
-  .sidebar-section-title {
-    font-weight: 600;
-    margin: 0 0 5px 0;
-  }  
-  
-  /* Estilos das seções dentro da sidebar */
-  .sidebar-section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-  
-  /* Estilos para cada item de menu */
-  .menu-button {
-    text-decoration: none;
-    font-size: var(--font-size-text);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: var(--color-secondary);
-    border: none;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  
-  /* Efeito hover nos itens de menu */
-  .menu-button:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
+}
 
-  /* Quando a sidebar não tem a classe "hidden", ela se move para dentro da tela */
+/* Contêiner para os itens do menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px
+}
+
+/* Títulos das seções do menu */
+.sidebar-section-title {
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+/* Estilos das seções dentro da sidebar */
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Estilos para cada item de menu */
+.menu-button {
+  text-decoration: none;
+  font-size: var(--font-size-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--color-secondary);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Efeito hover nos itens de menu */
+.menu-button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Quando a sidebar não tem a classe "hidden", ela se move para dentro da tela */
 .sidebar:not(.hidden) {
-  transform: translateX(0); /* Menu visível */
+  transform: translateX(0);
+  /* Menu visível */
 }
 
 /* Esconde a sidebar quando a classe hidden for aplicada */
 .hidden {
-  transform: translateX(-100%); /* Menu fora da tela */
+  transform: translateX(-100%);
+  /* Menu fora da tela */
 }
-  
