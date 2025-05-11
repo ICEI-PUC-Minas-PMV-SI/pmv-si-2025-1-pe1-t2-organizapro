@@ -1,12 +1,6 @@
-# OrganizaPRO
+![banner](https://github.com/user-attachments/assets/7494d889-9ee1-40aa-be9e-2661bda30d1a)
 
-![eed85a85-de47-4ef6-b55a-8e84dd5cec96 (1)](https://github.com/user-attachments/assets/87de4af7-9cb8-4444-8baf-bf59b64d1784)
-
-`CURSO: Sistemas de Informação`
-
-`DISCIPLINA: Projeto - Aplicações Web`
-
-`SEMESTRE: 1º`
+**`Sistemas de Informação`** <br> `Projeto - Aplicações Web` <br> `Eixo 1 - Turma 2 - Grupo 4`
 
 O **OrganizaPRO** será desenvolvido como uma aplicação web destinada a otimizar a gestão de procedimentos de trabalho em **instituições públicas e privadas**. A plataforma centralizará informações e documentos, aprimorando a rastreabilidade e a acessibilidade, o que contribuirá para a redução de erros, retrabalhos e perdas de dados essenciais. O objetivo é aumentar a produtividade e a eficiência, sendo especialmente útil em setores que demandam precisão e transparência.
 
@@ -14,7 +8,7 @@ Com uma interface intuitiva, o **OrganizaPRO** permitirá que gestores, analista
 
 ## Integrantes
 
-* Arthur Miranda Pereira
+* Carlos Samuel Tavares da Silva
 * Daniel Leão e Souza da Silva
 * Laise Pereira da Costa
 * Luis Felipe Araujo Custodio
