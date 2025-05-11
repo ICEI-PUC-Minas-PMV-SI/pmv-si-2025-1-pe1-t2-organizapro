@@ -13,9 +13,9 @@ window.loadHTML = async function(id, file) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadHTML('header', '../includes/header.html');
-  loadHTML('sidebar', '../includes/sidebar.html');
-  loadHTML('favorites', '../includes/favorites.html');
-  loadHTML('recent-upd', '../includes/recent-upd.html');
-  loadHTML('tasks', '../includes/tasks.html');
+  loadHTML('header', 'includes/header.html');
+  loadHTML('sidebar', 'includes/sidebar.html');
+  loadHTML('favorites', 'includes/favorites.html');
+  loadHTML('recent-upd', 'includes/recent-upd.html');
+  loadHTML('tasks', 'includes/tasks.html');
 });
