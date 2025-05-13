@@ -1,5 +1,4 @@
-![banner](https://github.com/user-attachments/assets/7494d889-9ee1-40aa-be9e-2661bda30d1a)
-
+![Organiza Pro](https://github.com/user-attachments/assets/d538b7d8-4884-48f1-a4e8-6d47c5072e11)
 **`Sistemas de Informação`** <br> `Projeto - Aplicações Web` <br> `Eixo 1 - Turma 2 - Grupo 4`
 
 O **OrganizaPRO** será desenvolvido como uma aplicação web destinada a otimizar a gestão de procedimentos de trabalho em **instituições públicas e privadas**. A plataforma centralizará informações e documentos, aprimorando a rastreabilidade e a acessibilidade, o que contribuirá para a redução de erros, retrabalhos e perdas de dados essenciais. O objetivo é aumentar a produtividade e a eficiência, sendo especialmente útil em setores que demandam precisão e transparência.
