@@ -1,5 +1,5 @@
 /* Container principal */
-.work-guides-container {
+.control-panel-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -11,7 +11,7 @@
 }
 
 /* Cabeçalho */
-.work-guides-header {
+.control-panel-header {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -25,7 +25,7 @@
 }
 
 /* Grupo de ações */
-.work-guides-actions {
+.control-panel-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -36,8 +36,8 @@
 
 }
 
-/* Tabela de fluxos */
-.work-guides-table {
+/* Tabela de procedimentos */
+.control-panel-table {
   display: table;
 
 
@@ -79,7 +79,7 @@
       margin-right: 5px;
     }
 
-    .acoes {
+    .actions {
       display: flex;
       gap: 10px;
 

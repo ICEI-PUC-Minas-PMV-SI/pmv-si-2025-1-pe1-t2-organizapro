@@ -41,22 +41,22 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 ### Módulo: Pesquisa e Versionamento
 | ID   | Descrição do Requisito                                                | Responsável     | Artefato Gerado   |
 |------|----------------------------------------------------------------------|-----------------|-------------------|
-| RF22 | Permitir pesquisa de arquivos por palavras-chave, etiquetas, data, tipo de arquivo e categoria. | Laise | pg-flow.html<br>pg-work-guides.html |
-| RF23 | Manter histórico de alterações nos arquivos com controle de versão.  | Laise      | pg-flows.html<br>pg-work-guides.html |
-| RF24 | Exibir o histórico de versões em painel cronológico.                 | Laise   | pg-flows.html<br>pg-work-guides.html |
-| RF25 | Permitir restaurar versões anteriores de arquivos.                   | Laise       | pg-flows.html<br>pg-work-guides.html |
+| RF22 | Permitir pesquisa de arquivos por palavras-chave, etiquetas, data, tipo de arquivo e categoria. | Laise | pg-flow.html<br>pg-control-panel.html |
+| RF23 | Manter histórico de alterações nos arquivos com controle de versão.  | Laise      | pg-flows.html<br>pg-control-panel.html |
+| RF24 | Exibir o histórico de versões em painel cronológico.                 | Laise   | pg-flows.html<br>pg-control-panel.html |
+| RF25 | Permitir restaurar versões anteriores de arquivos.                   | Laise       | pg-flows.html<br>pg-control-panel.html |
 
 ### Módulo: Controle de Arquivos
 | ID   | Descrição do Requisito                                                | Responsável     | Artefato Gerado   |
 |------|----------------------------------------------------------------------|-----------------|-------------------|
-| RF26 | Permitir o armazenamento de arquivos.                                | Laise      | pg-flows.html<br>pg-work-guides.html |
-| RF27 | Permitir a organização de arquivos por etiquetas e categorias.       | Laise       | pg-flows.html<br>pg-work-guides.html |
-| RF28 | Permitir que o usuário visualize arquivos.                           | Laise   | pg-flows.html<br>pg-work-guides.html |
-| RF29 | Permitir que o usuário edite arquivos.                               | Laise      | pg-flows.html<br>pg-work-guides.html |
-| RF30 | Permitir que o usuário marque arquivos como favoritos.               | Laise       | pg-flows.html<br>pg-work-guides.html |
-| RF31 | Permitir que o usuário duplique arquivos.                            | Laise   | pg-flows.html<br>pg-work-guides.html |
-| RF32 | Permitir que o usuário gere arquivos em formato PDF.                 | Laise      | pg-flows.html<br>pg-work-guides.html |
-| RF33 | Permitir que o usuário arquive documentos.                           | Laise       | pg-flows.html<br>pg-work-guides.html |
+| RF26 | Permitir o armazenamento de arquivos.                                | Laise      | pg-flows.html<br>pg-control-panel.html |
+| RF27 | Permitir a organização de arquivos por etiquetas e categorias.       | Laise       | pg-flows.html<br>pg-control-panel.html |
+| RF28 | Permitir que o usuário visualize arquivos.                           | Laise   | pg-flows.html<br>pg-control-panel.html |
+| RF29 | Permitir que o usuário edite arquivos.                               | Laise      | pg-flows.html<br>pg-control-panel.html |
+| RF30 | Permitir que o usuário marque arquivos como favoritos.               | Laise       | pg-flows.html<br>pg-control-panel.html |
+| RF31 | Permitir que o usuário duplique arquivos.                            | Laise   | pg-flows.html<br>pg-control-panel.html |
+| RF32 | Permitir que o usuário gere arquivos em formato PDF.                 | Laise      | pg-flows.html<br>pg-control-panel.html |
+| RF33 | Permitir que o usuário arquive documentos.                           | Laise       | pg-flows.html<br>pg-control-panel.html |
 
 ## Descrição das estruturas:
 

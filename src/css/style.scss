@@ -1,13 +1,13 @@
 @use 'components';
 @use 'favorites';
-@use 'flows';
+@use 'control-panel';
 @use 'header';
 @use 'recent-upd';
 @use 'responsive';
 @use 'sidebar';
 @use 'tasks';
 @use 'upd-panel';
-@use 'work-guides';
+@use 'modal-control-panel';
 
 /* Reset base */
 *,

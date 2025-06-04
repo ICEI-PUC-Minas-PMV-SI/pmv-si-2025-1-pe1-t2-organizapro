@@ -7,6 +7,14 @@
   gap: 15px;
 }
 
+/* Estilos para o container de botões do modal */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
 /* Estilos base para botões */
 .button {
   display: flex;
@@ -45,13 +53,32 @@
   background-color: var(--color-secondary);
 }
 
+/* Botão favoritos - estilo padrão */
 .button--favoritos {
   background-color: #b71c1c;
 }
 
-.button--criar {
+.button--favoritos .material-symbols-outlined {
+  font-variation-settings: "FILL" 0;
+  color: white;
+  transition: font-variation-settings 0.3s ease, color 0.3s ease;
+}
+
+.button--favoritos.ativo .material-symbols-outlined {
+  font-variation-settings: "FILL" 1;
+  color: white;
+}
+
+
+.button--criar,
+.button--salvar {
   background-color: #3e6b3e;
 }
+
+.button--cancelar {
+  background-color: #b71c1c;
+}
+
 
 /* Ícones */
 .material-symbols-outlined {
@@ -59,7 +86,6 @@
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
-  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -138,18 +164,18 @@
   width: 100%;
 }
 
-.flows-actions .search-bar {
+.control-panel-actions .search-bar {
   border: 1px solid var(--color-background);
 }
 
-.flows-actions .search-bar .material-symbols-outlined,
+.control-panel-actions .search-bar .material-symbols-outlined,
 .upd-actions .search-bar .material-symbols-outlined,
-.work-guides-actions .search-bar .material-symbols-outlined {
+.control-panel-actions .search-bar .material-symbols-outlined {
   color: var(--color-text);
 }
 
 .button .material-symbols-outlined,
-.acoes .material-symbols-outlined,
+.actions .material-symbols-outlined,
 .tarefa-dados .material-symbols-outlined {
   font-size: 22px;
 }
