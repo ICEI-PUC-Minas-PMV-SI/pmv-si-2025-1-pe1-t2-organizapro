@@ -17,9 +17,7 @@
   overflow-y: auto;
   z-index: 999;
   transition: transform 0.3s ease;
-  /* Transição suave */
   transform: translateX(-100%);
-  /* Inicialmente, a sidebar está fora da tela */
 
 }
 
@@ -77,5 +75,4 @@
 /* Esconde a sidebar quando a classe hidden for aplicada */
 .hidden {
   transform: translateX(-100%);
-  /* Menu fora da tela */
 }

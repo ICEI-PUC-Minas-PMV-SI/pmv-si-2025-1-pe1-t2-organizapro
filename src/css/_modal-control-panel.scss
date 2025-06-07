@@ -5,7 +5,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* fundo escuro semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,14 +19,12 @@
     width: 90%;
     max-width: 500px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     position: relative;
     font-family: 'Inter', sans-serif;
 
-    /* --- NOVAS PROPRIEDADES AQUI PARA RESPONSIVIDADE VERTICAL E ROLAGEM --- */
-    max-height: 90vh; /* Limita a altura máxima do modal a 90% da altura da viewport */
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder max-height */
-    /* --- FIM NOVAS PROPRIEDADES --- */
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 /* Título do modal */
@@ -39,15 +37,15 @@
 
 /* Botão fechar (X) */
 .fechar {
-    position: absolute; 
-    top: 1rem;          
-    right: 1rem;        
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     font-size: 1.5rem;
     font-weight: 700;
     color: #333;
     cursor: pointer;
     user-select: none;
-    z-index: 1010; /* Garante que o botão fique acima do conteúdo do modal */
+    z-index: 1010;
 }
 
 /* Labels e inputs do formulário */
@@ -62,23 +60,23 @@
 .modal-content input[type="text"],
 .modal-content select,
 .modal-content input[type="file"],
-.modal-content textarea { /* <-- ADICIONADO AQUI: Estiliza o textarea também */
+.modal-content textarea {
     width: 100%;
     padding: 0.5rem;
     margin-top: 0.3rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+    box-sizing: border-box;
 }
 
 /* Estilos para o TinyMCE (editor de texto) */
 
-.tox-tinymce { /* Classe padrão do container do TinyMCE */
-    width: 100% !important; /* Força 100% de largura dentro do modal-content */
+.tox-tinymce {
+    width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
-    margin-top: 0.3rem; /* Espaçamento similar a outros inputs */
+    margin-top: 0.3rem;
 }
 
 /* Estilos para o novo componente de Tags */
@@ -88,11 +86,11 @@
     border-radius: 4px;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px; /* Espaço entre os chips */
+    gap: 5px;
     align-items: center;
-    min-height: 40px; /* Altura mínima para o container */
-    margin-top: 0.3rem; /* Alinhamento com outros campos de formulário */
-    position: relative; /* Para o dropdown de sugestões */
+    min-height: 40px;
+    margin-top: 0.3rem;
+    position: relative;
     box-sizing: border-box;
 }
 
@@ -102,17 +100,6 @@
     gap: 5px;
 }
 
-/*.tag-chip {
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9em;
-    color: #333;
-    white-space: nowrap;
-}*/
 
 .tag-chip .remove-tag {
     cursor: pointer;
@@ -126,7 +113,7 @@
 }
 
 #etiquetasInput {
-    flex-grow: 1; /* Permite que o input preencha o espaço restante */
+    flex-grow: 1;
     border: none;
     outline: none;
     padding: 5px 0;
@@ -140,13 +127,13 @@
     border-top: none;
     max-height: 150px;
     overflow-y: auto;
-    position: absolute; /* Para que apareça sobre o conteúdo */
+    position: absolute;
     background-color: #fff;
-    z-index: 1010; /* Mais alto que o modal (1000) e o modal-content (se tiver z-index) */
-    width: calc(100% + 2px); /* Para cobrir a borda do container pai */
-    left: -1px; /* Ajuste para alinhar perfeitamente com a borda do container */
-    top: 100%; /* Posiciona logo abaixo do container pai */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1010;
+    width: calc(100% + 2px);
+    left: -1px;
+    top: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 4px 4px;
 }
 
@@ -157,7 +144,7 @@
 }
 
 .tag-suggestion-item:last-child {
-    border-bottom: none; /* Remove borda do último item */
+    border-bottom: none;
 }
 
 .tag-suggestion-item:hover {
@@ -183,13 +170,13 @@
 
 .modal-body-view p {
     margin: 0;
-    padding: 5px 10px; /* Padding ajustado para visualização */
+    padding: 5px 10px;
     color: #333;
     background-color: #f9f9f9;
     border-radius: 4px;
     border: 1px solid #eee;
-    word-wrap: break-word; /* Quebra texto longo */
-    white-space: pre-wrap; /* Preserva espaços e quebras de linha do HTML (TinyMCE) */
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .modal-body-view a {
@@ -204,19 +191,21 @@
 }
 
 
-/* Responsividade geral (já existia) */
 @media (max-width: 480px) {
     .modal-content {
-        padding: 1rem; /* Ajuste para telas menores */
+        padding: 1rem;
         width: 95%;
-        max-height: 95vh; /* Pode ser um pouco maior para telas muito pequenas */
+        max-height: 95vh;
     }
+
     .modal-content h2 {
         font-size: 1.2rem;
     }
+
     .fechar {
         font-size: 1.2rem;
     }
+
     .tag-chip {
         font-size: 0.8em;
         padding: 4px 8px;

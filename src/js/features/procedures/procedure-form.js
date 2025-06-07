@@ -1,62 +1,35 @@
-// js/features/procedures/procedure-form.js
-
-// Imports
 import { createModalController } from "../../core/modal.js";
-
 import {
     obterEtiquetasUnicas,
     obterTiposUnicos,
     salvarProcedimento,
+    obterProcedimentoPorId,
+    criarNovaVersaoProcedimento
 } from './procedure-data.js';
-
 import { atualizarTabela } from '../../features/common/filter-controls.js';
-
-// Importa o novo componente de tags
 import { initTagInputComponent } from '../../features/common/tag-input-component.js';
 
-// Variáveis
 let currentEditId = null;
-let etiquetasTagComponent = null; // Instância do componente de tags
-let formModalController = null; 
-let tinyMCEEditor = null; // Instância do editor TinyMCE
+let etiquetasTagComponent = null;
+let formModalController = null;
+let tinyMCEEditor = null;
 
-// --- Referências aos Elementos DOM do Formulário (declaradas como 'let' para serem atribuídas em init) ---
-// Elas serão inicializadas dentro de initProcedureForm()
-let botaoCriar;
-let fecharModalBtn;
-let cancelarBtn;
-let salvarBtn;
+let botaoCriar, fecharModalBtn, cancelarBtn, salvarBtn;
+let tituloProcedimentoInput, descricaoProcedimentoInput, tipoProcedimentoSelect;
+let statusProcedimentoSelect, arquivoProcedimentoInput;
+let customTypeContainer, customTypeInput;
 
-let tituloProcedimentoInput;
-let descricaoProcedimentoInput; // Agora refere-se ao TEXTAREA
-let tipoProcedimentoSelect;
-
-let statusProcedimentoSelect;
-let arquivoProcedimentoInput;
-
-let customTypeContainer;
-let customTypeInput;
-
-
-// --- Funções de lógica do formulário ---
-
-/**
- * Limpa todos os campos do formulário e oculta os campos customizados.
- * Função registrada no módulo modal para ser chamada ao limpar o conteúdo.
- */
 function limparCamposProcedimentoForm() {
     const campos = [
         tituloProcedimentoInput,
-        // descricaoProcedimentoInput é manipulado pelo tinyMCEEditor.setContent('')
         statusProcedimentoSelect,
         arquivoProcedimentoInput,
         tipoProcedimentoSelect,
-        customTypeInput // Este é para o tipo custom, ainda relevante
+        customTypeInput
     ];
 
     campos.forEach(el => {
-        if (!el) return; // Verifica existência antes de manipular
-
+        if (!el) return;
         if (el.tagName === "SELECT") {
             el.value = (el.id === "statusProcedimento") ? "Ativo" : "";
         } else {
@@ -64,23 +37,11 @@ function limparCamposProcedimentoForm() {
         }
     });
 
-    // Limpa as tags selecionadas no NOVO componente de tags
-    if (etiquetasTagComponent) {
-        etiquetasTagComponent.clearTags();
-    }
-
-    // Gerencia o container do tipo customizado (ainda relevante)
+    if (etiquetasTagComponent) etiquetasTagComponent.clearTags();
     if (customTypeContainer) customTypeContainer.style.display = 'none';
-
-    // NOVO: Limpar o conteúdo do editor TinyMCE
-    if (tinyMCEEditor) {
-        tinyMCEEditor.setContent(''); // Método do TinyMCE para limpar o conteúdo
-    }
+    if (tinyMCEEditor) tinyMCEEditor.setContent('');
 }
 
-/**
- * Fecha o modal e garante a limpeza do formulário.
- */
 function fecharModalProcedimento() {
     if (formModalController) {
         formModalController.fechar();
@@ -89,23 +50,10 @@ function fecharModalProcedimento() {
     currentEditId = null;
 }
 
-/**
- * Popula um elemento <select> com opções dinâmicas.
- * Esta função é AGORA USADA APENAS para o SELECT DE TIPO.
- * @param {HTMLSelectElement} selectElement - Select a ser populado.
- * @param {string[]} options - Array de opções para popular.
- * @param {string} [customOptionValue='custom'] - Valor da opção "custom".
- */
 function popularSelect(selectElement, options, customOptionValue = 'custom') {
     if (!selectElement) return;
 
-    let customOption = null;
-    Array.from(selectElement.options).forEach(opt => {
-        if (opt.value === customOptionValue) {
-            customOption = opt;
-        }
-    });
-
+    const customOption = Array.from(selectElement.options).find(opt => opt.value === customOptionValue);
     selectElement.innerHTML = '';
 
     const defaultOption = document.createElement('option');
@@ -125,45 +73,39 @@ function popularSelect(selectElement, options, customOptionValue = 'custom') {
     }
 }
 
-/**
- * Valida os dados do formulário antes de salvar.
- * @returns {boolean} True se válido, false caso contrário.
- */
 function validarFormulario() {
     const titulo = tituloProcedimentoInput?.value.trim() || "";
-    let tipoSelecionado = tipoProcedimentoSelect?.value || "";
+    const tipoSelecionado = tipoProcedimentoSelect?.value || "";
+    const tipoFinal = tipoSelecionado === 'custom' ? customTypeInput?.value.trim() : tipoSelecionado;
 
-    if (tipoSelecionado === 'custom') {
-        if (!customTypeInput?.value.trim()) {
-            alert('Por favor, informe o tipo personalizado.');
-            return false;
-        }
-        tipoSelecionado = customTypeInput.value.trim();
+    if (tipoSelecionado === 'custom' && !customTypeInput?.value.trim()) {
+        alert('Por favor, informe o tipo personalizado.');
+        customTypeInput.focus();
+        return false;
     }
 
     if (!titulo) {
         alert("Por favor, preencha o título do procedimento.");
+        tituloProcedimentoInput.focus();
         return false;
     }
 
-    const etiquetasArray = etiquetasTagComponent ? etiquetasTagComponent.getTags() : [];
-    
+    if (!tipoFinal) {
+        alert("Por favor, preencha o tipo do procedimento.");
+        tipoProcedimentoSelect.focus();
+        return false;
+    }
+
     return true;
 }
 
-/**
- * Handler para o clique no botão "Salvar".
- * Valida, salva e atualiza a tabela.
- * @param {Event} event
- */
-function handleSaveProcedimento(event) {
+async function handleSaveProcedimento(event) {
     event.preventDefault();
 
     if (!validarFormulario()) return;
 
     const titulo = tituloProcedimentoInput.value.trim();
-    // Obtém a descrição do editor TinyMCE
-    const descricao = tinyMCEEditor ? tinyMCEEditor.getContent() : descricaoProcedimentoInput.value.trim(); 
+    const descricao = tinyMCEEditor ? tinyMCEEditor.getContent() : descricaoProcedimentoInput.value.trim();
     const status = statusProcedimentoSelect.value;
     const nomeArquivo = arquivoProcedimentoInput?.files[0]?.name || "";
 
@@ -173,73 +115,74 @@ function handleSaveProcedimento(event) {
 
     const etiquetasFinal = etiquetasTagComponent ? etiquetasTagComponent.getTags() : [];
 
-    salvarProcedimento({
+    const dadosDoFormulario = {
         titulo,
-        descricao, // <-- AGORA VEM DO CONTEÚDO DO EDITOR
+        descricao,
         etiquetas: etiquetasFinal,
         status,
         tipo: tipoFinal,
         arquivo: nomeArquivo
-    }, currentEditId);
+    };
+
+    if (currentEditId) {
+        const criarNovaVersao = confirm("Deseja criar uma nova versão deste procedimento?");
+
+        if (criarNovaVersao) {
+            const novaVersao = criarNovaVersaoProcedimento(currentEditId, dadosDoFormulario);
+            if (novaVersao) {
+                alert("Nova versão do procedimento criada e a anterior inativada com sucesso!");
+            } else {
+                alert("Erro ao criar nova versão do procedimento. Verifique o console.");
+            }
+        } else {
+            await salvarProcedimento(dadosDoFormulario, currentEditId);
+            alert("Procedimento atualizado com sucesso!");
+        }
+    } else {
+        await salvarProcedimento(dadosDoFormulario);
+        alert("Novo procedimento salvo com sucesso!");
+    }
 
     atualizarTabela();
     fecharModalProcedimento();
 }
 
-/**
- * Preenche o formulário com os dados de um procedimento para edição ou duplicação.
- * @param {Object} procedimento - Objeto com os dados do procedimento a ser preenchido.
- * @param {boolean} [isDuplicating=false] - Indica se a operação é de duplicação.
- */
 export function setProcedimentoParaEdicao(procedimento, isDuplicating = false) {
     if (!formModalController) {
-        console.error("setProcedimentoParaEdicao chamado antes da inicialização de formModalController.");
+        console.error("formModalController não inicializado.");
         return;
     }
 
     currentEditId = isDuplicating ? null : procedimento.id;
-
-    // 1. Define o TÍTULO DO MODAL
-    if (isDuplicating) {
-        formModalController.setTitulo("Duplicar Procedimento");
-    } else {
-        formModalController.setTitulo("Editar Procedimento");
-    }
-
-    // 2. Dispara a limpeza do formulário (reseta todos os campos)
+    formModalController.setTitulo(isDuplicating ? "Duplicar Procedimento" : "Editar Procedimento");
     formModalController.dispararLimpeza();
 
-    // 3. Preenche os campos do formulário
-    if (tituloProcedimentoInput) {
-        tituloProcedimentoInput.value = isDuplicating ? (procedimento.titulo || "") + " (cópia)" : (procedimento.titulo || '');
-    }
+    const tituloBase = (procedimento.titulo || "").replace(/\s*\(versão\s*\d+\)$/i, "").trim();
+    tituloProcedimentoInput.value = isDuplicating ? `${tituloBase} (cópia)` : tituloBase;
 
-    // Preencher o conteúdo do editor TinyMCE
     if (tinyMCEEditor) {
-        tinyMCEEditor.setContent(procedimento.descricao || ''); // Define o conteúdo do editor
-    } else if (descricaoProcedimentoInput) { // Fallback se o editor não inicializou
+        tinyMCEEditor.setContent(procedimento.descricao || '');
+    } else if (descricaoProcedimentoInput) {
         descricaoProcedimentoInput.value = procedimento.descricao || '';
     }
 
-    if (statusProcedimentoSelect) statusProcedimentoSelect.value = procedimento.status || 'Ativo';
+    statusProcedimentoSelect.value = procedimento.status || 'Ativo';
 
     popularSelect(tipoProcedimentoSelect, obterTiposUnicos(), 'custom');
 
-    if (tipoProcedimentoSelect) {
-        const tiposExistentes = obterTiposUnicos();
-        if (procedimento.tipo && tiposExistentes.includes(procedimento.tipo)) {
-            tipoProcedimentoSelect.value = procedimento.tipo;
-            if (customTypeContainer) customTypeContainer.style.display = 'none';
-            if (customTypeInput) customTypeInput.value = '';
-        } else if (procedimento.tipo) {
-            tipoProcedimentoSelect.value = 'custom';
-            if (customTypeContainer) customTypeContainer.style.display = 'block';
-            if (customTypeInput) customTypeInput.value = procedimento.tipo;
-        } else {
-            tipoProcedimentoSelect.value = '';
-            if (customTypeContainer) customTypeContainer.style.display = 'none';
-            if (customTypeInput) customTypeInput.value = '';
-        }
+    const tiposExistentes = obterTiposUnicos();
+    if (procedimento.tipo && tiposExistentes.includes(procedimento.tipo)) {
+        tipoProcedimentoSelect.value = procedimento.tipo;
+        if (customTypeContainer) customTypeContainer.style.display = 'none';
+        if (customTypeInput) customTypeInput.value = '';
+    } else if (procedimento.tipo) {
+        tipoProcedimentoSelect.value = 'custom';
+        if (customTypeContainer) customTypeContainer.style.display = 'block';
+        if (customTypeInput) customTypeInput.value = procedimento.tipo;
+    } else {
+        tipoProcedimentoSelect.value = '';
+        if (customTypeContainer) customTypeContainer.style.display = 'none';
+        if (customTypeInput) customTypeInput.value = '';
     }
 
     if (etiquetasTagComponent && procedimento.etiquetas) {
@@ -253,52 +196,42 @@ export function setProcedimentoParaEdicao(procedimento, isDuplicating = false) {
     formModalController.abrir();
 }
 
-// Inicializa a lógica do formulário de procedimentos.
 export function initProcedureForm() {
-    // 1. INICIALIZA O MÓDULO MODAL PRINCIPAL PRIMEIRO
-    const modalInitialized = formModalController = createModalController('modal-procedure', 'tituloModal');
-    if (!modalInitialized) {
-        console.error("Falha ao inicializar o modal do formulário de procedimento. Funcionalidade será limitada.");
+    formModalController = createModalController('modal-procedure', 'tituloModal');
+    if (!formModalController) {
+        console.error("Falha ao inicializar o modal do formulário de procedimento.");
         return;
     }
 
-    // 2. CAPTURA AS REFERÊNCIAS DOM DOS ELEMENTOS DO FORMULÁRIO AQUI DENTRO.
     botaoCriar = document.querySelector(".button--criar");
     fecharModalBtn = document.getElementById("fechar-modal");
     cancelarBtn = document.getElementById("cancelar");
     salvarBtn = document.getElementById("salvar");
     tituloProcedimentoInput = document.getElementById("tituloProcedimento");
-    descricaoProcedimentoInput = document.getElementById("descricaoProcedimento"); // Refere-se ao TEXTAREA
+    descricaoProcedimentoInput = document.getElementById("descricaoProcedimento");
     tipoProcedimentoSelect = document.getElementById('tipoProcedimento');
     statusProcedimentoSelect = document.getElementById("statusProcedimento");
     arquivoProcedimentoInput = document.getElementById("arquivoProcedimento");
     customTypeContainer = document.getElementById('custom-type-container');
     customTypeInput = document.getElementById('custom-type-input');
 
-    // 3. Registra a função de limpeza do formulário no módulo modal.
     formModalController.definirCallbackDeLimpeza(limparCamposProcedimentoForm);
 
-    // 4. Inicializa o componente de tags
     etiquetasTagComponent = initTagInputComponent(
         'etiquetasInput',
         'selected-tags-display',
         'etiquetas-suggestions',
-        'etiquetas-container', // ID do container pai do componente de tags
-        (updatedTags) => {
-            console.log('Etiquetas do formulário atualizadas:', updatedTags);
-        }
+        'etiquetas-container',
+        updatedTags => console.log('Etiquetas atualizadas:', updatedTags)
     );
 
-    // 5. Adiciona os event listeners aos botões
     if (botaoCriar) {
         botaoCriar.addEventListener('click', () => {
-            if (formModalController) {
-                formModalController.setTitulo("Novo Procedimento");
-                formModalController.dispararLimpeza();
-                popularSelect(tipoProcedimentoSelect, obterTiposUnicos(), 'custom');
-                formModalController.abrir();
-                currentEditId = null;
-            }
+            formModalController.setTitulo("Novo Procedimento");
+            formModalController.dispararLimpeza();
+            popularSelect(tipoProcedimentoSelect, obterTiposUnicos(), 'custom');
+            formModalController.abrir();
+            currentEditId = null;
         });
     }
 
@@ -307,30 +240,35 @@ export function initProcedureForm() {
     if (salvarBtn) salvarBtn.addEventListener('click', handleSaveProcedimento);
 
     if (tipoProcedimentoSelect && customTypeContainer && customTypeInput) {
-        tipoProcedimentoSelect.addEventListener('change', function() {
-            customTypeContainer.style.display = this.value === 'custom' ? 'block' : 'none';
-            if (this.value !== 'custom') customTypeInput.value = '';
+        tipoProcedimentoSelect.addEventListener('change', () => {
+            if (tipoProcedimentoSelect.value === 'custom') {
+                customTypeContainer.style.display = 'block';
+                customTypeInput.focus();
+            } else {
+                customTypeContainer.style.display = 'none';
+                customTypeInput.value = '';
+            }
         });
     }
 
-    // NOVO: Inicializa o editor TinyMCE no textarea de descrição
-    // Garante que o tinymce está disponível globalmente antes de chamar init
-    if (typeof tinymce !== 'undefined') {
+    if (descricaoProcedimentoInput) {
         tinymce.init({
-            selector: '#descricaoProcedimento', // Usa o ID do seu textarea
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount', // Plugins essenciais
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bulllist indent outdent | emoticons charmap | removeformat | searchreplace | code | help', // Barra de ferramentas
-            menubar: 'file edit view insert format tools table help', // Menu superior
-            height: 300, // Altura padrão do editor em pixels
-            branding: false, // Remove a marca d'água "Powered by TinyMCE"
-            setup: function(editor) {
-                editor.on('init', function() {
-                    tinyMCEEditor = editor; // Guarda a instância do editor
-                    console.log('TinyMCE Editor inicializado no campo de descrição.');
-                });
-            } // Corrigido: Fechamento correto da função setup
+            target: descricaoProcedimentoInput,
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview', 'anchor',
+                'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | bold italic backcolor | ' +
+                'alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | removeformat | help',
+            setup: function (editor) {
+                tinyMCEEditor = editor;
+            }
         });
-    } else {
-        console.error("TinyMCE não está definido. Verifique se o script do TinyMCE foi carregado corretamente no HTML.");
     }
+
+    limparCamposProcedimentoForm();
 }

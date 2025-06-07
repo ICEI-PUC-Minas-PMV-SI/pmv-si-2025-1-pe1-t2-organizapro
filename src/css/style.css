@@ -179,16 +179,15 @@
   font-size: 22px;
 }
 
-/* Em seu arquivo CSS, por exemplo, src/css/style.css */
 .tag-input-container {
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px; /* Espaço entre os chips */
+  gap: 5px; 
   align-items: center;
-  min-height: 40px; /* Altura mínima para o container */
+  min-height: 40px; 
 }
 
 .selected-tags-display {
@@ -220,11 +219,11 @@
 }
 
 #etiquetasInput {
-  flex-grow: 1; /* Permite que o input preencha o espaço restante */
+  flex-grow: 1; 
   border: none;
   outline: none;
-  padding: 5px 0; /* Ajusta o padding para alinhar com os chips */
-  min-width: 100px; /* Garante que o input não fique muito pequeno */
+  padding: 5px 0; 
+  min-width: 100px; 
 }
 
 .tag-suggestions-dropdown {
@@ -232,10 +231,10 @@
   border-top: none;
   max-height: 150px;
   overflow-y: auto;
-  position: absolute; /* Para que apareça sobre o conteúdo */
+  position: absolute; 
   background-color: #fff;
-  z-index: 100; /* Garante que fique acima de outros elementos */
-  width: calc(100% - 2px); /* Largura igual ao container pai */
+  z-index: 100; 
+  width: calc(100% - 2px); 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -370,10 +369,10 @@
 /* Tabela de procedimentos */
 .control-panel-table {
   position: relative;
-  overflow: visible; /* Manter visível para dropdowns fora do overflow */
+  overflow: visible; 
 }
 
-.control-panel-table table { /* Direcionar a tabela diretamente */
+.control-panel-table table { 
   display: table;
   width: 100%;
   background-color: white;

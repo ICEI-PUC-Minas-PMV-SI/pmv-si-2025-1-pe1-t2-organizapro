@@ -38,10 +38,10 @@
 /* Tabela de procedimentos */
 .control-panel-table {
   position: relative;
-  overflow: visible; /* Manter visível para dropdowns fora do overflow */
+  overflow: visible; 
 }
 
-.control-panel-table table { /* Direcionar a tabela diretamente */
+.control-panel-table table { 
   display: table;
   width: 100%;
   background-color: white;
@@ -54,9 +54,8 @@
   padding: 12px 16px;
   text-align: left;
   font-size: 0.95rem;
-  /* Remover overflow: visible aqui, já está no table */
-  position: relative; /* Mantenha se precisar de elementos posicionados DENTRO da célula */
-  z-index: auto; /* Alterado: Remova o z-index ou defina como auto para não criar um stacking context "competitivo" */
+  position: relative; 
+  z-index: auto; 
 }
 
 .control-panel-table table th {
@@ -65,7 +64,7 @@
 }
 
 .control-panel-table table tr:hover {
-  background-color: white; /* Considere um hover diferente, este não fará diferença */
+  background-color: white; 
 }
 
 .control-panel-table table .tag {
@@ -94,7 +93,7 @@
   overflow-y: auto;
   min-width: 200px;
   box-sizing: border-box;
-  z-index: 9999; /* Valor bem alto para garantir sobreposição */
+  z-index: 9999; 
 }
 
 /* Container da lista de filtros dentro do dropdown */
@@ -109,7 +108,6 @@
   user-select: none;
 }
 
-/* Última opção: remover margem inferior para evitar espaço extra */
 .filtro-dropdown .filtro-opcao:last-child {
   margin-bottom: 0;
 }
@@ -189,13 +187,13 @@
 .tag-chip-table,
 .tag-chip,
 .tag-chip-view-modal {
-    background-color: var(--color-tertiary); /* Cor de fundo suave */
-    border-radius: 20px; /* Cantos levemente arredondados */
-    padding: 5px 8px; /* Espaçamento interno */
-    margin: 2px; /* Espaço entre os chips */
-    display: inline-block; /* Permite que estejam na mesma linha e tenham padding/margin */
-    font-size: 0.9em; /* Tamanho da fonte um pouco menor */
-    color: var(--color-text); /* Cor do texto */
-    white-space: nowrap; /* Evita que o texto da tag quebre */
-    line-height: 1; /* Para alinhar bem verticalmente */
+    background-color: var(--color-tertiary); 
+    border-radius: 20px;
+    padding: 5px 8px; 
+    margin: 2px; 
+    display: inline-block; 
+    font-size: 0.9em; 
+    color: var(--color-text); 
+    white-space: nowrap; 
+    line-height: 1; 
 }

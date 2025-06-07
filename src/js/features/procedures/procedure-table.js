@@ -1,59 +1,32 @@
-// js/features/procedures/procedure-table.js
-
-// Importa funções do módulo de dados
 import {
     duplicarProcedimento,
     toggleFavorito,
     arquivarProcedimento,
     excluirProcedimento,
-    obterProcedimentos, // Usado em handleEditarClick e handleDuplicarClick
-    obterProcedimentosFiltrados // Usado em renderizarTabela
+    obterProcedimentos, 
+    obterProcedimentosFiltrados 
 } from './procedure-data.js';
 
-// Importa função para abrir o modal do formulário de procedimento
 import { setProcedimentoParaEdicao } from './procedure-form.js';
-
-// Importa função que atualiza a tabela globalmente (do filter-controls.js)
 import { atualizarTabela } from '../../features/common/filter-controls.js';
-
-// Importa funções de formatação do novo módulo de utilitários
-
-import { formatarDataParaBR, formatarEtiquetasParaExibicao } from '/src/js/utils/formatters.js'; // <-- CAMINHO CORRIGIDO!
-
-// Importa a função para abrir o modal de visualização
+import { formatarDataParaBR, formatarEtiquetasParaExibicao } from '/src/js/utils/formatters.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
+import { getTagColor } from '/src/js/utils/color-helpers.js';
 
-
-import { getTagColor } from '/src/js/utils/color-helpers.js'; 
-
-
-// Referência ao corpo da tabela (declarada como 'let' para ser atribuída em initProcedureTable)
 let corpoTabela; 
 
-
-/**
- * Renderiza um array de etiquetas como chips HTML para exibição na tabela.
- * Cada chip terá uma cor de fundo consistente com a etiqueta.
- * @param {string[]} etiquetasArray O array de etiquetas.
- * @returns {string} O HTML das etiquetas formatadas como chips.
- */
 function renderizarEtiquetasAsChips(etiquetasArray) {
     if (!etiquetasArray || !Array.isArray(etiquetasArray) || etiquetasArray.length === 0) {
-        return "indefinido"; // Retorna "indefinido" se não houver etiquetas válidas
+        return "indefinido"; 
     }
     const tagsValidas = etiquetasArray.filter(tag => tag && String(tag).trim() !== "");
-    if (tagsValidas.length === 0) return "indefinido"; // Se o array só tinha tags vazias/nulas
+    if (tagsValidas.length === 0) return "indefinido"; 
 
-    // Retorna uma string de HTML com cada tag dentro de um <span> com a classe 'tag-chip-table'
     return tagsValidas.map(tag => {
-        const tagColor = getTagColor(tag); // Obtém a cor para a etiqueta
-        // Injeta a cor diretamente no estilo inline do span
+        const tagColor = getTagColor(tag); 
         return `<span class="tag-chip-table" style="background-color: ${tagColor};">${tag}</span>`;
-    }).join(' '); // Espaço entre os chips
+    }).join(' '); 
 }
-
-
-// --- Handlers dos botões da tabela ---
 
 function handleFavoritoClick(event) {
     const id = event.currentTarget.dataset.id;
@@ -64,9 +37,8 @@ function handleFavoritoClick(event) {
 function handleEditarClick(event) {
     const id = event.currentTarget.dataset.id;
     const procedimento = obterProcedimentos().find(p => p.id === id); 
-
     if (procedimento) {
-        setProcedimentoParaEdicao(procedimento, false); // Passando 'false' explicitamente
+        setProcedimentoParaEdicao(procedimento, false); 
     } else {
         console.warn(`Procedimento com ID ${id} não encontrado para edição.`);
     }
@@ -75,9 +47,8 @@ function handleEditarClick(event) {
 function handleDuplicarClick(event) {
     const id = event.currentTarget.dataset.id;
     const copia = duplicarProcedimento(id);
-
     if (copia) {
-        setProcedimentoParaEdicao(copia, true); // O 'true' é CRÍTICO aqui.
+        setProcedimentoParaEdicao(copia, true); 
     } else {
         console.warn(`Procedimento com ID ${id} não encontrado para duplicação.`);
     }
@@ -101,7 +72,7 @@ function handleExcluirClick(event) {
 
 function handleVisualizarClick(event) {
     const id = event.currentTarget.dataset.id;
-    abrirModalVisualizacao(id); // Chama a função do modal de visualização
+    abrirModalVisualizacao(id); 
 }
 
 function handleTabelaClick(event) {
@@ -140,12 +111,6 @@ function adicionarEventosTabela() {
     corpoTabela.addEventListener('click', handleTabelaClick);
 }
 
-// --- Renderização da tabela ---
-
-/**
- * Renderiza a tabela de procedimentos conforme filtros.
- * @param {Object} filtros - filtros aplicados na tabela.
- */
 export function renderizarTabela(filtros = {}) {
     if (!corpoTabela) {
         console.error("Erro: renderizarTabela chamado antes de initProcedureTable(). 'corpoTabela' não está definido.");
@@ -167,15 +132,15 @@ export function renderizarTabela(filtros = {}) {
 
         const tituloFormatado = proc.titulo || "indefinido";
         const tipoFormatado = proc.tipo || "indefinido";
-        // MUDANÇA AQUI: Usa a nova função para renderizar etiquetas como chips
-        const etiquetasFormatadasHTML = renderizarEtiquetasAsChips(proc.etiquetas); // Renomeei a variável para clareza
+        const etiquetasFormatadasHTML = renderizarEtiquetasAsChips(proc.etiquetas); 
         const dataFormatada = formatarDataParaBR(proc.ultimaAtualizacao);
         const statusFormatado = proc.status || "indefinido";
 
         linha.innerHTML = `
             <td>${tituloFormatado}</td>
             <td>${tipoFormatado}</td>
-            <td>${etiquetasFormatadasHTML}</td> <td>${dataFormatada}</td>
+            <td>${etiquetasFormatadasHTML}</td>
+            <td>${dataFormatada}</td>
             <td>${statusFormatado}</td>
             <td>
                 <button class="acao visualizar" title="Visualizar" data-id="${proc.id}">
@@ -207,23 +172,15 @@ export function renderizarTabela(filtros = {}) {
         corpoTabela.appendChild(linha);
     });
 
-    adicionarEventosTabela(); // Adiciona os event listeners após a renderização completa da tabela
+    adicionarEventosTabela(); 
 }
 
-/**
- * Inicializa a lógica da tabela de procedimentos.
- * DEVE ser chamada uma única vez pelo `script.js` (ou `app.js`) após o HTML da tabela estar no DOM.
- */
 export function initProcedureTable() {
-    // 1. Captura a referência DOM do corpo da tabela AQUI.
     corpoTabela = document.getElementById("tabela-procedimentos");
     if (!corpoTabela) {
         console.error("Erro: initProcedureTable() chamado, mas o elemento 'tabela-procedimentos' não foi encontrado. Verifique o HTML.");
-        return; // Sai da função se o elemento crucial não for encontrado
+        return; 
     }
 
-    // 2. Adiciona o listener de eventos ao corpo da tabela (delegação)
     adicionarEventosTabela();
-
-    // Outras inicializações da tabela, como ordenação de cabeçalhos, se houver
 }
