@@ -7,7 +7,9 @@
   <title>OrganizaPRO - Painel de Controle</title>
   <link rel="stylesheet" href="../style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400..700,0..1,0..200" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400..700,0..1,0..200"
+    rel="stylesheet" />
 
 
 </head>
@@ -31,11 +33,14 @@
               <input type="text" placeholder="Pesquisar" />
             </div>
 
-            <button class="button button--filtro"><span class="material-symbols-outlined">filter_alt</span> Filtros</button>
-            
-            <button id="filtro-favoritos" class="button button--favoritos"><span class="material-symbols-outlined">favorite</span> Favoritos</button>
+            <button class="button button--filtro"><span class="material-symbols-outlined">filter_alt</span>
+              Filtros</button>
 
-            <button class="button button--criar"><span class="material-symbols-outlined">add</span> Novo Procedimento</button>
+            <button id="filtro-favoritos" class="button button--favoritos"><span
+                class="material-symbols-outlined">favorite</span> Favoritos</button>
+
+            <button class="button button--criar"><span class="material-symbols-outlined">add</span> Novo
+              Procedimento</button>
           </div>
         </div>
 
@@ -44,12 +49,50 @@
             <thead>
               <tr>
                 <th scope="col">Procedimento</th>
-                <th scope="col">Etiquetas</th>
-                <th scope="col">Última Atualização</th>
-                <th scope="col">Status</th>
+
+                <th scope="col" class="filterable" data-filter-key="tipo" style="position: relative;">
+                  Tipo
+                  <button class="btn-filtro" aria-label="Filtrar Tipo" title="Filtrar Tipo" type="button">
+                    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                  </button>
+                  <div class="filtro-dropdown" aria-label="Filtro Tipo" role="menu" style="display:none;">
+                    <!-- opções Tipo aqui (JS irá inserir) -->
+                  </div>
+                </th>
+
+                <th scope="col" class="filterable" data-filter-key="etiquetas" style="position: relative;">
+                  Etiquetas
+                  <button class="btn-filtro" aria-label="Filtrar Etiquetas" title="Filtrar Etiquetas" type="button">
+                    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                  </button>
+                  <div class="filtro-dropdown" aria-label="Filtro Etiquetas" role="menu" style="display:none;">
+                    <!-- opções Etiquetas aqui -->
+                  </div>
+                </th>
+
+                <th scope="col" class="filterable" data-filter-key="ultimaAtualizacao" style="position: relative;">
+                  Última Atualização
+                  <button class="btn-filtro" aria-label="Filtrar Última Atualização" title="Filtrar Última Atualização"
+                    type="button">
+                    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                  </button>
+                  <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu" style="display:none;">
+                    <!-- opções Última Atualização aqui -->
+                  </div>
+                </th>
+
+                <th scope="col" class="filterable" data-filter-key="status" style="position: relative;">
+                  Status
+                  <button class="btn-filtro" aria-label="Filtrar Status" title="Filtrar Status" type="button">
+                    <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                  </button>
+                  <div class="filtro-dropdown" aria-label="Filtro Status" role="menu" style="display:none;">
+                    <!-- opções Status aqui -->
+                  </div>
+                </th>
+
                 <th scope="col">Ações</th>
               </tr>
-            </thead>
             <tbody id="tabela-procedimentos">
               <!-- Aqui o JS vai inserir as linhas -->
             </tbody>
@@ -62,36 +105,61 @@
   </div>
 
   <!-- Modal para criar e editar procedimento -->
-<div id="modal-procedimento" class="modal" style="display: none;">
-  <div class="modal-content">
-    <h2 id="tituloModal">Novo Procedimento <span id="fechar-modal" class="fechar">×</span></h2>
+  <div id="modal-procedimento" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2 id="tituloModal">Novo Procedimento <span id="fechar-modal" class="fechar">×</span></h2>
 
-    <form id="formProcedimento">
-      <label for="tituloProcedimento">Título:</label>
-      <input type="text" id="tituloProcedimento" name="titulo" required />
+      <form id="formProcedimento">
+        <label for="tituloProcedimento">Título:</label>
+        <input type="text" id="tituloProcedimento" name="titulo" required />
 
-      <label for="descricaoProcedimento">Descrição:</label>
-      <input type="text" id="descricaoProcedimento" name="descricao" />
+        <label for="tipoProcedimento">Tipo de procedimento:</label>
+        <select id="tipoProcedimento" name="tipo">
+          <option value="" disabled selected hidden>Selecione um tipo de procedimento</option>
+          <option value="IPT">IPT</option>
+          <option value="Fluxo">Fluxo</option>
+          <option value="Orientação">Orientação</option>
+          <option value="custom">+ Criar novo tipo...</option>
+        </select>
 
-      <label for="etiquetasProcedimento">Etiquetas:</label>
-      <input type="text" id="etiquetasProcedimento" name="etiquetas" placeholder="Digite as etiquetas separadas por vírgula" />
+        <!-- Campo oculto para novo tipo -->
+        <div id="custom-type-container" style="display: none;">
+          <label for="custom-type-input">Digite o novo tipo:</label>
+          <input type="text" id="custom-type-input" name="custom-type-input" />
+        </div>
 
-      <label for="statusProcedimento">Status:</label>
-      <select id="statusProcedimento" name="status" required>
-        <option value="Ativo">Ativo</option>
-        <option value="Inativo">Inativo</option>
-      </select>
+        <label for="descricaoProcedimento">Descrição:</label>
+        <input type="text" id="descricaoProcedimento" name="descricao" />
 
-      <label for="arquivoProcedimento">Arquivo:</label>
-      <input type="file" id="arquivoProcedimento" name="arquivo" />
+        <label for="etiquetasProcedimento">Etiquetas:</label>
+        <select id="etiquetasProcedimento" name="etiquetasProcedimento">
+          <option value="" disabled selected hidden>Selecione a(s) etiqueta(s)</option>
+          <option value="custom">+ Criar nova etiqueta...</option>
+        </select>
 
-      <div class="modal-buttons">
-        <button type="button" id="cancelar" class="button button--cancelar">Cancelar</button>
-        <button type="submit" id="salvar" class="button button--salvar">Salvar</button>
-      </div>
-    </form>
+        <!-- Campo oculto para nova etiqueta -->
+        <div id="custom-etiquetas-container" style="display: none;">
+          <label for="custom-etiquetas-input">Digite a nova etiqueta:</label>
+          <input type="text" id="custom-etiquetas-input" name="custom-etiquetas-input" />
+        </div>
+
+
+        <label for="statusProcedimento">Status:</label>
+        <select id="statusProcedimento" name="status" required>
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+        </select>
+
+        <label for="arquivoProcedimento">Arquivo:</label>
+        <input type="file" id="arquivoProcedimento" name="arquivo" />
+
+        <div class="modal-buttons">
+          <button type="button" id="cancelar" class="button button--cancelar">Cancelar</button>
+          <button type="submit" id="salvar" class="button button--salvar">Salvar</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
 
 

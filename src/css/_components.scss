@@ -112,6 +112,9 @@
   font-variation-settings: 'FILL' 1;
 }
 
+.favorito-ativo {
+  color: #b71c1c;
+}
 
 /* Estilos para titulos de seções */
 .title {
@@ -138,7 +141,7 @@
   border: 1px solid var(--color-background);
   border-radius: 8px;
   background-color: transparent;
-  color: var(--color-background);
+  color: var(--color-text);
   font-size: var(--font-size-text);
   width: 150px;
   min-width: 100px;
@@ -178,4 +181,75 @@
 .actions .material-symbols-outlined,
 .tarefa-dados .material-symbols-outlined {
   font-size: 22px;
+}
+
+/* Em seu arquivo CSS, por exemplo, src/css/style.css */
+
+.tag-input-container {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Espaço entre os chips */
+    align-items: center;
+    min-height: 40px; /* Altura mínima para o container */
+}
+
+.selected-tags-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag-chip {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.tag-chip .remove-tag {
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    margin-left: 5px;
+}
+
+.tag-chip .remove-tag:hover {
+    color: #ff0000;
+}
+
+#etiquetasInput {
+    flex-grow: 1; /* Permite que o input preencha o espaço restante */
+    border: none;
+    outline: none;
+    padding: 5px 0; /* Ajusta o padding para alinhar com os chips */
+    min-width: 100px; /* Garante que o input não fique muito pequeno */
+}
+
+.tag-suggestions-dropdown {
+    border: 1px solid #ddd;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute; /* Para que apareça sobre o conteúdo */
+    background-color: #fff;
+    z-index: 100; /* Garante que fique acima de outros elementos */
+    width: calc(100% - 2px); /* Largura igual ao container pai */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tag-suggestion-item {
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.tag-suggestion-item:hover {
+    background-color: #f0f0f0;
 }

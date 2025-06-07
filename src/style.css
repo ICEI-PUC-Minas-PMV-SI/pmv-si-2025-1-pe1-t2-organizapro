@@ -110,6 +110,10 @@
   font-variation-settings: "FILL" 1;
 }
 
+.favorito-ativo {
+  color: #b71c1c;
+}
+
 /* Estilos para titulos de seções */
 .title {
   font-size: var(--font-size-title);
@@ -295,29 +299,37 @@
 
 /* Tabela de procedimentos */
 .control-panel-table {
-  display: table;
+  position: relative;
+  overflow: visible; /* Manter visível para dropdowns fora do overflow */
 }
-.control-panel-table table {
+
+.control-panel-table table { /* Direcionar a tabela diretamente */
   display: table;
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .control-panel-table table th,
 .control-panel-table table td {
   padding: 12px 16px;
   text-align: left;
   font-size: 0.95rem;
+  /* Remover overflow: visible aqui, já está no table */
+  position: relative; /* Mantenha se precisar de elementos posicionados DENTRO da célula */
+  z-index: auto; /* Alterado: Remova o z-index ou defina como auto para não criar um stacking context "competitivo" */
 }
+
 .control-panel-table table th {
   background-color: white;
   border-bottom: 1px solid var(--color-background);
 }
+
 .control-panel-table table tr:hover {
-  background-color: white;
+  background-color: white; /* Considere um hover diferente, este não fará diferença */
 }
+
 .control-panel-table table .tag {
   background-color: var(--color-tertiary);
   color: var(--color-text);
@@ -326,9 +338,113 @@
   font-size: 0.75rem;
   margin-right: 5px;
 }
+
 .control-panel-table table .actions {
   display: flex;
   gap: 10px;
+}
+
+/* Container geral do dropdown */
+.filtro-dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  max-height: 240px;
+  overflow-y: auto;
+  min-width: 200px;
+  box-sizing: border-box;
+  z-index: 9999; /* Valor bem alto para garantir sobreposição */
+}
+
+/* Container da lista de filtros dentro do dropdown */
+.filtro-dropdown .filtro-opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}
+
+/* Última opção: remover margem inferior para evitar espaço extra */
+.filtro-dropdown .filtro-opcao:last-child {
+  margin-bottom: 0;
+}
+
+/* Checkbox escondido */
+.filtro-dropdown input[type=checkbox] {
+  display: none;
+}
+
+/* Checkmark personalizado */
+.filtro-dropdown .checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+/* Checkmark preenchido ao selecionar */
+.filtro-dropdown input[type=checkbox]:checked + .checkmark {
+  background-color: #007BFF;
+  border-color: #007BFF;
+}
+
+/* Ícone do "check" dentro da checkmark */
+.filtro-dropdown input[type=checkbox]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+/* Botão para limpar filtros no dropdown */
+.filtro-dropdown .filtro-limpar {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filtro-dropdown .filtro-limpar:hover {
+  background-color: #e0e0e0;
+}
+
+/* Scrollbar personalizada para o dropdown (opcional) */
+.filtro-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 /* Estilos para a barra superior */

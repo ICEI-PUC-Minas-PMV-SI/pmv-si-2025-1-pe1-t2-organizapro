@@ -110,6 +110,10 @@
   font-variation-settings: "FILL" 1;
 }
 
+.favorito-ativo {
+  color: #b71c1c;
+}
+
 /* Estilos para titulos de seções */
 .title {
   font-size: var(--font-size-title);
@@ -134,7 +138,7 @@
   border: 1px solid var(--color-background);
   border-radius: 8px;
   background-color: transparent;
-  color: var(--color-background);
+  color: var(--color-text);
   font-size: var(--font-size-text);
   width: 150px;
   min-width: 100px;
@@ -173,6 +177,76 @@
 .actions .material-symbols-outlined,
 .tarefa-dados .material-symbols-outlined {
   font-size: 22px;
+}
+
+/* Em seu arquivo CSS, por exemplo, src/css/style.css */
+.tag-input-container {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Espaço entre os chips */
+  align-items: center;
+  min-height: 40px; /* Altura mínima para o container */
+}
+
+.selected-tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag-chip {
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.tag-chip .remove-tag {
+  cursor: pointer;
+  font-weight: bold;
+  color: #666;
+  margin-left: 5px;
+}
+
+.tag-chip .remove-tag:hover {
+  color: #ff0000;
+}
+
+#etiquetasInput {
+  flex-grow: 1; /* Permite que o input preencha o espaço restante */
+  border: none;
+  outline: none;
+  padding: 5px 0; /* Ajusta o padding para alinhar com os chips */
+  min-width: 100px; /* Garante que o input não fique muito pequeno */
+}
+
+.tag-suggestions-dropdown {
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute; /* Para que apareça sobre o conteúdo */
+  background-color: #fff;
+  z-index: 100; /* Garante que fique acima de outros elementos */
+  width: calc(100% - 2px); /* Largura igual ao container pai */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tag-suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.tag-suggestion-item:hover {
+  background-color: #f0f0f0;
 }
 
 .favorites-section {
@@ -295,29 +369,37 @@
 
 /* Tabela de procedimentos */
 .control-panel-table {
-  display: table;
+  position: relative;
+  overflow: visible; /* Manter visível para dropdowns fora do overflow */
 }
-.control-panel-table table {
+
+.control-panel-table table { /* Direcionar a tabela diretamente */
   display: table;
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .control-panel-table table th,
 .control-panel-table table td {
   padding: 12px 16px;
   text-align: left;
   font-size: 0.95rem;
+  /* Remover overflow: visible aqui, já está no table */
+  position: relative; /* Mantenha se precisar de elementos posicionados DENTRO da célula */
+  z-index: auto; /* Alterado: Remova o z-index ou defina como auto para não criar um stacking context "competitivo" */
 }
+
 .control-panel-table table th {
   background-color: white;
   border-bottom: 1px solid var(--color-background);
 }
+
 .control-panel-table table tr:hover {
-  background-color: white;
+  background-color: white; /* Considere um hover diferente, este não fará diferença */
 }
+
 .control-panel-table table .tag {
   background-color: var(--color-tertiary);
   color: var(--color-text);
@@ -326,9 +408,128 @@
   font-size: 0.75rem;
   margin-right: 5px;
 }
+
 .control-panel-table table .actions {
   display: flex;
   gap: 10px;
+}
+
+/* Container geral do dropdown */
+.filtro-dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  max-height: 240px;
+  overflow-y: auto;
+  min-width: 200px;
+  box-sizing: border-box;
+  z-index: 9999; /* Valor bem alto para garantir sobreposição */
+}
+
+/* Container da lista de filtros dentro do dropdown */
+.filtro-dropdown .filtro-opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}
+
+/* Última opção: remover margem inferior para evitar espaço extra */
+.filtro-dropdown .filtro-opcao:last-child {
+  margin-bottom: 0;
+}
+
+/* Checkbox escondido */
+.filtro-dropdown input[type=checkbox] {
+  display: none;
+}
+
+/* Checkmark personalizado */
+.filtro-dropdown .checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+/* Checkmark preenchido ao selecionar */
+.filtro-dropdown input[type=checkbox]:checked + .checkmark {
+  background-color: #007BFF;
+  border-color: #007BFF;
+}
+
+/* Ícone do "check" dentro da checkmark */
+.filtro-dropdown input[type=checkbox]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+/* Botão para limpar filtros no dropdown */
+.filtro-dropdown .filtro-limpar {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filtro-dropdown .filtro-limpar:hover {
+  background-color: #e0e0e0;
+}
+
+/* Scrollbar personalizada para o dropdown (opcional) */
+.filtro-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* --- Estilos para as etiquetas na tabela (chips) --- */
+.tag-chip-table,
+.tag-chip,
+.tag-chip-view-modal {
+  background-color: var(--color-tertiary); /* Cor de fundo suave */
+  border-radius: 20px; /* Cantos levemente arredondados */
+  padding: 5px 8px; /* Espaçamento interno */
+  margin: 2px; /* Espaço entre os chips */
+  display: inline-block; /* Permite que estejam na mesma linha e tenham padding/margin */
+  font-size: 0.9em; /* Tamanho da fonte um pouco menor */
+  color: var(--color-text); /* Cor do texto */
+  white-space: nowrap; /* Evita que o texto da tag quebre */
+  line-height: 1; /* Para alinhar bem verticalmente */
 }
 
 /* Estilos para a barra superior */
@@ -401,8 +602,7 @@
 .card img {
   width: 100%;
   height: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
 
@@ -481,8 +681,7 @@
     height: 120px;
   }
   .card img {
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     height: 100%;
   }
   .texto-atualizacao-overlay h3 {
@@ -835,8 +1034,7 @@
 .news-img-right {
   width: 30%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .news-content-left {
@@ -932,6 +1130,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   position: relative;
   font-family: "Inter", sans-serif;
+  /* --- NOVAS PROPRIEDADES AQUI PARA RESPONSIVIDADE VERTICAL E ROLAGEM --- */
+  max-height: 90vh; /* Limita a altura máxima do modal a 90% da altura da viewport */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder max-height */
+  /* --- FIM NOVAS PROPRIEDADES --- */
 }
 
 /* Título do modal */
@@ -939,7 +1141,7 @@
   margin-top: 0;
   font-weight: 700;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
 }
 
 /* Botão fechar (X) */
@@ -951,9 +1153,8 @@
   font-weight: 700;
   color: #333;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
+  z-index: 1010; /* Garante que o botão fique acima do conteúdo do modal */
 }
 
 /* Labels e inputs do formulário */
@@ -967,21 +1168,161 @@
 
 .modal-content input[type=text],
 .modal-content select,
-.modal-content input[type=file] {
+.modal-content input[type=file],
+.modal-content textarea { /* <-- ADICIONADO AQUI: Estiliza o textarea também */
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.3rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
+  box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+}
+
+/* Estilos para o TinyMCE (editor de texto) */
+.tox-tinymce { /* Classe padrão do container do TinyMCE */
+  width: 100% !important; /* Força 100% de largura dentro do modal-content */
+  max-width: 100% !important;
+  box-sizing: border-box;
+  margin-top: 0.3rem; /* Espaçamento similar a outros inputs */
+}
+
+/* Estilos para o novo componente de Tags */
+.tag-input-container {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Espaço entre os chips */
+  align-items: center;
+  min-height: 40px; /* Altura mínima para o container */
+  margin-top: 0.3rem; /* Alinhamento com outros campos de formulário */
+  position: relative; /* Para o dropdown de sugestões */
   box-sizing: border-box;
 }
 
-/* Responsividade simples */
+.selected-tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/*.tag-chip {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    color: #333;
+    white-space: nowrap;
+}*/
+.tag-chip .remove-tag {
+  cursor: pointer;
+  font-weight: bold;
+  color: #666;
+  margin-left: 5px;
+}
+
+.tag-chip .remove-tag:hover {
+  color: #ff0000;
+}
+
+#etiquetasInput {
+  flex-grow: 1; /* Permite que o input preencha o espaço restante */
+  border: none;
+  outline: none;
+  padding: 5px 0;
+  min-width: 100px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.tag-suggestions-dropdown {
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute; /* Para que apareça sobre o conteúdo */
+  background-color: #fff;
+  z-index: 1010; /* Mais alto que o modal (1000) e o modal-content (se tiver z-index) */
+  width: calc(100% + 2px); /* Para cobrir a borda do container pai */
+  left: -1px; /* Ajuste para alinhar perfeitamente com a borda do container */
+  top: 100%; /* Posiciona logo abaixo do container pai */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4px 4px;
+}
+
+.tag-suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.tag-suggestion-item:last-child {
+  border-bottom: none; /* Remove borda do último item */
+}
+
+.tag-suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilos para o modal de visualização */
+.modal-body-view {
+  line-height: 1.6;
+}
+
+.modal-body-view .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-body-view label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.modal-body-view p {
+  margin: 0;
+  padding: 5px 10px; /* Padding ajustado para visualização */
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  word-wrap: break-word; /* Quebra texto longo */
+  white-space: pre-wrap; /* Preserva espaços e quebras de linha do HTML (TinyMCE) */
+}
+
+.modal-body-view a {
+  display: inline-block;
+  margin-top: 5px;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.modal-body-view a:hover {
+  color: #0056b3;
+}
+
+/* Responsividade geral (já existia) */
 @media (max-width: 480px) {
   .modal-content {
-    padding: 1.5rem;
+    padding: 1rem; /* Ajuste para telas menores */
     width: 95%;
+    max-height: 95vh; /* Pode ser um pouco maior para telas muito pequenas */
+  }
+  .modal-content h2 {
+    font-size: 1.2rem;
+  }
+  .fechar {
+    font-size: 1.2rem;
+  }
+  .tag-chip {
+    font-size: 0.8em;
+    padding: 4px 8px;
   }
 }
 /* Reset base */
@@ -1057,4 +1398,6 @@ body {
   margin-top: var(--altura-header);
   gap: 20px;
   padding: 20px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
