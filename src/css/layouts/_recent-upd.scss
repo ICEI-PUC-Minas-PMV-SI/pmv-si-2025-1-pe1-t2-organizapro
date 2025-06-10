@@ -66,3 +66,40 @@
 .texto-atualizacao {
   display: none;
 }
+
+/* Responsividade para a Seção de Atualizações */
+@media (max-width: 768px) {
+    .section-atualizacoes {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .image-container {
+        position: relative;
+        height: 120px;
+    }
+
+    .card img {
+        object-fit: cover;
+        height: 100%;
+    }
+
+    .texto-atualizacao-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .texto-atualizacao-overlay small {
+        font-size: 0.75rem;
+    }
+}

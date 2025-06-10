@@ -1,0 +1,16 @@
+// css/components/_badge.scss
+
+.badge {
+    display: inline-block;
+    min-width: 1em;
+    padding: .25em .6em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .375rem;
+    background-color: #dc3545;
+    color: white;
+}

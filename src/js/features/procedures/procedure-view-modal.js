@@ -1,14 +1,18 @@
+// procedure-view-modal.js:
 import { obterProcedimentoPorId } from './procedure-data.js';
 import { createModalController } from '../../core/modal.js';
 import { formatarDataParaBR } from '../../utils/formatters.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
+import { obterHistoricoCompleto, obterProcedimentos } from './procedure-data.js';
 
-let modalVisualizar, fecharVisualizarModalBtn, fecharVisualizarBtn;
+let fecharVisualizarModalBtn, fecharVisualizarBtn;
 let visualizarTitulo, visualizarDescricao, visualizarTipo, visualizarEtiquetas;
 let visualizarStatus, visualizarUltimaAtualizacao, visualizarArquivoLink, visualizarArquivoNome, visualizarSemArquivo;
+let btnHistorico;
 let viewModalController = null;
+let modalVisualizar = null;
 
-export function abrirModalVisualizacao(procedimentoId) {
+export async function abrirModalVisualizacao(procedimentoId, procedimentoIdOriginal = null) {
     if (!viewModalController) {
         console.error("Modal de visualização não inicializado. Chame initProcedureViewModal() primeiro.");
         alert("Modal de visualização não está pronto. Recarregue a página.");
@@ -43,6 +47,42 @@ export function abrirModalVisualizacao(procedimentoId) {
         visualizarSemArquivo.style.display = 'block';
     }
 
+    if (btnHistorico) {
+        const todosProcedimentos = obterProcedimentos();
+        const historico = obterHistoricoCompleto(procedimento, todosProcedimentos);
+
+        if (procedimentoIdOriginal) {
+            btnHistorico.textContent = 'Voltar ao histórico';
+            btnHistorico.style.display = 'inline-block';
+            btnHistorico.onclick = async () => {
+                fecharModalVisualizacao();
+                try {
+                    const { abrirModalHistoricoVersoes } = await import('./procedure-version-modal.js');
+                    abrirModalHistoricoVersoes(procedimentoIdOriginal);
+                } catch (error) {
+                    console.error('Erro ao abrir modal histórico:', error);
+                    alert('Não foi possível abrir o histórico de versões.');
+                }
+            };
+        } else if (historico.length > 0) {
+            btnHistorico.textContent = 'Ver histórico de versões';
+            btnHistorico.style.display = 'inline-block';
+            btnHistorico.onclick = async () => {
+                fecharModalVisualizacao();
+                try {
+                    const { abrirModalHistoricoVersoes } = await import('./procedure-version-modal.js');
+                    abrirModalHistoricoVersoes(procedimento.id);
+                } catch (error) {
+                    console.error('Erro ao abrir versões vinculadas:', error);
+                    alert('Não foi possível abrir as versões vinculadas.');
+                }
+            };
+        } else {
+            btnHistorico.style.display = 'none';
+            btnHistorico.onclick = null;
+        }
+    }
+
     viewModalController.abrir();
 }
 
@@ -62,6 +102,11 @@ function fecharModalVisualizacao() {
     visualizarArquivoLink.style.display = 'none';
     if (visualizarArquivoNome) visualizarArquivoNome.style.display = 'none';
     visualizarSemArquivo.style.display = 'block';
+
+    if (btnHistorico) {
+        btnHistorico.style.display = 'none';
+        btnHistorico.onclick = null;
+    }
 }
 
 export function initProcedureViewModal() {
@@ -69,6 +114,14 @@ export function initProcedureViewModal() {
     if (!viewModalController) {
         console.error("Falha ao inicializar controlador do modal de visualização.");
         return;
+    }
+
+    btnHistorico = document.getElementById('btnHistorico');
+    if (btnHistorico) {
+        btnHistorico.style.display = 'none';
+        console.log("Botão btnHistorico inicializado e oculto.");
+    } else {
+        console.error("ERRO: Botão com ID 'btnHistorico' não encontrado no DOM.");
     }
 
     modalVisualizar = document.getElementById('modal-visualizar-procedimento');
@@ -86,7 +139,7 @@ export function initProcedureViewModal() {
 
     fecharVisualizarModalBtn?.addEventListener('click', fecharModalVisualizacao);
     fecharVisualizarBtn?.addEventListener('click', fecharModalVisualizacao);
-}
+} 
 
 function renderizarEtiquetasVisuaisAsChips(etiquetasArray) {
     if (!Array.isArray(etiquetasArray) || etiquetasArray.length === 0) return "indefinido";
@@ -96,6 +149,6 @@ function renderizarEtiquetasVisuaisAsChips(etiquetasArray) {
 
     return tagsValidas.map(tag => {
         const tagColor = getTagColor(tag);
-        return `<span class="tag-chip-view-modal" style="background-color: ${tagColor};">${tag}</span>`;
+        return `<span class="tag" style="background-color: ${tagColor};">${tag}</span>`;
     }).join(' ');
 }

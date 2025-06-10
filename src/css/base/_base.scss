@@ -1,0 +1,40 @@
+// css/base/_base.scss
+
+@use 'variables';
+
+html,
+body {
+    display: flex;
+    background-color: variables.$color-background;
+    font-family: variables.$font-family;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: calc(100% - variables.$largura-sidebar);
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: variables.$altura-header;
+    margin-left: variables.$largura-sidebar;
+    gap: 20px;
+    padding: 20px;
+
+    @media (max-width: variables.$breakpoint-tablet) {
+        margin-left: 0;
+        padding: 15px;
+        gap: 15px;
+        margin-top: variables.$altura-header;
+    }
+}

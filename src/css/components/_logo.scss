@@ -1,0 +1,18 @@
+// css/components/_logo.scss
+
+@use '../base/variables';
+
+.logo {
+    text-decoration: none;
+    color: variables.$color-text-alt;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size-logo;
+    font-weight: 700;
+
+    &:visited,
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: variables.$color-text-alt;
+    }
+}

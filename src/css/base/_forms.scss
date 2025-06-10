@@ -1,0 +1,21 @@
+// css/base/_forms.scss
+
+/* Labels e inputs do formulário - estilos base */
+label { 
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input[type="text"],
+select,
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}

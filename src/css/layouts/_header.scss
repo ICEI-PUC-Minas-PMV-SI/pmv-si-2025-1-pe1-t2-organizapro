@@ -1,0 +1,65 @@
+// css/layout/_header.scss
+
+@use '../base/variables';
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: variables.$altura-header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: variables.$color-primary;
+    z-index: 1000;
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: variables.$color-text-alt;
+}
+
+    @media (max-width: variables.$breakpoint-tablet) { 
+        padding: 0 15px;
+        height: 50px;
+
+        .header-logo {
+            .logo {
+                font-size: 20px;
+            }
+        }
+
+        .header-actions {
+            gap: 5px;
+
+            .search-bar {
+                display: none;
+            }
+
+            .material-symbols-outlined {
+                font-size: 20px;
+            }
+
+            button:first-child .material-symbols-outlined {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: variables.$breakpoint-mobile) { 
+        padding: 0 10px;
+
+        .header-actions {
+            .material-symbols-outlined:nth-last-child(-n+3) {
+                display: none;
+            }
+        }
+    }
+}

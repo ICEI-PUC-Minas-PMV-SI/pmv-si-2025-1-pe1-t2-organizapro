@@ -4,7 +4,7 @@ import {
     obterTiposUnicos,
     salvarProcedimento,
     obterProcedimentoPorId,
-    criarNovaVersaoProcedimento
+    criarNovaVersaoComHistorico,
 } from './procedure-data.js';
 import { atualizarTabela } from '../../features/common/filter-controls.js';
 import { initTagInputComponent } from '../../features/common/tag-input-component.js';
@@ -128,7 +128,7 @@ async function handleSaveProcedimento(event) {
         const criarNovaVersao = confirm("Deseja criar uma nova versão deste procedimento?");
 
         if (criarNovaVersao) {
-            const novaVersao = criarNovaVersaoProcedimento(currentEditId, dadosDoFormulario);
+            const novaVersao = await criarNovaVersaoComHistorico(currentEditId, dadosDoFormulario);
             if (novaVersao) {
                 alert("Nova versão do procedimento criada e a anterior inativada com sucesso!");
             } else {

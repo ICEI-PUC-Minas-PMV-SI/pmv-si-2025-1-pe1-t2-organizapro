@@ -1,8 +1,10 @@
+import { initLogin } from '/src/js/pages/login.js';
 import { loadHTML } from './utils/include-loader.js';
 import { initProcedureForm } from './features/procedures/procedure-form.js';
 import { initProcedureTable } from './features/procedures/procedure-table.js';
 import { atualizarTabela, initFilterControls } from './features/common/filter-controls.js';
 import { initProcedureViewModal } from './features/procedures/procedure-view-modal.js';
+import { initProcedureVersionHistoryModal } from './features/procedures/procedure-version-modal.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const path = window.location.pathname;
@@ -17,31 +19,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     { name: 'tasks', targetId: 'tasks', filePath: 'includes/widgets/tasks.html' }
   ];
 
-  if (path.includes('pg-control-panel.html')) {
+  if (path.includes('control-panel.html')) {
     includes.push(
       { name: 'modal-form-procedure', targetId: 'modal-form-procedure-placeholder', filePath: `${modalBasePath}modal-form-procedure.html` },
-      { name: 'modal-view-procedure', targetId: 'modal-view-procedure-placeholder', filePath: `${modalBasePath}modal-view-procedure.html` }
+      { name: 'modal-view-procedure', targetId: 'modal-view-procedure-placeholder', filePath: `${modalBasePath}modal-view-procedure.html` },
+      { name: 'modal-version-procedure', targetId: 'modal-version-procedure-placeholder', filePath: `${modalBasePath}modal-version-procedure.html` }
     );
   }
 
   await Promise.all(
-  includes.map(({ name, targetId, filePath }) => {
-    const el = document.getElementById(targetId);
-    if (!el) {
-      console.warn(`Elemento #${targetId} não encontrado, pulando ${name}.`);
-      return Promise.resolve();
-    }
-    return loadHTML(targetId, filePath)
-      .then(() => {
-        if (name === 'modal-form-procedure') initProcedureForm();
-        if (name === 'modal-view-procedure') initProcedureViewModal();
-      })
-      .catch(e => console.error(`Erro ao carregar ${name}:`, e));
-  })
-);
+    includes.map(({ name, targetId, filePath }) => {
+      const el = document.getElementById(targetId);
+      if (!el) {
+        console.warn(`Elemento #${targetId} não encontrado, pulando ${name}.`);
+        return Promise.resolve();
+      }
+      return loadHTML(targetId, filePath)
+        .then(() => {
+          if (name === 'modal-form-procedure') initProcedureForm();
+          if (name === 'modal-view-procedure') initProcedureViewModal();
+          if (name === 'modal-version-procedure') initProcedureVersionHistoryModal();
+        })
+        .catch(e => console.error(`Erro ao carregar ${name}:`, e));
+    })
+  );
 
+  if (path.includes('login.html')) {
+  await loadHTML('login-form-container', '/src/pages/login.html');
+  initLogin();
+}
 
-  if (path.includes('pg-control-panel.html')) {
+  if (path.includes('control-panel.html')) {
     initProcedureTable();
     initFilterControls();
     atualizarTabela();

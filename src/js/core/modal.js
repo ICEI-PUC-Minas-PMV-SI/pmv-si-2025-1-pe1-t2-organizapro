@@ -13,37 +13,62 @@ export function createModalController(modalId, titleId) {
 
     let _clearContentCallback = null;
 
+    function onKeyDown(e) {
+        if (e.key === "Escape") {
+            fechar();
+        }
+    }
+
+    function onOverlayClick(e) {
+        if (e.target === element) {
+            fechar();
+        }
+    }
+
+    function abrir() {
+        element.style.display = "flex";
+        element.scrollTop = 0;
+        element.setAttribute('aria-hidden', 'false');
+        element.focus();
+        document.addEventListener("keydown", onKeyDown);
+        element.addEventListener("click", onOverlayClick);
+        console.log(`Modal com ID "${modalId}" aberto.`);
+    }
+
+    function fechar() {
+        element.style.display = "none";
+        element.setAttribute('aria-hidden', 'true');
+        document.removeEventListener("keydown", onKeyDown);
+        element.removeEventListener("click", onOverlayClick);
+        dispararLimpeza();
+        console.log(`Modal com ID "${modalId}" fechado.`);
+    }
+
+    function setTitulo(texto) {
+        titleElement.textContent = texto;
+    }
+
+    function definirCallbackDeLimpeza(callback) {
+        if (typeof callback === "function") {
+            _clearContentCallback = callback;
+        } else {
+            console.error("O callback de limpeza precisa ser uma função.");
+            _clearContentCallback = null;
+        }
+    }
+
+    function dispararLimpeza() {
+        if (typeof _clearContentCallback === "function") {
+            _clearContentCallback();
+        }
+    }
+
     return {
-        abrir: function () {
-            element.style.display = "flex";
-            element.scrollTop = 0;
-            console.log(`Modal com ID "${modalId}" aberto.`);
-        },
-
-        fechar: function () {
-            element.style.display = "none";
-            console.log(`Modal com ID "${modalId}" fechado.`);
-        },
-
-        setTitulo: function (texto) {
-            titleElement.textContent = texto;
-        },
-
-        definirCallbackDeLimpeza: function (callback) {
-            if (typeof callback === "function") {
-                _clearContentCallback = callback;
-            } else {
-                console.error("O callback de limpeza precisa ser uma função.");
-                _clearContentCallback = null;
-            }
-        },
-
-        dispararLimpeza: function () {
-            if (typeof _clearContentCallback === "function") {
-                _clearContentCallback();
-            }
-        },
-
+        abrir,
+        fechar,
+        setTitulo,
+        definirCallbackDeLimpeza,
+        dispararLimpeza,
         element,
         titleElement
     };

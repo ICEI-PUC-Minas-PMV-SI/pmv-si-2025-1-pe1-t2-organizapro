@@ -1,0 +1,106 @@
+// css/components/_dropdown.scss
+
+@use '../base/variables';
+
+.filtro-dropdown {
+    position: absolute;
+    background-color: variables.$color-text-alt;
+    border: 1px solid variables.$color-background;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+    max-height: 280px;
+    overflow-y: auto;
+    min-width: 220px;
+    box-sizing: border-box;
+    z-index: 9999;
+    margin-bottom: 10px;
+}
+
+.filtro-opcao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: variables.$font-size-text;
+    color: variables.$color-text;
+    user-select: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        background-color: variables.$color-background;
+        color: variables.$color-primary;
+    }
+}
+
+.filtro-dropdown input[type="checkbox"] {
+    display: none;
+}
+
+.filtro-dropdown .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid variables.$color-secondary;
+    border-radius: 5px;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.filtro-dropdown input[type="checkbox"]:checked + .checkmark {
+    background-color: variables.$color-primary;
+    border-color: variables.$color-primary;
+}
+
+.filtro-dropdown input[type="checkbox"]:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.filtro-dropdown .filtro-limpar {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: variables.$color-background;
+    border: 1px solid variables.$color-background;
+    border-radius: 6px;
+    font-size: 14px;
+    color: variables.$color-text;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        background-color: lighten(variables.$color-background, 5%);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.filtro-dropdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-track {
+    background: variables.$color-background;
+    border-radius: 4px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb {
+    background: variables.$color-secondary;
+    border-radius: 4px;
+}
+
+.filtro-dropdown::-webkit-scrollbar-thumb:hover {
+    background: darken(variables.$color-secondary, 10%);
+}

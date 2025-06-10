@@ -965,12 +965,7 @@ table tr:hover {
 
 .login-body {
   font-family: "Inter", sans-serif;
-  background: #1B304B;
-  background: -webkit-linear-gradient(90deg, rgb(27, 48, 75) 0%, rgb(37, 68, 106) 35%, rgb(164, 211, 230) 100%);
-  background: -moz-linear-gradient(90deg, rgb(27, 48, 75) 0%, rgb(37, 68, 106) 35%, rgb(164, 211, 230) 100%);
-  background: linear-gradient(90deg, rgb(27, 48, 75) 0%, rgb(37, 68, 106) 35%, rgb(164, 211, 230) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1B304B", endColorstr="#A4D3E6", GradientType=1);
-  background-blend-mode: overlay;
+  background: linear-gradient(135deg, #25446a, #1b304b);
   height: 100vh;
   margin: 0;
   display: flex;
@@ -990,10 +985,12 @@ table tr:hover {
   box-sizing: border-box;
 }
 
-.login-h1 {
-  margin: 10px 0px 20px 0px;
+.login-h2 {
+  margin-bottom: 1.8rem;
   color: #1b304b;
   text-align: center;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .input-group {
@@ -1028,7 +1025,7 @@ table tr:hover {
   position: relative;
 }
 
-.password-wrapper .material-symbols-outlined {
+.toggle-icon {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -1038,7 +1035,7 @@ table tr:hover {
   font-size: 1.2rem;
   transition: color 0.2s ease;
 }
-.password-wrapper .material-symbols-outlined:hover {
+.toggle-icon:hover {
   color: #1b304b;
 }
 

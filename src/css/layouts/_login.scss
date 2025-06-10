@@ -1,0 +1,154 @@
+// css/pages/_login.scss
+
+@use '../base/variables';
+
+.login-body {
+    font-family: variables.$font-family;
+    background: #1B304B;
+    background: -webkit-linear-gradient(90deg, rgba(27, 48, 75, 1) 0%, rgba(37, 68, 106, 1) 35%, rgba(164, 211, 230, 1) 100%);
+    background: -moz-linear-gradient(90deg, rgba(27, 48, 75, 1) 0%, rgba(37, 68, 106, 1) 35%, rgba(164, 211, 230, 1) 100%);
+    background: linear-gradient(90deg, rgba(27, 48, 75, 1) 0%, rgba(37, 68, 106, 1) 35%, rgba(164, 211, 230, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1B304B", endColorstr="#A4D3E6", GradientType=1);
+    background-blend-mode: overlay;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: variables.$color-text;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: variables.$color-text-alt;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.login-h1 {
+    margin: 10px 0px 20px 0px;
+    color: variables.$color-primary;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.6rem;
+        color: variables.$color-text;
+        font-size: variables.$font-size-text;
+        font-weight: 600;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 0.9rem;
+        border-radius: 8px;
+        border: 1px solid variables.$color-background;
+        font-size: variables.$font-size-text;
+        color: variables.$color-text;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus {
+            border-color: variables.$color-secondary;
+            box-shadow: 0 0 0 3px rgba(variables.$color-secondary, 0.2);
+            outline: none;
+        }
+    }
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .material-symbols-outlined {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: variables.$color-secondary;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: variables.$color-primary;
+    }
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.8rem;
+    font-size: 0.9rem;
+    color: variables.$color-text;
+}
+
+.options a {
+    color: variables.$color-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: variables.$color-primary;
+        text-decoration: underline;
+    }
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: variables.$color-primary;
+    color: variables.$color-text-alt;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+        background-color: variables.$color-secondary;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+        background-color: darken(variables.$color-primary, 5%);
+    }
+}
+
+
+.error-message {
+    margin-top: 1.2rem;
+    color: #dc3545;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+// Estilos para um link de "Registrar-se" abaixo do botão
+.register-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+
+    a {
+        color: variables.$color-secondary;
+        text-decoration: none;
+
+        &:hover {
+            color: variables.$color-primary;
+            text-decoration: underline;
+        }
+    }
+}

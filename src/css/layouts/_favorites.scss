@@ -1,0 +1,104 @@
+// sass/layout/_favorites.scss
+
+@use '../base/variables';
+@use '../components/buttons'; 
+@use '../components/icons';  
+
+.favorites-section {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        padding: 15px;
+        gap: 15px;
+    }
+}
+
+.favorites-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.favorite-card {
+    display: flex;
+    background-color: variables.$color-background;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: 1px solid variables.$color-background;
+    border-radius: 10px;
+    padding: 5px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 23%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        min-width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+    }
+}
+
+.favorite-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.favorite-name {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size-text;
+    font-weight: 300;
+    color: variables.$color-text;
+}
+
+.favorite-actions {
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+    margin-left: auto;
+
+    .button {
+        font-size: 0.9rem;
+        padding: 6px;
+        color: #777;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: #333;
+        }
+
+        &.remove-button .material-symbols-outlined {
+            color: #e44d26;
+            font-variation-settings: 'FILL' 1;
+        }
+    }
+
+    .view-button {
+        display: none;
+    }
+}

@@ -1,0 +1,37 @@
+// css/layout/_control-panel.scss
+
+@use '../base/variables'; 
+
+.control-panel-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    font-family: variables.$font-family;
+    font-size: variables.$font-size-text;
+    color: variables.$color-text;
+}
+
+.control-panel-header {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+}
+
+.control-panel-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}

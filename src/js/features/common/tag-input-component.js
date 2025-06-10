@@ -3,7 +3,7 @@ import { getTagColor } from '/src/js/utils/color-helpers.js';
 
 function createTagChip(tagText, tagColor) {
     const chip = document.createElement('div');
-    chip.classList.add('tag-chip');
+    chip.classList.add('tag');
     chip.dataset.tag = tagText;
     chip.style.backgroundColor = tagColor;
 
@@ -19,7 +19,7 @@ function createTagChip(tagText, tagColor) {
     return chip;
 }
 
-export function initTagInputComponent(inputElementId, displayContainerId, suggestionsDropdownId, parentContainerId, onChangeCallback = () => {}) {
+export function initTagInputComponent(inputElementId, displayContainerId, suggestionsDropdownId, parentContainerId, onChangeCallback = () => { }) {
     const tagInput = document.getElementById(inputElementId);
     const selectedTagsDisplay = document.getElementById(displayContainerId);
     const suggestionsDropdown = document.getElementById(suggestionsDropdownId);
@@ -104,12 +104,25 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
     });
 
     tagInput.addEventListener('focus', () => {
-        updateSuggestions(tagInput.value);
+        updateSuggestions('');
+    });
+
+    tagInputContainer.addEventListener('mouseenter', () => {
+        if (document.activeElement !== tagInput && tagInput.value.trim() === '') {
+            updateSuggestions('');
+            suggestionsDropdown.style.display = 'block';
+        }
+    });
+
+    tagInputContainer.addEventListener('mouseleave', () => {
+        if (document.activeElement !== tagInput) {
+            suggestionsDropdown.style.display = 'none';
+        }
     });
 
     tagInputContainer.addEventListener('click', (e) => {
         if (e.target !== tagInput &&
-            !e.target.closest('.tag-chip') &&
+            !e.target.closest('.tag') &&
             !e.target.closest('.tag-suggestion-item') &&
             document.activeElement !== tagInput) {
             tagInput.focus();
@@ -123,17 +136,18 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
         }
     });
 
-    suggestionsDropdown.addEventListener('click', (e) => {
+    suggestionsDropdown.addEventListener('mousedown', (e) => {
         const item = e.target.closest('.tag-suggestion-item');
         if (item) {
             addTag(item.dataset.tag);
         }
     });
 
+
     selectedTagsDisplay.addEventListener('click', (e) => {
         const removeBtn = e.target.closest('.remove-tag');
         if (removeBtn) {
-            const chip = removeBtn.closest('.tag-chip');
+            const chip = removeBtn.closest('.tag');
             if (chip) {
                 removeTag(chip.dataset.tag);
             }
@@ -142,7 +156,9 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
 
     tagInput.addEventListener('blur', () => {
         setTimeout(() => {
-            suggestionsDropdown.style.display = 'none';
+            if (!suggestionsDropdown.contains(document.activeElement)) {
+                suggestionsDropdown.style.display = 'none';
+            }
         }, 150);
     });
 

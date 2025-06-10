@@ -90,8 +90,23 @@ export function arquivarProcedimento(id) {
         return;
     }
 
-    lista[index].arquivado = true;
+    lista[index].inativo = true;
     lista[index].status = "Inativo";
+    lista[index].ultimaAtualizacao = new Date().toISOString().split('T')[0];
+
+    salvarProcedimentos(lista);
+}
+
+export function desarquivarProcedimento(id) {
+    const lista = obterProcedimentos();
+    const index = obterIndicePorId(id);
+    if (index === -1) {
+        console.warn(`Procedimento com ID ${id} não encontrado para desarquivamento.`);
+        return;
+    }
+
+    lista[index].inativo = false;
+    lista[index].status = "Ativo";
     lista[index].ultimaAtualizacao = new Date().toISOString().split('T')[0];
 
     salvarProcedimentos(lista);
@@ -115,7 +130,7 @@ export function salvarProcedimento(dados, editId = null) {
         ...dados,
         etiquetas: etiquetasProcessadas,
         ultimaAtualizacao: dataAtual,
-        arquivado: dados.status && dados.status.toLowerCase() === "inativo",
+        inativo: dados.status && dados.status.toLowerCase() === "Inativo",
     };
 
     if (editId) {
@@ -153,78 +168,88 @@ export function duplicarProcedimento(id) {
         titulo: original.titulo,
         ultimaAtualizacao: new Date().toISOString().split('T')[0],
         favorito: false,
-        arquivado: false,
+        inativo: false,
     };
 }
 
-function obterProximaVersao(tituloBase, listaProcedimentos) {
-    let maiorVersao = 0;
-
-    listaProcedimentos.forEach(proc => {
-        const regexVersao = /\s*\(versão\s*(\d+)\)$/i;
-        const match = proc.titulo?.match(regexVersao);
-
-        let procTituloBase = (proc.titulo || "").replace(regexVersao, '').trim();
-
-        if (procTituloBase === tituloBase) {
-            if (match) {
-                const versao = parseInt(match[1], 10);
-                if (!isNaN(versao) && versao > maiorVersao) {
-                    maiorVersao = versao;
-                }
-            } else {
-                if (maiorVersao < 1) {
-                    maiorVersao = 1;
-                }
-            }
-        }
-    });
-
-    return maiorVersao + 1;
+function obterProximaVersao(filtro, lista) {
+  const relacionados = lista.filter(filtro);
+  const versoes = relacionados.map(p => p.versao || 1);
+  const maxVersao = versoes.length ? Math.max(...versoes) : 0;
+  return maxVersao + 1;
 }
 
-export function criarNovaVersaoProcedimento(originalId, novosDados) {
-    const lista = obterProcedimentos();
-    const indexOriginal = lista.findIndex(p => p.id === originalId);
+export async function criarNovaVersaoComHistorico(originalId, novosDados) {
+  const lista = obterProcedimentos();
+  const indexOriginal = lista.findIndex(p => p.id === originalId);
 
-    if (indexOriginal === -1) {
-        console.warn(`Procedimento original com ID ${originalId} não encontrado para criar nova versão.`);
-        return null;
-    }
+  if (indexOriginal === -1) {
+    console.warn(`Procedimento original com ID ${originalId} não encontrado.`);
+    return null;
+  }
 
-    const procedimentoOriginal = lista[indexOriginal];
-    const dataAtual = new Date().toISOString().split('T')[0];
+  const procedimentoOriginal = lista[indexOriginal];
+  const dataAtual = new Date().toISOString().split('T')[0];
 
-    procedimentoOriginal.status = "Inativo";
-    procedimentoOriginal.arquivado = true;
-    procedimentoOriginal.ultimaAtualizacao = dataAtual;
+  // Obtém a próxima versão para numerar corretamente o novo procedimento
+  const novaVersaoNumero = obterProximaVersao(p => p.idPai === originalId || p.id === originalId, lista);
 
-    const tituloBase = (procedimentoOriginal.titulo || "").replace(/\s*\(versão\s*\d+\)$/i, "").trim();
+  // Atualiza procedimento original para inativo
+  procedimentoOriginal.status = "Inativo";
+  procedimentoOriginal.inativo = true;
+  procedimentoOriginal.favorito = false;
+  procedimentoOriginal.ultimaAtualizacao = dataAtual;
 
-    const novaVersaoNumero = obterProximaVersao(tituloBase, lista);
+  // Inicializa array de versões filhas, se não existir
+  if (!Array.isArray(procedimentoOriginal.versoesFilhas)) {
+    procedimentoOriginal.versoesFilhas = [];
+  }
 
-    const etiquetasProcessadas = Array.isArray(novosDados.etiquetas)
-        ? [...new Set(novosDados.etiquetas.filter(e => e && typeof e === 'string' && e.trim() !== '').map(e => e.trim()))]
-        : [];
+  // Cria o novo procedimento (nova versão) com novo ID e link para o pai
+  const novoProcedimento = {
+    ...novosDados,
+    id: gerarId(),
+    titulo: novosDados.titulo || procedimentoOriginal.titulo,
+    versao: novaVersaoNumero,
+    idPai: originalId,
+    status: "Ativo",
+    inativo: false,
+    favorito: false,
+    ultimaAtualizacao: dataAtual,
+    dataCriacao: dataAtual,
+    etiquetas: Array.isArray(novosDados.etiquetas)
+      ? [...new Set(novosDados.etiquetas.map(e => e.trim()))]
+      : [],
+    versoesFilhas: [], // nova versão começa sem filhas
+  };
 
-    const novoProcedimento = {
-        ...novosDados,
-        id: gerarId(),
-        titulo: `${tituloBase} (versão ${novaVersaoNumero})`,
-        versao: novaVersaoNumero,
-        status: "Ativo",
-        ultimaAtualizacao: dataAtual,
-        dataCriacao: dataAtual,
-        favorito: false,
-        arquivado: false,
-        etiquetas: etiquetasProcessadas,
-    };
+  // Atualiza lista
+  lista[indexOriginal] = procedimentoOriginal;
+  lista.push(novoProcedimento);
 
-    lista.push(novoProcedimento);
-    salvarProcedimentos(lista);
+  // Adiciona nova versão ao array do pai
+  procedimentoOriginal.versoesFilhas.push(novoProcedimento.id);
 
-    return novoProcedimento;
+  salvarProcedimentos(lista);
+
+  return novoProcedimento;
 }
+
+export function obterHistoricoCompleto(procedimento, listaProcedimentos) {
+  if (!procedimento.idPai) {
+    // Procedimento principal: pega ele + filhas
+    const filhas = (procedimento.versoesFilhas || []).map(id => listaProcedimentos.find(p => p.id === id)).filter(Boolean);
+    return [procedimento, ...filhas];
+  } else {
+    // Procedimento versão filha: pega pai + todas filhas dele
+    const pai = listaProcedimentos.find(p => p.id === procedimento.idPai);
+    if (!pai) return [procedimento];
+
+    const filhas = (pai.versoesFilhas || []).map(id => listaProcedimentos.find(p => p.id === id)).filter(Boolean);
+    return [pai, ...filhas];
+  }
+}
+
 
 export function obterProcedimentosFiltrados(filtros = {}) {
     const procedimentos = obterProcedimentos();

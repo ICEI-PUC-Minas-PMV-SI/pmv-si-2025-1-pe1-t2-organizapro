@@ -1,0 +1,59 @@
+// css/components/_icons.scss
+
+@use '../base/variables'; 
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    vertical-align: middle;
+}
+
+.material-symbols-outlined:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.button .material-symbols-outlined,
+.actions .material-symbols-outlined,
+.tarefa-dados .material-symbols-outlined {
+    font-size: 22px;
+}
+
+.button--favoritos .material-symbols-outlined {
+    font-variation-settings: "FILL" 0;
+    color: white;
+    transition: font-variation-settings 0.3s ease, color 0.3s ease;
+}
+
+.button--favoritos.ativo .material-symbols-outlined {
+    font-variation-settings: "FILL" 1;
+    color: white;
+}
+
+.favorite-actions .material-symbols-outlined {
+    align-content: center;
+    font-size: 20px;
+    color: #b71c1c;
+    font-variation-settings: 'FILL' 1;
+}
+
+.favorito-ativo {
+    color: #b71c1c;
+}
+
+.header-actions .material-symbols-outlined {
+    font-size: 24px; 
+    color: variables.$color-text-alt; 
+    cursor: pointer;
+}

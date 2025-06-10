@@ -2,9 +2,10 @@ import {
     duplicarProcedimento,
     toggleFavorito,
     arquivarProcedimento,
+    desarquivarProcedimento,
     excluirProcedimento,
-    obterProcedimentos, 
-    obterProcedimentosFiltrados 
+    obterProcedimentos,
+    obterProcedimentosFiltrados
 } from './procedure-data.js';
 
 import { setProcedimentoParaEdicao } from './procedure-form.js';
@@ -12,20 +13,21 @@ import { atualizarTabela } from '../../features/common/filter-controls.js';
 import { formatarDataParaBR, formatarEtiquetasParaExibicao } from '/src/js/utils/formatters.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
+import { abrirModalHistoricoVersoes, initProcedureVersionHistoryModal } from './procedure-version-modal.js';
 
-let corpoTabela; 
+let corpoTabela;
 
 function renderizarEtiquetasAsChips(etiquetasArray) {
     if (!etiquetasArray || !Array.isArray(etiquetasArray) || etiquetasArray.length === 0) {
-        return "indefinido"; 
+        return "indefinido";
     }
     const tagsValidas = etiquetasArray.filter(tag => tag && String(tag).trim() !== "");
-    if (tagsValidas.length === 0) return "indefinido"; 
+    if (tagsValidas.length === 0) return "indefinido";
 
     return tagsValidas.map(tag => {
-        const tagColor = getTagColor(tag); 
-        return `<span class="tag-chip-table" style="background-color: ${tagColor};">${tag}</span>`;
-    }).join(' '); 
+        const tagColor = getTagColor(tag);
+        return `<span class="tag" style="background-color: ${tagColor};">${tag}</span>`;
+    }).join(' ');
 }
 
 function handleFavoritoClick(event) {
@@ -36,9 +38,9 @@ function handleFavoritoClick(event) {
 
 function handleEditarClick(event) {
     const id = event.currentTarget.dataset.id;
-    const procedimento = obterProcedimentos().find(p => p.id === id); 
+    const procedimento = obterProcedimentos().find(p => p.id === id);
     if (procedimento) {
-        setProcedimentoParaEdicao(procedimento, false); 
+        setProcedimentoParaEdicao(procedimento, false);
     } else {
         console.warn(`Procedimento com ID ${id} não encontrado para edição.`);
     }
@@ -48,7 +50,7 @@ function handleDuplicarClick(event) {
     const id = event.currentTarget.dataset.id;
     const copia = duplicarProcedimento(id);
     if (copia) {
-        setProcedimentoParaEdicao(copia, true); 
+        setProcedimentoParaEdicao(copia, true);
     } else {
         console.warn(`Procedimento com ID ${id} não encontrado para duplicação.`);
     }
@@ -58,6 +60,14 @@ function handleArquivarClick(event) {
     const id = event.currentTarget.dataset.id;
     if (confirm("Tem certeza que deseja arquivar este procedimento?")) {
         arquivarProcedimento(id);
+        atualizarTabela();
+    }
+}
+
+function handleDesarquivarClick(event) {
+    const id = event.currentTarget.dataset.id;
+    if (confirm("Deseja desarquivar este procedimento?")) {
+        desarquivarProcedimento(id);
         atualizarTabela();
     }
 }
@@ -72,7 +82,12 @@ function handleExcluirClick(event) {
 
 function handleVisualizarClick(event) {
     const id = event.currentTarget.dataset.id;
-    abrirModalVisualizacao(id); 
+    abrirModalVisualizacao(id);
+}
+
+function handleVersoesClick(event) {
+    const id = event.currentTarget.dataset.id;  
+    abrirModalHistoricoVersoes(id);
 }
 
 function handleTabelaClick(event) {
@@ -93,12 +108,14 @@ function handleTabelaClick(event) {
         handleDuplicarClick({ currentTarget: target });
     } else if (target.classList.contains('arquivar')) {
         handleArquivarClick({ currentTarget: target });
+    } else if (target.classList.contains('desarquivar')) {
+    handleDesarquivarClick({ currentTarget: target });
     } else if (target.classList.contains('excluir')) {
         handleExcluirClick({ currentTarget: target });
     } else if (target.classList.contains('visualizar')) {
         handleVisualizarClick({ currentTarget: target });
-    } else if (target.classList.contains('gerar-pdf')) {
-        console.log(`Gerar PDF para ID: ${id}`);
+    } else if (target.classList.contains('versoes')) {
+        handleVersoesClick({ currentTarget: target });
     }
 }
 
@@ -132,9 +149,11 @@ export function renderizarTabela(filtros = {}) {
 
         const tituloFormatado = proc.titulo || "indefinido";
         const tipoFormatado = proc.tipo || "indefinido";
-        const etiquetasFormatadasHTML = renderizarEtiquetasAsChips(proc.etiquetas); 
+        const etiquetasFormatadasHTML = renderizarEtiquetasAsChips(proc.etiquetas);
         const dataFormatada = formatarDataParaBR(proc.ultimaAtualizacao);
         const statusFormatado = proc.status || "indefinido";
+        const mostrarBotaoVersoes = !!proc.idPai || (Array.isArray(proc.versoesFilhas) && proc.versoesFilhas.length > 0);
+
 
         linha.innerHTML = `
             <td>${tituloFormatado}</td>
@@ -157,14 +176,12 @@ export function renderizarTabela(filtros = {}) {
                 <button class="acao duplicar" title="Duplicar" data-id="${proc.id}">
                     <span class="material-symbols-outlined">content_copy</span>
                 </button>
-                <button class="acao gerar-pdf" title="Gerar PDF" data-id="${proc.id}">
-                    <span class="material-symbols-outlined">picture_as_pdf</span>
-                </button>
-                <button class="acao arquivar" title="Arquivar" data-id="${proc.id}">
-                    <span class="material-symbols-outlined">archive</span>
-                </button>
+
+                ${mostrarBotaoVersoes ? `<button class="acao versoes" title="Versões" data-id="${proc.id}"><span class="material-symbols-outlined">database</span></button>` : ''}
+
+                ${proc.status === "Ativo" ? `<button class="acao arquivar" title="Arquivar" data-id="${proc.id}"><span class="material-symbols-outlined">archive</span></button>` : `<button class="acao desarquivar" title="Reativar" data-id="${proc.id}"><span class="material-symbols-outlined">refresh</span></button>`}
                 <button class="acao excluir" title="Excluir" data-id="${proc.id}">
-                    <span class="material-symbols-outlined">delete</span>
+                    <span class="material-symbols-outlined">delete_forever</span>
                 </button>
             </td>
         `;
@@ -172,14 +189,14 @@ export function renderizarTabela(filtros = {}) {
         corpoTabela.appendChild(linha);
     });
 
-    adicionarEventosTabela(); 
+    adicionarEventosTabela();
 }
 
 export function initProcedureTable() {
     corpoTabela = document.getElementById("tabela-procedimentos");
     if (!corpoTabela) {
         console.error("Erro: initProcedureTable() chamado, mas o elemento 'tabela-procedimentos' não foi encontrado. Verifique o HTML.");
-        return; 
+        return;
     }
 
     adicionarEventosTabela();

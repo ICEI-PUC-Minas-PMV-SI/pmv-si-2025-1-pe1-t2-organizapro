@@ -27,51 +27,67 @@
                             <span class="material-symbols-outlined" aria-hidden="true">search</span>
                             <input type="text" id="procedure-search-input" placeholder="Pesquisar" />
                         </div>
-                        
+
                         <button id="filtro-favoritos" class="button button--favoritos"><span
                                 class="material-symbols-outlined">favorite</span> Favoritos</button>
 
-                        <button id="limparFiltrosBtn" class="button button--filtro"><span class="material-symbols-outlined">filter_alt_off</span>Limpar filtros
+                        <button id="limparFiltrosBtn" class="button button--filtro"><span
+                                class="material-symbols-outlined">filter_alt_off</span>Limpar filtros
                         </button>
 
                         <button class="button button--criar"><span class="material-symbols-outlined">add</span> Novo
                             Procedimento</button>
-                    </div> </div> <div class="control-panel-table">
+                    </div>
+                </div>
+                <div class="control-panel-table">
                     <table>
                         <thead>
                             <tr>
                                 <th scope="col">Procedimento</th>
                                 <th scope="col" class="filterable" data-filter-key="tipo" style="position: relative;">
                                     Tipo
-                                    <button class="btn-filtro" aria-label="Filtrar Tipo" title="Filtrar Tipo" type="button">
-                                        <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-                                    </button>
-                                    <div class="filtro-dropdown" aria-label="Filtro Tipo" role="menu" style="display:none;">
-                                    </div>
-                                </th>
-                                <th scope="col" class="filterable" data-filter-key="etiquetas" style="position: relative;">
-                                    Etiquetas
-                                    <button class="btn-filtro" aria-label="Filtrar Etiquetas" title="Filtrar Etiquetas" type="button">
-                                        <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
-                                    </button>
-                                    <div class="filtro-dropdown" aria-label="Filtro Etiquetas" role="menu" style="display:none;">
-                                    </div>
-                                </th>
-                                <th scope="col" class="filterable" data-filter-key="ultimaAtualizacao" style="position: relative;">
-                                    Última Atualização
-                                    <button class="btn-filtro" aria-label="Filtrar Última Atualização" title="Filtrar Última Atualização"
+                                    <button class="btn-filtro" aria-label="Filtrar Tipo" title="Filtrar Tipo"
                                         type="button">
-                                        <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
                                     </button>
-                                    <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu" style="display:none;">
+                                    <div class="filtro-dropdown" aria-label="Filtro Tipo" role="menu"
+                                        style="display:none;">
+                                    </div>
+                                </th>
+                                <th scope="col" class="filterable" data-filter-key="etiquetas"
+                                    style="position: relative;">
+                                    Etiquetas
+                                    <button class="btn-filtro" aria-label="Filtrar Etiquetas" title="Filtrar Etiquetas"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Etiquetas" role="menu"
+                                        style="display:none;">
+                                    </div>
+                                </th>
+                                <th scope="col" class="filterable" data-filter-key="ultimaAtualizacao"
+                                    style="position: relative;">
+                                    Última Atualização
+                                    <button class="btn-filtro" aria-label="Filtrar Última Atualização"
+                                        title="Filtrar Última Atualização" type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu"
+                                        style="display:none;">
                                     </div>
                                 </th>
                                 <th scope="col" class="filterable" data-filter-key="status" style="position: relative;">
                                     Status
-                                    <button class="btn-filtro" aria-label="Filtrar Status" title="Filtrar Status" type="button">
-                                        <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span>
+                                    <button class="btn-filtro" aria-label="Filtrar Status" title="Filtrar Status"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
                                     </button>
-                                    <div class="filtro-dropdown" aria-label="Filtro Status" role="menu" style="display:none;">
+                                    <div class="filtro-dropdown" aria-label="Filtro Status" role="menu"
+                                        style="display:none;">
                                     </div>
                                 </th>
                                 <th scope="col">Ações</th>
@@ -79,13 +95,17 @@
                         <tbody id="tabela-procedimentos">
                         </tbody>
                     </table>
-                </div> </section> </main>
+                </div>
+            </section>
+        </main>
     </div>
 
     <div id="modal-form-procedure-placeholder"></div>
     <div id="modal-view-procedure-placeholder"></div>
+    <div id="modal-version-procedure-placeholder"></div>
 
-    <script src="https://cdn.tiny.cloud/1/nej3yfwo1ohp1u1ga65gdxflhayi364zmfchx4pcjw04vdpf/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/nej3yfwo1ohp1u1ga65gdxflhayi364zmfchx4pcjw04vdpf/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script type="module" src="/src/js/script.js"></script>
 </body>
 
