@@ -1,104 +1,152 @@
-// sass/layout/_favorites.scss
-
 @use '../base/variables';
-@use '../components/buttons'; 
-@use '../components/icons';  
+@use '../components/buttons';
+@use '../components/icons';
+@use 'sass:color';
+
+
+// Variável local para cálculo de largura dos cards
+$card-gap: 20px;
+$cards-per-row: 4;
+$card-width: calc((100% - #{$card-gap * ($cards-per-row - 1)}) / #{$cards-per-row});
 
 .favorites-section {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
     justify-content: space-between;
     width: 100%;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    gap: 20px;
+    gap: $card-gap;
 
     @media (max-width: 768px) {
         padding: 15px;
         gap: 15px;
     }
+
+    .title {
+        margin: 0;
+    }
 }
 
 .favorites-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 10px;
-    }
+    gap: $card-gap;
+    justify-content: flex-start;
 }
 
 .favorite-card {
     display: flex;
-    background-color: variables.$color-background;
     justify-content: space-between;
-    box-sizing: border-box;
+    align-items: center;
+    flex: 1 1 $card-width;
+    max-width: $card-width;
+    padding: 5px 20px;
+    gap: 20px;
+    background-color: variables.$color-background;
     border: 1px solid variables.$color-background;
     border-radius: 10px;
-    padding: 5px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-width: 23%;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: transform 300ms ease;
+    will-change: transform;
+    cursor: grab;
 
     &:hover {
         transform: scale(1.03);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
+    &:active {
+        cursor: grabbing;
+    }
+
+    &.drag-over {
+        border-color: variables.$color-tertiary;
+        box-shadow: 0 0 10px rgba(variables.$color-tertiary, 0.5);
+        background-color: lighten(variables.$color-tertiary, 10%);
+        transform: scale(1.05);
+        transition: transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    &.dragging {
+        cursor: grabbing;
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+
+    &.invisivel {
+        opacity: 0.5;
+    }
+
+    @media (max-width: 1024px) {
+        flex: 1 1 calc((100% - #{$card-gap * 2}) / 2);
+        max-width: calc((100% - #{$card-gap * 2}) / 2);
+    }
+
     @media (max-width: 768px) {
-        min-width: 100%;
+        flex: 1 1 100%;
+        max-width: 100%;
         padding: 15px;
         border-radius: 8px;
     }
-}
 
-.favorite-details {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-}
+    .favorite-details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
 
-.favorite-name {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-family: variables.$font-family;
-    font-size: variables.$font-size-text;
-    font-weight: 300;
-    color: variables.$color-text;
-}
-
-.favorite-actions {
-    display: flex;
-    gap: 8px;
-    white-space: nowrap;
-    margin-left: auto;
-
-    .button {
-        font-size: 0.9rem;
-        padding: 6px;
-        color: #777;
-        transition: color 0.2s ease-in-out;
-
-        &:hover {
-            color: #333;
+        .favorite-name {
+            font-family: variables.$font-family;
+            font-size: variables.$font-size-text;
+            font-weight: 300;
+            color: variables.$color-text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
-        &.remove-button .material-symbols-outlined {
-            color: #e44d26;
-            font-variation-settings: 'FILL' 1;
-        }
-    }
+        .favorite-actions {
+            display: flex;
+            gap: 8px;
+            white-space: nowrap;
+            margin-left: auto;
 
-    .view-button {
-        display: none;
+            .button {
+                font-size: 0.9rem;
+                padding: 6px;
+                color: #777;
+                transition: color 0.2s ease-in-out;
+
+                &:hover {
+                    color: #333;
+                }
+
+                &.remove-button .material-symbols-outlined {
+                    color: #e44d26;
+                    font-variation-settings: 'FILL' 1;
+                }
+            }
+
+            .view-button {
+                display: none;
+            }
+
+            .toggle-favorite-button {
+                color: #777;
+                transition: color 0.3s ease;
+
+                &.ativo {
+                    color: variables.$color-primary;
+                }
+
+                &:hover {
+                    color: variables.$color-primary;
+                }
+            }
+        }
     }
 }

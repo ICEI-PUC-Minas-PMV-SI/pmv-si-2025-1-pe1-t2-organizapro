@@ -191,21 +191,17 @@ export async function criarNovaVersaoComHistorico(originalId, novosDados) {
   const procedimentoOriginal = lista[indexOriginal];
   const dataAtual = new Date().toISOString().split('T')[0];
 
-  // Obtém a próxima versão para numerar corretamente o novo procedimento
   const novaVersaoNumero = obterProximaVersao(p => p.idPai === originalId || p.id === originalId, lista);
 
-  // Atualiza procedimento original para inativo
   procedimentoOriginal.status = "Inativo";
   procedimentoOriginal.inativo = true;
   procedimentoOriginal.favorito = false;
   procedimentoOriginal.ultimaAtualizacao = dataAtual;
 
-  // Inicializa array de versões filhas, se não existir
   if (!Array.isArray(procedimentoOriginal.versoesFilhas)) {
     procedimentoOriginal.versoesFilhas = [];
   }
 
-  // Cria o novo procedimento (nova versão) com novo ID e link para o pai
   const novoProcedimento = {
     ...novosDados,
     id: gerarId(),
@@ -220,14 +216,12 @@ export async function criarNovaVersaoComHistorico(originalId, novosDados) {
     etiquetas: Array.isArray(novosDados.etiquetas)
       ? [...new Set(novosDados.etiquetas.map(e => e.trim()))]
       : [],
-    versoesFilhas: [], // nova versão começa sem filhas
+    versoesFilhas: [], 
   };
 
-  // Atualiza lista
   lista[indexOriginal] = procedimentoOriginal;
   lista.push(novoProcedimento);
 
-  // Adiciona nova versão ao array do pai
   procedimentoOriginal.versoesFilhas.push(novoProcedimento.id);
 
   salvarProcedimentos(lista);
@@ -237,11 +231,9 @@ export async function criarNovaVersaoComHistorico(originalId, novosDados) {
 
 export function obterHistoricoCompleto(procedimento, listaProcedimentos) {
   if (!procedimento.idPai) {
-    // Procedimento principal: pega ele + filhas
     const filhas = (procedimento.versoesFilhas || []).map(id => listaProcedimentos.find(p => p.id === id)).filter(Boolean);
     return [procedimento, ...filhas];
   } else {
-    // Procedimento versão filha: pega pai + todas filhas dele
     const pai = listaProcedimentos.find(p => p.id === procedimento.idPai);
     if (!pai) return [procedimento];
 
@@ -300,4 +292,17 @@ export function obterProcedimentosFiltrados(filtros = {}) {
 
         return true;
     });
+}
+
+export function atualizarOrdemFavoritos(novaOrdemIds) {
+    const procedimentos = obterProcedimentos();
+
+    const favoritosOrdenados = novaOrdemIds
+        .map(id => procedimentos.find(p => p.id === id))
+        .filter(Boolean); 
+
+    const naoFavoritos = procedimentos.filter(p => !p.favorito);
+
+    const novaLista = [...favoritosOrdenados, ...naoFavoritos];
+    salvarProcedimentos(novaLista);
 }

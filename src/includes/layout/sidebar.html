@@ -6,13 +6,20 @@
     <div class="menu">
         <div class="sidebar-section">
             <p class="sidebar-section-title">Tarefas</p>
-            <button class="menu-button">Hoje <span class="badge">1</span></button>
-            <button class="menu-button">Próximos 7 dias <span class="badge">1</span></button>
+            <aside class="task-sidebar">
+                <div class="menu-items">
+                    <button class="menu-button" id="btn-tarefas-hoje">Hoje <span class="badge"
+                            id="badge-hoje">0</span></button>
+                    <button class="menu-button" id="btn-tarefas-proximos-7-dias">Próximos 7 dias <span class="badge"
+                            id="badge-proximos-7-dias">0</span></button>
+                </div>
+            </aside>
         </div>
         <div class="sidebar-section">
             <p class="sidebar-section-title">Menu</p>
             <button class="menu-button">Processos de Trabalho</button>
-            <button onclick="window.location.href='/src/pages/control-panel.html'" class="menu-button">Painel de Controle</button>
+            <button onclick="window.location.href='/src/pages/control-panel.html'" class="menu-button">Painel de
+                Controle</button>
             <button onclick="window.location.href='/src/pages/upd-panel.html'" class="menu-button">Painel de
                 Atualizações</button>
             <button class="menu-button">Usuários e Acessos</button>

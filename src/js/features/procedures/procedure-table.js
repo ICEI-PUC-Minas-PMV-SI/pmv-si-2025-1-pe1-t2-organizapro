@@ -1,3 +1,5 @@
+// src/js/features/procedures/procedure-table.js
+
 import {
     duplicarProcedimento,
     toggleFavorito,
@@ -9,11 +11,15 @@ import {
 } from './procedure-data.js';
 
 import { setProcedimentoParaEdicao } from './procedure-form.js';
-import { atualizarTabela } from '../../features/common/filter-controls.js';
-import { formatarDataParaBR, formatarEtiquetasParaExibicao } from '/src/js/utils/formatters.js';
+import { formatarDataParaBR } from '/src/js/utils/formatters.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
-import { abrirModalHistoricoVersoes, initProcedureVersionHistoryModal } from './procedure-version-modal.js';
+import { abrirModalHistoricoVersoes } from './procedure-version-modal.js';
+
+let procedureFilterManagerInstance = null;
+export function setProcedureFilterManagerInstance(instance) {
+    procedureFilterManagerInstance = instance;
+}
 
 let corpoTabela;
 
@@ -33,7 +39,11 @@ function renderizarEtiquetasAsChips(etiquetasArray) {
 function handleFavoritoClick(event) {
     const id = event.currentTarget.dataset.id;
     toggleFavorito(id);
-    atualizarTabela();
+    if (procedureFilterManagerInstance) {
+        renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
+    } else {
+        renderizarProcedureTable({}); 
+    }
 }
 
 function handleEditarClick(event) {
@@ -51,6 +61,11 @@ function handleDuplicarClick(event) {
     const copia = duplicarProcedimento(id);
     if (copia) {
         setProcedimentoParaEdicao(copia, true);
+        if (procedureFilterManagerInstance) {
+            renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
+        } else {
+            renderizarProcedureTable({});
+        }
     } else {
         console.warn(`Procedimento com ID ${id} não encontrado para duplicação.`);
     }
@@ -60,7 +75,11 @@ function handleArquivarClick(event) {
     const id = event.currentTarget.dataset.id;
     if (confirm("Tem certeza que deseja arquivar este procedimento?")) {
         arquivarProcedimento(id);
-        atualizarTabela();
+        if (procedureFilterManagerInstance) {
+            renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
+        } else {
+            renderizarProcedureTable({});
+        }
     }
 }
 
@@ -68,7 +87,11 @@ function handleDesarquivarClick(event) {
     const id = event.currentTarget.dataset.id;
     if (confirm("Deseja desarquivar este procedimento?")) {
         desarquivarProcedimento(id);
-        atualizarTabela();
+        if (procedureFilterManagerInstance) {
+            renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
+        } else {
+            renderizarProcedureTable({});
+        }
     }
 }
 
@@ -76,7 +99,11 @@ function handleExcluirClick(event) {
     const id = event.currentTarget.dataset.id;
     if (confirm("Tem certeza que deseja excluir este procedimento permanentemente? Esta ação não pode ser desfeita.")) {
         excluirProcedimento(id);
-        atualizarTabela();
+        if (procedureFilterManagerInstance) {
+            renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
+        } else {
+            renderizarProcedureTable({});
+        }
     }
 }
 
@@ -86,7 +113,7 @@ function handleVisualizarClick(event) {
 }
 
 function handleVersoesClick(event) {
-    const id = event.currentTarget.dataset.id;  
+    const id = event.currentTarget.dataset.id;
     abrirModalHistoricoVersoes(id);
 }
 
@@ -109,7 +136,7 @@ function handleTabelaClick(event) {
     } else if (target.classList.contains('arquivar')) {
         handleArquivarClick({ currentTarget: target });
     } else if (target.classList.contains('desarquivar')) {
-    handleDesarquivarClick({ currentTarget: target });
+        handleDesarquivarClick({ currentTarget: target });
     } else if (target.classList.contains('excluir')) {
         handleExcluirClick({ currentTarget: target });
     } else if (target.classList.contains('visualizar')) {
@@ -128,9 +155,9 @@ function adicionarEventosTabela() {
     corpoTabela.addEventListener('click', handleTabelaClick);
 }
 
-export function renderizarTabela(filtros = {}) {
+export function renderizarProcedureTable(filtros = {}) { 
     if (!corpoTabela) {
-        console.error("Erro: renderizarTabela chamado antes de initProcedureTable(). 'corpoTabela' não está definido.");
+        console.error("Erro: renderizarProcedureTable chamado antes de initProcedureTable(). 'corpoTabela' não está definido.");
         return;
     }
 
@@ -199,5 +226,4 @@ export function initProcedureTable() {
         return;
     }
 
-    adicionarEventosTabela();
 }

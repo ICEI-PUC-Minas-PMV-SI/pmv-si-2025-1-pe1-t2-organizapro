@@ -1,7 +1,5 @@
-// sass/layout/_tasks.scss
-
 @use '../base/variables';
-@use '../components/tags'; 
+@use '../components/tags';
 
 .section-tasks {
     display: flex;
@@ -34,20 +32,43 @@
     }
 }
 
+.header-tasks .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+        gap: 8px;
+    }
+
+    @media (max-width: 500px) {
+        gap: 6px;
+    }
+
+}
+
+.header-tasks .title {
+    margin: 0px;
+}
+
+
 .quadros {
-    background-color: inherit;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     gap: 15px;
+    background-color: inherit;
 
     @media (max-width: 768px) {
         flex-direction: column;
     }
 
     @media (max-width: 500px) {
-        flex-direction: column;
         gap: 10px;
     }
 }
@@ -64,35 +85,46 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
-        width: 100%;
         padding: 15px;
     }
 }
 
 .quadro-header {
     display: flex;
-    background-color: inherit;
-    font-weight: bold;
     justify-content: space-between;
+    font-weight: bold;
+    background-color: inherit;
 }
 
 .tarefa-card {
+    cursor: grab;
+    user-select: none;
+    background: linear-gradient(to right, #ffffff, #f9f9f9);
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    &.dragging {
+        cursor: grabbing;
+        opacity: 0.7;
+        z-index: 1000;
+    }
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    gap: 15px;
-    background-color: inherit;
-    border: variables.$color-background 1px solid;
-    padding: 10px;
-    border-radius: 8px;
-    position: relative;
+    gap: 10px;
 
     @media (max-width: 768px) {
-        width: 100%;
         padding: 15px;
         font-size: 0.9rem;
-        border-radius: 8px;
     }
 
     @media (max-width: 500px) {
@@ -101,9 +133,16 @@
     }
 
     @media (max-width: 400px) {
-        font-size: 0.8rem;
         padding: 10px;
+        font-size: 0.8rem;
     }
+}
+
+.tarefa-check,
+.edit-button,
+.delete-button {
+    cursor: default;
+    user-select: auto;
 }
 
 .tarefa-conteudo {
@@ -114,8 +153,8 @@
 
 .tarefa-check {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     transform: scale(1.2);
     accent-color: #3e6b3e;
 
@@ -129,9 +168,9 @@
     }
 
     @media (max-width: 400px) {
-        transform: scale(1);
         top: 6px;
         right: 6px;
+        transform: scale(1);
     }
 }
 
@@ -145,10 +184,158 @@
         flex-direction: column;
         align-items: flex-start;
     }
+
+    >div:last-child {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
 }
 
-.tarefa-dados > div:last-child {
+.tarefas-container {
+    min-height: 100px;
+    border: 2px dashed transparent;
+    transition: border 0.2s ease-in-out;
+
+    &.drag-over {
+        border-color: #3e6b3e;
+        background-color: #f0fff0;
+    }
+}
+
+.tarefa-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .titulo {
+        font-weight: bold;
+        font-size: var(--font-size-title);
+        color: #333;
+
+    }
+
+    .descricao {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.4;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        .tag {
+            background-color: #eef4ff;
+            color: #3465a4;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+    }
+}
+
+.tarefa-dados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #888;
+
+    >div:last-child {
+        display: flex;
+        gap: 6px;
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.2s;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}
+
+/* Estilos para o Pop-over de Filtros (geral) */
+.filter-popover {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    width: 280px;
+    cursor: move;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translate();
+}
+
+.filter-popover.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.filter-popover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.filter-popover-header h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.filter-popover-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.filter-popover-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 15px;
+    border-top: 1px solid #eee;
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.filter-popover-footer .button {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+.header-tasks .actions {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
+}
+
+.search-bar {
+    position: relative;
 }

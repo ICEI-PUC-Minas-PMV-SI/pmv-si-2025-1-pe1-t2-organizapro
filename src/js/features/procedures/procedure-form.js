@@ -1,4 +1,4 @@
-import { createModalController } from "../../core/modal.js";
+import { createModalController } from "../../utils/modal-controller.js";
 import {
     obterEtiquetasUnicas,
     obterTiposUnicos,
@@ -6,8 +6,9 @@ import {
     obterProcedimentoPorId,
     criarNovaVersaoComHistorico,
 } from './procedure-data.js';
-import { atualizarTabela } from '../../features/common/filter-controls.js';
 import { initTagInputComponent } from '../../features/common/tag-input-component.js';
+import { renderizarProcedureTable } from '../../features/procedures/procedure-table.js';
+
 
 let currentEditId = null;
 let etiquetasTagComponent = null;
@@ -197,7 +198,7 @@ export function setProcedimentoParaEdicao(procedimento, isDuplicating = false) {
 }
 
 export function initProcedureForm() {
-    formModalController = createModalController('modal-procedure', 'tituloModal');
+    formModalController = createModalController('modal-form-procedure', 'tituloModal');
     if (!formModalController) {
         console.error("Falha ao inicializar o modal do formulário de procedimento.");
         return;

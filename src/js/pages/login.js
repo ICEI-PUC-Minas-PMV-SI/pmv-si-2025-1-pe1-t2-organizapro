@@ -1,44 +1,35 @@
-export function initLogin() {
-  const loginForm = document.getElementById('loginForm');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const messageDiv = document.getElementById('errorMessage');
+// src/js/pages/login.js
 
-  // Usuários simulados (backend fake)
-  const fakeUsers = [
-    { email: 'teste@exemplo.com', password: '123456' },
-    { email: 'user2@exemplo.com', password: 'senha2' }
-  ];
+import { loadHTML } from '../utils/include-loader.js';
+import { initLogin } from '../features/auth/form-login.js';
+import { initForgotPassword } from '../features/auth/forgot-password.js';
 
-  if (!loginForm || !emailInput || !passwordInput || !messageDiv) {
-    console.error('Elementos do formulário de login não encontrados no DOM.');
-    return;
-  }
+const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
 
-  loginForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    if (!email || !password) {
-      messageDiv.textContent = 'Por favor, preencha todos os campos.';
-      messageDiv.style.color = 'red';
-      return;
-    }
-
-    const user = fakeUsers.find(u => u.email === email && u.password === password);
-
-    if (user) {
-      messageDiv.textContent = 'Login efetuado com sucesso!';
-      messageDiv.style.color = 'green';
-
-      setTimeout(() => {
-        window.location.href = '/src/index.html';  
-      }, 1000);
-    } else {
-      messageDiv.textContent = 'Email ou senha incorretos.';
-      messageDiv.style.color = 'red';
-    }
+if (togglePassword && passwordInput) {
+  togglePassword.addEventListener('click', function () {
+    const isPassword = passwordInput.getAttribute('type') === 'password';
+    passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+    this.textContent = isPassword ? 'visibility_off' : 'visibility';
   });
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  initLogin();
+
+  try {
+    await loadHTML('modal-forgot-password-placeholder', '/src/includes/modals/modal-forgot-password.html');
+
+    initForgotPassword(
+      '.options a[href="#"]',
+      'modal-forgot-password',
+      'forgotPasswordModalTitle',
+      'recoveryEmail',
+      'sendRecoveryLink',
+      'recoveryMessage'
+    );
+  } catch (error) {
+    console.error('Erro ao carregar ou inicializar o modal de recuperação de senha:', error);
+  }
+});

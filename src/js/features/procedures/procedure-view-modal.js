@@ -1,6 +1,7 @@
-// procedure-view-modal.js:
+// procedure-view-modal.js
+
 import { obterProcedimentoPorId } from './procedure-data.js';
-import { createModalController } from '../../core/modal.js';
+import { createModalController } from '../../utils/modal-controller.js';
 import { formatarDataParaBR } from '../../utils/formatters.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
 import { obterHistoricoCompleto, obterProcedimentos } from './procedure-data.js';

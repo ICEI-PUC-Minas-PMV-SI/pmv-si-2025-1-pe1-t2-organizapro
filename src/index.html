@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OrganizaPRO</title>
     <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0;1" rel="stylesheet" />
 </head>
@@ -19,17 +21,30 @@
 
         <main class="content">
 
-            <div id="recent-upd"></div>
+            <div id="recent-upd-placeholder"></div>
 
             <div id="favorites"></div>
 
-            <div id="tasks"></div>
+
+            <div id="tasks-placeholder"></div>
+
 
         </main>
 
     </div>
 
+    <div id="modal-view-procedure-placeholder"></div>
+    <div id="modal-tasks-form-placeholder"></div>
+    <div id="modal-form-procedure-placeholder"></div>
+    <div id="task-sidebar-modals-placeholder"></div>
+
+
+    <script src="https://cdn.tiny.cloud/1/nej3yfwo1ohp1u1ga65gdxflhayi364zmfchx4pcjw04vdpf/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
     <script type="module" src="/src/js/script.js"></script>
+
 
 </body>
 

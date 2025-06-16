@@ -1,4 +1,4 @@
-import { createModalController } from '../../core/modal.js';
+import { createModalController } from '../../utils/modal-controller.js';
 import { formatarDataParaBR } from '../../utils/formatters.js';
 import { obterProcedimentoPorId, obterHistoricoCompleto, obterProcedimentos } from './procedure-data.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
@@ -65,10 +65,8 @@ export function abrirModalHistoricoVersoes(procedimentoId) {
                     const idVersao = e.currentTarget.getAttribute('data-id');
                     const procId = e.currentTarget.getAttribute('data-procedimento-id');
 
-                    // Fecha o modal de histórico de versões antes de abrir a visualização
                     historicoModalController.fechar();
 
-                    // Abre o modal de visualização, passando o id da versão e o id do procedimento original
                     abrirModalVisualizacao(idVersao, procId);
                 });
             });
