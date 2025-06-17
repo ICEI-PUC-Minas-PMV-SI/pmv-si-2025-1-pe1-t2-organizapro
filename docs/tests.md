@@ -31,15 +31,9 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 **Requisitos associados** | RF-002
 **Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso
 **Dados de entrada** | E-mail: user2@exemplo.com          senha:teste@exemplo.com
-**Resultado obtido** | 
-
-**Caso de Teste** | **CT02 - Criar conta parte 2**
- :--------------: | ------------
-**Procedimento**  | 1) Preencha todos os campos do formulário <br> 2) Clique no botão "Criar conta" <br> 
-**Requisitos associados** | RF-001
-**Resultado esperado** | Usuário cadastrado
-**Dados de entrada** | Inserção de dados válidos no formulário de cadastro
 **Resultado obtido** | Sucesso
+
+
 
 ## Registro dos Testes de Software
 
