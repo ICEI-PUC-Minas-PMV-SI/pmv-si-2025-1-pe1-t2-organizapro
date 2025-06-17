@@ -30,7 +30,8 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 **Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail valido e uma senha correta 3) Clique no botão "Continuar".
 **Requisitos associados** | RF-002
 **Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso
-**Dados de entrada** | E-mail: user2@exemplo.com          senha:teste@exemplo.com
+**Dados de entrada** | E-mail: user2@exemplo.com          
+                       senha:teste@exemplo.com
 **Resultado obtido** | Sucesso
 
 
@@ -39,9 +40,9 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 
 Esta seção deve apresentar o relatório com as evidências dos testes de software realizados no sistema pela equipe, baseado no plano de testes pré-definido. Documente cada caso de teste apresentando um vídeo ou animação que comprove o funcionamento da funcionalidade. Veja os exemplos a seguir.
 
-|*Caso de Teste*                                 |*CT01 - Criar conta parte 1*                                         |
+|*Caso de Teste*                                 |*CT01 - Login com dados validos*                                         |
 |---|---|
-|Requisito Associado | RF-001 - A aplicação deve permitir que os usuários criem uma conta e gerenciem seu cadastro|
+|Requisito Associado | RF-002 -  A aplicação deve permitir que os usuários façam login com e-mail e senha válidos|
 |Link do vídeo do teste realizado: | https://1drv.ms/u/s!AhD2JqpOUvJChapRtRSQ9vPzbNLwGA?e=mxZs6t| 
 
 |*Caso de Teste*                                 |*CT02 - Criar conta parte 2*                                        |
