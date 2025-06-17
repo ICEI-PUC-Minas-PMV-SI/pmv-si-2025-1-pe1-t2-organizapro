@@ -27,7 +27,7 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 
 **Caso de Teste** | **CT01 -Login com dados válidos**
  :--------------: | ------------
-**Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail valido e uma senha correta 3) Clique no botão "Continuar".
+**Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail valido e uma senha correta 3) Clique no botão "Entrar".
 **Requisitos associados** | RF-002
 **Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso
 **Dados de entrada** | E-mail: user2@exemplo.com          
