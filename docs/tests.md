@@ -29,11 +29,17 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
  :--------------: | ------------
 **Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail valido e uma senha correta 3) Clique no botão "Entrar".
 **Requisitos associados** | RF-002
-**Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso
-**Dados de entrada** | E-mail: user2@exemplo.com   senha:teste@exemplo.com
+**Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso.
+**Dados de entrada** | E-mail: teste@exemplo.com   senha:123456
 **Resultado obtido** | Sucesso
 
-
+**Caso de Teste** | **CT01 -Login com dados válidos**
+ :--------------: | ------------
+**Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail e uma senha incorretos 3) Clique no botão "Entrar".
+**Requisitos associados** | RF-002
+**Resultado esperado** |O sistema deve exibir mensagem de erro: "Email ou senha incorretos."
+**Dados de entrada** | E-mail:naoexiste@organizapro.com    senha:senhaerrada
+**Resultado obtido** | Sucesso
 
 ## Registro dos Testes de Software
 
@@ -42,19 +48,40 @@ Esta seção deve apresentar o relatório com as evidências dos testes de softw
 |*Caso de Teste*                                 |*CT01 - Login com dados validos*                                         |
 |---|---|
 |Requisito Associado | RF-002 -  A aplicação deve permitir que os usuários façam login com e-mail e senha válidos|
-|Link do vídeo do teste realizado: | https://1drv.ms/u/s!AhD2JqpOUvJChapRtRSQ9vPzbNLwGA?e=mxZs6t| 
+|Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EZYI2v7AWKVFoaEJoSB-4QoB5onfIIchHL8bhhWw9-6UBA?e=e9M9hp| 
 
-|*Caso de Teste*                                 |*CT02 - Criar conta parte 2*                                        |
+|*Caso de Teste*                                 |*CT02 -Login com e-mail e senha incorretos*                                        |
 |---|---|
-|Requisito Associado | RF-001 - A aplicação deve permitir que os usuários criem uma conta e gerenciem seu cadastro|
-|Link do vídeo do teste realizado: | https://1drv.ms/v/s!AhD2JqpOUvJChapQ8CPXL-TI_A7iVg?e=spD3Ar | 
+|Requisito Associado | RF-001 -A aplicação não deve permitir que usuários acessem com e-mail e/ou senha inválidos|
+|Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EUqlPYCm5L1FhD6o70MIOp4BQJyqp7mb_WwJVUyIH4K9Qg?e=XIKphz | 
 
 
 ## Avaliação dos Testes de Software
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+Durante os testes, foi avaliada a funcionalidade de login com diferentes entradas, a fim de verificar o comportamento do sistema em situações comuns de uso. Foram incluídas tentativas com credenciais válidas e inválidas, permitindo identificar pontos fortes e aspectos a melhorar.
+Pontos positivos:
+A aplicação apresenta interface bem estruturada, com layout organizado e tipografia legível.
 
-## Testes de unidade automatizados (Opcional)
+O login com dados corretos funcionou conforme esperado, redirecionando o usuário à página inicial.
+
+O sistema respondeu adequadamente a entradas inválidas, exibindo mensagens de erro consistentes.
+
+Pontos a melhorar:
+Identificamos um problema no botão de visualização da senha, cujo ícone é duplicado a cada clique, afetando a clareza visual.
+
+Apesar da funcionalidade estar implementada, o grupo pretende aprimorar o design, ajustando elementos gráficos para tornar a interface mais atraente.
+
+Próximas ações:
+Corrigir o comportamento do botão de visualização da senha para que o ícone seja atualizado corretamente.
+
+Implementar melhorias visuais pontuais, mantendo a usabilidade e estrutura atual.
+
+Realizar novos testes após as correções, seguindo a abordagem iterativa adotada pelo grupo.
+
+Durante os testes, o grupo percebeu a importância de dar atenção especial aos pequenos detalhes que impactam diretamente a experiência do usuário. Cuidar desses aspectos é fundamental para garantir a qualidade e a coerência da aplicação como um todo.
+
+
+]## Testes de unidade automatizados (Opcional)
 
 Se o grupo tiver interesse em se aprofundar no desenvolvimento de testes de software, ele podera desenvolver testes automatizados de software que verificam o funcionamento das funções JavaScript desenvolvidas. Para conhecer sobre testes unitários em JavaScript, leia 0 documento  [Ferramentas de Teste para Java Script](https://geekflare.com/javascript-unit-testing/).
 
