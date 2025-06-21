@@ -58,20 +58,21 @@ Esta seção deve apresentar o relatório com as evidências dos testes de softw
 
 ## Avaliação dos Testes de Software
 
-Durante os testes, foi avaliada a funcionalidade de login com diferentes entradas, a fim de verificar o comportamento do sistema em situações comuns de uso. Foram incluídas tentativas com credenciais válidas e inválidas, permitindo identificar pontos fortes e aspectos a melhorar.
-Pontos positivos:
+Durante os testes, foi avaliada a funcionalidade de login com diferentes entradas, a fim de verificar o comportamento do sistema em situações comuns de uso. Foram incluídas tentativas com credenciais válidas e inválidas, permitindo identificar pontos fortes e aspectos a melhorar.\
+
+*Pontos positivos:
 A aplicação apresenta interface bem estruturada, com layout organizado e tipografia legível.
 
 O login com dados corretos funcionou conforme esperado, redirecionando o usuário à página inicial.
 
 O sistema respondeu adequadamente a entradas inválidas, exibindo mensagens de erro consistentes.
 
-Pontos a melhorar:
+*Pontos a melhorar:
 Identificamos um problema no botão de visualização da senha, cujo ícone é duplicado a cada clique, afetando a clareza visual.
 
 Apesar da funcionalidade estar implementada, o grupo pretende aprimorar o design, ajustando elementos gráficos para tornar a interface mais atraente.
 
-Próximas ações:
+*Próximas ações:
 Corrigir o comportamento do botão de visualização da senha para que o ícone seja atualizado corretamente.
 
 Implementar melhorias visuais pontuais, mantendo a usabilidade e estrutura atual.
@@ -116,14 +117,14 @@ Apresente os cenários de testes utilizados na realização dos testes de usabil
 
 | Nº do Cenário | Descrição do cenário |
 |---------------|----------------------|
-| 1             | Você é uma pessoa que deseja comprar um iphone. Encontre no site um iphone e veja detalhes de localização e contato da loja que anunciando. |
-| 2             | Você é uma pessoa que deseja comprar um smartphone até R$ 2.000,00. Encontre no site smartphone's nessa faixa de preço. |
+| 1             | Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para um funcionário. Acesse o painel de controle da plataforma, preencha os dados do procedimento e salve o novo procedimento. |
+| 2             | Imagine que você é um funcionário da organização. Acesse a página inicial da plataforma, localize um dos procedimentos atribuídos a você e altere o status para "A fazer", "Fazendo" ou "Concluído", ou adicione aos favoritos para facilitar o acompanhamento. |
 
 
 
 ## Registro de Testes de Usabilidade
 
-Cenário 1: Você é uma pessoa que deseja comprar um iphone. Encontre no site um iphone e veja detalhes de localização e contato da loja que anunciando.
+Cenário 1: Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para um funcionário. Acesse o painel de controle da plataforma, preencha os dados do procedimento e salve o novo procedimento.
 
 | Usuário | Taxa de sucesso | Satisfação subjetiva | Tempo para conclusão do cenário |
 |---------|-----------------|----------------------|---------------------------------|
@@ -139,7 +140,7 @@ Cenário 1: Você é uma pessoa que deseja comprar um iphone. Encontre no site u
     Não tive dificuldades e acho que ficou bem intuitivo.
 
 
-Cenário 2: Você é uma pessoa que deseja comprar um smartphone até R$ 2.000,00. Encontre no site smartphone's nessa faixa de preço.
+Cenário 2:Imagine que você é um funcionário da organização. Acesse a página inicial da plataforma, localize um dos procedimentos atribuídos a você e altere o status para "A fazer", "Fazendo" ou "Concluído", ou adicione aos favoritos para facilitar o acompanhamento.
 
 | Usuário | Taxa de sucesso | Satisfação subjetiva | Tempo para conclusão do cenário |
 |---------|-----------------|----------------------|---------------------------------|
