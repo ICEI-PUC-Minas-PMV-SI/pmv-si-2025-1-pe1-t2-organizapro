@@ -65,10 +65,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 | RNF-003  | Proteger dados locais, implementando controle de acesso na interface.                    | Laise  | login.js<br> form-login.js<br>forgot-password.js  |
 | RNF-004  | Garantir compatibilidade com os principais navegadores modernos.                        | Laise  | Todos os arquivos front-end                    |
 | RNF-005  | Seguir princípios de usabilidade e acessibilidade conforme WCAG.                        | Laise  | filter-controls.js<br>tag-input-component.js<br> modal-controller.js |
-| RNF-006  | Carregar componentes HTML de forma assíncrona e paralela para melhor desempenho.        | Laise  | core/init-includes.js                          |
-| RNF-007  | Ativar scripts específicos conforme a rota sem conflitos.                              | Laise  | core/route-initializers.js                     |
-| RNF-008  | Aplicar cores consistentes para tags para melhor identificação visual.                  | Laise  | utils/color-helpers.js                         |
-| RNF-009  | Garantir comportamento uniforme e consistente dos modais em toda a aplicação.          | Laise  | utils/modal-controller.js                      |
+| RNF-006  | Carregar componentes HTML de forma assíncrona e paralela para melhor desempenho.        | Laise  | init-includes.js                          |
+| RNF-007  | Ativar scripts específicos conforme a rota sem conflitos.                              | Laise  | route-initializers.js                     |
+| RNF-008  | Aplicar cores consistentes para tags para melhor identificação visual.                  | Laise  | color-helpers.js                         |
+| RNF-009  | Garantir comportamento uniforme e consistente dos modais em toda a aplicação.          | Laise  | modal-controller.js                      |
 
 ## Descrição das estruturas:
 
@@ -101,7 +101,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 | dataVencimento   | Texto (string) | Data de vencimento no formato ISO 8601                       | "2025-06-25 00:00:00"    |
 | status           | Texto (string) | Status da tarefa (ex.: "a-fazer", "concluido")               | "a-fazer"                     |
 | concluida        | Booleano       | Indica se a tarefa está concluída                             | false                         |
-| criadaEm         | Texto (string) | Data/hora de criação da tarefa (ISO 8601)                    | "2025-06-20T15:30:00.000Z"    |
+| criadaEm         | Texto (string) | Data/hora de criação da tarefa (ISO 8601)                    | "2025-06-20 15:30:00"    |
 
 ## Atualizações 
 
@@ -114,5 +114,5 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 | status              | Texto (string)   | Status atual da atualização ("Ativo" ou "Inativo")     | "Ativo"                       |
 | favorito            | Booleano         | Indica se a atualização está marcada como favorita     | false                         |
 | inativo             | Booleano         | Indica se a atualização está arquivada/inativa         | false                         |
-| data_criacao        | Texto (string)   | Data e hora da criação no formato ISO 8601              | "2025-06-22T15:30:00.000Z"   |
-| ultima_atualizacao   | Texto (string)   | Data e hora da última atualização no formato ISO 8601   | "2025-06-23T10:00:00.000Z"   |
+| data_criacao        | Texto (string)   | Data e hora da criação no formato ISO 8601              | "2025-06-22 15:30:00"   |
+| ultima_atualizacao   | Texto (string)   | Data e hora da última atualização no formato ISO 8601   | "2025-06-23 10:00:00"   |
