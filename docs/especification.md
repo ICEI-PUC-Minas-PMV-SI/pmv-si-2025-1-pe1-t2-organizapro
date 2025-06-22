@@ -107,84 +107,65 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-#### Módulo: Gerenciamento de Usuários
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF01 | Permitir o login de usuários com e-mail e senha.            | Alta           |
-| RF02 | Permitir a recuperação de senha via e-mail.                          | Alta           |
-| RF03 | Permitir o cadastro de novos usuários.                               | Alta           |
-| RF04 | Permitir a edição dos dados cadastrais dos usuários.                 | Alta           |
-| RF05 | Permitir a exclusão de usuários.                                     | Alta           |
+| ID    | Descrição do Requisito                                                                 | Prioridade |
+|-------|-----------------------------------------------------------------------------------------|------------|
+| RF01  | Exibir tela inicial com atualizações recentes, procedimentos favoritos e quadro Kanban de tarefas. | Alta       |
+| RF02  | Exibir menu superior com acesso às principais funcionalidades do sistema.              | Alta       |
+| RF03  | Exibir menu lateral com links para todas as seções da aplicação.                       | Alta       |
+| RF04  | Permitir que o usuário oculte ou exiba o menu lateral em todas as páginas do sistema.  | Média      |
+| RF05  | Exibir quadro Kanban com tarefas do usuário na tela inicial.                           | Alta       |
+| RF06  | Permitir criação de novas tarefas.                                                     | Alta       |
+| RF07  | Permitir definição de título, descrição, etiquetas, data de vencimento e status.       | Alta       |
+| RF08  | Permitir atualização do status da tarefa entre "a fazer", "fazendo" e "concluído".     | Alta       |
+| RF09  | Permitir edição de tarefas existentes.                                                 | Alta       |
+| RF10  | Permitir exclusão de tarefas.                                                          | Alta       |
+| RF11  | Permitir pesquisa de tarefas por palavras-chave.                                       | Média      |
+| RF12  | Permitir filtragem de tarefas por etiquetas, status e data de vencimento.              | Média      |
+| RF13  | Exibir tarefas do dia e dos próximos sete dias no menu lateral.                        | Média      |
+| RF14  | Exibir painel de atualizações com lista cronológica.                                   | Alta       |
+| RF15  | Permitir criação de novas atualizações.                                                | Alta       |
+| RF16  | Permitir definição de título, descrição, etiquetas e status das atualizações.          | Alta       |
+| RF17  | Permitir edição de atualizações existentes.                                            | Alta       |
+| RF18  | Permitir exclusão de atualizações.                                                     | Alta       |
+| RF19  | Permitir arquivamento de atualizações.                                                 | Média      |
+| RF20  | Permitir desarquivamento de atualizações.                                              | Média      |
+| RF21  | Permitir marcação de atualizações como favoritas.                                      | Média      |
+| RF22  | Permitir pesquisa de atualizações por palavras-chave.                                  | Média      |
+| RF23  | Permitir filtragem de atualizações por favoritos, status, etiquetas e data de criação. | Média      |
+| RF24  | Exibir atualizações recentes na tela inicial.                                          | Alta       |
+| RF25  | Exibir painel de controle com lista de procedimentos.                                  | Alta       |
+| RF26  | Permitir criação de novos procedimentos.                                               | Alta       |
+| RF27  | Permitir definição de título, tipo, descrição, etiquetas, status e anexo dos procedimentos. | Alta   |
+| RF28  | Permitir visualização de procedimentos.                                                | Alta       |
+| RF29  | Permitir edição de procedimentos.                                                      | Alta       |
+| RF30  | Permitir exclusão de procedimentos.                                                    | Alta       |
+| RF31  | Permitir cópia de procedimentos.                                                       | Média      |
+| RF32  | Permitir arquivamento de procedimentos.                                                | Média      |
+| RF33  | Permitir desarquivamento de procedimentos.                                             | Média      |
+| RF34  | Permitir marcação de procedimentos como favoritos.                                     | Média      |
+| RF35  | Permitir pesquisa de procedimentos por palavras-chave.                                 | Média      |
+| RF36  | Permitir filtragem de procedimentos por tipo, status, etiquetas, data e favoritos.     | Média      |
+| RF37  | Exibir histórico de versões dos procedimentos.                                         | Média      |
+| RF38  | Exibir procedimentos favoritos do usuário na tela inicial.                             | Média      |
+| RF39  | Permitir login de usuário por e-mail e senha.                                          | Alta       |
+| RF40  | Permitir recuperação de senha por e-mail e redefinição com token de segurança.         | Alta       |
+| RF41  | Permitir a inserção, sugestão e gerenciamento visual de etiquetas (tags) em campos de formulário. | Média |
+| RF42  | Permitir criação de filtros personalizados com chips interativos e popovers arrastáveis. | Média   |
+| RF43  | Gerenciar abertura, fechamento, título e conteúdo de janelas modais reutilizáveis em todo o sistema. | Média |
 
-#### Módulo: Interface e Navegação
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF06 | Exibir menu superior com acesso às principais funcionalidades.        | Alta           |
-| RF07 | Exibir menu lateral com links para todas as seções disponíveis.      | Alta           |
-| RF08 | Exibir as últimas atualizações de arquivos na tela inicial.          | Média          |
-| RF09 | Permitir acesso aos arquivos favoritos do usuário na tela inicial.  | Média          |
-| RF10 | Exibir painel de acesso a arquivos agrupados por categorias.         | Alta           |
+### Requisitos Não Funcionais
 
-#### Módulo: Tarefas
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF11 | Exibir quadro Kanban com tarefas atribuídas ao usuário.              | Alta           |
-| RF12 | Permitir que o gestor atribua tarefas a usuários.                     | Alta           |
-| RF13 | Permitir definir descrição, prazo e status das tarefas.              | Alta           |
-| RF14 | Permitir atualizar o status da tarefa (pendente, em andamento, concluída). | Alta           |
-| RF15 | Permitir que o usuário crie tarefas pessoais.                        | Média          |
-| RF16 | Permitir que o usuário edite suas tarefas pessoais.                  | Média          |
-| RF17 | Permitir que o usuário exclua suas tarefas pessoais.                 | Baixa          |
-
-#### Módulo: Atualizações e Notificações
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF18 | Exibir painel com detalhes das atualizações de arquivos.             | Alta           |
-| RF19 | Enviar notificações por e-mail sobre novas tarefas atribuídas.       | Alta           |
-| RF20 | Enviar notificações por e-mail sobre atualizações nos arquivos.      | Média          |
-| RF21 | Exibir notificações na tela inicial sobre tarefas e atualizações nos arquivos. | Alta           |
-
-#### Módulo: Pesquisa e Versionamento
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF22 | Permitir pesquisa de arquivos por palavras-chave, etiquetas, data, tipo de arquivo e categoria. | Alta           |
-| RF23 | Manter histórico de alterações nos arquivos com controle de versão.  | Alta           |
-| RF24 | Exibir o histórico de versões em painel cronológico.                 | Média          |
-| RF25 | Permitir restaurar versões anteriores de arquivos.                   | Média          |
-
-#### Módulo: Controle de Arquivos
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF26 | Permitir o armazenamento de arquivos.                                | Alta           |
-| RF27 | Permitir a organização de arquivos por etiquetas e categorias.       | Média          |
-| RF28 | Permitir que o usuário visualize arquivos.                           | Alta           |
-| RF29 | Permitir que o usuário edite arquivos.                               | Alta           |
-| RF30 | Permitir que o usuário marque arquivos como favoritos.               | Média          |
-| RF31 | Permitir que o usuário duplique arquivos.                            | Baixa          |
-| RF32 | Permitir que o usuário gere arquivos em formato PDF.                 | Baixa          |
-| RF33 | Permitir que o usuário arquive documentos.                           | Baixa          |
-
-#### Módulo: Gerenciamento de Usuários
-| ID   | Descrição do Requisito                                                | Prioridade     |
-|------|----------------------------------------------------------------------|----------------|
-| RF01 | Permitir o login de usuários com nome de usuário e senha.            | Alta           |
-| RF02 | Permitir a recuperação de senha via e-mail.                          | Alta           |
-| RF03 | Permitir o cadastro de novos usuários.                               | Alta           |
-| RF04 | Permitir a edição dos dados cadastrais dos usuários.                 | Alta           |
-| RF05 | Permitir a exclusão de usuários.                                     | Alta           |
-
-### Requisitos não Funcionais
-
-| **ID**    | **Descrição do Requisito**                                                                 | **Prioridade** |
-|-----------|--------------------------------------------------------------------------------------------|----------------|
-| **RNF-001** | A aplicação deve ser responsiva, garantindo usabilidade em diferentes dispositivos (desktop, tablet e mobile). |   ALTA         |
-| **RNF-002** | A aplicação deve processar requisições do usuário em no máximo 3 segundos.                |   ALTA         |
-| **RNF-003** | A aplicação deve assegurar a proteção dos dados, implementando mecanismos de controle de acessos. |   ALTA         |
-| **RNF-004** | A aplicação deve ser compatível com os principais navegadores.                            |   ALTA         |
-| **RNF-005** | A aplicação deve armazenar logs detalhados de alterações para auditoria e rastreabilidade. |   MÉDIA        |
-| **RNF-006** | A interface da aplicação deve seguir princípios de usabilidade e acessibilidade, conforme as Diretrizes de Acessibilidade para Conteúdo Web (WCAG). |   MÉDIA        |
-| **RNF-007** | A aplicação deve permitir escalabilidade para suportar múltiplos usuários simultaneamente sem perda de desempenho. |  BAIXA        |
-| **RNF-008** | A aplicação deve ter alta disponibilidade, garantindo tempo de inatividade mínimo.        |   BAIXA        |
+| ID       | Descrição do Requisito                                                                    | Prioridade |
+|----------|--------------------------------------------------------------------------------------------|------------|
+| RNF-001  | Garantir responsividade da aplicação em desktop, tablet e mobile.                          | Alta       |
+| RNF-002  | Processar ações do usuário em no máximo 3 segundos para boa experiência.                   | Alta       |
+| RNF-003  | Proteger dados locais, implementando controle de acesso na interface.                      | Alta       |
+| RNF-004  | Garantir compatibilidade com os principais navegadores modernos.                           | Alta       |
+| RNF-005  | Seguir princípios de usabilidade e acessibilidade conforme WCAG.                           | Média      |
+| RNF-006  | Carregar componentes HTML de forma assíncrona e paralela para melhor desempenho.           | Média      |
+| RNF-007  | Ativar scripts específicos conforme a rota sem conflitos.                                   | Média      |
+| RNF-008  | Aplicar cores consistentes para tags para melhor identificação visual.                     | Baixa      |
+| RNF-009  | Garantir comportamento uniforme e consistente dos modais em toda a aplicação.              | Baixa      |
 
 ## Restrições
 
