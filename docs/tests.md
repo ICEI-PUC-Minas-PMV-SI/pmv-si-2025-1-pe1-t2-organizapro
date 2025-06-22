@@ -83,7 +83,7 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 
 **Caso de Teste** | **CT08 - Criar nova tarefa**  
 :--------------: | ------------  
-**Procedimento** | 1) Acessar a tela inicial;<br>2) Localizar a seção "Minhas tarefas";<br>3) Clicar em "Nova tarefa";<br>2) Preencher título, descrição, etiquetas, data de vencimento e status;<br>3) Clicar em "Salvar tarefa";<br>4) Verificar se a nova tarefa aparece no quadro Kanban com os dados preenchidos.  
+**Procedimento** | 1) Acessar a tela inicial;<br>2) Localizar a seção "Minhas tarefas";<br>3) Clicar em "Nova tarefa";<br>2) Preencher o formulário título, descrição, etiquetas, data de vencimento e status;<br>3) Clicar em "Salvar tarefa";<br>4) Verificar se a nova tarefa aparece no quadro Kanban com os dados preenchidos.  
 **Requisitos associados** | RF06: Permitir criação de novas tarefas.<br>RF07: Permitir definição de título, descrição, etiquetas, data de vencimento e status.  
 **Resultado esperado** | A tarefa criada deve aparecer no quadro Kanban com todas as informações corretamente registradas.  
 **Dados de entrada** | Título, descrição, etiquetas, data de vencimento e status válidos.  
@@ -128,6 +128,70 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 **Resultado esperado** | As tarefas exibidas devem atender a todos os critérios selecionados.  
 **Dados de entrada** | Etiquetas, status e datas válidas para filtro.  
 **Resultado obtido** | Tarefas filtradas corretamente conforme os critérios aplicados.  
+
+**Caso de Teste** | **CT14 - Exibir painel de atualizações com lista cronológica**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar o painel de atualizações;<br>2) Verificar se a lista de atualizações está ordenada cronologicamente do mais recente para o mais antigo.  
+**Requisitos associados** | RF14: Exibir painel de atualizações com lista cronológica.  
+**Resultado esperado** | As atualizações devem ser exibidas em ordem cronológica decrescente, mostrando primeiro as mais recentes.  
+**Dados de entrada** | Nenhum.  
+**Resultado obtido** | Lista de atualizações exibida corretamente em ordem cronológica.  
+
+**Caso de Teste** | **CT15 - Criar nova atualização**  
+:--------------: | ------------  
+**Procedimento** | 1) Clicar em "Nova atualização";<br>2) Preencher o formulário com título, descrição, etiquetas e status;<br>3) Clicar em "Salvar";<br>4) Verificar se a atualização aparece no painel corretamente.  
+**Requisitos associados** | RF15: Permitir criação de novas atualizações.<br>RF16: Permitir definição de título, descrição, etiquetas e status das atualizações.  
+**Resultado esperado** | A nova atualização deve ser criada e exibida no painel com todos os dados informados.  
+**Dados de entrada** | Título, descrição, etiquetas e status válidos.  
+**Resultado obtido** | Atualização criada e exibida corretamente no painel com os dados preenchidos.  
+
+**Caso de Teste** | **CT16 - Editar atualização existente**  
+:--------------: | ------------  
+**Procedimento** | 1) Escolher uma atualização existente;<br>2) Clicar em "Editar";<br>3) Alterar título, descrição, etiquetas ou status;<br>4) Clicar em "Salvar" as alterações;<br>5) Verificar se a atualização foi atualizada no painel.  
+**Requisitos associados** | RF17: Permitir edição de atualizações existentes.  
+**Resultado esperado** | A atualização deve refletir as alterações após salvar.  
+**Dados de entrada** | Dados modificados para a atualização.  
+**Resultado obtido** | Atualização editada com sucesso e alterações refletidas no painel.  
+
+**Caso de Teste** | **CT17 - Excluir atualização**  
+:--------------: | ------------  
+**Procedimento** | 1) Escolher uma atualização;<br>2) Clicar em "Excluir";<br>3) Confirmar a exclusão;<br>4) Verificar se a atualização foi removida do painel.  
+**Requisitos associados** | RF18: Permitir exclusão de atualizações.  
+**Resultado esperado** | A atualização deve ser removida permanentemente do painel.  
+**Dados de entrada** | Atualização existente.  
+**Resultado obtido** | Atualização excluída e removida do painel com sucesso.  
+
+**Caso de Teste** | **CT18 - Arquivar e desarquivar atualização**  
+:--------------: | ------------  
+**Procedimento** | 1) Escolher uma atualização;<br>2) Clicar em "Arquivar";<br>3) Verificar se a atualização sai da lista ativa;<br>4) Escolher atualização inativa;<br>5) Clicar em "Reativar" a atualização;<br>6) Verificar se ela retorna à lista ativa.  
+**Requisitos associados** | RF19: Permitir arquivamento de atualizações.<br>RF20: Permitir desarquivamento de atualizações.  
+**Resultado esperado** | A atualização deve ser movida corretamente para a lista de arquivadas e depois restaurada para a lista ativa.  
+**Dados de entrada** | Atualização existente.  
+**Resultado obtido** | Atualização arquivada e desarquivada com sucesso, com listas atualizadas corretamente.  
+
+**Caso de Teste** | **CT19 - Marcar e desmarcar atualização como favorita**  
+:--------------: | ------------  
+**Procedimento** | 1) Escolher uma atualização;<br>2) Marcar como favorita;<br>3) Verificar se a atualização aparece na lista de favoritas;<br>4) Desmarcar como favorita;<br>5) Confirmar remoção da lista de favoritas.  
+**Requisitos associados** | RF21: Permitir marcação de atualizações como favoritas.  
+**Resultado esperado** | A atualização deve ser adicionada e removida corretamente da lista de favoritas.  
+**Dados de entrada** | Atualização existente.  
+**Resultado obtido** | Atualização marcada e desmarcada como favorita com sucesso.  
+
+**Caso de Teste** | **CT20 - Pesquisar atualizações por palavra-chave**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar o painel de atualizações;<br>2) Digitar palavra-chave no campo de pesquisa;<br>3) Executar a pesquisa;<br>4) Verificar se as atualizações exibidas correspondem à palavra-chave.  
+**Requisitos associados** | RF22: Permitir pesquisa de atualizações por palavras-chave.  
+**Resultado esperado** | As atualizações exibidas devem conter a palavra-chave pesquisada.  
+**Dados de entrada** | Palavra-chave válida.  
+**Resultado obtido** | Pesquisa filtrou corretamente as atualizações pela palavra-chave.  
+
+**Caso de Teste** | **CT21 - Filtrar atualizações por favoritos, status, etiquetas e data**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar o Painel de Atualizações;<br>2) Clicar em "Filtros";<br>3) Selecionar critérios: favoritos, status, etiquetas e/ou datas;<br>3) Aplicar filtros;<br>4) Verificar atualizações exibidas conforme os filtros.  
+**Requisitos associados** | RF23: Permitir filtragem de atualizações por favoritos, status, etiquetas e data de criação.  
+**Resultado esperado** | As atualizações exibidas devem respeitar todos os filtros aplicados.  
+**Dados de entrada** | Critérios válidos para filtro.  
+**Resultado obtido** | Atualizações filtradas corretamente conforme critérios selecionados.  
 
 ## Registro dos Testes de Software
 
