@@ -18,7 +18,7 @@
     <div id="header"></div>
 
     <div class="main-container">
-        <div id="sidebar"></div>
+        <div id="sidebar-wrapper" class="sidebar-wrapper"></div>
 
         <main class="content">
             <section class="control-panel-container">
@@ -36,10 +36,11 @@
                                 class="material-symbols-outlined">favorite</span> Favoritos</button>
 
                         <button id="procedure-limpar-filtros" class="button button--filtro"><span
-                                class="material-symbols-outlined">filter_alt_off</span>Limpar filtros
+                                class="material-symbols-outlined">filter_alt_off</span>Limpar
                         </button>
 
-                        <button class="button button--criar"><span class="material-symbols-outlined">add</span> Novo
+                        <button class="button button--criar" id="add-new-procedure-button"><span
+                                class="material-symbols-outlined">add</span> Novo
                             Procedimento</button>
                     </div>
                 </div>
@@ -79,14 +80,15 @@
                                         <span class="material-symbols-outlined"
                                             aria-hidden="true">keyboard_arrow_down</span>
                                     </button>
-                                    <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu"
-                                        style="display:none; padding: 10px;">
-                                        <input type="text" id="procedure-last-update-datepicker"
-                                            placeholder="Selecione a data" class="form-control" />
-                                        <button type="button" id="procedure-clear-date-filter"
-                                            class="button button--secondary button--small"
-                                            style="margin-top: 5px;">Limpar Data</button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu">
+                                        <div class="input-data-wrapper input-container-procedure">
+                                            <input type="text" id="procedure-last-update-datepicker"
+                                                placeholder="Selecione a data" class="form-control" readonly />
+                                            <button id="procedure-clear-date-filter" title="Limpar filtro de data"
+                                                class="clear-icon">X</button>
+                                        </div>
                                     </div>
+
                                 </th>
                                 <th scope="col" class="filterable" data-filter-key="status" style="position: relative;">
                                     Status
@@ -112,11 +114,13 @@
     <div id="modal-form-procedure-placeholder"></div>
     <div id="modal-view-procedure-placeholder"></div>
     <div id="modal-version-procedure-placeholder"></div>
+    <div id="modal-task-form-placeholder"></div>
+    <div id="modal-task-sidebar-placeholder"></div>
 
-    <script src="https://cdn.tiny.cloud/1/nej3yfwo1ohp1u1ga65gdxflhayi364zmfchx4pcjw04vdpf/tinymce/6/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/lbpuo94sk0k0o89xox9wgf4tyrz743oufa6slz0vnby9s44j/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script type="module" src="/src/js/script.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
 </body>
 
 </html>

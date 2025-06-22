@@ -1,341 +1,728 @@
-@use '../base/variables';
+@use '../base/variables' as vars;
 @use '../components/tags';
+@use '../components/popover';
 
-.section-tasks {
+.tasks-section {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-between;
     width: 100%;
     gap: 20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: #{vars.$breakpoint-tablet}) {
         gap: 15px;
     }
 }
 
-.header-tasks {
+.tasks-header {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-between;
-    background-color: white;
+    background-color: vars.$color-text-alt;
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(red(vars.$color-primary), green(vars.$color-primary), blue(vars.$color-primary), 0.1);
     padding: 20px;
     gap: 20px;
 
-    @media (max-width: 768px) {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         gap: 15px;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: vars.$font-family;
+        font-size: vars.$font-size-title;
+        color: vars.$color-primary;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    @media (max-width: #{vars.$breakpoint-tablet}) {
         padding: 15px;
+        gap: 15px;
     }
 }
 
-.header-tasks .actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+#task-search-input {
     width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-
-    @media (max-width: 768px) {
-        gap: 8px;
-    }
-
-    @media (max-width: 500px) {
-        gap: 6px;
-    }
-
 }
 
-.header-tasks .title {
-    margin: 0px;
-}
-
-
-.quadros {
+.kanban-board {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     gap: 15px;
-    background-color: inherit;
 
-    @media (max-width: 768px) {
+    @media (max-width: #{vars.$breakpoint-tablet}) {
         flex-direction: column;
+        gap: 12px;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: #{vars.$breakpoint-mobile}) {
         gap: 10px;
     }
 }
 
-.quadro {
+.kanban-column {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
     width: 100%;
-    background-color: white;
-    padding: 20px;
-    gap: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: vars.$color-text-alt;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(red(vars.$color-primary), green(vars.$color-primary), blue(vars.$color-primary), 0.1);
 
-    @media (max-width: 768px) {
+    &__header {
+        font-weight: bold;
+        font-family: vars.$font-family;
+        font-size: 20px;
+        color: vars.$color-primary;
+    }
+
+    &__tasks-container {
+        min-height: 100px;
+        border: 2px dashed transparent;
+        transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding-right: 8px;
+
+        &.drag-over {
+            border-color: vars.$color-primary;
+            background-color: lighten(vars.$color-background, 20%);
+        }
+    }
+
+    @media (max-width: #{vars.$breakpoint-tablet}) {
         padding: 15px;
+        gap: 15px;
     }
 }
 
-.quadro-header {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    background-color: inherit;
-}
-
-.tarefa-card {
+.task-card {
     cursor: grab;
     user-select: none;
-    background: linear-gradient(to right, #ffffff, #f9f9f9);
-    border: 1px solid #e0e0e0;
+    background: linear-gradient(135deg, vars.$color-background 0%, lighten(vars.$color-background, 6%) 100%);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09), 0 1px 3px rgba(0, 0, 0, 0.06);
     position: relative;
-    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: vars.$font-family;
+    font-size: vars.$font-size-text;
+    color: vars.$color-text;
 
     &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .task-card__actions {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            padding-top: 5px;
+        }
     }
 
     &.dragging {
         cursor: grabbing;
-        opacity: 0.7;
-        z-index: 1000;
+        opacity: 0.6;
+        transform: scale(0.98);
     }
 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    @media (max-width: 768px) {
-        padding: 15px;
-        font-size: 0.9rem;
-    }
-
-    @media (max-width: 500px) {
-        padding: 12px;
-        font-size: 0.85rem;
-    }
-
-    @media (max-width: 400px) {
-        padding: 10px;
-        font-size: 0.8rem;
-    }
-}
-
-.tarefa-check,
-.edit-button,
-.delete-button {
-    cursor: default;
-    user-select: auto;
-}
-
-.tarefa-conteudo {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.tarefa-check {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transform: scale(1.2);
-    accent-color: #3e6b3e;
-
-    @media (max-width: 768px) {
-        top: 8px;
-        right: 8px;
-    }
-
-    @media (max-width: 500px) {
-        transform: scale(1.1);
-    }
-
-    @media (max-width: 400px) {
-        top: 6px;
-        right: 6px;
-        transform: scale(1);
-    }
-}
-
-.tarefa-dados {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 768px) {
+    &__content {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        gap: 10px;
     }
 
-    >div:last-child {
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        gap: 10px;
+        margin-bottom: 4px;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 17px;
+        color: vars.$color-primary;
+    }
+
+    &__date {
         display: flex;
         align-items: center;
-        gap: 4px;
-    }
-}
+        gap: 5px;
+        font-size: 14px;
+        color: vars.$color-secondary;
 
-.tarefas-container {
-    min-height: 100px;
-    border: 2px dashed transparent;
-    transition: border 0.2s ease-in-out;
-
-    &.drag-over {
-        border-color: #3e6b3e;
-        background-color: #f0fff0;
-    }
-}
-
-.tarefa-conteudo {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
-    .titulo {
-        font-weight: bold;
-        font-size: var(--font-size-title);
-        color: #333;
-
-    }
-
-    .descricao {
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.4;
-    }
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-
-        .tag {
-            background-color: #eef4ff;
-            color: #3465a4;
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            border-radius: 6px;
+        .material-symbols-outlined {
+            font-size: vars.$font-size-subtitle;
+            color: vars.$color-secondary;
+            line-height: 1;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
         }
     }
-}
 
-.tarefa-dados {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: #888;
+    &__description {
+        font-size: 14px;
+        color: darken(vars.$color-text, 10%);
+        line-height: 1.4;
+        margin: 0px;
+    }
 
-    >div:last-child {
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        color: lighten(vars.$color-text, 40%);
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__tags {
         display: flex;
         gap: 6px;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 6px;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, padding-top 0.3s ease, padding-bottom 0.3s ease;
+
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            color: vars.$color-secondary;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+        }
 
         button {
             background: none;
             border: none;
             cursor: pointer;
-            color: #666;
-            transition: color 0.2s;
+            transition: color 0.2s ease-in-out;
 
-            &:hover {
-                color: #000;
+            &:hover,
+            &:focus {
+                color: vars.$color-primary;
+                outline: none;
             }
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: -1;
+
+        +label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease-in-out;
+            font-family: 'Material Symbols Outlined';
+            line-height: 1;
+            font-size: 24px;
+
+            &::before {
+                content: 'brightness_1';
+                color: vars.$color-secondary;
+                transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+                font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            }
+
+            &::after {
+                content: 'check_circle';
+                color: vars.$color-green;
+                position: absolute;
+                opacity: 0;
+                transform: scale(0.5);
+                transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+        }
+
+        &:checked+label {
+            &::before {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            &::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        &:disabled+label {
+            cursor: grab;
+        }
+    }
+
+
+    @media (max-width: #{vars.$breakpoint-tablet}) {
+        padding: 16px;
+        font-size: 0.9rem;
+
+        &__checkbox {
+            top: 12px;
+            right: 12px;
+
+            +label {
+                top: 12px;
+                right: 12px;
+            }
+        }
+    }
+
+    @media (max-width: #{vars.$breakpoint-mobile}) {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}
+
+.task-card__description {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+
+    &.expanded {
+        max-height: 500px;
+    }
+
+    &:not(.expanded) {
+        max-height: 70px;
+    }
+}
+
+.task-description--truncated p {
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.task-description--truncated.expanded p {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+}
+
+.task-card.drag-highlight {
+    border-top: 2px dashed vars.$color-primary;
+    margin-top: -2px;
+    transition: all 0.1s ease-in-out;
+}
+
+.kanban-column__tasks-container.drag-over-end {
+    padding-bottom: 2px;
+}
+
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    gap: 20px;
+}
+
+.modal-task-card {
+    cursor: grab;
+    user-select: none;
+    background: linear-gradient(135deg, vars.$color-background 0%, lighten(vars.$color-background, 6%) 100%);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: vars.$font-family;
+    font-size: vars.$font-size-text;
+    color: vars.$color-text;
+
+    &:hover {
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.08);
+
+        .task-card__actions {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            padding-top: 5px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: first baseline;
+        gap: 10px;
+        margin-bottom: 4px;
+
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 17px;
+        color: vars.$color-primary;
+
+        h4 {
+            margin: 0px;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    &__date,
+    &__status {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+        color: vars.$color-secondary;
+
+        .material-symbols-outlined {
+            font-size: vars.$font-size-subtitle;
+            color: vars.$color-secondary;
+            line-height: 1;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__description {
+        font-size: 14px;
+        color: darken(vars.$color-text, 10%);
+        line-height: 1.4;
+        margin: 0px;
+    }
+
+    &__tags {
+        display: flex;
+        gap: 6px;
+
+        .tag {
+            background-color: vars.$color-tertiary;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 6px;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease, padding-top 0.3s ease, padding-bottom 0.3s ease;
+
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            color: vars.$color-secondary;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+
+            &:hover,
+            &:focus {
+                color: vars.$color-primary;
+                outline: none;
+            }
+        }
+    }
+
+    &__checkbox-modal {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        z-index: -1;
+
+        +label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease-in-out;
+            font-family: 'Material Symbols Outlined';
+            line-height: 1;
+            font-size: 24px;
+
+            &::before {
+                content: 'brightness_1';
+                color: vars.$color-secondary;
+                transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+                font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+            }
+
+            &::after {
+                content: 'check_circle';
+                color: vars.$color-green;
+                position: absolute;
+                opacity: 0;
+                transform: scale(0.5);
+                transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+                font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+        }
+
+        &:checked+label {
+            &::before {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            &::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        &:disabled+label {
+            cursor: grab;
         }
     }
 }
 
-/* Estilos para o Pop-over de Filtros (geral) */
-.filter-popover {
+
+#taskFormModal {
     position: fixed;
-    top: 100px;
-    left: 100px;
-    width: 280px;
-    cursor: move;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#taskFormModal .modal-content {
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1001;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    animation: fadeIn 0.2s ease-out;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    transform: translate();
 }
 
-.filter-popover.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+#taskFormModal .fechar {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
 }
 
-.filter-popover-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    background-color: #f8f9fa;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.filter-popover-header h4 {
-    margin: 0;
-    font-size: 1.1em;
+#taskFormModal h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
     color: #333;
+    font-weight: 700;
+    text-align: center;
 }
 
-.filter-popover-body {
-    flex-grow: 1;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.filter-popover-footer {
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 15px;
-    border-top: 1px solid #eee;
-    gap: 10px;
-    background-color: #f8f9fa;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-.filter-popover-footer .button {
+.modal-scrollable {
     flex: 1;
-    padding: 8px 12px;
-    font-size: 0.9em;
+    overflow-y: auto;
+    padding-right: 20px;
 }
 
-.header-tasks .actions {
-    position: relative;
+
+#taskForm .input-group,
+#taskForm .form-group {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 16px;
 }
 
-.search-bar {
-    position: relative;
+#taskForm label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+#taskForm input,
+#taskForm select,
+#taskForm textarea {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border 0.2s;
+}
+
+#taskForm input:focus,
+#taskForm textarea:focus,
+#taskForm select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+}
+
+
+.selected-tags-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.selected-tags-display span {
+    padding: 4px 4px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.tags-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.tags-suggestions span {
+    background-color: #f1f3f5;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: #444;
+    transition: background 0.2s;
+}
+
+.tags-suggestions span:hover {
+    background-color: #e0e0e0;
+}
+
+
+.task-form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 10px;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: 10px;
+}
+
+#taskFormMessage.message {
+    font-size: 0.9rem;
+    color: vars.$color-green;
+    margin-top: -6px;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    #taskFormModal .modal-content {
+        padding: 16px 20px;
+    }
+
+    #taskFormModal h2 {
+        font-size: 1.4rem;
+    }
+
+    #taskForm .button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .selected-tags-display,
+    .tags-suggestions {
+        gap: 4px;
+    }
 }

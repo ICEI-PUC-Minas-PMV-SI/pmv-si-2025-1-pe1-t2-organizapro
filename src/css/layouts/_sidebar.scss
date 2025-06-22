@@ -1,68 +1,117 @@
-// sass/layout/_sidebar.scss
+@use '../base/variables.scss' as variables;
 
-@use '../base/variables';
+.sidebar-wrapper {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.3s ease-out;
+  z-index: 1000;
 
-/* Estilos gerais da sidebar */
-.sidebar {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
+  pointer-events: none;
+
+  @media (max-width: variables.$breakpoint-tablet) {
+    top: variables.$altura-header;
+    height: calc(100% - variables.$altura-header);
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &.is-open {
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: calc(variables.$breakpoint-tablet + 1px)) {
     position: fixed;
+    height: 100vh;
+    width: variables.$largura-sidebar;
+    left: 0;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  &.is-closed-desktop {
+    @media (min-width: calc(variables.$breakpoint-tablet + 1px)) {
+      transform: translateX(-#{variables.$largura-sidebar}) !important;
+      pointer-events: none !important;
+    }
+  }
+}
+
+.sidebar {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: variables.$color-primary;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size-text;
+  color: variables.$color-text-alt;
+  padding: 0 20px;
+  gap: 20px;
+  overflow-y: auto;
+  z-index: 999;
+  transition: transform 0.3s ease-out;
+  pointer-events: auto;
+
+  @media (min-width: calc(variables.$breakpoint-tablet + 1px)) {
+    position: fixed;
+    height: 100vh;
     width: variables.$largura-sidebar;
     margin-top: variables.$altura-header;
-    background-color: variables.$color-primary;
-    font-family: variables.$font-family;
-    font-size: variables.$font-size-text;
-    color: variables.$color-text-alt;
-    padding: 20px;
-    gap: 20px;
-    overflow-y: auto;
-    z-index: 999;
-    transition: transform 0.3s ease;
-    transform: translateX(-100%);
+    left: 0;
+  }
 
-    &:not(.hidden) {
-        transform: translateX(0);
-    }
+  @media (max-width: variables.$breakpoint-tablet) {
+    position: relative;
+    width: 280px;
+    max-width: 80%;
+    height: 100%;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    padding-top: 20px;
+    transform: none;
+  }
 
-    &.hidden {
-        transform: translateX(-100%);
-    }
-
-    @media (max-width: 768px) {
-        width: auto;
-        height: auto;
-        position: static;
-        padding-top: 20px;
-        transform: translateX(0);
-    }
+  &.is-closed-desktop {
+    pointer-events: none;
+  }
 }
 
-/* Contêiner para os itens do menu */
+.sidebar.is-closed-desktop {
+  @media (min-width: calc(variables.$breakpoint-tablet + 1px)) {
+    transform: translateX(-#{variables.$largura-sidebar}) !important;
+    pointer-events: none !important;
+  }
+}
+
 .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
 
-    @media (max-width: 768px) {
-        gap: 10px;
-    }
-}
-
-/* Títulos das seções do menu */
-.sidebar-section-title {
-    font-weight: 600;
-    margin: 0 0 5px 0;
-}
-
-/* Estilos das seções dentro da sidebar */
-.sidebar-section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  @media (max-width: variables.$breakpoint-tablet) {
     gap: 10px;
+  }
+}
+
+.sidebar-section-title {
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.sidebar-section,
+.task-menu-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.task-menu-buttons .menu-button {
+  width: 100%;
+  justify-content: space-between;
 }

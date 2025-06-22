@@ -1,5 +1,5 @@
 export function formatarDataParaBR(data) {
-  if (!data || typeof data !== 'string' || !data.trim() || data.toLowerCase() === 'undefined') 
+  if (!data || typeof data !== 'string' || !data.trim() || data.toLowerCase() === 'undefined')
     return 'indefinido';
 
   if (/^\d{4}-\d{2}-\d{2}$/.test(data)) {

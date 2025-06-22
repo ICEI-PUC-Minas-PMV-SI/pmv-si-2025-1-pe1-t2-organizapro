@@ -1,12 +1,18 @@
 <header class="header">
-    <div class="header-logo">
-        <button onclick="window.location.href='/src'" id="homeButton" class="logo"
-            aria-label="Página inicial">OrganizaPRO</button>
+    <div class="header-left">
 
+        <button class="menu-toggle-button" aria-label="Abrir/Fechar menu de navegação" aria-expanded="false">
+            <span class="material-symbols-outlined menu-icon">menu</span>
+            <span class="material-symbols-outlined close-icon" hidden>menu</span>
+        </button>
+
+        <div class="header-logo">
+            <button onclick="window.location.href='/src'" id="homeButton" class="logo"
+                aria-label="Página inicial">OrganizaPRO</button>
+        </div>
     </div>
 
     <div class="header-actions">
-        <button aria-label="Alternar menu"><span class="material-symbols-outlined">menu</span></button>
         <div class="search-bar">
             <span class="material-symbols-outlined" aria-hidden="true">search</span>
             <input type="text" placeholder="Pesquisar" />
@@ -16,6 +22,7 @@
         <span class="material-symbols-outlined" aria-label="Notificações" aria-hidden="true">notifications</span>
         <span class="material-symbols-outlined" aria-label="Modo noturno" aria-hidden="true">dark_mode</span>
         <span class="material-symbols-outlined" aria-label="Perfil do usuário" aria-hidden="true">account_circle</span>
-        <button onclick="window.location.href='/src/pages/login.html'" aria-label="Sair" aria-hidden="true"><span class="material-symbols-outlined">exit_to_app</span></button>
+        <button onclick="window.location.href='/src/pages/login.html'" aria-label="Sair" aria-hidden="true"><span
+                class="material-symbols-outlined">exit_to_app</span></button>
     </div>
 </header>

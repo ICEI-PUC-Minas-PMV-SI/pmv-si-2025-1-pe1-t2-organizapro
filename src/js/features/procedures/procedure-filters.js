@@ -30,6 +30,9 @@ const procedureFilters = {
     favoritos: false,
 };
 
+const flatpickr = window.flatpickr;
+const Portuguese = window.flatpickr.l10ns.pt;
+
 function populateProcedureDropdowns() {
     const opcoesTipo = obterTiposUnicos();
     const opcoesEtiquetas = obterEtiquetasUnicas();
@@ -53,23 +56,25 @@ function populateProcedureDropdowns() {
             return;
         }
 
-        procedureFlatpickrInstance = window.flatpickr(procedureDatepickerInput, {
+        procedureFlatpickrInstance = flatpickr(procedureDatepickerInput, {
             dateFormat: "Y-m-d",
-            locale: "pt",
+            locale: Portuguese,
+            allowInput: false,
             onChange: function (selectedDates, dateStr) {
                 procedureFilters.ultimaAtualizacao = selectedDates.length > 0 ? dateStr : null;
                 renderizarProcedureTable(procedureFilters);
                 fecharTodosProcedureDropdowns();
             },
-            onReady: (selectedDates, dateStr, instance) => {
-
+            onReady: function (selectedDates, dateStr, instance) {
                 if (procedureFilters.ultimaAtualizacao) {
                     instance.setDate(procedureFilters.ultimaAtualizacao, false);
                 } else {
                     instance.clear();
+                    instance.input.classList.remove('active');
                 }
             }
         });
+
     }
 
     if (procedureClearDateFilterBtn) {

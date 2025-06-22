@@ -2,10 +2,12 @@ import { obterEtiquetasUnicas } from '../procedures/procedure-data.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
 
 function createTagChip(tagText, tagColor) {
+    console.log('Criando chip para:', tagText, 'com cor:', tagColor); 
+
     const chip = document.createElement('div');
     chip.classList.add('tag');
     chip.dataset.tag = tagText;
-    chip.style.backgroundColor = tagColor;
+    chip.style.backgroundColor = tagColor || getTagColor(tagText);
 
     const spanText = document.createElement('span');
     spanText.textContent = tagText;
@@ -18,6 +20,7 @@ function createTagChip(tagText, tagColor) {
 
     return chip;
 }
+
 
 export function initTagInputComponent(inputElementId, displayContainerId, suggestionsDropdownId, parentContainerId, onChangeCallback = () => { }) {
     const tagInput = document.getElementById(inputElementId);
@@ -41,6 +44,7 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
         selectedTagsDisplay.innerHTML = '';
         selectedTags.forEach(tag => {
             const tagColor = getTagColor(tag);
+            console.log('Renderizando tag:', tag, 'com cor:', tagColor); 
             const chip = createTagChip(tag, tagColor);
             selectedTagsDisplay.appendChild(chip);
         });
@@ -48,6 +52,7 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
             onChangeCallback(Array.from(selectedTags));
         }
     }
+
 
     function addTag(tagText) {
         const trimmedTag = tagText.trim();

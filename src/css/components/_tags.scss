@@ -7,11 +7,18 @@
     border-radius: 20px;
     padding: 5px 10px;
     margin: 2px;
-    font-size: 0.9em;
+    font-size: 12px;
     color: variables.$color-text;
-    background-color: variables.$color-tertiary;
     white-space: nowrap;
     line-height: 1;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    background-color: inherit;
+
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
 }
 
 .tag .remove-tag {
@@ -32,11 +39,10 @@
     }
 }
 
-// Estilos para o input de tags 
 .tag-input-container {
     border: 1px solid #ccc;
     padding: 8px;
-    border-radius: 4px;
+    border-radius: 16px;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
@@ -92,36 +98,6 @@
     background-color: #f0f0f0;
 }
 
-// Ajustes para tags em contextos específicos
-.control-panel-table .tag {
-    padding: 4px 8px;
-    font-size: 0.75rem;
-    border-radius: 6px;
-}
-
-.sidebar .tag { // Estilo para tag dentro da sidebar
+.sidebar .tag { 
     font-size: 11px;
-}
-
-.tarefa-card .tag { // Estilo para tag dentro de tarefa-card
-    background-color: #b3e0f2;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: opacity 0.3s, transform 0.3s;
-
-    &:hover {
-        opacity: 0.8;
-        transform: scale(1.05);
-    }
-
-    @media (max-width: 768px) { // Responsividade específica para tag em tarefa-card
-        font-size: 11px;
-        padding: 3px 6px;
-    }
-    @media (max-width: 400px) { // Responsividade específica para tag em tarefa-card
-        font-size: 10px;
-        padding: 2px 4px;
-    }
 }

@@ -1,4 +1,4 @@
-// src/js/features/common/filter-controls.js
+import { getTagColor } from '/src/js/utils/color-helpers.js';
 
 class FilterManager {
     constructor(config) {
@@ -21,6 +21,7 @@ class FilterManager {
             etiquetas: [],
             status: [],
             ultimaAtualizacao: null,
+            dataVencimento: null,
             favoritos: false,
         };
     }
@@ -97,14 +98,18 @@ class FilterManager {
     }
 
     #bindSearchEvents() {
-        if (this.inputBusca) {
-            this.inputBusca.addEventListener('input', (e) => {
-                this.filtrosAtivos.busca = e.target.value.toLowerCase();
-                this.searchClearIcon.style.display = e.target.value ? 'block' : 'none';
-                this.callbacks.onFilterChange(this.filtrosAtivos);
-                this.renderActiveFilterChips();
-            });
+        if (!this.inputBusca) return;
 
+        this.inputBusca.addEventListener('input', (e) => {
+            this.filtrosAtivos.busca = e.target.value.toLowerCase();
+            if (this.searchClearIcon) {
+                this.searchClearIcon.style.display = e.target.value ? 'block' : 'none';
+            }
+            this.callbacks.onFilterChange(this.filtrosAtivos);
+            this.renderActiveFilterChips();
+        });
+
+        if (this.searchClearIcon) {
             this.searchClearIcon.addEventListener('click', () => {
                 this.inputBusca.value = '';
                 this.filtrosAtivos.busca = '';
@@ -112,14 +117,14 @@ class FilterManager {
                 this.callbacks.onFilterChange(this.filtrosAtivos);
                 this.renderActiveFilterChips();
             });
-
-            this.inputBusca.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    this.inputBusca.blur();
-                }
-            });
         }
+
+        this.inputBusca.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.inputBusca.blur();
+            }
+        });
     }
 
     #bindFavoriteButtonEvents() {
@@ -217,41 +222,29 @@ class FilterManager {
             this.activeFiltersChipsContainer.addEventListener('click', (e) => {
                 const clearIcon = e.target.closest('.material-symbols-outlined[data-clear-key]');
                 if (clearIcon) {
-                    const { clearKey: keyToRemove } = clearIcon.dataset;
+                    const keyToRemove = clearIcon.dataset.clearKey;
+                    const valueToRemove = clearIcon.dataset.clearValue;
 
-                    if (this.filtrosAtivos.hasOwnProperty(keyToRemove)) {
-                        switch (keyToRemove) {
-                            case 'busca':
-                                this.filtrosAtivos.busca = '';
-                                if (this.inputBusca) this.inputBusca.value = '';
-                                if (this.searchClearIcon) this.searchClearIcon.style.display = 'none';
-                                break;
-                            case 'favoritos':
-                                this.filtrosAtivos.favoritos = false;
-                                if (this.btnFavoritos) {
-                                    this.btnFavoritos.classList.remove('ativo');
-                                    const icone = this.btnFavoritos.querySelector(".material-symbols-outlined");
-                                    if (icone) {
-                                        icone.textContent = "favorite_border";
-                                        icone.style.fontVariationSettings = "'FILL' 0";
-                                    }
-                                }
-                                break;
-                            default:
-                                if (Array.isArray(this.filtrosAtivos[keyToRemove])) {
-                                    this.filtrosAtivos[keyToRemove] = [];
-                                } else {
-                                    this.filtrosAtivos[keyToRemove] = this.initialFilters[keyToRemove] !== undefined ? this.initialFilters[keyToRemove] : null;
-                                }
+                    if (!this.filtrosAtivos.hasOwnProperty(keyToRemove)) return;
+
+                    if (keyToRemove === 'etiquetas' && valueToRemove) {
+                        const index = this.filtrosAtivos.etiquetas.indexOf(valueToRemove);
+                        if (index > -1) {
+                            this.filtrosAtivos.etiquetas.splice(index, 1);
                         }
-
-                        Object.assign(this.filtrosEmEdicao, this.filtrosAtivos);
-                        this.callbacks.onFilterChange(this.filtrosAtivos);
-                        this.renderActiveFilterChips();
-                        this.populatePopoverUI();
+                    } else if (Array.isArray(this.filtrosAtivos[keyToRemove])) {
+                        this.filtrosAtivos[keyToRemove] = [];
+                    } else {
+                        this.filtrosAtivos[keyToRemove] = this.initialFilters[keyToRemove] ?? null;
                     }
+
+                    Object.assign(this.filtrosEmEdicao, this.filtrosAtivos);
+                    this.callbacks.onFilterChange(this.filtrosAtivos);
+                    this.renderActiveFilterChips();
+                    this.populatePopoverUI();
                 }
             });
+
         }
     }
 
@@ -262,10 +255,10 @@ class FilterManager {
             Object.assign(this.filtrosEmEdicao, this.filtrosAtivos);
             this.populatePopoverUI();
             this.filterPopover.classList.add('open');
-            this.filterOverlay?.classList.add('open'); // Uso de optional chaining
+            this.filterOverlay?.classList.add('open'); 
         } else {
             this.filterPopover.classList.remove('open');
-            this.filterOverlay?.classList.remove('open'); // Uso de optional chaining
+            this.filterOverlay?.classList.remove('open'); 
         }
     }
 
@@ -322,6 +315,9 @@ class FilterManager {
     }
 
     applyFiltersFromPopover() {
+        console.log('applyFiltersFromPopover chamado');
+
+
         Object.assign(this.filtrosAtivos, this.filtrosEmEdicao);
         this.callbacks.onFilterChange(this.filtrosAtivos);
         this.renderActiveFilterChips();
@@ -329,14 +325,70 @@ class FilterManager {
     }
 
     resetAllFilters(closePopover = true) {
-        Object.assign(this.filtrosAtivos, this.initialFilters);
-        Object.assign(this.filtrosEmEdicao, this.initialFilters);
+        console.log('Estado inicialFilters antes do reset:', this.initialFilters);
+
+        this.filtrosAtivos = JSON.parse(JSON.stringify(this.initialFilters));
+        this.filtrosEmEdicao = JSON.parse(JSON.stringify(this.initialFilters));
+
+        this.filtrosAtivos.etiquetas = [];
+        this.filtrosEmEdicao.etiquetas = [];
+
+        console.log('Filtros em edição após reset:', this.filtrosEmEdicao);
 
         if (this.inputBusca) {
             this.inputBusca.value = '';
+            if (this.searchClearIcon) {
+                this.searchClearIcon.style.display = 'none';
+            }
+        }
+
+        if (this.btnFavoritos) {
+            this.btnFavoritos.classList.remove('ativo');
+            const icone = this.btnFavoritos.querySelector(".material-symbols-outlined");
+            if (icone) {
+                icone.textContent = "favorite_border";
+                icone.style.fontVariationSettings = "'FILL' 0";
+            }
+        }
+
+        Object.values(this.filterOptionGroups).forEach(container => {
+            if (container) {
+                container.querySelectorAll('input[type=checkbox]').forEach(cb => {
+                    cb.checked = false;
+                });
+                container.querySelectorAll('button.ativo').forEach(btn => btn.classList.remove('ativo'));
+            }
+        });
+
+        this.populatePopoverUI();
+
+        this.callbacks.onFilterChange(this.filtrosAtivos);
+
+        this.renderActiveFilterChips();
+
+        if (closePopover) {
+            this.toggleFilterPopover(false);
+        }
+    }
+
+    resetFilter(key) {
+        if (!this.filtrosAtivos.hasOwnProperty(key)) return;
+
+        if (Array.isArray(this.filtrosAtivos[key])) {
+            this.filtrosAtivos[key] = [];
+            this.filtrosEmEdicao[key] = [];
+        } else {
+            const defaultValue = this.initialFilters[key] ?? null;
+            this.filtrosAtivos[key] = defaultValue;
+            this.filtrosEmEdicao[key] = defaultValue;
+        }
+
+        if (key === 'busca' && this.inputBusca) {
+            this.inputBusca.value = '';
             this.searchClearIcon.style.display = 'none';
         }
-        if (this.btnFavoritos) {
+
+        if (key === 'favoritos' && this.btnFavoritos) {
             this.btnFavoritos.classList.remove('ativo');
             const icone = this.btnFavoritos.querySelector(".material-symbols-outlined");
             if (icone) {
@@ -348,10 +400,6 @@ class FilterManager {
         this.populatePopoverUI();
         this.callbacks.onFilterChange(this.filtrosAtivos);
         this.renderActiveFilterChips();
-
-        if (closePopover) {
-            this.toggleFilterPopover(false);
-        }
     }
 
     renderActiveFilterChips() {
@@ -364,9 +412,21 @@ class FilterManager {
             chips.push({ key: 'busca', label: `Busca: "${this.filtrosAtivos.busca}"` });
         }
 
+        if (Array.isArray(this.filtrosAtivos.etiquetas) && this.filtrosAtivos.etiquetas.length > 0) {
+            this.filtrosAtivos.etiquetas.forEach(etiqueta => {
+                chips.push({
+                    key: 'etiquetas',
+                    label: etiqueta,
+                    value: etiqueta,
+                    color: getTagColor(etiqueta)
+                });
+
+            });
+        }
+
         for (const key in this.filtrosAtivos) {
             if (this.initialFilters.hasOwnProperty(key) &&
-                !['busca', 'favoritos', 'ultimaAtualizacao'].includes(key)) {
+                !['busca', 'favoritos', 'ultimaAtualizacao', 'etiquetas'].includes(key)) {
                 if (Array.isArray(this.filtrosAtivos[key]) && this.filtrosAtivos[key].length > 0) {
                     const labelKey = key.charAt(0).toUpperCase() + key.slice(1);
                     chips.push({ key: key, label: `${labelKey}: ${this.filtrosAtivos[key].join(', ')}` });
@@ -385,10 +445,12 @@ class FilterManager {
         chips.forEach(chipData => {
             const chip = document.createElement('div');
             chip.className = 'filter-chip';
-            chip.innerHTML = `
-                <span>${chipData.label}</span>
-                <span class="material-symbols-outlined" data-clear-key="${chipData.key}">close</span>
-            `;
+            if (chipData.key === 'etiquetas' && chipData.color) {
+                chip.style.backgroundColor = chipData.color;
+            }
+            chip.innerHTML = `<span>${chipData.label}</span>
+            <span class="material-symbols-outlined" data-clear-key="${chipData.key}" data-clear-value="${chipData.value ?? ''}">close</span>`;
+
             this.activeFiltersChipsContainer.appendChild(chip);
         });
 
@@ -397,8 +459,9 @@ class FilterManager {
             const clearAllChip = document.createElement('div');
             clearAllChip.className = 'filter-chip clear-all-chip';
             clearAllChip.innerHTML = `
-                <span>Limpar Todos</span>
-                <span class="material-symbols-outlined">delete_sweep</span>
+                <span class="material-symbols-outlined">filter_alt_off</span>
+                <span>Limpar</span>
+                
             `;
             clearAllChip.addEventListener('click', () => this.resetAllFilters());
             this.activeFiltersChipsContainer.appendChild(clearAllChip);
@@ -410,6 +473,49 @@ class FilterManager {
     get activeFilters() {
         return { ...this.filtrosAtivos };
     }
+
+    setFilter(key, value) {
+        if (!this.filtrosAtivos.hasOwnProperty(key)) {
+            console.warn(`FilterManager: Chave de filtro '${key}' não existe.`);
+            return;
+        }
+        this.filtrosAtivos[key] = value;
+        this.filtrosEmEdicao[key] = value;
+        this.callbacks.onFilterChange(this.filtrosAtivos);
+        this.renderActiveFilterChips();
+    }
+
 }
 
-export { FilterManager };
+function makePopoverDraggable(popoverSelector) {
+    const popover = document.querySelector(popoverSelector);
+    const header = popover?.querySelector('.popover-header');
+
+    if (!popover || !header) return;
+
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+
+    header.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - popover.offsetLeft;
+        offsetY = e.clientY - popover.offsetTop;
+        document.body.style.userSelect = 'none'; 
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const left = e.clientX - offsetX;
+        const top = e.clientY - offsetY;
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        document.body.style.userSelect = ''; 
+    });
+}
+
+export { FilterManager, makePopoverDraggable };

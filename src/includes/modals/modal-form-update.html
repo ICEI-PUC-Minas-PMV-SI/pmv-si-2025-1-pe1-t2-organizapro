@@ -3,37 +3,37 @@
         <span id="fechar-modal-upd" class="fechar">×</span>
         <h2 id="tituloModal">Nova Atualização</h2>
 
-        <form id="formUpdate">
-            <label for="tituloUpdate">Título:</label>
-            <input type="text" id="tituloUpdate" name="titulo" required />
+        <div class="modal-scrollable">
 
-            <label for="descricaoUpdate">Descrição:</label>
-            <textarea id="descricaoUpdate" name="descricao"></textarea>
+            <form id="formUpdate">
+                <label for="tituloUpdate">Título:</label>
+                <input type="text" id="tituloUpdate" name="titulo" required />
 
-            <div class="form-group">
-                <label for="etiquetasInput">Etiquetas:</label>
-                <div id="etiquetas-container" class="tag-input-container">
-                    <div id="selected-tags-display" class="selected-tags-display">
-                    </div>
-                    <input type="text" id="etiquetasInput" placeholder="Adicionar etiqueta ou digitar nova...">
-                    <div id="etiquetas-suggestions" class="tag-suggestions-dropdown" style="display: none;">
+                <label for="descricaoUpdate">Descrição:</label>
+                <textarea id="descricaoUpdate" name="descricao"></textarea>
+
+                <div class="form-group">
+                    <label for="etiquetasInput">Etiquetas:</label>
+                    <div id="etiquetas-container" class="tag-input-container">
+                        <div id="selected-tags-display" class="selected-tags-display">
+                        </div>
+                        <input type="text" id="etiquetasInput" placeholder="Adicionar etiqueta ou digitar nova...">
+                        <div id="etiquetas-suggestions" class="tag-suggestions-dropdown" style="display: none;">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <label for="statusUpdate">Status:</label>
-            <select id="statusUpdate" name="status" required>
-                <option value="Ativo">Ativo</option>
-                <option value="Inativo">Inativo</option>
-            </select>
+                <label for="statusUpdate">Status:</label>
+                <select id="statusUpdate" name="status" required>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
 
-            <label for="arquivoUpdate">Arquivo:</label>
-            <input type="file" id="arquivoUpdate" name="arquivo" />
-
-            <div class="modal-buttons">
-                <button type="button" id="cancelar-upd" class="button button--cancelar">Cancelar</button>
-                <button type="submit" id="salvar-upd" class="button button--salvar">Salvar</button>
-            </div>
-        </form>
+                <div class="modal-buttons">
+                    <button type="button" id="cancelar-upd" class="button button--cancelar">Cancelar</button>
+                    <button type="submit" id="salvar-upd" class="button button--salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

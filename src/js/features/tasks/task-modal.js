@@ -3,6 +3,8 @@
 import { salvarTarefa, obterTarefaPorId } from './task-data.js';
 import { createModalController } from '../../utils/modal-controller.js';
 import { initTagInputComponent } from '../../features/common/tag-input-component.js';
+import { renderizarTarefas } from './tasks.js';
+import { taskFilterManagerInstance } from './task-filters.js';
 
 let taskForm = null;
 let taskTitleInput = null;
@@ -36,7 +38,7 @@ function handleTaskFormSubmit(event) {
     event.preventDefault();
 
     const titulo = taskTitleInput?.value.trim() || '';
-    const descricao = (tinymce && tinymce.get('taskDescription')) ? tinymce.get('taskDescription').getContent({ format: 'text' }).trim() : '';
+    const descricao = (tinymce && tinymce.get('taskDescription')) ? tinymce.get('taskDescription').getContent({ format: 'html' }).trim() : '';
     const tags = taskTagsComponent ? taskTagsComponent.getTags() : [];
     const dataVencimento = taskDueDateInput?.value || '';
     const status = taskStatusSelect?.value || 'a-fazer';
@@ -53,7 +55,7 @@ function handleTaskFormSubmit(event) {
         titulo,
         descricao,
         tags,
-        dataVencimento, 
+        dataVencimento,
         status,
         concluida: status === 'concluido'
     };
@@ -67,16 +69,17 @@ function handleTaskFormSubmit(event) {
             taskFormMessage.classList.add('success');
         }
 
-        if (window.updateAllTaskDisplays) {
+        if (window.updateAllTaskDisplays && typeof window.updateAllTaskDisplays === 'function') {
             window.updateAllTaskDisplays();
         } else {
-            console.warn('window.updateAllTaskDisplays não está definida. Verifique a inicialização em main.js.');
+            console.warn("window.updateAllTaskDisplays não está definida ou não é uma função.");
+            renderizarTarefas(taskFilterManagerInstance?.activeFilters || {});
         }
 
         setTimeout(() => {
             if (taskFormModalController) taskFormModalController.fechar();
             clearTaskForm();
-        }, 1000); 
+        }, 1000);
     } else {
         if (taskFormMessage) {
             taskFormMessage.textContent = 'Erro ao salvar a tarefa.';
@@ -105,13 +108,13 @@ export function initializeTaskFormElements() {
     }
 
     if (typeof tinymce !== 'undefined' && !tinymce.get('taskDescription')) {
-      tinymce.init({
-        selector: '#taskDescription',
-        menubar: false,
-        height: 200,
-        plugins: 'lists link',
-        toolbar: 'undo redo | bold italic | bullist numlist | link'
-      });
+        tinymce.init({
+            selector: '#taskDescription',
+            menubar: false,
+            height: 200,
+            plugins: 'lists link',
+            toolbar: 'undo redo | bold italic | bullist numlist | link'
+        });
     }
 
     taskFormModalController = createModalController('taskFormModal', 'taskFormModalTitle');
@@ -122,7 +125,7 @@ export function initializeTaskFormElements() {
 
     taskForm.addEventListener('submit', handleTaskFormSubmit);
 
-    const fecharButton = document.querySelector('#taskFormModal .fechar'); 
+    const fecharButton = document.querySelector('#taskFormModal .fechar');
     if (fecharButton) {
         fecharButton.addEventListener('click', () => {
             taskFormModalController.fechar();
@@ -140,17 +143,17 @@ export function initializeTaskFormElements() {
     taskFormModalController.definirCallbackDeLimpeza(clearTaskForm);
 
     taskTagsComponent = initTagInputComponent(
-        'taskTags', 
-        'task-selected-tags-display', 
-        'task-tags-suggestions', 
-        'task-tags-container' 
+        'taskTags',
+        'task-selected-tags-display',
+        'task-tags-suggestions',
+        'task-tags-container'
     );
 
     return true;
 }
 
 export function openTaskFormModal(taskId = null) {
-    
+
     if (!taskFormModalController || !taskForm) {
         if (!initializeTaskFormElements()) {
             console.error("Não foi possível inicializar os elementos do formulário de tarefa. Abrir modal cancelado.");
@@ -158,7 +161,7 @@ export function openTaskFormModal(taskId = null) {
         }
     }
 
-    clearTaskForm(); 
+    clearTaskForm();
 
     if (taskId) {
         const tarefa = obterTarefaPorId(taskId);
@@ -174,7 +177,10 @@ export function openTaskFormModal(taskId = null) {
             } else if (taskTagsComponent) {
                 taskTagsComponent.clearTags();
             }
-            if (taskDueDateInput) taskDueDateInput.value = tarefa.dataVencimento || '';
+            if (taskDueDateInput) {
+
+                taskDueDateInput.value = tarefa.dataVencimento ? tarefa.dataVencimento.split('T')[0] : '';
+            }
             if (taskStatusSelect) taskStatusSelect.value = tarefa.status || 'a-fazer';
         } else {
             console.warn(`Tarefa com ID ${taskId} não encontrada para edição. Abrindo como nova tarefa.`);

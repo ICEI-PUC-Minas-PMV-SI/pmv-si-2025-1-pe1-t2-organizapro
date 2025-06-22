@@ -1,8 +1,8 @@
-// src/js/pages/login.js
+// src/js/features/auth/login.js
 
-import { loadHTML } from '../utils/include-loader.js';
-import { initLogin } from '../features/auth/form-login.js';
-import { initForgotPassword } from '../features/auth/forgot-password.js';
+import { loadHTML } from '../../utils/include-loader.js';
+import { initLogin } from './form-login.js';
+import { initForgotPassword } from './forgot-password.js';
 
 const togglePassword = document.getElementById('togglePassword');
 const passwordInput = document.getElementById('password');

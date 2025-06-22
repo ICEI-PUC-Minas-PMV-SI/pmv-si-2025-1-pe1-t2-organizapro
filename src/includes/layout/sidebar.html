@@ -1,30 +1,30 @@
-<aside id="sidebar" class="sidebar">
-    <div class="search-bar">
-        <span class="material-symbols-outlined" aria-hidden="true">search</span>
-        <input type="text" placeholder="Pesquisar no menu" />
-    </div>
-    <div class="menu">
-        <div class="sidebar-section">
-            <p class="sidebar-section-title">Tarefas</p>
-            <aside class="task-sidebar">
-                <div class="menu-items">
-                    <button class="menu-button" id="btn-tarefas-hoje">Hoje <span class="badge"
-                            id="badge-hoje">0</span></button>
-                    <button class="menu-button" id="btn-tarefas-proximos-7-dias">Próximos 7 dias <span class="badge"
-                            id="badge-proximos-7-dias">0</span></button>
-                </div>
-            </aside>
+<div id="sidebar-wrapper" class="sidebar-wrapper">
+
+    <aside id="sidebar" class="sidebar">
+        <div class="menu">
+            <div class="sidebar-section">
+                <p class="sidebar-section-title">Tarefas</p>
+                <aside class="task-sidebar">
+                    <div class="menu-items task-menu-buttons">
+                        <button class="menu-button" id="btn-tarefas-hoje">Hoje <span class="badge"
+                                id="badge-hoje">0</span></button>
+                        <button class="menu-button" id="btn-tarefas-proximos-7-dias">Próximos 7 dias <span class="badge"
+                                id="badge-proximos-7-dias">0</span></button>
+                    </div>
+                </aside>
+            </div>
+            <div class="sidebar-section">
+                <p class="sidebar-section-title">Menu</p>
+                <button onclick="window.location.href='/src'" id="homeButton" class="menu-button">Tela Inicial</button>
+                <button onclick="window.location.href='/src/pages/control-panel.html'" class="menu-button">Painel de
+                    Controle</button>
+                <button onclick="window.location.href='/src/pages/upd-panel.html'" class="menu-button">Painel de
+                    Atualizações</button>
+                <button class="menu-button">Usuários e Acessos</button>
+                <button class="menu-button">Notificações</button>
+                <button class="menu-button">Configurações</button>
+            </div>
         </div>
-        <div class="sidebar-section">
-            <p class="sidebar-section-title">Menu</p>
-            <button class="menu-button">Processos de Trabalho</button>
-            <button onclick="window.location.href='/src/pages/control-panel.html'" class="menu-button">Painel de
-                Controle</button>
-            <button onclick="window.location.href='/src/pages/upd-panel.html'" class="menu-button">Painel de
-                Atualizações</button>
-            <button class="menu-button">Usuários e Acessos</button>
-            <button class="menu-button">Notificações</button>
-            <button class="menu-button">Configurações</button>
-        </div>
-    </div>
-</aside>
+    </aside>
+
+</div>

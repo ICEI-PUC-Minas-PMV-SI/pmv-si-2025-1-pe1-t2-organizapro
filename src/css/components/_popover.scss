@@ -1,0 +1,145 @@
+@use '../base/variables';
+@use '../components/buttons';
+
+.popover {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  width: 280px;
+  padding: 20px;
+  cursor: move;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.05s ease-out, visibility 0.05s ease-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translate(0, 0);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0px 0px 10px 0px;
+
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+  }
+
+  &-body {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border-top: 1px solid #eee;
+    gap: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    .button {
+      @extend .button;
+      width: 100%;
+      text-align: center;
+    }
+
+    .button--salvar {
+      background-color: variables.$color-green;
+      color: white;
+    }
+
+    .button--cancelar {
+      background-color: variables.$color-red;
+      color: white;
+    }
+
+
+  }
+}
+
+.popover-body-title h4 {
+  margin: 0px;
+  padding: 10px 0px;
+  font-size: 16px;
+}
+
+.input-data-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+#upd-data-datepicker {
+  width: 100%;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+#upd-clear-data-filter,
+#procedure-clear-date-filter {
+  position: absolute;
+  right: 12px;
+  top: 43%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  line-height: 1;
+}
+
+#task-clear-date-filter {
+  position: absolute;
+  right: 15px;
+  top: 67%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  line-height: 1;
+}
+
+.input-container {
+  display: flex;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 16px;
+  padding-bottom: 10px;
+
+}
+
+.input-container input[type="text"],
+.input-container input[type="search"],
+.input-container input[type="email"],
+.input-container input[type="date"] {
+  width: 100%;
+  padding-right: 30px;
+  box-sizing: border-box;
+}

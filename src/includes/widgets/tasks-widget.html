@@ -1,0 +1,80 @@
+<section class="tasks-section">
+  <div class="tasks-header">
+    <div class="tasks-header__top">
+      <h2 class="tasks-header__title">Minhas Tarefas</h2>
+      <div class="tasks-header__actions">
+        <div class="search-bar">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <input type="text" id="task-search-input" class="search-bar__input" placeholder="Pesquisar tarefas" />
+          <span class="material-symbols-outlined search-bar__clear" id="task-search-clear-icon"
+            style="display: none;">close</span>
+        </div>
+
+        <button class="button button--filtro" id="task-btn-open-filters" aria-controls="task-filter-popover"
+          aria-expanded="false">
+          <span class="material-symbols-outlined">filter_alt</span> Filtros
+        </button>
+
+        <button class="button button--criar" id="add-new-task-button">
+          <span class="material-symbols-outlined">add</span> Nova tarefa
+        </button>
+      </div>
+    </div>
+    <div id="task-active-filters-container" class="active-filters-container"></div>
+  </div>
+
+  <div class="kanban-board">
+    <div class="kanban-column" id="quadro-a-fazer">
+      <div class="kanban-column__header">A fazer</div>
+      <div class="kanban-column__tasks-container" id="tasks-todo-list">
+      </div>
+    </div>
+
+    <div class="kanban-column" id="quadro-fazendo">
+      <div class="kanban-column__header">Fazendo</div>
+      <div class="kanban-column__tasks-container" id="tasks-doing-list"></div>
+    </div>
+
+    <div class="kanban-column" id="quadro-concluido">
+      <div class="kanban-column__header">Concluído</div>
+      <div class="kanban-column__tasks-container" id="tasks-done-list"></div>
+    </div>
+  </div>
+</section>
+
+<div id="task-filter-popover" class="popover">
+  <div class="popover-header">
+    <h4>Filtros de Tarefas</h4>
+    <button id="task-btn-close-filters-popover" class="btn-icon">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <div class="popover-body">
+    <div class="filter-section">
+      <h5>Etiquetas</h5>
+      <div id="task-filter-etiquetas-options" class="filter-options-group">
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h5>Status</h5>
+      <div id="task-filter-status-options" class="filter-options-group">
+      </div>
+    </div>
+
+    <div class="filter-section input-container">
+      <h5>Data de Vencimento</h5>
+      <div class="date-filter-controls">
+        <input type="text" id="task-due-date-datepicker" placeholder="Selecione uma data">
+        <button id="task-clear-date-filter" class="clear-date-btn">X</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="popover-footer">
+    <button class="button button--cancelar" id="task-limparFiltrosBtn">Limpar</button>
+    <button class="button button--criar" id="task-aplicarFiltrosBtn">Aplicar</button>
+  </div>
+</div>
+
+<div id="task-filter-sidebar-overlay" class="overlay"></div>

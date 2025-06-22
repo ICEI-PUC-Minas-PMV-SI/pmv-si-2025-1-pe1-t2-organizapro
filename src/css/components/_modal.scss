@@ -1,6 +1,5 @@
 // css/components/_modal.scss
 
-/* Overlay do modal */
 .modal {
     position: fixed;
     top: 0;
@@ -11,10 +10,10 @@
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10000;
+    border-radius: 16px;
 }
 
-/* Conteúdo do modal */
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -22,23 +21,24 @@
     padding: 20px;
     width: 90%;
     max-width: 500px;
-    border-radius: 8px;
+    border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     position: relative;
     font-family: 'Inter', sans-serif;
     max-height: 90vh;
     overflow-y: auto;
+
 }
 
-/* Título do modal */
 .modal-content h2 {
     margin-top: 0;
     font-weight: 700;
     font-size: 1.5rem;
     margin-bottom: 0px;
+    transform: scale(0.95);
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Botão fechar (X) - geral para qualquer modal */
 .fechar {
     position: absolute;
     top: 1rem;
@@ -55,13 +55,18 @@
     padding: 0;
 }
 
-/* Foco visível para teclado */
 .fechar:focus {
     outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
-// Media queries específicas para o dimensionamento geral do modal
+.modal-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(90vh - altura-do-header-e-título); 
+    padding: 0 20px 0px 0px; 
+}
+
 @media (max-width: 480px) {
     .modal-content {
         padding: 1rem;

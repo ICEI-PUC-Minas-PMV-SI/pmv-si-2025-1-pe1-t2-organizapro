@@ -12,54 +12,69 @@
     align-items: center;
     padding: 0 20px;
     background-color: variables.$color-primary;
-    z-index: 1000;
+    z-index: 9000;
 
-.header-logo {
-    display: flex;
-    align-items: center;
-}
+    .header-left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: variables.$color-text-alt;
-}
+    .menu-toggle-button {
+        background: transparent;
+        border: none;
+        color: variables.$color-text-alt;
+        font-size: 2.5rem;
+        cursor: pointer;
+        padding: 5px;
+        order: -1;
+        display: block;
+    }
 
-    @media (max-width: variables.$breakpoint-tablet) { 
-        padding: 0 15px;
-        height: 50px;
+    .menu-toggle-button .close-icon {
+        display: none;
+    }
 
-        .header-logo {
+    .menu-toggle-button.is-open .menu-icon {
+        display: none;
+    }
+
+    .menu-toggle-button.is-open .close-icon {
+        display: block;
+    }
+
+
+    .header-logo {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: variables.$breakpoint-tablet) {
             .logo {
                 font-size: 20px;
             }
         }
-
-        .header-actions {
-            gap: 5px;
-
-            .search-bar {
-                display: none;
-            }
-
-            .material-symbols-outlined {
-                font-size: 20px;
-            }
-
-            button:first-child .material-symbols-outlined {
-                display: block;
-            }
-        }
     }
 
-    @media (max-width: variables.$breakpoint-mobile) { 
-        padding: 0 10px;
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: variables.$color-text-alt;
 
-        .header-actions {
-            .material-symbols-outlined:nth-last-child(-n+3) {
+        @media (max-width: variables.$breakpoint-tablet) {
+            gap: 5px;
+
+            .search-bar,
+            button[aria-label="Página inicial"],
+            .material-symbols-outlined[aria-label="Notificações"],
+            .material-symbols-outlined[aria-label="Modo noturno"],
+            .material-symbols-outlined[aria-label="Perfil do usuário"],
+            button[aria-label="Sair"] {
                 display: none;
             }
         }
+
+        @media (max-width: variables.$breakpoint-mobile) {}
     }
 }

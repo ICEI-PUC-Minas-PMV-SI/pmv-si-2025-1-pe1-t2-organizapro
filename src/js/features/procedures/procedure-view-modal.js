@@ -36,9 +36,12 @@ export async function abrirModalVisualizacao(procedimentoId, procedimentoIdOrigi
     visualizarUltimaAtualizacao.textContent = formatarDataParaBR(procedimento.ultimaAtualizacao);
 
     if (procedimento.arquivo) {
-        visualizarArquivoLink.href = `/uploads/${procedimento.arquivo}`;
-        visualizarArquivoLink.textContent = `Visualizar / Download: ${procedimento.arquivo}`;
+
+        visualizarArquivoLink.href = procedimento.arquivo;
+        visualizarArquivoLink.textContent = "Visualizar / Download do arquivo";
         visualizarArquivoLink.style.display = 'block';
+        visualizarArquivoLink.setAttribute('download', procedimento.arquivoNome || 'arquivo');
+
         if (visualizarArquivoNome) visualizarArquivoNome.style.display = 'none';
         visualizarSemArquivo.style.display = 'none';
     } else {
@@ -47,6 +50,7 @@ export async function abrirModalVisualizacao(procedimentoId, procedimentoIdOrigi
         if (visualizarArquivoNome) visualizarArquivoNome.style.display = 'none';
         visualizarSemArquivo.style.display = 'block';
     }
+
 
     if (btnHistorico) {
         const todosProcedimentos = obterProcedimentos();
@@ -140,7 +144,7 @@ export function initProcedureViewModal() {
 
     fecharVisualizarModalBtn?.addEventListener('click', fecharModalVisualizacao);
     fecharVisualizarBtn?.addEventListener('click', fecharModalVisualizacao);
-} 
+}
 
 function renderizarEtiquetasVisuaisAsChips(etiquetasArray) {
     if (!Array.isArray(etiquetasArray) || etiquetasArray.length === 0) return "indefinido";

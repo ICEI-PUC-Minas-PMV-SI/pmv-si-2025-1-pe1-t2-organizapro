@@ -3,10 +3,10 @@
 @use '../base/variables';
 
 table {
-    display: table; 
+    display: table;
     width: 100%;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 16px;
     border-collapse: collapse;
 
     th,
@@ -25,7 +25,6 @@ table {
         background-color: #f5f5f5;
     }
 
-    /* Responsividade para a tabela */
     @media (max-width: variables.$breakpoint-tablet) {}
 }
 
@@ -37,31 +36,29 @@ table {
     justify-content: space-between;
     width: 100%;
     background-color: variables.$color-text-alt;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     gap: 20px;
 
-    /* Responsividade para o container da tabela */
     @media (max-width: variables.$breakpoint-tablet) {
         padding: 15px;
         gap: 15px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
 
-        // Estilos para a scrollbar
         &::-webkit-scrollbar {
             height: 8px;
         }
 
         &::-webkit-scrollbar-track {
             background: #f1f1f1;
-            border-radius: 4px;
+            border-radius: 16px;
         }
 
         &::-webkit-scrollbar-thumb {
             background: #ccc;
-            border-radius: 4px;
+            border-radius: 16px;
         }
 
         &::-webkit-scrollbar-thumb:hover {
@@ -70,7 +67,7 @@ table {
     }
 
     @media (max-width: variables.$breakpoint-mobile) {
-        padding: 10px; 
+        padding: 10px;
         gap: 10px;
     }
 }

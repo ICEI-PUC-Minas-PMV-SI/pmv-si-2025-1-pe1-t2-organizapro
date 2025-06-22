@@ -1,12 +1,14 @@
 // css/components/_dropdown.scss
 
 @use '../base/variables';
+@use 'sass:color';
 
 .filtro-dropdown {
-    position: absolute;
+    display: none;
+    position: fixed;
     background-color: variables.$color-text-alt;
     border: 1px solid variables.$color-background;
-    border-radius: 8px;
+    border-radius: 16px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     padding: 15px 20px;
     max-height: 280px;
@@ -15,6 +17,10 @@
     box-sizing: border-box;
     z-index: 9999;
     margin-bottom: 10px;
+
+    &.open {
+        display: block;
+    }
 }
 
 .filtro-opcao {
@@ -25,7 +31,7 @@
     font-size: variables.$font-size-text;
     color: variables.$color-text;
     user-select: none;
-    border-radius: 4px;
+    border-radius: 16px;
     transition: background-color 0.2s ease, color 0.2s ease;
 
     &:last-child {
@@ -43,29 +49,29 @@
 }
 
 .filtro-dropdown .checkmark {
-    width: 20px;
-    height: 20px;
-    border: 2px solid variables.$color-secondary;
-    border-radius: 5px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid variables.$color-background;
+    border-radius: 16px;
     position: relative;
     flex-shrink: 0;
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.filtro-dropdown input[type="checkbox"]:checked + .checkmark {
-    background-color: variables.$color-primary;
-    border-color: variables.$color-primary;
+.filtro-dropdown input[type="checkbox"]:checked+.checkmark {
+    background-color: variables.$color-green;
+    border: none;
 }
 
-.filtro-dropdown input[type="checkbox"]:checked + .checkmark::after {
+.filtro-dropdown input[type="checkbox"]:checked+.checkmark::after {
     content: "";
     position: absolute;
-    left: 6px;
-    top: 3px;
+    left: 7px;
+    top: 1px;
     width: 6px;
     height: 12px;
     border: solid #fff;
-    border-width: 0 3px 3px 0;
+    border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
 
@@ -75,14 +81,14 @@
     padding: 10px 15px;
     background-color: variables.$color-background;
     border: 1px solid variables.$color-background;
-    border-radius: 6px;
+    border-radius: 16px;
     font-size: 14px;
     color: variables.$color-text;
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
-        background-color: lighten(variables.$color-background, 5%);
+        background-color: color.adjust(variables.$color-background, $lightness: -5%);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 }
@@ -92,15 +98,25 @@
 }
 
 .filtro-dropdown::-webkit-scrollbar-track {
-    background: variables.$color-background;
-    border-radius: 4px;
+    background: variables.$color-text-alt;
+    border-radius: 16px;
 }
 
 .filtro-dropdown::-webkit-scrollbar-thumb {
-    background: variables.$color-secondary;
-    border-radius: 4px;
+    background: variables.$color-background;
+    border-radius: 16px;
 }
 
 .filtro-dropdown::-webkit-scrollbar-thumb:hover {
-    background: darken(variables.$color-secondary, 10%);
+    background-color: color.adjust(variables.$color-background, $lightness: 10%);
+}
+
+.input-container-procedure {
+    display: flex;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: 16px;
+    padding-bottom: 10px;
+
 }

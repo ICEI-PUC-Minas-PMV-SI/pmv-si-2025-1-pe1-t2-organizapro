@@ -45,11 +45,11 @@ Esses usuários, com idades variando entre 18 e 60 anos, possuem diferentes nív
 | Usuários            | Interesse                                                                 | Influência                                                                 |
 |------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | **Gestores/Administradores** | Controle total sobre a aplicação e permissões de acesso.               | Alta - Pode influenciar diretamente as decisões sobre como a aplicação será configurada e operada. |
-| **Analistas de processos** | Criação e manutenção de flows, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
-| **Funcionários operacionais** | Acesso às informações e flows criados pelos analistas.                | Média - Seu feedback é valioso para garantir a usabilidade da aplicação. |
+| **Analistas de processos** | Criação e manutenção de procedimentos, gestão de informações.                   | Alta - São os principais usuários que interagirão com a aplicação.       |
+| **Funcionários operacionais** | Acesso às informações e procedimentos criados pelos analistas.                | Média - Seu feedback é valioso para garantir a usabilidade da aplicação. |
 | **Gestores de TI**      | Implementação e manutenção técnica da aplicação.                          | Alta - São responsáveis pela infraestrutura da aplicação.                |
 | **Equipe de Suporte**   | Auxílio na solução de problemas operacionais dos usuários.                | Média - Suporte contínuo é necessário para a operação eficiente da aplicação. |
-| **Clientes Externos**   | Usabilidade da aplicação para acessar flows e relatórios.                | Baixa - Os usuários finais e analistas influenciam mais diretamente a experiência. |
+| **Clientes Externos**   | Usabilidade da aplicação para acessar procedimentos e relatórios.                | Baixa - Os usuários finais e analistas influenciam mais diretamente a experiência. |
 
 ## Metodologia
 

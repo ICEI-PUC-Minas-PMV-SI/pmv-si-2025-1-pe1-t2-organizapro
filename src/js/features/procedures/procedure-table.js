@@ -10,7 +10,7 @@ import {
     obterProcedimentosFiltrados
 } from './procedure-data.js';
 
-import { setProcedimentoParaEdicao } from './procedure-form.js';
+import { setProcedimentoParaEdicao, setProcedimentoParaDuplicar } from './procedure-form.js';
 import { formatarDataParaBR } from '/src/js/utils/formatters.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
@@ -60,7 +60,7 @@ function handleDuplicarClick(event) {
     const id = event.currentTarget.dataset.id;
     const copia = duplicarProcedimento(id);
     if (copia) {
-        setProcedimentoParaEdicao(copia, true);
+        setProcedimentoParaDuplicar(copia);
         if (procedureFilterManagerInstance) {
             renderizarProcedureTable(procedureFilterManagerInstance.activeFilters);
         } else {

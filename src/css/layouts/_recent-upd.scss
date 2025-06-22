@@ -7,10 +7,15 @@
   justify-content: space-between;
   width: 100%;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   gap: 20px;
+
+  .title {
+    padding: 0px;
+    margin: 0px;
+  }
 }
 
 .cards {
@@ -19,26 +24,31 @@
   background-color: white;
 }
 
-.card {
+.card-widget {
   background-color: #d5e5ed;
   width: 33%;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .image-container {
   position: relative;
 }
 
-.card img {
+.card-widget-img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   display: block;
 }
 
-.image-overlay {
+.card-widget-content {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -53,52 +63,52 @@
 }
 
 
-.texto-atualizacao-overlay h3 {
-  font-size: 1.2rem;
+.card-widget-title {
+  font-size: 20px;
   margin-bottom: 5px;
+  color: white;
 }
 
-.texto-atualizacao-overlay small {
-  font-size: 0.8rem;
+.card-widget-date {
+  font-size: 14px;
 }
 
 .texto-atualizacao {
   display: none;
 }
 
-/* Responsividade para a Seção de Atualizações */
 @media (max-width: 768px) {
-    .section-atualizacoes {
-        padding: 15px;
-        gap: 15px;
-    }
+  .section-atualizacoes {
+    padding: 15px;
+    gap: 15px;
+  }
 
-    .cards {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .cards {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    .card {
-        width: 100%;
-        padding: 15px;
-        border-radius: 8px;
-    }
+  .card {
+    width: 100%;
+    padding: 15px;
+    border-radius: 16px;
+  }
 
-    .image-container {
-        position: relative;
-        height: 120px;
-    }
+  .image-container {
+    position: relative;
+    height: 120px;
+  }
 
-    .card img {
-        object-fit: cover;
-        height: 100%;
-    }
+  .card img {
+    object-fit: cover;
+    height: 100%;
+  }
 
-    .texto-atualizacao-overlay h3 {
-        font-size: 1rem;
-    }
+  .texto-atualizacao-overlay h3 {
+    font-size: 1rem;
+  }
 
-    .texto-atualizacao-overlay small {
-        font-size: 0.75rem;
-    }
+  .texto-atualizacao-overlay small {
+    font-size: 0.75rem;
+  }
 }

@@ -1,6 +1,4 @@
-// css/layout/_control-panel.scss
-
-@use '../base/variables'; 
+@use '../base/variables';
 
 .control-panel-container {
     display: flex;
@@ -20,7 +18,7 @@
     justify-content: space-between;
     width: 100%;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     gap: 20px;
@@ -38,4 +36,245 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+}
+
+#procedure-search-input {
+    width: 100%;
+}
+
+// ----------------------
+// MODAIS
+// ----------------------
+
+#modal-visualizar-procedimento .modal-content,
+#modal-form-procedure .modal-content,
+#procedure-version-modal .modal-content,
+#modal-form-update .modal-content {
+    max-width: 600px;
+    font-family: 'Inter', sans-serif;
+    animation: fadeIn 0.2s ease-out;
+}
+
+#modal-visualizar-procedimento h2,
+#modal-form-procedure h2,
+#procedure-version-modal h2,
+#modal-form-update h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.modal-body-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label,
+#formProcedimento label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.form-group p {
+    background-color: variables.$color-background;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    color: #222;
+    margin: 0;
+}
+
+.form-group a {
+    font-size: 0.95rem;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.form-group span {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.modal-scrollable {
+    overflow-y: auto;
+    padding-right: 8px;
+    flex: 1;
+}
+
+
+// Card de versão de procedimento 
+.versao-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+}
+
+.versao-item-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #555;
+
+        .status {
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .ativo {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .inativo {
+            background-color: #fef2f2;
+            color: #991b1b;
+        }
+    }
+}
+
+.versao-item-botoes {
+    display: flex;
+    flex-direction: column;
+
+    .button--visualizar-versao {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+
+    }
+}
+
+// Formulário de procedimento
+#modal-form-procedure form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#modal-form-procedure label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+#modal-form-procedure input[type="text"],
+#modal-form-procedure input[type="file"],
+#modal-form-procedure textarea,
+#modal-form-procedure select {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#modal-form-procedure textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+#modal-form-procedure .button {
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+}
+
+#modal-form-procedure .button:hover {
+    filter: brightness(1.1);
+}
+
+// Etiquetas 
+#modal-form-procedure .tag-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#modal-form-procedure .selected-tags-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#modal-form-procedure .tag-suggestions-dropdown {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 0.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Animação
+@keyframes fadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// Responsividade
+@media (max-width: 480px) {
+
+    #modal-visualizar-procedimento .modal-content,
+    #modal-form-procedure .modal-content,
+    #procedure-version-modal .modal-content {
+        padding: 1rem;
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    #modal-visualizar-procedimento h2,
+    #modal-form-procedure h2,
+    #procedure-version-modal h2 {
+        font-size: 1.3rem;
+    }
 }

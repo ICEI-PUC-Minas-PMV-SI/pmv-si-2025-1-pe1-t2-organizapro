@@ -11,6 +11,15 @@ export function createModalController(modalId, titleId) {
         return null;
     }
 
+    const closeButton = element.querySelector('.fechar'); 
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            fechar(); 
+        });
+    } else {
+        console.warn(`Aviso: Botão de fechar com a classe '.fechar' não encontrado para o modal "${modalId}".`);
+    }
+
     let _clearContentCallback = null;
 
     function onKeyDown(e) {
@@ -25,7 +34,7 @@ export function createModalController(modalId, titleId) {
         }
     }
 
-    function abrir() {
+    function abrir(callback) {
         element.style.display = "flex";
         element.scrollTop = 0;
         element.setAttribute('aria-hidden', 'false');
@@ -33,7 +42,12 @@ export function createModalController(modalId, titleId) {
         document.addEventListener("keydown", onKeyDown);
         element.addEventListener("click", onOverlayClick);
         console.log(`Modal com ID "${modalId}" aberto.`);
+
+        if (typeof callback === "function") {
+            requestAnimationFrame(() => callback());
+        }
     }
+
 
     function fechar() {
         element.style.display = "none";

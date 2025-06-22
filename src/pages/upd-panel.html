@@ -6,15 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OrganizaPRO - Painel de Atualizações</title>
   <link rel="stylesheet" href="/src/css/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400..700,0..1,0..200"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 </head>
 
 <body>
   <div id="header"></div>
-  <div id="sidebar"></div>
+  <div id="sidebar-wrapper" class="sidebar-wrapper"></div>
 
   <div class="main-container">
     <main class="content">
@@ -28,18 +30,26 @@
               <span class="material-symbols-outlined upd-search-clear-icon" style="display: none;">close</span>
             </div>
 
+            <button id="btn-nova-atualizacao" class="button button--criar">
+              <span class="material-symbols-outlined">add</span> Nova Atualização
+            </button>
+
             <button id="upd-filtro-favoritos" class="button button--favoritos">
               <span class="material-symbols-outlined" aria-hidden="true">favorite</span> Favoritos
             </button>
 
-            <button id="upd-limpar-filtros" class="button button--filtro">
-              <span class="material-symbols-outlined" aria-hidden="true">filter_alt_off</span> Limpar filtros
+            <button id="upd-btn-open-filters" class="button button--filtro">
+              <span class="material-symbols-outlined" aria-hidden="true">filter_alt</span> Filtros
             </button>
 
-            <button id="btn-nova-atualizacao" class="button button--criar">
-              <span class="material-symbols-outlined">add</span> Nova Atualização
+
+            <button id="upd-limpar-filtros" class="button button--filtro">
+              <span class="material-symbols-outlined" aria-hidden="true">filter_alt_off</span> Limpar
             </button>
+
           </div>
+          <div id="upd-filter-chips-container" class="upd-filter-chips"></div>
+
         </div>
 
         <section class="upd-panel-updates-section">
@@ -52,13 +62,53 @@
 
   <div id="modal-form-update-placeholder"></div>
   <div id="modal-view-update-placeholder"></div>
+  <div id="modal-task-form-placeholder"></div>
+  <div id="modal-task-sidebar-placeholder"></div>
 
-  <script src="https://cdn.tiny.cloud/1/nej3yfwo1ohp1u1ga65gdxflhayi364zmfchx4pcjw04vdpf/tinymce/6/tinymce.min.js"
+
+  <div id="upd-filter-overlay" class="filter-overlay"></div>
+
+  <!-- Popover de filtros -->
+  <div id="upd-filter-popover" class="popover">
+    <div class="popover-header">
+      <h4>Filtros</h4>
+      <button id="upd-btn-close-filters-popover" type="button">X</button>
+    </div>
+    <div class="popover-body popover-body-title">
+      <h4>Status</h4>
+    </div>
+    <div class="popover-body" id="upd-filter-status-options">
+
+      <label><input type="checkbox" value="Ativo" data-filter-key="status" checked> Ativo</label>
+      <label><input type="checkbox" value="Inativo" data-filter-key="status"> Inativo</label>
+    </div>
+    <div class="popover-body popover-body-title">
+      <h4>Etiquetas</h4>
+    </div>
+    <div class="popover-body" id="upd-filter-etiquetas-options">
+    </div>
+    <div class="popover-body popover-body-title" id="upd-filter-data-options">
+      <h4>Data</h4>
+    </div>
+    <div class="popover-body input-data-wrapper input-container">
+      <input type="text" id="upd-data-datepicker" placeholder="Filtrar por data" readonly />
+      <button id="upd-clear-data-filter" title="Limpar filtro de data" class="clear-icon">X</button>
+    </div>
+    <div class="popover-footer">
+      <button id="upd-limparFiltrosBtn" type="button" class="button button--cancelar">Limpar Todos</button>
+      <button id="upd-aplicarFiltrosBtn" type="button" class="button button--salvar">Aplicar</button>
+
+    </div>
+  </div>
+
+
+  <script src="https://cdn.tiny.cloud/1/lbpuo94sk0k0o89xox9wgf4tyrz743oufa6slz0vnby9s44j/tinymce/7/tinymce.min.js"
     referrerpolicy="origin"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 
-  <script type="module" src="/src/js/script.js"></script>
+  <script type="module" src="/src/js/main.js"></script>
+
 </body>
 
 </html>

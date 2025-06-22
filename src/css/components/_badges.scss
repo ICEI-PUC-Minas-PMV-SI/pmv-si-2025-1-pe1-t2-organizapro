@@ -1,16 +1,22 @@
 // css/components/_badge.scss
 
 .badge {
-    display: inline-block;
-    min-width: 1em;
-    padding: .25em .6em;
-    font-size: 0.75em;
-    font-weight: 700;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 100%;
+    background-color: #c82333;
+    color: white;
+    font-size: 0.9rem; 
+    font-weight: 500;
     line-height: 1;
     text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .375rem;
-    background-color: #dc3545;
-    color: white;
 }
+
+.badge span {
+    transform: scale(1.4); 
+    display: inline-block;
+}
+

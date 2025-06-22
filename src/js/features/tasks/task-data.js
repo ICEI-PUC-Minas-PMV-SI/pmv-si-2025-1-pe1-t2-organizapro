@@ -27,6 +27,16 @@ function gerarIdUnico() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
+function parseDateLocalYYYYMMDD(dateString) {
+    if (!dateString) return null;
+    const parts = dateString.split('-');
+    if (parts.length !== 3) return null;
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; 
+    const day = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+}
+
 export function salvarTarefa(tarefaDados, id = null) {
     if (!tarefaDados.titulo || typeof tarefaDados.titulo !== 'string') {
         console.warn('WARN: Título inválido ou ausente na tarefa.');
@@ -35,11 +45,22 @@ export function salvarTarefa(tarefaDados, id = null) {
 
     let targetTask = null;
     let isNewTask = false;
+    let dataVencISO = '';
+
+    if (tarefaDados.dataVencimento) {
+        const dt = parseDateLocalYYYYMMDD(tarefaDados.dataVencimento);
+        if (dt) {
+            dataVencISO = dt.toISOString();
+        } else {
+            console.warn('WARN: Data de vencimento inválida', tarefaDados.dataVencimento);
+        }
+    }
 
     if (id) {
         const index = tasks.findIndex(task => task.id === id);
         if (index !== -1) {
             targetTask = { ...tasks[index], ...tarefaDados };
+            targetTask.dataVencimento = dataVencISO;
             if (tarefaDados.status) {
                 targetTask.status = tarefaDados.status;
                 targetTask.concluida = (tarefaDados.status === 'concluido');
@@ -60,7 +81,7 @@ export function salvarTarefa(tarefaDados, id = null) {
             titulo: tarefaDados.titulo,
             descricao: tarefaDados.descricao || '',
             tags: Array.isArray(tarefaDados.tags) ? tarefaDados.tags : [],
-            dataVencimento: tarefaDados.dataVencimento || '',
+            dataVencimento: dataVencISO,
             status: tarefaDados.status || 'a-fazer',
             concluida: tarefaDados.status === 'concluido',
             criadaEm: new Date().toISOString()
@@ -71,6 +92,7 @@ export function salvarTarefa(tarefaDados, id = null) {
 
     saveTasks();
     return targetTask;
+
 }
 
 export function excluirTarefa(id) {
@@ -138,54 +160,45 @@ export function getUniqueTaskDueDates() {
     return uniqueDatesArray.sort((a, b) => b.localeCompare(a));
 }
 
-function formatDateToISO(date) {
-    if (!date || isNaN(date.getTime())) {
-        return null;
-    }
-    return date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-}
-
-function startOfDay(dateInput) {
-    const d = new Date(dateInput);
+function startOfLocalDay(date) {
+    const d = new Date(date);
     d.setHours(0, 0, 0, 0);
     return d;
 }
 
 export function getTarefasDeHoje() {
-    const hojeISO = formatDateToISO(new Date());
-    if (hojeISO === null) return [];
+    const hojeInicio = startOfLocalDay(new Date());
 
     return tasks.filter(task => {
-        if (task.concluida) return false; 
-
+        if (task.concluida) return false;
         if (!task.dataVencimento) return false;
 
-        const taskDate = new Date(task.dataVencimento);
+        const taskDate = startOfLocalDay(new Date(task.dataVencimento));
         if (isNaN(taskDate.getTime())) {
-            console.warn(`WARN: Invalid 'dataVencimento' for task: ${task.id} - ${task.dataVencimento}`);
+            console.warn(`WARN: Data inválida para tarefa: ${task.id} - ${task.dataVencimento}`);
             return false;
         }
-        return formatDateToISO(taskDate) === hojeISO;
+
+        return taskDate.getTime() === hojeInicio.getTime();
     });
 }
 
 export function getTarefasProximos7Dias() {
-    const hojeInicio = startOfDay(new Date());
+    const hojeInicio = startOfLocalDay(new Date());
     const daqui7DiasFim = new Date(hojeInicio);
     daqui7DiasFim.setDate(hojeInicio.getDate() + 7);
-    daqui7DiasFim.setHours(23, 59, 59, 999); 
+    daqui7DiasFim.setHours(23, 59, 59, 999);
 
     return tasks.filter(task => {
         if (task.concluida) return false;
-
         if (!task.dataVencimento) return false;
 
-        const taskDateInicio = startOfDay(new Date(task.dataVencimento));
-        if (isNaN(taskDateInicio.getTime())) {
-            console.warn(`WARN: Invalid 'dataVencimento' for task: ${task.id} - ${task.dataVencimento}`);
+        const taskDate = startOfLocalDay(new Date(task.dataVencimento));
+        if (isNaN(taskDate.getTime())) {
+            console.warn(`WARN: Data inválida para tarefa: ${task.id} - ${task.dataVencimento}`);
             return false;
         }
-        
-        return taskDateInicio.getTime() >= hojeInicio.getTime() && taskDateInicio.getTime() <= daqui7DiasFim.getTime();
+
+        return taskDate.getTime() >= hojeInicio.getTime() && taskDate.getTime() <= daqui7DiasFim.getTime();
     });
 }

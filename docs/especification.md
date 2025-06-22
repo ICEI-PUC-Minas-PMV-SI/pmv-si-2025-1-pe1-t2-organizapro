@@ -110,7 +110,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 #### Módulo: Gerenciamento de Usuários
 | ID   | Descrição do Requisito                                                | Prioridade     |
 |------|----------------------------------------------------------------------|----------------|
-| RF01 | Permitir o login de usuários com nome de usuário e senha.            | Alta           |
+| RF01 | Permitir o login de usuários com e-mail e senha.            | Alta           |
 | RF02 | Permitir a recuperação de senha via e-mail.                          | Alta           |
 | RF03 | Permitir o cadastro de novos usuários.                               | Alta           |
 | RF04 | Permitir a edição dos dados cadastrais dos usuários.                 | Alta           |

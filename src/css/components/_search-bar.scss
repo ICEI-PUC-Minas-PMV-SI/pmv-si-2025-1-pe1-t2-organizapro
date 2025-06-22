@@ -7,14 +7,14 @@
     position: relative;
     align-items: center;
     background-color: inherit;
-    border-radius: 8px;
+    border-radius: 20px;
     height: auto;
     margin: 0px;
 
     input {
         padding: 9px 20px 9px 40px;
         border: 1px solid variables.$color-background;
-        border-radius: 8px;
+        border-radius: 20px;
         background-color: inherit;
         color: variables.$color-text;
         font-size: variables.$font-size-text;
@@ -25,13 +25,11 @@
 
     .material-symbols-outlined {
         position: absolute;
-        left: 10px;
-        color: #fff;
+        left: 12px;
         font-size: 18px;
         pointer-events: none;
     }
 
-    /* Responsividade para a search-bar */
     @media (max-width: 768px) {
         font-size: 0.9rem;
         padding: 8px 15px;
@@ -45,10 +43,12 @@
     }
 }
 
-.sidebar .search-bar {
+.header .search-bar {
     width: 100%;
+    height: 27px;
     input {
         width: 100%;
+        height: 27px;
     }
 }
 

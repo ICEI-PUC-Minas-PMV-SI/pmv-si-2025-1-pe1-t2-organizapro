@@ -165,12 +165,17 @@ export function duplicarProcedimento(id) {
     return {
         ...original,
         id: gerarId(),
-        titulo: original.titulo,
+        titulo: `${original.titulo} (cópia)`,
+        versao: 1, 
+        idPai: null,
+        versoesFilhas: [],
         ultimaAtualizacao: new Date().toISOString().split('T')[0],
         favorito: false,
         inativo: false,
+        status: "Ativo"
     };
 }
+
 
 function obterProximaVersao(filtro, lista) {
   const relacionados = lista.filter(filtro);

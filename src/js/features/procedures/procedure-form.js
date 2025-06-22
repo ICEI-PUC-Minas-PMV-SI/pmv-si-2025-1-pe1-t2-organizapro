@@ -1,13 +1,15 @@
+// src/js/features/procedures/procedure-form.js 
+
 import { createModalController } from "../../utils/modal-controller.js";
 import {
     obterEtiquetasUnicas,
     obterTiposUnicos,
     salvarProcedimento,
     obterProcedimentoPorId,
-    criarNovaVersaoComHistorico,
 } from './procedure-data.js';
 import { initTagInputComponent } from '../../features/common/tag-input-component.js';
 import { renderizarProcedureTable } from '../../features/procedures/procedure-table.js';
+import { criarNovaVersaoComHistorico } from './procedure-data.js';
 
 
 let currentEditId = null;
@@ -15,7 +17,8 @@ let etiquetasTagComponent = null;
 let formModalController = null;
 let tinyMCEEditor = null;
 
-let botaoCriar, fecharModalBtn, cancelarBtn, salvarBtn;
+let addProcedureButton = null; 
+let fecharModalBtn, cancelarBtn, salvarBtn;
 let tituloProcedimentoInput, descricaoProcedimentoInput, tipoProcedimentoSelect;
 let statusProcedimentoSelect, arquivoProcedimentoInput;
 let customTypeContainer, customTypeInput;
@@ -108,7 +111,6 @@ async function handleSaveProcedimento(event) {
     const titulo = tituloProcedimentoInput.value.trim();
     const descricao = tinyMCEEditor ? tinyMCEEditor.getContent() : descricaoProcedimentoInput.value.trim();
     const status = statusProcedimentoSelect.value;
-    const nomeArquivo = arquivoProcedimentoInput?.files[0]?.name || "";
 
     const tipoFinal = tipoProcedimentoSelect.value === 'custom'
         ? customTypeInput.value.trim()
@@ -116,25 +118,36 @@ async function handleSaveProcedimento(event) {
 
     const etiquetasFinal = etiquetasTagComponent ? etiquetasTagComponent.getTags() : [];
 
+    let arquivo = '';
+    let arquivoNome = '';
+
+    if (arquivoProcedimentoInput?.files?.length > 0) {
+        arquivoNome = arquivoProcedimentoInput.files[0]?.name || '';
+        arquivo = await new Promise((resolve, reject) => {
+            const file = arquivoProcedimentoInput.files[0];
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
+        }).catch(() => '');
+    }
+
     const dadosDoFormulario = {
         titulo,
         descricao,
         etiquetas: etiquetasFinal,
         status,
         tipo: tipoFinal,
-        arquivo: nomeArquivo
+        arquivo,
+        arquivoNome,
     };
 
     if (currentEditId) {
-        const criarNovaVersao = confirm("Deseja criar uma nova versão deste procedimento?");
+        const criarNovaVersao = confirm("Deseja criar uma nova versão deste procedimento? Clique em OK para sim, Cancelar para atualizar a versão atual.");
 
         if (criarNovaVersao) {
-            const novaVersao = await criarNovaVersaoComHistorico(currentEditId, dadosDoFormulario);
-            if (novaVersao) {
-                alert("Nova versão do procedimento criada e a anterior inativada com sucesso!");
-            } else {
-                alert("Erro ao criar nova versão do procedimento. Verifique o console.");
-            }
+            await criarNovaVersaoComHistorico(currentEditId, dadosDoFormulario);
+            alert("Nova versão criada com sucesso!");
         } else {
             await salvarProcedimento(dadosDoFormulario, currentEditId);
             alert("Procedimento atualizado com sucesso!");
@@ -144,22 +157,74 @@ async function handleSaveProcedimento(event) {
         alert("Novo procedimento salvo com sucesso!");
     }
 
-    atualizarTabela();
+    if (renderizarProcedureTable) {
+        renderizarProcedureTable();
+    }
+
     fecharModalProcedimento();
 }
 
-export function setProcedimentoParaEdicao(procedimento, isDuplicating = false) {
+export function setProcedimentoParaEdicao(procedimento) {
     if (!formModalController) {
         console.error("formModalController não inicializado.");
         return;
     }
 
-    currentEditId = isDuplicating ? null : procedimento.id;
-    formModalController.setTitulo(isDuplicating ? "Duplicar Procedimento" : "Editar Procedimento");
+    currentEditId = procedimento.id || null;
+    formModalController.setTitulo("Editar Procedimento");
     formModalController.dispararLimpeza();
 
     const tituloBase = (procedimento.titulo || "").replace(/\s*\(versão\s*\d+\)$/i, "").trim();
-    tituloProcedimentoInput.value = isDuplicating ? `${tituloBase} (cópia)` : tituloBase;
+    tituloProcedimentoInput.value = tituloBase;
+
+    if (tinyMCEEditor) {
+        tinyMCEEditor.setContent(procedimento.descricao || '');
+    } else if (descricaoProcedimentoInput) {
+        descricaoProcedimentoInput.value = procedimento.descricao || '';
+    }
+
+    statusProcedimentoSelect.value = procedimento.status || 'Ativo';
+
+    popularSelect(tipoProcedimentoSelect, obterTiposUnicos(), 'custom');
+
+    const tiposExistentes = obterTiposUnicos();
+    if (procedimento.tipo && tiposExistentes.includes(procedimento.tipo)) {
+        tipoProcedimentoSelect.value = procedimento.tipo;
+        if (customTypeContainer) customTypeContainer.style.display = 'none';
+        if (customTypeInput) customTypeInput.value = '';
+    } else if (procedimento.tipo) {
+        tipoProcedimentoSelect.value = 'custom';
+        if (customTypeContainer) customTypeContainer.style.display = 'block';
+        if (customTypeInput) customTypeInput.value = procedimento.tipo;
+    } else {
+        tipoProcedimentoSelect.value = '';
+        if (customTypeContainer) customTypeContainer.style.display = 'none';
+        if (customTypeInput) customTypeInput.value = '';
+    }
+
+    if (etiquetasTagComponent && procedimento.etiquetas) {
+        etiquetasTagComponent.setTags(procedimento.etiquetas);
+    } else if (etiquetasTagComponent) {
+        etiquetasTagComponent.clearTags();
+    }
+
+    if (arquivoProcedimentoInput) arquivoProcedimentoInput.value = '';
+
+    formModalController.abrir();
+}
+
+export function setProcedimentoParaDuplicar(procedimento) {
+    if (!formModalController) {
+        console.error("formModalController não inicializado.");
+        return;
+    }
+
+    currentEditId = null; 
+    formModalController.setTitulo("Novo Procedimento");
+    formModalController.dispararLimpeza();
+
+    const tituloBase = (procedimento.titulo || "").replace(/\s*\(versão\s*\d+\)$/i, "").trim();
+    tituloProcedimentoInput.value = tituloBase;
 
     if (tinyMCEEditor) {
         tinyMCEEditor.setContent(procedimento.descricao || '');
@@ -204,7 +269,7 @@ export function initProcedureForm() {
         return;
     }
 
-    botaoCriar = document.querySelector(".button--criar");
+    addProcedureButton = document.getElementById("add-new-procedure-button"); 
     fecharModalBtn = document.getElementById("fechar-modal");
     cancelarBtn = document.getElementById("cancelar");
     salvarBtn = document.getElementById("salvar");
@@ -226,14 +291,16 @@ export function initProcedureForm() {
         updatedTags => console.log('Etiquetas atualizadas:', updatedTags)
     );
 
-    if (botaoCriar) {
-        botaoCriar.addEventListener('click', () => {
+    if (addProcedureButton) {
+        addProcedureButton.addEventListener('click', () => {
             formModalController.setTitulo("Novo Procedimento");
             formModalController.dispararLimpeza();
             popularSelect(tipoProcedimentoSelect, obterTiposUnicos(), 'custom');
             formModalController.abrir();
             currentEditId = null;
         });
+    } else {
+        console.warn('Botão #add-new-procedure-button não encontrado. Não foi possível vincular o evento de clique para abrir o modal de procedimento.');
     }
 
     if (fecharModalBtn) fecharModalBtn.addEventListener('click', fecharModalProcedimento);

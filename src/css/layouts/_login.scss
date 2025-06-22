@@ -1,6 +1,7 @@
 // css/pages/_login.scss
 
 @use '../base/variables';
+@use 'sass:color';
 
 .login-body {
     font-family: variables.$font-family;
@@ -21,7 +22,7 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     background: variables.$color-text-alt;
     border-radius: 16px;
     width: 100%;
@@ -49,8 +50,8 @@
     input[type="email"],
     input[type="password"] {
         width: 100%;
-        padding: 0.9rem;
-        border-radius: 8px;
+        padding: 20px;
+        border-radius: 16px;
         border: 1px solid variables.$color-background;
         font-size: variables.$font-size-text;
         color: variables.$color-text;
@@ -110,7 +111,7 @@
     background-color: variables.$color-primary;
     color: variables.$color-text-alt;
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
@@ -122,7 +123,7 @@
 
     &:active {
         transform: translateY(0);
-        background-color: darken(variables.$color-primary, 5%);
+        background-color: color.adjust(variables.$color-primary, $lightness: -5%);
     }
 }
 
