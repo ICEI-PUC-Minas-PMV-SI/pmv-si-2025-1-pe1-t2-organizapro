@@ -24,7 +24,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 | RF10 | Permitir exclusão de tarefas.                                                          | Laise                 | tasks-data.js                                                       |
 | RF11 | Permitir pesquisa de tarefas por palavras-chave.                                       | Laise                 | tasks-filters.js                                                    |
 | RF12 | Permitir filtragem de tarefas por etiquetas, status e data de vencimento.              | Laise                 | tasks-filters.js                                                    |
-| RF13 | Exibir tarefas do dia e dos próximos sete dias no menu lateral.                        | Laise                 | modal-task-sidebar.html<br>task-sidebar-modals.js<br>task-data.js    |
+| RF13 | Acessar as tarefas do dia e dos próximos sete dias no menu lateral.                        | Laise                 | modal-task-sidebar.html<br>task-sidebar-modals.js<br>task-data.js    |
 | RF14 | Exibir painel de atualizações com lista cronológica.                                  | Laise<br>Nicole       | upd-panel.html<br>upd-panel.js<br>upd-renderer.js                   |
 | RF15 | Permitir criação de novas atualizações.                                               | Laise                 | modal-upd-form-update.html<br>upd-form.js<br>upd-data.js            |
 | RF16 | Permitir definição de título, descrição, etiquetas e status das atualizações.         | Laise                 | modal-upd-form-update.html<br>upd-form.js<br>upd-data.js            |
@@ -35,14 +35,14 @@ As tabelas que se seguem apresentam os requisitos funcionais e não-funcionais q
 | RF21 | Permitir marcação de atualizações como favoritas.                                    | Laise                 | upd-events.js<br>upd-data.js                                         |
 | RF22 | Permitir pesquisa de atualizações por palavras-chave.                                | Laise                 | upd-filters.js                                                     |
 | RF23 | Permitir filtragem de atualizações por favoritos, status, etiquetas e data de criação.| Laise                 | upd-filters.js                                                     |
-| RF24 | Exibir atualizações recentes na tela inicial.                                        | Laise<br>Nicole       | recent-updates-widget.html<br>upd-renderer.js                       |
+| RF24 | Exibir atualizações recentes na tela inicial com links que redirecionam para o conteúdo correspondente no painel de atualizações.                                        | Laise<br>Nicole       | recent-updates-widget.html<br>upd-renderer.js                       |
 | RF25 | Exibir painel de controle com lista de procedimentos.                               | Laise                 | control-panel.html<br>procedure-table.js                            |
 | RF26 | Permitir criação de novos procedimentos.                                            | Laise                 | modal-form-procedure.html<br>procedure-form.js<br>procedure-data.js|
 | RF27 | Permitir definição de título, tipo, descrição, etiquetas, status e anexo dos procedimentos. | Laise              | procedure-form.js<br>procedure-data.js                              |
 | RF28 | Permitir visualização de procedimentos.                                             | Laise                 | modal-view-procedure.html<br>procedure-view-modal.js               |
 | RF29 | Permitir edição de procedimentos.                                                   | Laise                 | modal-form-procedure.html<br>procedure-form.js<br>procedure-data.js|
 | RF30 | Permitir exclusão de procedimentos.                                                 | Laise                 | procedure-table.js<br>procedimentos-data.js                        |
-| RF31 | Permitir cópia de procedimentos.                                                    | Laise                 | modal-form-procedure.html<br>procedure-data.js                     |
+| RF31 | Permitir duplicar procedimento para reaproveitamento de dados.                                                    | Laise                 | modal-form-procedure.html<br>procedure-data.js                     |
 | RF32 | Permitir arquivamento de procedimentos.                                             | Laise                 | procedure-table.js<br>procedure-data.js                            |
 | RF33 | Permitir desarquivamento de procedimentos.                                          | Laise                 | procedure-table.js<br>procedure-data.js                            |
 | RF34 | Permitir marcação de procedimentos como favoritos.                                | Laise                 | procedure-table.js<br>procedure-data.js                            |
