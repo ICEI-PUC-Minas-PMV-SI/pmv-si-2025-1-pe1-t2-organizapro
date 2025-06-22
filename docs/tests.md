@@ -25,34 +25,122 @@ Nesta seção o grupo deverá documentar os testes de software que verificam a c
 Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe qual o Requisito Funcional ou não funcional que ele está verificando. Associe também a página (ou artefato) onde o teste será realizado e descreva o cenário do teste. Veja a tabela de exemplo.
 
 
-**Caso de Teste** | **CT01 -Login com dados válidos**
+**Caso de Teste** | **CT01 - Efetuar login com dados válidos**
  :--------------: | ------------
-**Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail valido e uma senha correta 3) Clique no botão "Entrar".
-**Requisitos associados** | RF-002
-**Resultado esperado** | O usuário é direcionado para a página inicial após login com sucesso.
-**Dados de entrada** | E-mail: teste@exemplo.com   senha:123456
-**Resultado obtido** | Sucesso
+**Procedimento**  | 1) Acessar a tela de login;<br>2) Inserir e-mail e senha válidos;<br>3) Clicar no botão "Entrar".
+**Requisitos associados** | RF39:	Permitir login de usuário por e-mail e senha.
+**Resultado esperado** | Login efetuado. O usuário será direcionado para a Tela Inicial.
+**Dados de entrada** | E-mail e senha válidos.
+**Resultado obtido** | Login efetuado. O usuário foi direcionado para a Tela Inicial.
 
-**Caso de Teste** | **CT01 -Login com dados válidos**
+**Caso de Teste** | **CT02 - Efetuar login com dados inválidos**
  :--------------: | ------------
-**Procedimento**  | 1) Acesse a tela de login 2) Insira um e-mail e uma senha incorretos 3) Clique no botão "Entrar".
-**Requisitos associados** | RF-002
-**Resultado esperado** |O sistema deve exibir mensagem de erro: "Email ou senha incorretos."
-**Dados de entrada** | E-mail:naoexiste@organizapro.com    senha:senhaerrada
-**Resultado obtido** | Sucesso
+**Procedimento**  | 1) Acessar a tela de login;<br>2) Inserir e-mail e senha inválidos;<br>3) Clicar no botão "Entrar".
+**Requisitos associados** | RF39:	Permitir login de usuário por e-mail e senha.
+**Resultado esperado** | Login não efetuado. O usuário não será direcionado para a Tela Inicial. 
+**Dados de entrada** | E-mail e senha inválidos.
+**Resultado obtido** | Login não efetuado. O usuário não foi direcionado para a Tela Inicial.
+
+**Caso de Teste** | **CT03 - Alternar exibição do menu lateral**
+ :--------------: | ------------
+**Procedimento**  | 1) Acessar a tela inicial;<br>2) Clicar no botão com o ícone de três linhas horizontais (hamburger).
+**Requisitos associados** | RF04:	Permitir que o usuário oculte ou exiba o menu lateral em todas as páginas do sistema.
+**Resultado esperado** | O menu lateral deve ser exibido (caso esteja oculto) ou ocultado (caso esteja visível), conforme o estado atual.
+**Dados de entrada** | Nenhum.
+**Resultado obtido** | Menu lateral exibido e ocultado corretamente.
+
+**Caso de Teste** | **CT04 - Acessar tarefas no menu lateral**
+ :--------------: | ------------
+**Procedimento**  | 1) Acessar a tela inicial;<br>2) Clicar no botão com o ícone de três linhas horizontais (hamburger) para exibir o menu lateral;<br>3) Clicar no botão "Hoje";<br>4) Verificar a lista de tarefas exibidas;<br>5) Clicar no botão "Próximos 7 dias";<br>6) Verificar a nova lista de tarefas exibidas.
+**Requisitos associados** | RF13:	Acessar as tarefas do dia e dos próximos sete dias no menu lateral.
+**Resultado esperado** | Ao clicar em "Hoje", devem ser exibidas apenas as tarefas do dia atual. Ao clicar em "Próximos 7 dias", devem ser exibidas as tarefas programadas para os próximos sete dias.
+**Dados de entrada** | Nenhum.
+**Resultado obtido** | Tarefas exibidas corretamente conforme o botão selecionado.
+
+**Caso de Teste** | **CT05 - Acessar atualizações recentes a partir da tela inicial**
+ :--------------: | ------------
+**Procedimento**  | 	1) Acessar a tela inicial;<br>2) Localizar a seção "Atualizações recentes";<br>3) Clicar em uma atualização listada;<br>4) Verificar se o sistema redireciona para o Painel de Atualizações, com o conteúdo correspondente em destaque.
+**Requisitos associados** | RF24: Exibir atualizações recentes na tela inicial com links que redirecionam para o conteúdo correspondente no painel de atualizações.
+**Resultado esperado** | Ao clicar em uma atualização recente, o usuário deve ser redirecionado automaticamente para o painel de atualizações, com o item correspondente evidenciado.
+**Dados de entrada** | Nenhum.
+**Resultado obtido** | Redirecionamento correto para a atualização no Painel de Atualizações.
+
+**Caso de Teste** | **CT06 - Acessar procedimentos favoritos na tela inicial**
+ :--------------: | ------------
+**Procedimento**  | 	1) Acessar a tela inicial;<br>2) Localizar a seção "Meus favoritos";<br>3) Clicar em um procedimento listado;<br>4) Verificar se o sistema exibe o conteúdo completo do procedimento selecionado.
+**Requisitos associados** | RF38: Exibir procedimentos favoritos do usuário na tela inicial.
+**Resultado esperado** | Ao clicar em um procedimento favorito, o sistema deve abrir e exibir o conteúdo completo do procedimento.
+**Dados de entrada** | Nenhum.
+**Resultado obtido** | Procedimento aberto corretamente ao clicar no favorito.
+
+**Caso de Teste** | **CT07 - Acessar quadro Kanban com tarefas do usuário**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar a tela inicial;<br>2) Verificar a exibição do quadro Kanban com as tarefas do usuário;<br>3) Confirmar que as tarefas estão organizadas por status: "a fazer", "fazendo" e "concluído".  
+**Requisitos associados** | RF05: Exibir quadro Kanban com tarefas do usuário na tela inicial.  
+**Resultado esperado** | O quadro Kanban deve apresentar todas as tarefas do usuário, agrupadas corretamente por status.  
+**Dados de entrada** | Nenhum.  
+**Resultado obtido** | Quadro Kanban exibido com tarefas organizadas por status.  
+
+**Caso de Teste** | **CT08 - Criar nova tarefa**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar a tela inicial;<br>2) Localizar a seção "Minhas tarefas";<br>3) Clicar em "Nova tarefa";<br>2) Preencher título, descrição, etiquetas, data de vencimento e status;<br>3) Clicar em "Salvar tarefa";<br>4) Verificar se a nova tarefa aparece no quadro Kanban com os dados preenchidos.  
+**Requisitos associados** | RF06: Permitir criação de novas tarefas.<br>RF07: Permitir definição de título, descrição, etiquetas, data de vencimento e status.  
+**Resultado esperado** | A tarefa criada deve aparecer no quadro Kanban com todas as informações corretamente registradas.  
+**Dados de entrada** | Título, descrição, etiquetas, data de vencimento e status válidos.  
+**Resultado obtido** | Tarefa criada e exibida corretamente com todas as informações.  
+
+**Caso de Teste** | **CT09 - Atualizar status de uma tarefa no quadro Kanban**  
+:--------------: | ------------  
+**Procedimento** | 1) Localizar uma tarefa no quadro Kanban;<br>2) Alterar o status da tarefa entre "a fazer", "fazendo" e "concluído", arrastando a tarefa ou clicando no checkbox para concluí-la;<br>3) Confirmar a atualização do status.  
+**Requisitos associados** | RF08: Permitir atualização do status da tarefa entre "a fazer", "fazendo" e "concluído".  
+**Resultado esperado** | O status da tarefa deve ser atualizado corretamente e refletido no quadro Kanban.  
+**Dados de entrada** | Tarefa existente.  
+**Resultado obtido** | Status da tarefa atualizado corretamente e refletido no Kanban.  
+
+**Caso de Teste** | **CT10 - Editar uma tarefa existente**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar uma tarefa existente;<br>2) Clicar em "Editar tarefa";<br>3) Alterar campos como título, descrição ou etiquetas;<br>4) Salvar as alterações;<br>5) Verificar a atualização da tarefa no quadro Kanban.  
+**Requisitos associados** | RF09: Permitir edição de tarefas existentes.  
+**Resultado esperado** | A tarefa deve refletir as alterações feitas após salvar.  
+**Dados de entrada** | Dados modificados para a tarefa.  
+**Resultado obtido** | Tarefa atualizada com sucesso e alterações refletidas no quadro.  
+
+**Caso de Teste** | **CT11 - Excluir uma tarefa**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar uma tarefa;<br>2) Clicar em "Exclur tarefa";<br>3) Confirmar a exclusão;<br>4) Verificar se a tarefa foi removida do quadro Kanban.  
+**Requisitos associados** | RF10: Permitir exclusão de tarefas.  
+**Resultado esperado** | A tarefa deve ser removida permanentemente e desaparecer do quadro.  
+**Dados de entrada** | Tarefa existente.  
+**Resultado obtido** | Tarefa excluída e removida do quadro com sucesso.  
+
+**Caso de Teste** | **CT12 - Pesquisar tarefas por palavra-chave**  
+:--------------: | ------------  
+**Procedimento** | 1) Localizar o campo de pesquisa na seção "Minhas tarefas";<br>2) Digitar uma palavra-chave relacionada a título, descrição ou etiquetas;<br>3) Executar a pesquisa;<br>4) Verificar as tarefas exibidas.  
+**Requisitos associados** | RF11: Permitir pesquisa de tarefas por palavras-chave.  
+**Resultado esperado** | A lista deve mostrar somente as tarefas que contenham a palavra-chave.  
+**Dados de entrada** | Palavra-chave válida.  
+**Resultado obtido** | Pesquisa filtrou corretamente as tarefas pela palavra-chave.  
+
+**Caso de Teste** | **CT13 - Filtrar tarefas por etiquetas, status e data de vencimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Clicar em "Filtros" na seção "Minhas tarefas";<br>2) Selecionar etiquetas, status e/ou data;<br>3) Aplicar os filtros;<br>4) Verificar as tarefas exibidas.  
+**Requisitos associados** | RF12: Permitir filtragem de tarefas por etiquetas, status e data de vencimento.  
+**Resultado esperado** | As tarefas exibidas devem atender a todos os critérios selecionados.  
+**Dados de entrada** | Etiquetas, status e datas válidas para filtro.  
+**Resultado obtido** | Tarefas filtradas corretamente conforme os critérios aplicados.  
 
 ## Registro dos Testes de Software
 
 Esta seção deve apresentar o relatório com as evidências dos testes de software realizados no sistema pela equipe, baseado no plano de testes pré-definido. Documente cada caso de teste apresentando um vídeo ou animação que comprove o funcionamento da funcionalidade. Veja os exemplos a seguir.
 
-|*Caso de Teste*                                 |*CT01 - Login com dados validos*                                         |
+|*Caso de Teste*                                 |*CT01 - Login com dados válidos*                                         |
 |---|---|
-|Requisito Associado | RF-002 -  A aplicação deve permitir que os usuários façam login com e-mail e senha válidos|
+|Requisito Associado | RF39:	Permitir login de usuário por e-mail e senha. |
 |Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EZYI2v7AWKVFoaEJoSB-4QoB5onfIIchHL8bhhWw9-6UBA?e=e9M9hp| 
 
-|*Caso de Teste*                                 |*CT02 -Login com e-mail e senha incorretos*                                        |
+|*Caso de Teste*                                 |*CT02 - Login com dados inválidos*                                        |
 |---|---|
-|Requisito Associado | RF-001 -A aplicação não deve permitir que usuários acessem com e-mail e/ou senha inválidos|
+|Requisito Associado | RF39:	Permitir login de usuário por e-mail e senha.|
 |Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EUqlPYCm5L1FhD6o70MIOp4BQJyqp7mb_WwJVUyIH4K9Qg?e=XIKphz | 
 
 
