@@ -20,10 +20,10 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Menu Lateral**              | RF-002: Controle de acesso baseado em perfis de usuário<br>RF-003: Criação de perfis de usuários com permissões específicas<br>RF-004: Restrição de acesso a funcionalidades com base no perfil<br>RNF-003: Segurança de dados com controle de acessos |
-| **Barra de Navegação Superior** | RF-017: Painel de alterações recentes<br>RF-016: Histórico de alterações<br>RF-018: Envio de notificações de atualizações por e-mail<br>RF-019: Envio de notificações de criação de novos procedimentos |
-| **Área Central** | RF-014: Organização de procedimentos de trabalho<br>RF-015: Pesquisa e filtragem de procedimentos por tags/categorias<br>RF-017: Exibição do painel de alterações recentes |
-| **Painel de Alterações Recentes** | RF-017: Exibição das últimas alterações realizadas<br>RF-016: Histórico de alterações |
+| **Tela inicial**              | RF01: Exibir tela inicial com atualizações recentes, procedimentos favoritos e quadro Kanban de tarefas.<br>RF24: Exibir atualizações recentes na tela inicial.<br>RF38: Exibir procedimentos favoritos do usuário na tela inicial.
+| **Menu Superior** | RF02: Exibir menu superior com acesso às principais funcionalidades do sistema.|
+| **Menu Lateral**              | RF03: Exibir menu lateral com links para todas as seções da aplicação.<br>RF04: Permitir que o usuário oculte ou exiba o menu lateral em todas as páginas do sistema.<br>RF13: Exibir tarefas do dia e dos próximos sete dias no menu lateral.<br>RF43: Gerenciar abertura, fechamento, título e conteúdo de janelas modais reutilizáveis em todo o sistema.<br>RNF-008: Aplicar cores consistentes para tags para melhor identificação visual.
+| **Quadro de Tarefas** | RF05: Exibir quadro Kanban com tarefas do usuário na tela inicial.<br>RF06: Permitir criação de novas tarefas.<br>RF07: Permitir definição de título, descrição, etiquetas, data de vencimento e status.<br>RF08: Permitir atualização do status da tarefa entre "a fazer", "fazendo" e "concluído".<br>RF09: Permitir edição de tarefas existentes.<br>RF10: Permitir exclusão de tarefas.<br><br>RF11: Permitir pesquisa de tarefas por palavras-chave.<br>RF12:	Permitir filtragem de tarefas por etiquetas, status e data de vencimento.<br>RF41: Permitir a inserção, sugestão e gerenciamento visual de etiquetas (tags) em campos de formulário.<br>RF42: Permitir criação de filtros personalizados com chips interativos e popovers arrastáveis.<br>RF43: Gerenciar abertura, fechamento, título e conteúdo de janelas modais reutilizáveis em todo o sistema.<br>RNF-008: Aplicar cores consistentes para tags para melhor identificação visual. |
 
 ### Painel de Atualizações
 | ![Painel de Atualizações](https://github.com/user-attachments/assets/913f393a-14b2-46ff-999e-b723b663dfc7) |
@@ -32,40 +32,16 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de Atualizações**    | RF-017: Exibição das últimas alterações nos flows e documentos<br>RF-016: Histórico de alterações |
-| **Botão de Filtro de Alterações** | RF-015: Pesquisa e filtragem de flows e procedimentos de trabalho por tags/categorias |
-| **Notificações de Atualizações** | RF-018: Envio de notificações por e-mail quando houver atualizações |
+| **Painel de Atualizações**    | RF14:	Exibir painel de atualizações com lista cronológica.<br>RF15:	Permitir criação de novas atualizações.<br>RF16	Permitir definição de título, descrição, etiquetas e status das atualizações.<br>RF22	Permitir pesquisa de atualizações por palavras-chave.<br>RF23	Permitir filtragem de atualizações por favoritos, status, etiquetas e data de criação. |
+| **Lista de Atualizações** | RF17	Permitir edição de atualizações existentes.<br>RF18	Permitir exclusão de atualizações.<br>RF19	Permitir arquivamento de atualizações.<br>RF20	Permitir desarquivamento de atualizações.<br>RF21	Permitir marcação de atualizações como favoritas. |
 
-### Página de Processos de Trabalho
-|![Processos de Trabalho](https://github.com/user-attachments/assets/4ba1d4a8-dea1-4812-8cb7-374ff633c77c) |
-|:--------------------------------------------------------------------------------------------:|
-| **Figura 4: Página de Processos de Trabalho**                                                  |
-
-| **Componente**               | **Requisitos Atendidos**                                                                 |
-|------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de Processos**        | RF-005: Criação de flows de perguntas e respostas<br>RF-014: Organização de procedimentos de trabalho<br>RF-015: Pesquisa e filtragem de procedimentos por tags/categorias |
-| **Botões de Ação**            | RF-006: Edição de flows de perguntas e respostas<br>RF-009: Arquivamento de procedimentos sem exclusão<br>RF-013: Armazenamento de procedimentos de trabalho<br>RF-014: Organização de procedimentos de trabalho |
-| **Área de Detalhamento**     | RF-011: Impossibilidade de edição de procedimentos arquivados<br>RF-012: Desarquivamento de procedimentos de trabalho |
-
-### Página de flows
-| ![flows de Trabalho](https://github.com/user-attachments/assets/e76b4cc5-e20d-4a78-b860-61a742907a2d)|
-|:--------------------------------------------------------------------------------------------:|
-| **Figura 5: Página de flows**                                                                |
-
-| **Componente**               | **Requisitos Atendidos**                                                                 |
-|------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de flows**           | RF-005: Criação de flows de perguntas e respostas<br>RF-008: Visualização de flows em lista ou diagrama |
-| **Editor de flows**         | RF-006: Edição de flows de perguntas e respostas<br>RF-014: Organização de flows |
-| **Configurações Avançadas**  | RF-007: Configurações avançadas para administradores e equipe de TI |
-
-### Página de IPTs e Orientações
+### Painel de Controle
 | ![IPTs e Orientações](https://github.com/user-attachments/assets/c1a4a1ce-0634-4784-83ee-d6230d7fab69)|
 |:--------------------------------------------------------------------------------------------:|
-| **Figura 6: Página de IPTs e Orientações**                                                   |
+| **Figura 4: Painel de Controle**                                                   |
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
-| **Lista de IPTs e Orientações** | RF-013: Armazenamento de procedimentos de trabalho<br>RF-014: Organização de procedimentos de trabalho<br>RF-015: Pesquisa e filtragem de procedimentos de trabalho por tags/categorias |
-| **Área de Detalhamento de IPTs** | RF-009: Arquivamento de procedimentos de trabalho sem exclusão<br>RF-012: Desarquivamento de procedimentos de trabalho |
-| **Notificações**             | RF-018: Envio de notificações por e-mail quando um procedimento de trabalho for atualizado<br>RF-019: Envio de notificações por e-mail quando um novo procedimento de trabalho for criado |
+| **Painel de Controle** | RF25:	Exibir painel de controle com lista de procedimentos.<br>RF26:	Permitir criação de novos procedimentos.<br>RF27:	Permitir definição de título, tipo, descrição, etiquetas, status e anexo dos procedimentos.<br>RF35:	Permitir pesquisa de procedimentos por palavras-chave.<br>RF36:	Permitir filtragem de procedimentos por tipo, status, etiquetas, data e favoritos.	 |
+| **Lista de procedimentos** | RF28	Permitir visualização de procedimentos.<br>	RF29:	Permitir edição de procedimentos.<br>RF30:	Permitir exclusão de procedimentos.<br>RF31:	Permitir cópia de procedimentos.<br>RF32:	Permitir arquivamento de procedimentos.	<br>RF33:	Permitir desarquivamento de procedimentos.<br>RF34:	Permitir marcação de procedimentos como favoritos.|
 
