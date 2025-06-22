@@ -13,10 +13,19 @@ A construção das interfaces foi guiada pelos requisitos funcionais e não func
 
 São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface e é fundamental sempre relacionar cada wireframe com o(s) requisito(s) que ele atende.
 
-### Página Inicial (Home)
+### Tela de Login
+|![Tela de Login](https://github.com/user-attachments/assets/1b420f07-0a95-412d-9b2e-9015f8f31a6d)|
+|:--------------------------------------------------------------------------------------------:|
+| **Figura 2: Tela de Login**                                                  |
+
+| **Componente**               | **Requisitos Atendidos**                                                                 |
+|------------------------------|------------------------------------------------------------------------------------------|
+| **Tela de Login**              | RF39:	Permitir login de usuário por e-mail e senha.<br> RF40:	Permitir recuperação de senha por e-mail e redefinição com token de segurança.|
+
+### Tela Inicial
 |![Página Inicial](https://github.com/user-attachments/assets/560e2ed4-dd66-4cdc-a7e4-73afc4b2f191)|
 |:--------------------------------------------------------------------------------------------:|
-| **Figura 2: Página Inicial**                                                  |
+| **Figura 3: Tela Inicial**                                                  |
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
@@ -28,7 +37,7 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 ### Painel de Atualizações
 | ![Painel de Atualizações](https://github.com/user-attachments/assets/913f393a-14b2-46ff-999e-b723b663dfc7) |
 |:--------------------------------------------------------------------------------------------:|
-| **Figura 3: Painel de Atualizações Recentes**                                                  |
+| **Figura 4: Painel de Atualizações Recentes**                                                  |
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
@@ -38,7 +47,7 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 ### Painel de Controle
 | ![IPTs e Orientações](https://github.com/user-attachments/assets/c1a4a1ce-0634-4784-83ee-d6230d7fab69)|
 |:--------------------------------------------------------------------------------------------:|
-| **Figura 4: Painel de Controle**                                                   |
+| **Figura 5: Painel de Controle**                                                   |
 
 | **Componente**               | **Requisitos Atendidos**                                                                 |
 |------------------------------|------------------------------------------------------------------------------------------|
