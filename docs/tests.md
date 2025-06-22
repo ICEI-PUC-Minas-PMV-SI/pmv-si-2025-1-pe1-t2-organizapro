@@ -193,6 +193,94 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 **Dados de entrada** | Critérios válidos para filtro.  
 **Resultado obtido** | Atualizações filtradas corretamente conforme critérios selecionados.  
 
+**Caso de Teste** | **CT22 - Exibir painel de controle com lista de procedimentos**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar o painel de controle;<br>2) Verificar se a lista de procedimentos é exibida corretamente.  
+**Requisitos associados** | RF25: Exibir painel de controle com lista de procedimentos.  
+**Resultado esperado** | O painel de controle deve exibir corretamente todos os procedimentos cadastrados.  
+**Dados de entrada** | Nenhum.  
+**Resultado obtido** | Lista de procedimentos exibida corretamente no painel de controle.  
+
+**Caso de Teste** | **CT23 - Criar novo procedimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Clicar em "Novo procedimento";<br>2) Preencher o formulário com título, tipo, descrição, etiquetas, status e anexar arquivo;<br>3) Salvar o procedimento;<br>4) Verificar se o procedimento aparece na lista.  
+**Requisitos associados** | RF26: Permitir criação de novos procedimentos.<br>RF27: Permitir definição de título, tipo, descrição, etiquetas, status e anexo dos procedimentos.  
+**Resultado esperado** | O procedimento deve ser salvo com todos os dados preenchidos e exibido na lista.  
+**Dados de entrada** | Título, tipo, descrição, etiquetas, status e anexo válidos.  
+**Resultado obtido** | Procedimento criado e exibido corretamente com todas as informações.  
+
+**Caso de Teste** | **CT24 - Visualizar procedimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento na lista;<br>2) Clicar na opção de visualização;<br>3) Verificar se os dados completos do procedimento são exibidos.  
+**Requisitos associados** | RF28: Permitir visualização de procedimentos.  
+**Resultado esperado** | Os dados do procedimento devem ser apresentados corretamente na visualização.  
+**Dados de entrada** | Procedimento existente.  
+**Resultado obtido** | Procedimento visualizado corretamente com todas as informações.  
+
+**Caso de Teste** | **CT25 - Editar procedimento existente**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento;<br>2) Editar campos como título, tipo ou descrição;<br>3) Salvar alterações;<br>4) Verificar se as mudanças foram aplicadas.  
+**Requisitos associados** | RF29: Permitir edição de procedimentos.  
+**Resultado esperado** | As alterações devem ser salvas e refletidas na lista de procedimentos.  
+**Dados de entrada** | Dados alterados do procedimento.  
+**Resultado obtido** | Procedimento atualizado corretamente com as alterações aplicadas.  
+
+**Caso de Teste** | **CT26 - Excluir procedimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento na lista;<br>2) Acionar a opção de exclusão;<br>3) Confirmar exclusão;<br>4) Verificar se foi removido da lista.  
+**Requisitos associados** | RF30: Permitir exclusão de procedimentos.  
+**Resultado esperado** | O procedimento deve ser excluído da base e removido da lista.  
+**Dados de entrada** | Procedimento existente.  
+**Resultado obtido** | Procedimento excluído corretamente da lista.  
+
+**Caso de Teste** | **CT27 - Copiar procedimento existente**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento existente;<br>2) Acionar a opção de duplicar;<br>3) Verificar se o sistema abre o formulário de criação com os dados preenchidos com base no procedimento original;<br>4) Editar os dados, se desejar;<br>5) Salvar o novo procedimento;<br>6) Confirmar que o novo procedimento foi criado e listado separadamente, sem afetar o procedimento original.
+**Requisitos associados** | RF31: Permitir duplicar procedimento para reaproveitamento de dados.  
+**Resultado esperado** | O sistema deve abrir o formulário preenchido com os dados do procedimento original para edição e criação de um novo procedimento distinto, sem criar nova versão do original.   
+**Dados de entrada** | Procedimento existente.  
+**Resultado obtido** | O formulário foi preenchido corretamente, o novo procedimento foi criado e listado, e o procedimento original permaneceu inalterado.  
+
+**Caso de Teste** | **CT28 - Arquivar e desarquivar procedimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento;<br>2) Arquivar o procedimento;<br>3) Verificar se ele some da lista ativa;<br>4) Acessar os arquivados e desarquivar;<br>5) Confirmar que voltou para a lista ativa.  
+**Requisitos associados** | RF32: Permitir arquivamento de procedimentos.<br>RF33: Permitir desarquivamento de procedimentos.  
+**Resultado esperado** | O procedimento deve ser movido entre listas de acordo com a ação de arquivar ou desarquivar.  
+**Dados de entrada** | Procedimento existente.  
+**Resultado obtido** | Arquivamento e desarquivamento realizados corretamente.  
+
+**Caso de Teste** | **CT29 - Marcar e desmarcar procedimento como favorito**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento;<br>2) Marcar como favorito;<br>3) Verificar se aparece na seção de favoritos;<br>4) Desmarcar e confirmar remoção da seção.  
+**Requisitos associados** | RF34: Permitir marcação de procedimentos como favoritos.  
+**Resultado esperado** | O procedimento deve ser adicionado e removido corretamente da lista de favoritos.  
+**Dados de entrada** | Procedimento existente.  
+**Resultado obtido** | Marcação como favorito e desmarcação funcionando corretamente.  
+
+**Caso de Teste** | **CT30 - Pesquisar procedimentos por palavra-chave**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar campo de pesquisa de procedimentos;<br>2) Digitar palavra-chave;<br>3) Verificar se os resultados correspondem ao termo.  
+**Requisitos associados** | RF35: Permitir pesquisa de procedimentos por palavras-chave.  
+**Resultado esperado** | Devem ser exibidos apenas os procedimentos que contêm a palavra-chave.  
+**Dados de entrada** | Palavra-chave válida.  
+**Resultado obtido** | Pesquisa retornou corretamente os procedimentos correspondentes.  
+
+**Caso de Teste** | **CT31 - Filtrar procedimentos por tipo, status, etiquetas, data e favoritos**  
+:--------------: | ------------  
+**Procedimento** | 1) Acessar filtros de procedimentos;<br>2) Selecionar critérios: tipo, status, etiquetas, intervalo de datas e favoritos;<br>3) Aplicar filtros;<br>4) Verificar os resultados exibidos.  
+**Requisitos associados** | RF36: Permitir filtragem de procedimentos por tipo, status, etiquetas, data e favoritos.  
+**Resultado esperado** | Devem ser exibidos apenas os procedimentos que atendem a todos os filtros selecionados.  
+**Dados de entrada** | Filtros válidos.  
+**Resultado obtido** | Procedimentos filtrados corretamente conforme os critérios definidos.  
+
+**Caso de Teste** | **CT32 - Visualizar histórico de versões de um procedimento**  
+:--------------: | ------------  
+**Procedimento** | 1) Selecionar um procedimento;<br>2) Clicar na opção de histórico de versões;<br>3) Verificar se todas as versões anteriores são exibidas com data e alterações.  
+**Requisitos associados** | RF37: Exibir histórico de versões dos procedimentos.  
+**Resultado esperado** | Todas as versões do procedimento devem ser exibidas com data e detalhes das modificações.  
+**Dados de entrada** | Procedimento com histórico.  
+**Resultado obtido** | Histórico de versões exibido corretamente com as informações esperadas.  
+
 ## Registro dos Testes de Software
 
 Esta seção deve apresentar o relatório com as evidências dos testes de software realizados no sistema pela equipe, baseado no plano de testes pré-definido. Documente cada caso de teste apresentando um vídeo ou animação que comprove o funcionamento da funcionalidade. Veja os exemplos a seguir.
