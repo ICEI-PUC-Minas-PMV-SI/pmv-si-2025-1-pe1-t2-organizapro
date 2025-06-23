@@ -5,8 +5,6 @@ Neste projeto serão realizados dois tipos de testes:
  - O **Teste de Software**, que utiliza uma abordadem de caixa preta, e tem por objetivo verificar a conformidade do software com os requisitos funcionais e não funcionais do sistema.
  - O **Teste de Usabilidade**, que busca avaliar a qualidade do uso do sistema por um usuário do público alvo. 
 
-Se quiser conhecer um pouco mais sobre os tipos de teste de software, leia o documento [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/).
-
 A documentação dos testes é dividida nas seguintes seções:
 
  - [Plano de Testes de Software](#plano-de-testes-de-software)
@@ -285,46 +283,44 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 
 Esta seção deve apresentar o relatório com as evidências dos testes de software realizados no sistema pela equipe, baseado no plano de testes pré-definido. Documente cada caso de teste apresentando um vídeo ou animação que comprove o funcionamento da funcionalidade. Veja os exemplos a seguir.
 
-|*Caso de Teste*                                 |*CT01 - Login com dados válidos*                                         |
+|*Casos de Teste*                                 |*CT 01 e 02: Tela de login*                                         |
 |---|---|
 |Requisito Associado | RF39:	Permitir login de usuário por e-mail e senha. |
-|Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EZYI2v7AWKVFoaEJoSB-4QoB5onfIIchHL8bhhWw9-6UBA?e=e9M9hp| 
+|Link dos vídeos dos testes realizado: | Dados válidos: https://1drv.ms/v/c/4114749a91be6cd8/EZYI2v7AWKVFoaEJoSB-4QoB5onfIIchHL8bhhWw9-6UBA?e=e9M9hp<br>Dados inválidos: https://1drv.ms/v/c/4114749a91be6cd8/EUqlPYCm5L1FhD6o70MIOp4BQJyqp7mb_WwJVUyIH4K9Qg?e=XIKphz| 
 
-|*Caso de Teste*                                 |*CT02 - Login com dados inválidos*                                        |
+|*Casos de Teste*                                 |*CT 04 e 07 a 13: Tarefas*                                        |
 |---|---|
-|Requisito Associado | RF39:	Permitir login de usuário por e-mail e senha.|
-|Link do vídeo do teste realizado: | https://1drv.ms/v/c/4114749a91be6cd8/EUqlPYCm5L1FhD6o70MIOp4BQJyqp7mb_WwJVUyIH4K9Qg?e=XIKphz | 
+|Requisitos Associado | RF01: Exibir tela inicial com atualizações recentes, procedimentos favoritos e quadro Kanban de tarefas.<br>RF05: Exibir quadro Kanban com tarefas do usuário na tela inicial.<br>RF06: Permitir criação de novas tarefas.<br>RF07: Permitir definição de título, descrição, etiquetas, data de vencimento e status.<br>RF08: Permitir atualização do status da tarefa entre "a fazer", "fazendo" e "concluído".<br>RF09: Permitir edição de tarefas existentes.<br>RF10: Permitir exclusão de tarefas.<br>RF11: Permitir pesquisa de tarefas por palavras-chave.<br>RF12:	Permitir filtragem de tarefas por etiquetas, status e data de vencimento.<br>RF13	Exibir tarefas do dia e dos próximos sete dias no menu lateral.<br>RF41: Permitir a inserção, sugestão e gerenciamento visual de etiquetas (tags) em campos de formulário.<br>RF42: Permitir criação de filtros personalizados com chips interativos e popovers arrastáveis.<br>RF43: Gerenciar abertura, fechamento, título e conteúdo de janelas modais reutilizáveis em todo o sistema.<br>RNF-008: Aplicar cores consistentes para tags para melhor identificação visual.
+Link dos vídeos dos testes realizado: | https://github.com/user-attachments/assets/3d827f56-3bbb-4536-b926-ff8049dfc142| 
 
+|*Casos de Teste*                                 |*CT 04 e 07 a 13: Painel de Atualizações*                                        |
+|---|---|
+|Requisitos Associado | RF01: Exibir tela inicial com atualizações recentes, procedimentos favoritos e quadro Kanban de tarefas.<br>RF14:	Exibir painel de atualizações com lista cronológica.<br>RF15:	Permitir criação de novas atualizações.<br>RF16	Permitir definição de título, descrição, etiquetas e status das atualizações.<br>RF17	Permitir edição de atualizações existentes.<br>RF18	Permitir exclusão de atualizações.<br>RF19	Permitir arquivamento de atualizações.<br>RF20	Permitir desarquivamento de atualizações.<br>RF21	Permitir marcação de atualizações como favoritas.<br>RF22: Permitir pesquisa de atualizações por palavras-chave.<br>RF23: Permitir filtragem de atualizações por favoritos, status, etiquetas e data de criação.<br>RF24: Exibir atualizações recentes na tela inicial com links que redirecionam para o conteúdo correspondente no painel de atualizações.<br>RF41: Permitir a inserção, sugestão e gerenciamento visual de etiquetas (tags) em campos de formulário.<br>RF42: Permitir criação de filtros personalizados com chips interativos e popovers arrastáveis.<br>RF43: Gerenciar abertura, fechamento, título e conteúdo de janelas modais reutilizáveis em todo o sistema.<br>RNF-008: Aplicar cores consistentes para tags para melhor identificação visual. |
+|Link do vídeo do teste realizado: | https://github.com/user-attachments/assets/fc9da0de-5ec1-4a14-b818-4dc54474d966 | 
 
+|*Casos de Teste*                                 |*CT 06 e 22 a 32: Procedimentos*                                        |
+|---|---|
+|Requisitos Associado | RF01: Exibir tela inicial com atualizações recentes, procedimentos favoritos e quadro Kanban de tarefas.<br>RF25: Exibir painel de controle com lista de procedimentos.<br>RF26:	Permitir criação de novos procedimentos.<br>RF27:	Permitir definição de título, tipo, descrição, etiquetas, status e anexo dos procedimentos.<br>RF28	Permitir visualização de procedimentos.<br>RF29:	Permitir edição de procedimentos.<br>RF30:	Permitir exclusão de procedimentos.<br>RF31:	Permitir cópia de procedimentos.<br>RF32:	Permitir arquivamento de procedimentos.<br>RF33:	Permitir desarquivamento de procedimentos.<br>RF34:	Permitir marcação de procedimentos como favoritos.<br>RF35:	Permitir pesquisa de procedimentos por palavras-chave.<br>RF36:	Permitir filtragem de procedimentos por tipo, status, etiquetas, data e favoritos.<br.RF37: Exibir histórico de versões dos procedimentos.<br>RF38:Exibir procedimentos favoritos do usuário na tela inicial. 	 |
+|Link do vídeo do teste realizado: | https://github.com/user-attachments/assets/aed74e68-8c83-4474-acc3-7b7c80a0b208 | 
 ## Avaliação dos Testes de Software
 
-Durante os testes, foi avaliada a funcionalidade de login com diferentes entradas, a fim de verificar o comportamento do sistema em situações comuns de uso. Foram incluídas tentativas com credenciais válidas e inválidas, permitindo identificar pontos fortes e aspectos a melhorar.\
+Durante a fase de testes, diversas funcionalidades da aplicação foram avaliadas com base em casos de uso realistas. Foram realizados testes relacionados ao login, exibição de menus, painel Kanban, painel de atualizações, procedimentos e filtros, contemplando entradas válidas e inválidas.
 
-*Pontos positivos:
-A aplicação apresenta interface bem estruturada, com layout organizado e tipografia legível.
+**Pontos positivos:**
+A aplicação apresentou comportamento consistente e estável na maioria dos cenários. A interface é bem estruturada, com layout organizado e tipografia legível, facilitando a navegação. O login funcionou corretamente com dados válidos, redirecionando o usuário para a tela inicial, e respondeu adequadamente a entradas inválidas, exibindo mensagens de erro claras. As funcionalidades de criação, edição, exclusão, visualização e filtragem de tarefas, atualizações e procedimentos também se comportaram conforme o esperado, refletindo corretamente os dados informados. O quadro Kanban exibiu as tarefas corretamente agrupadas por status, e os filtros aplicados em diferentes seções retornaram os resultados esperados.
 
-O login com dados corretos funcionou conforme esperado, redirecionando o usuário à página inicial.
+**Pontos a melhorar:**
+Foi identificado um problema específico no botão de visualização de senha na tela de login: a cada clique, o ícone correspondente é duplicado, comprometendo a clareza visual. Além disso, ajustes pontuais no design de componentes visuais podem contribuir para melhorar a estética da interface e a experiência do usuário, especialmente em dispositivos móveis.
 
-O sistema respondeu adequadamente a entradas inválidas, exibindo mensagens de erro consistentes.
+**Próximas ações:**
 
-*Pontos a melhorar:
-Identificamos um problema no botão de visualização da senha, cujo ícone é duplicado a cada clique, afetando a clareza visual.
+- Corrigir o comportamento do botão de visualização da senha, garantindo atualização correta do ícone.
 
-Apesar da funcionalidade estar implementada, o grupo pretende aprimorar o design, ajustando elementos gráficos para tornar a interface mais atraente.
+- Implementar melhorias visuais pontuais, mantendo a usabilidade e a estrutura atual.
 
-*Próximas ações:
-Corrigir o comportamento do botão de visualização da senha para que o ícone seja atualizado corretamente.
+- Reexecutar os testes após as correções, seguindo a abordagem iterativa adotada pelo grupo para validação contínua da qualidade.
 
-Implementar melhorias visuais pontuais, mantendo a usabilidade e estrutura atual.
-
-Realizar novos testes após as correções, seguindo a abordagem iterativa adotada pelo grupo.
-
-Durante os testes, o grupo percebeu a importância de dar atenção especial aos pequenos detalhes que impactam diretamente a experiência do usuário. Cuidar desses aspectos é fundamental para garantir a qualidade e a coerência da aplicação como um todo.
-
-
-]## Testes de unidade automatizados (Opcional)
-
-Se o grupo tiver interesse em se aprofundar no desenvolvimento de testes de software, ele podera desenvolver testes automatizados de software que verificam o funcionamento das funções JavaScript desenvolvidas. Para conhecer sobre testes unitários em JavaScript, leia 0 documento  [Ferramentas de Teste para Java Script](https://geekflare.com/javascript-unit-testing/).
+Os testes demonstraram a importância de atenção aos detalhes na construção da experiência do usuário. Ajustes aparentemente simples podem impactar significativamente na usabilidade e na percepção de qualidade da aplicação.
 
 # Testes de Usabilidade
 
@@ -357,14 +353,15 @@ Apresente os cenários de testes utilizados na realização dos testes de usabil
 
 | Nº do Cenário | Descrição do cenário |
 |---------------|----------------------|
-| 1             | Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para um funcionário. Acesse o painel de controle da plataforma, preencha os dados do procedimento e salve o novo procedimento. |
-| 2             | Imagine que você é um funcionário da organização. Acesse a página inicial da plataforma, localize um dos procedimentos atribuídos a você e altere o status para "A fazer", "Fazendo" ou "Concluído", ou adicione aos favoritos para facilitar o acompanhamento. |
-
-
+| 1             | Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para os seus funcionários. Acesse o painel de controle da plataforma, clique em "Novo procedimento", preencha os dados (título, tipo, descrição, etiquetas, status e anexo) e salve o novo procedimento. |
+| 2             | Imagine que você é um funcionário da organização. Acesse a painel de controle da plataforma, localize um procedimento e adicione-o aos seus favoritos para facilitar o acompanhamento posterior. |
+| 3             | Você é um analista responsável por acompanhar atualizações do setor. Acesse o painel de atualizações, utilize o campo de pesquisa ou filtros para localizar uma atualização específica e edite as informações de título ou descrição conforme orientação recebida. |
+| 4             | Você é um colaborador novo e precisa verificar suas tarefas pendentes. Acesse a tela inicial da plataforma, visualize o quadro Kanban, filtre as tarefas por data de vencimento e status, identifique uma tarefa atrasada, edite a descrição e salve as alterações. |
 
 ## Registro de Testes de Usabilidade
 
-Cenário 1: Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para um funcionário. Acesse o painel de controle da plataforma, preencha os dados do procedimento e salve o novo procedimento.
+### Cenário 1
+**Descrição:** Você é um gerente de equipe em uma instituição e precisa registrar um novo procedimento de trabalho para um funcionário. Acesse o painel de controle da plataforma, preencha os dados do procedimento e salve o novo procedimento.
 
 | Usuário | Taxa de sucesso | Satisfação subjetiva | Tempo para conclusão do cenário |
 |---------|-----------------|----------------------|---------------------------------|
@@ -372,15 +369,14 @@ Cenário 1: Você é um gerente de equipe em uma instituição e precisa registr
 | 2       | SIM             | 5                    | 17.11 segundos                  |
 | 3       | SIM             | 5                    | 39.09 segundos                  |
 |  |  |  |  |
-| **Média**     | 100%           | 5                | 28.02 segundos                           |
+| **Média**     | **100%**           | **5**                | **28.02 segundos**                           |
 | **Tempo para conclusão pelo especialista** | SIM | 5 | 8.66 segundos |
-
 
     Comentários dos usuários: Achei o site muito bom e intuitivo. 
     Não tive dificuldades e acho que ficou bem intuitivo.
 
-
-Cenário 2:Imagine que você é um funcionário da organização. Acesse a página inicial da plataforma, localize um dos procedimentos atribuídos a você e altere o status para "A fazer", "Fazendo" ou "Concluído", ou adicione aos favoritos para facilitar o acompanhamento.
+### Cenário 2
+**Descrição:** Imagine que você é um funcionário da organização. Acesse a painel de controle da plataforma, localize um procedimento e adicione-o aos seus favoritos para facilitar o acompanhamento posterior.
 
 | Usuário | Taxa de sucesso | Satisfação subjetiva | Tempo para conclusão do cenário |
 |---------|-----------------|----------------------|---------------------------------|
@@ -388,23 +384,76 @@ Cenário 2:Imagine que você é um funcionário da organização. Acesse a pági
 | 2       | SIM             | 5                    | 31.42 segundos                          |
 | 3       | SIM             | 4                    | 36.21 segundos                          |
 |  |  |  |  |
-| **Média**     | 100%           | 4.67                | 30.05 segundos                           |
+| **Média**     | **100%**           | **4.67**                | **30.05 segundos**                           |
 | **Tempo para conclusão pelo especialista** | SIM | 5 | 13.57 segundos |
 
+    Comentários dos usuários: O site é fácil de acessar, mas algumas páginas poderiam redirecionar automaticamente para outras. Senti a falta de mais opções de filtros, tanto na hora da pesquisa, quanto depois dela, nos resultados.
 
-    Comentários dos usuários: O site é fácil de acessar, mas algumas páginas poderiam 
-    redirecionar a gente automaticamente para outras. Senti a falta de mais opções de filtros, 
-    tanto na hora da pesquisa, quanto depois dela, nos resultados.
+### Cenário 3
+**Descrição:** Você é um analista responsável por acompanhar atualizações do setor. Acesse o painel de atualizações, utilize o campo de pesquisa ou filtros para localizar uma atualização específica e edite as informações de título ou descrição conforme orientação recebida.
+
+| Usuário | Taxa de Sucesso | Satisfação Subjetiva (1–5) | Tempo para Conclusão do Cenário |
+|---------|------------------|-----------------------------|----------------------------------|
+| 1       | Sim              | 4                           | 25,32 segundos                   |
+| 2       | Sim              | 5                           | 22,89 segundos                   |
+| 3       | Sim              | 4                           | 31,75 segundos                   |
+| 4       | Sim              | 5                           | 28,44 segundos                   |
+| **Média** | **100%**       | **4,5**                     | **27,60 segundos**               |
+| **Tempo para conclusão pelo especialista** | Sim | 5 | 10,55 segundos |
+
+    Comentários dos usuários: Fácil de encontrar e editar os dados. A parte de salvar poderia ter mais destaque visual.
+
+### Cenário 4  
+**Descrição:** Você é um colaborador novo e precisa verificar suas tarefas pendentes. Acesse a tela inicial da plataforma, visualize o quadro Kanban, filtre as tarefas por data de vencimento e status, identifique uma tarefa atrasada, edite a descrição e salve as alterações..
+
+| Usuário | Taxa de Sucesso | Satisfação Subjetiva (1–5) | Tempo para Conclusão do Cenário |
+|---------|------------------|-----------------------------|----------------------------------|
+| 1       | Sim              | 5                           | 12,87 segundos                   |
+| 2       | Sim              | 4                           | 14,92 segundos                   |
+| 3       | Sim              | 5                           | 16,01 segundos                   |
+| 4       | Sim              | 5                           | 13,84 segundos                   |
+| **Média** | **100%**       | **4,75**                    | **14,41 segundos**               |
+| **Tempo para conclusão pelo especialista** | Sim | 5 | 6,03 segundos |
+
+    Comentários dos usuários: Muito rápido e direto. Gostei do formato das tarefas, facilita muito a visualização.".
 
 ## Avaliação dos Testes de Usabilidade
 
-Tomando como base os resultados obtidos, foi possível verificar que a aplicação web apresenta bons resultados quanto à taxa de sucesso na interação dos usuários, tendo em vista que os cenários propostos foram concluídos com sucesso.
+Com base nos resultados obtidos a partir dos quatro cenários de testes de usabilidade aplicados, foi possível constatar que a aplicação apresenta um bom desempenho geral em termos de **eficácia**, **satisfação do usuário** e **eficiência**.
 
-Além disso, a aplicação obteve também uma elevada satisfação subjetiva dos usuários no momento que realizavam os cenários propostos. Prova são as médias das avaliações em cada um dos cenários, que variou entre 4 (bom) e 5 (ótimo).
+### 1. Taxa de Sucesso
 
-Com relação ao tempo para conclusão de cada tarefa/cenário, notamos discrepância entre a média de tempo dos usuários e o tempo do especialista/desenvolvedor em todos os cenários. Tal discrepância, em certa medida, é esperada, tendo em vista que o desenvolvedor já tem prévio conhecimento de toda a interface da aplicação, do posicionamento dos elementos, lógica de organização das páginas, etc.
+Em todos os cenários propostos, a **taxa de sucesso foi de 100%**, o que indica que todos os usuários conseguiram realizar as tarefas solicitadas, mesmo com níveis distintos de familiaridade com a aplicação. Isso demonstra que a aplicação é funcional e que suas principais rotas de navegação são compreensíveis e acessíveis.
 
-Contudo, tendo em vista que a diferença foi relevante (por exemplo, 113 segundos — média usuários — contra 25 segundos — especialista — no cenário três), e ainda os comentários feitos por alguns usuários, entendemos haver oportunidades de melhoria na usabilidade da aplicação.
+### 2. Satisfação Subjetiva
+
+A média da **satisfação subjetiva** variou entre **4,5 e 5**, o que corresponde a uma avaliação entre “bom” e “ótimo” em todos os cenários. Os comentários dos participantes também reforçam essa percepção positiva, mencionando que o sistema é "intuitivo", "fácil de acessar" e "bem estruturado".
+
+No entanto, alguns usuários sugeriram melhorias pontuais, como:
+- Maior destaque visual no botão de “Salvar” (Cenário 3);
+- Redirecionamentos automáticos entre páginas (Cenário 2);
+- Mais opções de filtros nos resultados de pesquisa (Cenário 2).
+
+Essas observações, embora não tenham impedido o sucesso das tarefas, sinalizam **oportunidades de aprimoramento da experiência do usuário**.
+
+### 3. Tempo para Conclusão
+
+Houve uma **diferença significativa entre o tempo médio dos usuários e o tempo do especialista** em todos os cenários. Por exemplo:
+- No **Cenário 1**, os usuários levaram em média **28,02 segundos**, enquanto o especialista concluiu a mesma tarefa em **8,66 segundos**;
+- No **Cenário 3**, a diferença foi ainda mais acentuada: **27,60 segundos (usuários)** versus **10,55 segundos (especialista)**.
+
+Essas discrepâncias são esperadas, já que o especialista conhece previamente a estrutura e a lógica da aplicação. Ainda assim, elas indicam pontos que podem ser otimizados para reduzir o tempo de execução por novos usuários — especialmente em cenários que exigem navegação entre diferentes seções da aplicação ou uso de filtros e formulários.
+
+### Conclusão
+
+A aplicação demonstrou excelente desempenho em **eficácia** (100% de sucesso), **alta satisfação subjetiva** e **eficiência compatível com o nível de conhecimento dos usuários**. Entretanto, os testes também evidenciaram **pontos de melhoria na usabilidade**, que podem ser endereçados nas próximas iterações do projeto:
+
+- Aperfeiçoar a visibilidade de botões e ações importantes (como “Salvar”);
+- Adicionar opções avançadas de filtros e redirecionamentos automáticos entre seções;
+- Avaliar a simplificação de fluxos para tarefas mais complexas.
+
+A realização desses ajustes tende a melhorar ainda mais a experiência do usuário, promovendo um sistema mais intuitivo, acessível e eficiente.
+
 
 
 
