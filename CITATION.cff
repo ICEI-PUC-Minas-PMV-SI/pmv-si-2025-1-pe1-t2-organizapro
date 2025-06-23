@@ -2,28 +2,26 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: Web Application Template
+title: OrganizaPRO
 message: >-
   Repositório padrão para o Eixo 1 - Projeto 1: Aplicações
   Web da PUC Minas.
 type: software
 authors:
-  - given-names: Aluno 1
-    family-names: Nome Completo
-    email: aluno@pucminas.br
+  - given-names: Laise
+    family-names: Pereira da Costa
+    email: 1031229@sga.pucminas.br
     affiliation: PUC Minas
-  - given-names: Hugo
-    name-particle: 'B '
-    family-names: de Paula
-    name-suffix: Prof.
-    email: hugo@pucminas.br
+  - given-names: Nicole
+    family-names: Porfirio de Araujo
+    email: @pucminas.br
     affiliation: PUC Minas
-    orcid: 'https://orcid.org/0000-0002-6193-3205'
 repository-code: >-
-  https://github.com/ICEI-PUC-Minas-PMV-SI/WebApplicationProject-Template
+  https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe1-t2-organizapro
 abstract: >-
-  Descrever resumidamente, em um ou dois parágrafos, o
-  projeto que foi desenvolvido.
+  OrganizaPRO é uma aplicação web desenvolvida no contexto do Projeto 1 do curso de Sistemas de Informação da PUC Minas.
+  O sistema tem como objetivo organizar e facilitar o acesso a procedimentos de trabalho, tarefas e atualizações, 
+  por meio de funcionalidades como painel de atualizações, quadro Kanban, painel de procedimentos, filtros, favoritos e histórico de versões.
 keywords:
   - Desenvolvimento Web
   - HTML
