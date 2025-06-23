@@ -5,7 +5,7 @@ Faça uma apresentação de um resumo de todos o processo de desenvolvimento e n
 Liste os arquivos produzidos e postados nesta pasta, com suas localizaçãoes e descrição do conteúdo neste arquivo Readme.md.
 
 
-* [Pitch inicial](./sample-pitch.pdf) -- arquivo com os slides da apresentação inicial
+* [Pitch inicial](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe1-t2-organizapro/blob/main/presentation/OrganizaPro%20-%20Pitch%20inicial.pdf) -- arquivo com os slides da apresentação inicial
 * [Apresentação final](./sample-presentation.pdf) -- arquivo com os slides da apresentação final
 * [Vídeo de demonstração](./sample-video.mp4) -- arquivo com a demonstração do funcionamento do sistema
 
@@ -13,11 +13,17 @@ O conjunto de slides deve ser apresentado em um arquivo PowerPoint ou PDF. A apr
 
 ## Título do Projeto
 
-Nome e marca do projeto
+![image](https://github.com/user-attachments/assets/a93396b5-db37-4021-8bfd-3754c8f2f702)
+OrganizaPRO.
+Organize. Simplifique. Transforme.
 
 ## Identidade Visual (Marca, Design)
 
-O grupo deve ter o cuidado em utilizar figuras, imagens, e cores dentro do contexto da solução proposta, de forma a manter a temática do problema.
+A identidade visual do OrganizaPRO foi desenvolvida com foco na clareza, modernidade e alinhamento com os princípios da organização e produtividade.
+
+A paleta de cores em tons de azul transmite confiança e profissionalismo, enquanto a tipografia serifada no nome do projeto remete à formalidade e à organização. O uso da chave { reforça o conceito de agrupamento e estrutura, simbolizando o agrupamento de informações e fluxos de trabalho.
+
+O slogan **"Organize, Simplifique, Transforme"** resume a missão da plataforma e está presente diretamente no logotipo, reforçando o propósito do sistema junto ao usuário.
 
 > **Links Úteis**:
 > - [10 dicas de design para slides](https://rockcontent.com/blog/design-para-slides/)
