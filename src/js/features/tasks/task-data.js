@@ -38,6 +38,9 @@ function parseDateLocalYYYYMMDD(dateString) {
 }
 
 export function salvarTarefa(tarefaDados, id = null) {
+
+    console.info('DEBUG salvarTarefa, tags recebidas:', tarefaDados.tags);
+
     if (!tarefaDados.titulo || typeof tarefaDados.titulo !== 'string') {
         console.warn('WARN: Título inválido ou ausente na tarefa.');
         return null;

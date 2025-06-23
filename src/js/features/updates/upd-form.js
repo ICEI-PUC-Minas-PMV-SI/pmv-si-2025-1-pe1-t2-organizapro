@@ -7,10 +7,10 @@ let currentEditId = null;
 let etiquetasTagComponent = null;
 let tinyMCEEditor = null;
 
-let tituloUpdateInput, descricaoUpdateInput, statusUpdateSelect, arquivoUpdateInput;
+let tituloUpdateInput, descricaoUpdateInput, statusUpdateSelect;
 
 function limparCamposUpdateForm() {
-    [tituloUpdateInput, statusUpdateSelect, arquivoUpdateInput].forEach(el => {
+    [tituloUpdateInput, statusUpdateSelect].forEach(el => {
         if (!el) return;
         if (el.tagName === "SELECT") {
             el.value = (el.id === "statusUpdate") ? "Ativo" : "";
@@ -55,7 +55,6 @@ async function handleSaveUpdate(event) {
         descricao,
         etiquetas: etiquetasFinal,
         status,
-        arquivo,
     };
 
     await salvarUpdate(dadosDoFormulario, currentEditId);
@@ -86,8 +85,6 @@ export function setUpdateForEditing(update) {
         else etiquetasTagComponent.clearTags();
     }
 
-    if (arquivoUpdateInput) arquivoUpdateInput.value = "";
-
     window.formModalController.abrir();
 }
 
@@ -102,7 +99,6 @@ export function initUpdateForm() {
     tituloUpdateInput = document.getElementById("tituloUpdate");
     descricaoUpdateInput = document.getElementById("descricaoUpdate");
     statusUpdateSelect = document.getElementById("statusUpdate");
-    arquivoUpdateInput = document.getElementById("arquivoUpdate");
 
     if (!tituloUpdateInput || !descricaoUpdateInput || !statusUpdateSelect) {
         console.error("Elementos essenciais do formulário não encontrados.");

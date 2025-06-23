@@ -40,16 +40,19 @@ export function salvarUpdate(dados, editId = null) {
   const lista = getUpdates();
   const agora = obterDataAtualISO();
 
+  // Encontrar item existente (caso seja edição)
+  const idx = lista.findIndex(u => u.id === (editId || dados.id));
+  const dataCriacaoOriginal = idx >= 0 ? lista[idx].data_criacao : agora;
+
   const novo = {
     ...dados,
     id: editId || gerarId(),
-    data_criacao: editId ? dados.data_criacao : agora,
+    data_criacao: dataCriacaoOriginal, // garante consistência mesmo se não vier no 'dados'
     ultima_atualizacao: agora,
     favorito: dados.favorito || false,
     inativo: dados.status?.toLowerCase() === 'inativo'
   };
 
-  const idx = lista.findIndex(u => u.id === novo.id);
   if (idx >= 0) {
     lista[idx] = novo;
   } else {

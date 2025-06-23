@@ -474,6 +474,18 @@ class FilterManager {
         return { ...this.filtrosAtivos };
     }
 
+    addEtiqueta(novaTag) {
+    novaTag = novaTag.trim();
+    if (!novaTag) return;
+
+    if (!this.filtrosAtivos.etiquetas.includes(novaTag)) {
+      this.filtrosAtivos.etiquetas.push(novaTag);
+      this.filtrosEmEdicao.etiquetas = [...this.filtrosAtivos.etiquetas];
+
+      this.callbacks.onFilterChange(this.filtrosAtivos);
+      this.renderActiveFilterChips();
+    }
+  }
     setFilter(key, value) {
         if (!this.filtrosAtivos.hasOwnProperty(key)) {
             console.warn(`FilterManager: Chave de filtro '${key}' não existe.`);

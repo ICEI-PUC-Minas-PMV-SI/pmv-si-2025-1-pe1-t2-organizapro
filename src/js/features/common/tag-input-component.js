@@ -186,6 +186,9 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
             renderSelectedTags();
             tagInput.value = '';
             suggestionsDropdown.style.display = 'none';
-        }
+        },
+
+        addTag: addTag
+
     };
 }

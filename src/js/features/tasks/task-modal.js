@@ -37,9 +37,24 @@ function clearTaskForm() {
 function handleTaskFormSubmit(event) {
     event.preventDefault();
 
-    const titulo = taskTitleInput?.value.trim() || '';
-    const descricao = (tinymce && tinymce.get('taskDescription')) ? tinymce.get('taskDescription').getContent({ format: 'html' }).trim() : '';
+    if (taskTagsComponent) {
+        const tagInputEl = document.getElementById('taskTags');
+        const pendingTag = tagInputEl?.value.trim();
+
+        if (pendingTag) {
+            taskTagsComponent.addTag(pendingTag);
+            tagInputEl.value = '';
+        }
+    }
+
+    console.log('taskTagsComponent no submit:', taskTagsComponent);
     const tags = taskTagsComponent ? taskTagsComponent.getTags() : [];
+    console.log('tags do componente no submit:', tags);
+
+    const titulo = taskTitleInput?.value.trim() || '';
+    const descricao = (tinymce && tinymce.get('taskDescription'))
+        ? tinymce.get('taskDescription').getContent({ format: 'html' }).trim()
+        : '';
     const dataVencimento = taskDueDateInput?.value || '';
     const status = taskStatusSelect?.value || 'a-fazer';
 
@@ -148,6 +163,8 @@ export function initializeTaskFormElements() {
         'task-tags-suggestions',
         'task-tags-container'
     );
+
+    console.log('taskTagsComponent inicializado:', taskTagsComponent);
 
     return true;
 }
