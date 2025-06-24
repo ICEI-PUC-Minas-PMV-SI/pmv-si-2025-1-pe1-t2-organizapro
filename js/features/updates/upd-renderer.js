@@ -1,5 +1,5 @@
 import { getUpdates } from './upd-data.js';
-import { getTagColor } from 'js/utils/color-helpers.js';
+import { getTagColor } from '../../utils/color-helpers.js';
 
 function formatarData(dataString) {
   const data = new Date(dataString);

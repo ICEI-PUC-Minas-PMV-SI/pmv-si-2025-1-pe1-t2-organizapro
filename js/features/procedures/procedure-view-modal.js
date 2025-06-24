@@ -3,7 +3,7 @@
 import { obterProcedimentoPorId } from './procedure-data.js';
 import { createModalController } from '../../utils/modal-controller.js';
 import { formatarDataParaBR } from '../../utils/formatters.js';
-import { getTagColor } from 'js/utils/color-helpers.js';
+import { getTagColor } from '../../utils/color-helpers.js';
 import { obterHistoricoCompleto, obterProcedimentos } from './procedure-data.js';
 
 let fecharVisualizarModalBtn, fecharVisualizarBtn;

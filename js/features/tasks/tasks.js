@@ -7,7 +7,7 @@ import {
 
 import { initializeTaskFormElements, openTaskFormModal } from './task-modal.js';
 
-import { getTagColor } from 'js/utils/color-helpers.js';
+import { getTagColor } from '../../utils/color-helpers.js';
 
 const QUADRO_SELECTORS = {
     'a-fazer': '#tasks-todo-list',
