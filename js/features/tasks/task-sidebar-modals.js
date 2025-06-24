@@ -104,7 +104,7 @@ function renderTasksInModal(tasks, containerId, badgeId, noTasksMsgId) {
                 const taskId = task.id;
                 const editButton = taskCard.querySelector('.edit-task-modal-btn');
                 const deleteButton = taskCard.querySelector('.delete-task-modal-btn');
-                const completeCheckbox = taskCard.querySelector('.task-card__checkbox-modal');
+                const completeCheckbox = taskCard.querySelector('.modal-task-card__checkbox-modal');
 
                 if (editButton) {
                     editButton.addEventListener('click', () => {
@@ -191,6 +191,8 @@ export function initModalButtons() {
         if (container) container.innerHTML = '';
         if (noTasksDataElement) noTasksDataElement.style.display = 'none';
         if (badge) badge.textContent = '0';
+
+        updateBadges();
     });
 
     if (btnHoje) {

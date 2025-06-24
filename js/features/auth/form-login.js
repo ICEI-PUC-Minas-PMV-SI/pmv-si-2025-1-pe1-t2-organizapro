@@ -5,8 +5,8 @@ export function initLogin() {
   const messageDiv = document.getElementById('errorMessage');
 
   const fakeUsers = [
-    { email: 'teste@exemplo.com', password: '123456' },
-    { email: 'user2@exemplo.com', password: 'senha2' }
+    { email: 'teste@exemplo.com', password: '123@456' },
+    { email: 'user2@exemplo.com', password: 'senha@2' }
   ];
 
   if (!loginForm || !emailInput || !passwordInput || !messageDiv) {
