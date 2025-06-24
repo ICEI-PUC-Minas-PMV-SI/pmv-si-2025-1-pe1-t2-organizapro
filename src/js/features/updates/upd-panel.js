@@ -3,7 +3,6 @@ import { criarFiltros } from './upd-filters.js';
 import { inicializarEventos } from './upd-events.js';
 import { getUpdates } from './upd-data.js';
 
-// Expor para o console:
 window.getUpdates = getUpdates;
 
 export async function initUpdPanel() {

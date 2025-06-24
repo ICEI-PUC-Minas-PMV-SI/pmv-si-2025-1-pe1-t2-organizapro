@@ -14,7 +14,6 @@ let saveTaskButton = null;
 let cancelTaskButton = null;
 let taskFormModalController = null;
 
-// Mantém a instância única para tags
 let taskTagsComponent = null;
 
 let currentEditingTaskId = null;
@@ -98,7 +97,6 @@ function handleTaskFormSubmit(event) {
 }
 
 export function initializeTaskFormElements() {
-    // Se já estiver inicializado, retorna true imediatamente
     if (taskTagsComponent) {
         return true;
     }
@@ -133,7 +131,6 @@ export function initializeTaskFormElements() {
     taskFormModalController = createModalController('taskFormModal', 'taskFormModalTitle');
     if (!taskFormModalController) return false;
 
-    // Inicializa APENAS se ainda não inicializado
     taskTagsComponent = initTagInputComponent(
         'taskTags',
         'task-selected-tags-display',

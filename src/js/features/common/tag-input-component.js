@@ -120,12 +120,12 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
 
 
     tagInput.addEventListener('focus', () => {
-        // Se input vazio, mostra todas as sugestões
+        
         if (tagInput.value.trim() === '') {
-            updateSuggestions('');   // mostra todas sugestões
+            updateSuggestions('');   
             suggestionsDropdown.style.display = 'block';
         } else {
-            // Se tiver texto, mostra só sugestões filtradas
+            
             updateSuggestions(tagInput.value);
             suggestionsDropdown.style.display = 'block';
         }

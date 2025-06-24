@@ -168,7 +168,7 @@ export function renderizarProcedureTable(filtros = {}) {
     procedimentos.sort((a, b) => {
         const dataA = new Date(a.ultimaAtualizacao);
         const dataB = new Date(b.ultimaAtualizacao);
-        return dataB - dataA; // decrescente
+        return dataB - dataA; 
     });
 
     if (!procedimentos.length) {
