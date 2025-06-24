@@ -1,0 +1,43 @@
+<div id="modal-visualizar-procedimento" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2 id="visualizarTituloModal">Visualizar Procedimento
+            <span id="fechar-visualizar-modal" class="fechar">×</span>
+        </h2>
+        <div class="modal-body-view modal-scrollable">
+            <div class="form-group">
+                <label>Título:</label>
+                <p id="visualizarProcedimentoTitulo"></p>
+            </div>
+            <div class="form-group">
+                <label>Descrição:</label>
+                <p id="visualizarProcedimentoDescricao"></p>
+            </div>
+            <div class="form-group">
+                <label>Tipo:</label>
+                <p id="visualizarProcedimentoTipo"></p>
+            </div>
+            <div class="form-group">
+                <label>Etiquetas:</label>
+                <p id="visualizarProcedimentoEtiquetas"></p>
+            </div>
+            <div class="form-group">
+                <label>Status:</label>
+                <p id="visualizarProcedimentoStatus"></p>
+            </div>
+            <div class="form-group">
+                <label>Última Atualização:</label>
+                <p id="visualizarProcedimentoUltimaAtualizacao"></p>
+            </div>
+            <div class="form-group">
+                <label>Documento Anexado:</label>
+                <a id="visualizarProcedimentoArquivo" href="#" target="_blank" style="display: none;">Ver Documento</a>
+                <span id="visualizarProcedimentoArquivoNome" style="display: none;"></span>
+                <span id="visualizarProcedimentoSemArquivo" style="display: block; color: #888;">Nenhum documento
+                    anexado.</span>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button id="fechar-visualizar-btn" class="button button--cancelar">Fechar</button>
+        </div>
+    </div>
+</div>

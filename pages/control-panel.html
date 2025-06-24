@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OrganizaPRO - Painel de Controle</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400..700,0..1,0..200"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="main-container">
+        <div id="sidebar-wrapper" class="sidebar-wrapper"></div>
+
+        <main class="content">
+            <section class="control-panel-container">
+                <div class="control-panel-header">
+                    <h2 class="title">Painel de Controle</h2>
+                    <div class="control-panel-actions">
+                        <div class="search-bar">
+                            <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                            <input type="text" id="procedure-search-input" placeholder="Pesquisar" />
+                            <span class="material-symbols-outlined procedure-search-clear-icon"
+                                style="display: none;">close</span>
+                        </div>
+
+                        <button id="procedure-filtro-favoritos" class="button button--favoritos"><span
+                                class="material-symbols-outlined">favorite</span> Favoritos</button>
+
+                        <button id="procedure-limpar-filtros" class="button button--filtro"><span
+                                class="material-symbols-outlined">filter_alt_off</span>Limpar
+                        </button>
+
+                        <button class="button button--criar" id="add-new-procedure-button"><span
+                                class="material-symbols-outlined">add</span> Novo
+                            Procedimento</button>
+                    </div>
+                </div>
+                <div class="control-panel-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Procedimento</th>
+                                <th scope="col" class="filterable" data-filter-key="tipo" style="position: relative;">
+                                    Tipo
+                                    <button class="btn-filtro" aria-label="Filtrar Tipo" title="Filtrar Tipo"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Tipo" role="menu"
+                                        style="display:none;">
+                                    </div>
+                                </th>
+                                <th scope="col" class="filterable" data-filter-key="etiquetas"
+                                    style="position: relative;">
+                                    Etiquetas
+                                    <button class="btn-filtro" aria-label="Filtrar Etiquetas" title="Filtrar Etiquetas"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Etiquetas" role="menu"
+                                        style="display:none;">
+                                    </div>
+                                </th>
+                                <th scope="col" class="filterable" data-filter-key="ultimaAtualizacao"
+                                    style="position: relative;">
+                                    Última Atualização
+                                    <button class="btn-filtro" aria-label="Filtrar Última Atualização"
+                                        title="Filtrar Última Atualização" type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Última Atualização" role="menu">
+                                        <div class="input-data-wrapper input-container-procedure">
+                                            <input type="text" id="procedure-last-update-datepicker"
+                                                placeholder="Selecione a data" class="form-control" readonly />
+                                            <button id="procedure-clear-date-filter" title="Limpar filtro de data"
+                                                class="clear-icon">X</button>
+                                        </div>
+                                    </div>
+
+                                </th>
+                                <th scope="col" class="filterable" data-filter-key="status" style="position: relative;">
+                                    Status
+                                    <button class="btn-filtro" aria-label="Filtrar Status" title="Filtrar Status"
+                                        type="button">
+                                        <span class="material-symbols-outlined"
+                                            aria-hidden="true">keyboard_arrow_down</span>
+                                    </button>
+                                    <div class="filtro-dropdown" aria-label="Filtro Status" role="menu"
+                                        style="display:none;">
+                                    </div>
+                                </th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        <tbody id="tabela-procedimentos">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-form-procedure-placeholder"></div>
+    <div id="modal-view-procedure-placeholder"></div>
+    <div id="modal-version-procedure-placeholder"></div>
+    <div id="modal-task-form-placeholder"></div>
+    <div id="modal-task-sidebar-placeholder"></div>
+
+    <script src="https://cdn.tiny.cloud/1/lbpuo94sk0k0o89xox9wgf4tyrz743oufa6slz0vnby9s44j/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
