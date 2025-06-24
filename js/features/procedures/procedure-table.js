@@ -11,9 +11,9 @@ import {
 } from './procedure-data.js';
 
 import { setProcedimentoParaEdicao, setProcedimentoParaDuplicar } from './procedure-form.js';
-import { formatarDataParaBR } from '/js/utils/formatters.js';
+import { formatarDataParaBR } from 'js/utils/formatters.js';
 import { abrirModalVisualizacao } from './procedure-view-modal.js';
-import { getTagColor } from '/js/utils/color-helpers.js';
+import { getTagColor } from 'js/utils/color-helpers.js';
 import { abrirModalHistoricoVersoes } from './procedure-version-modal.js';
 
 let procedureFilterManagerInstance = null;

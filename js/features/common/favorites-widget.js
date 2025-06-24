@@ -1,5 +1,5 @@
 import { obterProcedimentos, atualizarOrdemFavoritos, toggleFavorito } from '../procedures/procedure-data.js';
-import { abrirModalVisualizacao, initProcedureViewModal } from '/js/features/procedures/procedure-view-modal.js';
+import { abrirModalVisualizacao, initProcedureViewModal } from 'js/features/procedures/procedure-view-modal.js';
 
 let animFrameId = null;
 

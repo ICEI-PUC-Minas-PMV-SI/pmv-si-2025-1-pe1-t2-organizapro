@@ -1,4 +1,4 @@
-import { getTagColor } from '/js/utils/color-helpers.js';
+import { getTagColor } from 'js/utils/color-helpers.js';
 
 class FilterManager {
     constructor(config) {

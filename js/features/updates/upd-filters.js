@@ -1,8 +1,8 @@
 // src/features/updates/upd-filters.js
 
 import { getUniqueUpdateTags } from './upd-data.js';
-import { getTagColor } from '/js/utils/color-helpers.js';
-import { makePopoverDraggable } from '/js/features/common/filter-controls.js';
+import { getTagColor } from 'js/utils/color-helpers.js';
+import { makePopoverDraggable } from 'js/features/common/filter-controls.js';
 
 
 const filtros = {

@@ -1,5 +1,5 @@
 import { obterEtiquetasUnicas } from '../procedures/procedure-data.js';
-import { getTagColor } from '/js/utils/color-helpers.js';
+import { getTagColor } from 'js/utils/color-helpers.js';
 
 function createTagChip(tagText, tagColor) {
     console.log('Criando chip para:', tagText, 'com cor:', tagColor);
