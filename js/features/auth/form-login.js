@@ -30,7 +30,7 @@ export function initLogin() {
     if (userExists) {
       showMessage('Login efetuado com sucesso!', 'success');
       setTimeout(() => {
-        window.location.href = '/index.html';
+        window.location.href = './index.html';
       }, 1000);
     } else {
       showMessage('Email ou senha incorretos.', 'error');
