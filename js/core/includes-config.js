@@ -1,7 +1,7 @@
 export function getIncludesConfig(path) {
     const page = path.split('/').pop() || 'index.html';
 
-    const baseIncludesPath = '/includes/';
+    const baseIncludesPath = 'includes/';
     const includes = [];
 
     if (page === 'index.html') {
