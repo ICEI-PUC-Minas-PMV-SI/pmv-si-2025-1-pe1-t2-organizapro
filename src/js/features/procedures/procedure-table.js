@@ -165,6 +165,12 @@ export function renderizarProcedureTable(filtros = {}) {
 
     const procedimentos = obterProcedimentosFiltrados(filtros);
 
+    procedimentos.sort((a, b) => {
+        const dataA = new Date(a.ultimaAtualizacao);
+        const dataB = new Date(b.ultimaAtualizacao);
+        return dataB - dataA; // decrescente
+    });
+
     if (!procedimentos.length) {
         corpoTabela.innerHTML = "<tr class='no-results-message'><td colspan='6'>Nenhum procedimento encontrado.</td></tr>";
         return;

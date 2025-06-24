@@ -2,7 +2,7 @@ import { obterEtiquetasUnicas } from '../procedures/procedure-data.js';
 import { getTagColor } from '/src/js/utils/color-helpers.js';
 
 function createTagChip(tagText, tagColor) {
-    console.log('Criando chip para:', tagText, 'com cor:', tagColor); 
+    console.log('Criando chip para:', tagText, 'com cor:', tagColor);
 
     const chip = document.createElement('div');
     chip.classList.add('tag');
@@ -44,7 +44,7 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
         selectedTagsDisplay.innerHTML = '';
         selectedTags.forEach(tag => {
             const tagColor = getTagColor(tag);
-            console.log('Renderizando tag:', tag, 'com cor:', tagColor); 
+            console.log('Renderizando tag:', tag, 'com cor:', tagColor);
             const chip = createTagChip(tag, tagColor);
             selectedTagsDisplay.appendChild(chip);
         });
@@ -58,6 +58,8 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
         const trimmedTag = tagText.trim();
         if (!trimmedTag) return;
 
+        console.log('Chamando addTag com:', trimmedTag);
+
         if (selectedTags.has(trimmedTag)) {
             tagInput.value = '';
             suggestionsDropdown.style.display = 'none';
@@ -66,6 +68,8 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
         }
 
         selectedTags.add(trimmedTag);
+        console.log('addTag - tags agora:', Array.from(selectedTags));
+
         renderSelectedTags();
         tagInput.value = '';
         suggestionsDropdown.style.display = 'none';
@@ -82,6 +86,7 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
     }
 
     function updateSuggestions(query) {
+        query = (typeof query === 'string') ? query : '';
         const uniqueEtiquetasGlobais = obterEtiquetasUnicas();
         availableSuggestions = uniqueEtiquetasGlobais.filter(tag =>
             (query === '' || tag.toLowerCase().includes(query.toLowerCase())) &&
@@ -106,15 +111,22 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
 
     tagInput.addEventListener('input', () => {
         updateSuggestions(tagInput.value);
+        if (tagInput.value.trim() !== '') {
+            suggestionsDropdown.style.display = 'block';
+        } else {
+            suggestionsDropdown.style.display = 'none';
+        }
     });
+
 
     tagInput.addEventListener('focus', () => {
-        updateSuggestions('');
-    });
-
-    tagInputContainer.addEventListener('mouseenter', () => {
-        if (document.activeElement !== tagInput && tagInput.value.trim() === '') {
-            updateSuggestions('');
+        // Se input vazio, mostra todas as sugestões
+        if (tagInput.value.trim() === '') {
+            updateSuggestions('');   // mostra todas sugestões
+            suggestionsDropdown.style.display = 'block';
+        } else {
+            // Se tiver texto, mostra só sugestões filtradas
+            updateSuggestions(tagInput.value);
             suggestionsDropdown.style.display = 'block';
         }
     });
@@ -188,7 +200,11 @@ export function initTagInputComponent(inputElementId, displayContainerId, sugges
             suggestionsDropdown.style.display = 'none';
         },
 
-        addTag: addTag
+        addTag: addTag,
+
+        atualizarSugestoes: (query = '') => {
+            updateSuggestions(query);
+        }
 
     };
 }

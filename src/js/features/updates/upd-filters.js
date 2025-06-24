@@ -54,7 +54,7 @@ function createCheckboxOptions(options, filterKey) {
 }
 
 function popularEtiquetas() {
-  const etiquetasUnicas = getUniqueUpdateTags(); 
+  const etiquetasUnicas = getUniqueUpdateTags();
   const statusOpcoes = ['Ativo', 'Inativo'];
 
   etiquetasContainer.innerHTML = createCheckboxOptions(etiquetasUnicas, 'etiquetas');
@@ -84,9 +84,12 @@ function onCheckboxChange(e) {
     filtros[filterKey] = filtros[filterKey].filter(v => v !== value);
   }
 
-  if (filterKey === 'status' && filtros.status.length === 0) {
-    filtros.status = [];
+  if (filterKey === 'status') {
+    if (filtros.status.length === 0) {
+      filtros.status = ['Ativo'];
+    }
   }
+
 }
 
 function normalizarData(date) {
@@ -157,6 +160,7 @@ function renderChips() {
         filtros.status = [];
       }
       atualizarPainel();
+      popularEtiquetas();
       renderChips();
     }));
   });
@@ -190,7 +194,7 @@ function createChip(tipo, texto, onRemove) {
     ? `${tipo.trim()}: ${texto}`
     : texto;
 
-  const backgroundColor = getTagColor(texto); 
+  const backgroundColor = getTagColor(texto);
 
   const chipHTML = `
     <div class="filter-chip" id="${id}" style="background-color: ${backgroundColor};">
@@ -316,14 +320,14 @@ export function criarFiltros({ filtro, atualizarPainel: atualizarCb, containers,
 
 
   const clearDateBtn = document.getElementById('upd-clear-data-filter');
-if (clearDateBtn) {
-  clearDateBtn.addEventListener('click', () => {
-    filtros.data = null;
-    if (updFlatpickrInstance) updFlatpickrInstance.clear();
-    atualizarPainel();
-    renderChips();
-  });
-}
+  if (clearDateBtn) {
+    clearDateBtn.addEventListener('click', () => {
+      filtros.data = null;
+      if (updFlatpickrInstance) updFlatpickrInstance.clear();
+      atualizarPainel();
+      renderChips();
+    });
+  }
 
 
   return {

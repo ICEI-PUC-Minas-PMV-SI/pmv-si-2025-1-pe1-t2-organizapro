@@ -1,6 +1,10 @@
 import { renderizarAtualizacoes, criarCardPainel } from './upd-renderer.js';
 import { criarFiltros } from './upd-filters.js';
 import { inicializarEventos } from './upd-events.js';
+import { getUpdates } from './upd-data.js';
+
+// Expor para o console:
+window.getUpdates = getUpdates;
 
 export async function initUpdPanel() {
   const panelCardsContainerID = 'panel-cards-container';
@@ -47,16 +51,22 @@ export async function initUpdPanel() {
     searchClear
   });
 
+  window.filtrosModule = filtrosModule;
+
   async function atualizarPainel() {
     const filtroAplicado = {
       ...filtrosModule.filtro,
-      status: filtrosModule.filtro.status 
+      status: filtrosModule.filtro.status
     };
 
     await renderizarAtualizacoes(panelCardsContainerID, criarCardPainel, {
       limite: null,
-      filtro: filtroAplicado
+      filtro: {
+        ...filtrosModule.filtro,
+        status: ['Ativo']
+      }
     });
+
 
     filtrosModule.renderChips();
   }
@@ -75,11 +85,11 @@ export async function initUpdPanel() {
   }
 
   await atualizarPainel();
-  inicializarEventos(panelCardsContainerID);
+  inicializarEventos(panelCardsContainerID, atualizarPainel);
   await focarCardPorIdNaUrl();
 
   window.addEventListener('load', () => {
-    const hash = window.location.hash; 
+    const hash = window.location.hash;
     if (hash && hash.startsWith('#update-')) {
       const updateId = hash.replace('#update-', '');
       const cardPainel = document.querySelector(`.card-painel[data-update-id="${updateId}"]`);

@@ -64,6 +64,7 @@ export function salvarTarefa(tarefaDados, id = null) {
         if (index !== -1) {
             targetTask = { ...tasks[index], ...tarefaDados };
             targetTask.dataVencimento = dataVencISO;
+            targetTask.tags = Array.isArray(tarefaDados.tags) ? tarefaDados.tags : [];
             if (tarefaDados.status) {
                 targetTask.status = tarefaDados.status;
                 targetTask.concluida = (tarefaDados.status === 'concluido');
@@ -94,6 +95,9 @@ export function salvarTarefa(tarefaDados, id = null) {
     }
 
     saveTasks();
+
+    tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    
     return targetTask;
 
 }
@@ -138,6 +142,7 @@ export function atualizarStatusTarefa(id, newStatus) {
 }
 
 export function getUniqueTaskTags() {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const allTags = tasks.flatMap(task => task.tags || []);
     const uniqueTags = [...new Set(allTags)];
     console.info('DEBUG: Etiquetas únicas obtidas:', uniqueTags.length);

@@ -158,8 +158,9 @@ export async function renderizarAtualizacoes(containerId, criarCardFunc, options
   }
 
   if (filtro.status && Array.isArray(filtro.status) && filtro.status.length > 0) {
-    updates = updates.filter(u => filtro.status.includes(u.status));
-  }
+  const statusLowerCase = filtro.status.map(s => s.trim().toLowerCase());
+  updates = updates.filter(u => statusLowerCase.includes((u.status || '').trim().toLowerCase()));
+}
 
   if (filtro.etiquetas && filtro.etiquetas.length > 0) {
     updates = updates.filter(update =>

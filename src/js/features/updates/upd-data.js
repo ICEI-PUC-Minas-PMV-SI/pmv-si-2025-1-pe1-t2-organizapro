@@ -40,17 +40,20 @@ export function salvarUpdate(dados, editId = null) {
   const lista = getUpdates();
   const agora = obterDataAtualISO();
 
-  // Encontrar item existente (caso seja edição)
   const idx = lista.findIndex(u => u.id === (editId || dados.id));
   const dataCriacaoOriginal = idx >= 0 ? lista[idx].data_criacao : agora;
+
+  const statusNormalizado = (dados.status || 'Ativo').trim().toLowerCase();
+  const statusFinal = statusNormalizado === 'inativo' ? 'Inativo' : 'Ativo';
 
   const novo = {
     ...dados,
     id: editId || gerarId(),
-    data_criacao: dataCriacaoOriginal, // garante consistência mesmo se não vier no 'dados'
+    data_criacao: dataCriacaoOriginal,
     ultima_atualizacao: agora,
-    favorito: dados.favorito || false,
-    inativo: dados.status?.toLowerCase() === 'inativo'
+    status: statusFinal,
+    inativo: statusFinal === 'Inativo',
+    favorito: dados.favorito || false
   };
 
   if (idx >= 0) {

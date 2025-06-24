@@ -4,9 +4,8 @@ import {
   desarquivarUpdate,
   excluirUpdate,
   getUpdates,
-  saveUpdates
+  saveUpdates,
 } from './upd-data.js';
-import { renderizarAtualizacoes, criarCardPainel } from './upd-renderer.js';
 import { setUpdateForEditing } from './upd-form.js';
 
 function delegarEvento(container, seletor, evento, handler) {
@@ -16,13 +15,16 @@ function delegarEvento(container, seletor, evento, handler) {
   });
 }
 
-export function inicializarEventos(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+export function inicializarEventos(containerId, atualizarPainelCallback) {
+  const container = document.getElementById(containerId); 
+  if (!container) {
+    console.error(`Container com id '${containerId}' não encontrado para inicializar eventos.`);
+    return;
+  }
 
   delegarEvento(container, '.favoritar-update', 'click', (el) => {
     toggleFavorito(el.dataset.id);
-    renderizarAtualizacoes(containerId, criarCardPainel);
+    atualizarPainelCallback();
   });
 
   delegarEvento(container, '.editar-update', 'click', (el) => {
@@ -36,7 +38,7 @@ export function inicializarEventos(containerId) {
     const updates = getUpdates();
     const update = updates.find(u => u.id === id);
     if (update) {
-      setUpdateForEditing(update); 
+      setUpdateForEditing(update);
     } else {
       alert('Atualização não encontrada para edição.');
     }
@@ -49,13 +51,13 @@ export function inicializarEventos(containerId) {
     } else {
       desarquivarUpdate(id);
     }
-    renderizarAtualizacoes(containerId, criarCardPainel);
+    atualizarPainelCallback();
   });
 
   delegarEvento(container, '.excluir-update', 'click', (el) => {
     if (confirm('Deseja realmente excluir esta atualização?')) {
       excluirUpdate(el.dataset.id);
-      renderizarAtualizacoes(containerId, criarCardPainel);
+      atualizarPainelCallback();
     }
   });
 }
