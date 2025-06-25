@@ -24,7 +24,7 @@ export function criarCardWidget(update) {
   const descricaoLimpa = (update.descricao || '').replace(/<[^>]+>/g, '').slice(0, 100);
 
   card.innerHTML = `
-      <a href="/pages/upd-panel.html#update-${update.id}" class="card-widget-link" title="Ver detalhes">
+      <a href="https://icei-puc-minas-pmv-si.github.io/pmv-si-2025-1-pe1-t2-organizapro/pages/upd-panel.html#update-${update.id}" class="card-widget-link" title="Ver detalhes">
     <img src="${imgUrl}" alt="Imagem da atualização" class="card-widget-img" onerror="this.src='https://via.placeholder.com/300x200'" />
     <div class="card-widget-content">
       <h4 class="card-widget-title">${update.titulo || 'Sem Título'}</h4>
